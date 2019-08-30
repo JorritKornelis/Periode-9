@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Item", menuName = "Inventory/Item")]
 public class ItemClassScriptableObject : ScriptableObject
 {
-    public List<ItemInformationClass> ItemInformationList = new List<ItemInformationClass>();
+    public List<ItemInformationClass> itemInformationList = new List<ItemInformationClass>();
 
 }
 
@@ -13,5 +13,7 @@ public class ItemClassScriptableObject : ScriptableObject
 public class ItemInformationClass
 {
     public string name;
+    public Sprite Sprite;
+    public int maxStack;
 
 }

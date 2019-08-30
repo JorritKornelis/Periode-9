@@ -12,3 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7495fb98b0b1c014f9c3ffd151c968b9, type: 3}
   m_Name: Item
   m_EditorClassIdentifier: 
+  itemInformationList:
+  - name: 
+    Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    maxStack: 0
+  - name: 
+    Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+    maxStack: 0
