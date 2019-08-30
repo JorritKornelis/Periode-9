@@ -20,6 +20,7 @@ public class CharacterMovement : MonoBehaviour
 
     public void Update()
     {
+        CursorFollow();
         if (GroundCheck())
         {
             CheckForNewSavePoint();
@@ -35,6 +36,13 @@ public class CharacterMovement : MonoBehaviour
                 fallVelocity = 0;
             }
         }
+    }
+
+    public void CursorFollow()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity, cursorMask))
+            body.LookAt(new Vector3(hit.point.x, body.position.y, hit.point.z));
     }
 
     public void CheckForNewSavePoint()

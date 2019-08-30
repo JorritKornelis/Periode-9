@@ -250,7 +250,7 @@ MonoBehaviour:
   raycastRange: 0.73
   raycastOffset: 0.66
   resetHeight: -3
-  body: {fileID: 0}
+  body: {fileID: 1101383546}
   cursorMask:
     serializedVersion: 2
     m_Bits: 256
@@ -319,6 +319,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: b99223de72d8cb44a8568fd38dc8fe22, type: 2}
+  - {fileID: 2100000, guid: 3b14b491a73610444ad6a90c1e342b83, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -489,6 +490,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: e53d440906493184f860da151e6605f5, type: 2}
+  - {fileID: 2100000, guid: 3b14b491a73610444ad6a90c1e342b83, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -761,6 +763,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
+  - {fileID: 2100000, guid: 3b14b491a73610444ad6a90c1e342b83, type: 2}
   - {fileID: 2100000, guid: e1abbddeb43c8ce478f4709c7374b407, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -840,6 +843,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 2157018920d9ee9468c918ad9407355b, type: 2}
+  - {fileID: 2100000, guid: 3b14b491a73610444ad6a90c1e342b83, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1101,6 +1105,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 2157018920d9ee9468c918ad9407355b, type: 2}
+  - {fileID: 2100000, guid: 3b14b491a73610444ad6a90c1e342b83, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1363,6 +1368,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: cfe45406413c5cf49ab419d5dbff6042, type: 2}
+  - {fileID: 2100000, guid: 3b14b491a73610444ad6a90c1e342b83, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1429,8 +1435,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1958565210}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.28, z: 0}
-  m_LocalScale: {x: 20, y: 0.1, z: 20}
+  m_LocalPosition: {x: 0, y: 0.78, z: 0}
+  m_LocalScale: {x: 25.411999, y: 0.12706, z: 25.411999}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
