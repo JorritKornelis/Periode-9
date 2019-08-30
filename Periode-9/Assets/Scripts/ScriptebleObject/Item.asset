@@ -15,7 +15,7 @@ MonoBehaviour:
   itemInformationList:
   - name: 
     Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-    maxStack: 0
+    maxStack: 10
   - name: 
     Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-    maxStack: 0
+    maxStack: 15

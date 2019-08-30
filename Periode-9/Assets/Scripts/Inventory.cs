@@ -6,9 +6,22 @@ using UnityEngine.UI;
 public class Inventory : MonoBehaviour
 {
     public GameObject invObj;
+    public GameObject extraInfoObj;
 
     public ItemClassScriptableObject itemScriptableObject;
     public SlotInformation[] slotInformationArray;
+
+    public Color highLightColor;
+    SlotInformation SlotInformationHolder;
+    int indexHolder;
+
+    void Start()
+    {
+        extraInfoObj.SetActive(false);
+        invObj.SetActive(false);
+
+
+    }
 
     void Update()
     {
@@ -16,35 +29,58 @@ public class Inventory : MonoBehaviour
         {
             invObj.SetActive(!invObj.activeSelf);
         }
-        foreach (SlotInformation slot in slotInformationArray)
-        {
-            slot.slotImage.sprite = itemScriptableObject.itemInformationList[slot.index].Sprite;
-        }
+        TempPIckUPItem();
     }
 
-    void ChangeItemLocation(int i)
+    void TempPIckUPItem()
     {
-        if (slotInformationArray[i].slotImage != null)
+        if (Input.GetButtonDown("Cancel"))
         {
-            slotInformationArray[i].selected = true;
-        }
-        SlotInformation slotTemp = slotInformationArray[i];
-
-        if (slotInformationArray[i].slotImage == null)
-        {
-            foreach (SlotInformation s in slotInformationArray)
+            foreach (SlotInformation slot in slotInformationArray)
             {
-                if (s.selected == true)
-                {
-                    slotInformationArray[i] = slotTemp;
-                }
-                else
-                {
-                    Debug.Log("PEnisPRIKKER");
-                }
+                slot.slotImage.sprite = itemScriptableObject.itemInformationList[slot.index].Sprite;
             }
         }
     }
+
+    public void ItemMove(int i)
+    {
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+    /*
+    public void ItemMove(int i)
+    {
+        if (SlotInformationHolder != null && i != indexHolder)
+        {
+            slotInformationArray[i] = SlotInformationHolder;
+        }
+        else if(SlotInformationHolder.slotImage != null)
+        {
+            slotInformationArray[i].slotImage.color = highLightColor;
+            indexHolder = i;
+            SlotInformationHolder = slotInformationArray[i];
+            extraInfoObj.SetActive(true);
+            //set info gelijk
+        }
+    }
+
+    public void SwitchItemButton()
+    {
+        extraInfoObj.SetActive(false);
+
+    }
+    */
 }
 
 [System.Serializable]
@@ -53,5 +89,4 @@ public class SlotInformation
     public Image slotImage;
     public int index;
     public int amount;
-    public bool selected;
 }
