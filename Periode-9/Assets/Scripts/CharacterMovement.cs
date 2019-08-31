@@ -14,13 +14,17 @@ public class CharacterMovement : MonoBehaviour
     public float raycastOffset;
     Vector3 lastSaveSpot;
     public float resetHeight;
+    public LayerMask itemLayer;
+    public float pickUpRadis;
     [Header("CursorFollow")]
     public Transform body;
     public LayerMask cursorMask;
+    public Inventory invetoryHolder;
 
     public void Update()
     {
         CursorFollow();
+        CheckCollisionPickUp();
         if (GroundCheck())
         {
             CheckForNewSavePoint();
@@ -92,5 +96,22 @@ public class CharacterMovement : MonoBehaviour
         for (int x = -1; x <= 1; x++)
             for (int z = -1; z <= 1; z++)
                 Gizmos.DrawRay(transform.position + (new Vector3(x, 0, z) * raycastOffset), Vector3.down);
+    }
+
+    void CheckCollisionPickUp()
+    {
+        if (Physics.CheckSphere(transform.position, pickUpRadis, itemLayer))
+        {
+            Debug.Log("Collison whit pickup"); ///ref naar coll item??///
+            //add to inv
+            for (int i = 0; i < invetoryHolder.slotInformationArray.Length; i++)
+            {
+                if (invetoryHolder.slotInformationArray[i].slotImage.sprite == null)
+                {
+                    //pickUp info add to array
+                    break;
+                }
+            }
+        }
     }
 }

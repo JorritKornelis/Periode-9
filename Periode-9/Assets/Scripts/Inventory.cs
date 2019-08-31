@@ -5,9 +5,13 @@ using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
+    [Header("Public stuff")]
     public GameObject invObj;
     public GameObject extraInfoObj;
+    bool mayMoveItem = false;
+    public Text nameText;
 
+    [Header("invetory")]
     public ItemClassScriptableObject itemScriptableObject;
     public SlotInformation[] slotInformationArray;
 
@@ -15,8 +19,6 @@ public class Inventory : MonoBehaviour
     public Color colorReset;
     int indexHolder = 99;
 
-    bool mayMoveItem = false;
-    public Text extraInformationName;
 
     void Start()
     {
@@ -47,9 +49,8 @@ public class Inventory : MonoBehaviour
     public void ItemMove(int i)
     {
         Debug.Log("TETVDBBIABVUICVIYAVIYCAVYCVIYVCA");
-        if (/*i != indexHolder && slotInformationArray[i].slotImage == null &&*/ mayMoveItem == true)
+        if (mayMoveItem == true)
         {
-            Debug.Log("if");
             slotInformationArray[i].slotImage.color = highLightColor;
             slotInformationArray[i].slotImage.sprite = slotInformationArray[indexHolder].slotImage.sprite;
 
@@ -60,20 +61,19 @@ public class Inventory : MonoBehaviour
         }
         else if(slotInformationArray[i].slotImage.sprite != null && mayMoveItem == false)
         {
-            Debug.Log("Esle");
             slotInformationArray[i].slotImage.color = highLightColor;
             indexHolder = i;
-            extraInfoObj.SetActive(true);
-            //set info gelijk
-        }
 
+            extraInfoObj.SetActive(true);
+            //aanpassen
+            nameText.text = itemScriptableObject.itemInformationList[i].name;
+        }
     }
 
     public void SwitchItemButton()
     {
         extraInfoObj.SetActive(false);
         mayMoveItem = true;
-        //bool may switch
     }
 }
 
