@@ -58,7 +58,7 @@ public class Inventory : MonoBehaviour
             indexHolder = 99;
             mayMoveItem = false;
         }
-        else if(slotInformationArray[i].slotImage != null && mayMoveItem == false)
+        else if(slotInformationArray[i].slotImage.sprite != null && mayMoveItem == false)
         {
             Debug.Log("Esle");
             slotInformationArray[i].slotImage.color = highLightColor;
@@ -83,4 +83,5 @@ public class SlotInformation
     public Image slotImage;
     public int index;
     public int amount;
+    
 }
