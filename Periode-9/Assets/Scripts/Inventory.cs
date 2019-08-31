@@ -12,15 +12,16 @@ public class Inventory : MonoBehaviour
     public SlotInformation[] slotInformationArray;
 
     public Color highLightColor;
-    SlotInformation SlotInformationHolder;
-    int indexHolder;
+    public Color colorReset;
+    int indexHolder = 99;
+
+    bool mayMoveItem = false;
+    public Text extraInformationName;
 
     void Start()
     {
         extraInfoObj.SetActive(false);
         invObj.SetActive(false);
-
-
     }
 
     void Update()
@@ -30,57 +31,50 @@ public class Inventory : MonoBehaviour
             invObj.SetActive(!invObj.activeSelf);
         }
         TempPIckUPItem();
+        Debug.Log(indexHolder + " Index Holder");
     }
 
     void TempPIckUPItem()
     {
         if (Input.GetButtonDown("Cancel"))
         {
-            foreach (SlotInformation slot in slotInformationArray)
-            {
-                slot.slotImage.sprite = itemScriptableObject.itemInformationList[slot.index].Sprite;
-            }
+            int temp = 0;
+            slotInformationArray[temp].slotImage.sprite = itemScriptableObject.itemInformationList[temp].Sprite;
+            temp++;
         }
     }
 
     public void ItemMove(int i)
     {
-
-
-
-    }
-
-
-
-
-
-
-
-
-
-    /*
-    public void ItemMove(int i)
-    {
-        if (SlotInformationHolder != null && i != indexHolder)
+        Debug.Log("TETVDBBIABVUICVIYAVIYCAVYCVIYVCA");
+        if (/*i != indexHolder && slotInformationArray[i].slotImage == null &&*/ mayMoveItem == true)
         {
-            slotInformationArray[i] = SlotInformationHolder;
+            Debug.Log("if");
+            slotInformationArray[i].slotImage.color = highLightColor;
+            slotInformationArray[i].slotImage.sprite = slotInformationArray[indexHolder].slotImage.sprite;
+
+            slotInformationArray[indexHolder].slotImage.color = colorReset;
+            slotInformationArray[indexHolder].slotImage.sprite = null;
+            indexHolder = 99;
+            mayMoveItem = false;
         }
-        else if(SlotInformationHolder.slotImage != null)
+        else if(slotInformationArray[i].slotImage != null && mayMoveItem == false)
         {
+            Debug.Log("Esle");
             slotInformationArray[i].slotImage.color = highLightColor;
             indexHolder = i;
-            SlotInformationHolder = slotInformationArray[i];
             extraInfoObj.SetActive(true);
             //set info gelijk
         }
+
     }
 
     public void SwitchItemButton()
     {
         extraInfoObj.SetActive(false);
-
+        mayMoveItem = true;
+        //bool may switch
     }
-    */
 }
 
 [System.Serializable]
