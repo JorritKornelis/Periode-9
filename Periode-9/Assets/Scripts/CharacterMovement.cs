@@ -109,6 +109,7 @@ public class CharacterMovement : MonoBehaviour
                 if (invetoryHolder.slotInformationArray[i].slotImage.sprite == null)
                 {
                     //pickUp info add to array
+                    
                     break;
                 }
             }
