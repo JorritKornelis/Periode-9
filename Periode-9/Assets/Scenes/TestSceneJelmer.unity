@@ -583,7 +583,6 @@ MonoBehaviour:
   cursorMask:
     serializedVersion: 2
     m_Bits: 256
-  invetoryHolder: {fileID: 0}
 --- !u!4 &856705552
 Transform:
   m_ObjectHideFlags: 0

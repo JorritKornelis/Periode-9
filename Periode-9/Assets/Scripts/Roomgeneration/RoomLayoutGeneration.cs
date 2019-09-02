@@ -15,6 +15,7 @@ public class RoomLayoutGeneration : MonoBehaviour
     public int FloorSize;
     public GameObject floorObject;
     List<GameObject> currentFloors = new List<GameObject>();
+    List<GameObject> currentDecoration = new List<GameObject>();
     public RoomListScriptableObject roomLayoutScriptableObject;
     public LayerMask groundMask;
 
@@ -28,6 +29,27 @@ public class RoomLayoutGeneration : MonoBehaviour
     {
         DisplayDoors();
         GenerateFloor();
+    }
+
+    public void SpawnDecoration()
+    {
+        foreach (GameObject floor in currentFloors)
+            if (floor)
+                Destroy(floor);
+        currentFloors = new List<GameObject>();
+
+        List<HoleInfo> holes = new List<HoleInfo>();
+        for (int i = 0; i < roomLocations.Count; i++)
+            if (roomLocations[i] == currentlyLocated)
+            {
+                foreach (RoomDetailInfo detail in roomInfos[i].details)
+                {
+                    GameObject temp = Instantiate(detail.obj, new Vector3(detail.location.x, 0, detail.location.y), Quaternion.identity);
+                    temp.transform.Rotate(new Vector3(0, detail.randomRotation ? Random.Range(-180, 180) : detail.yRotation));
+                    currentDecoration.Add(temp);
+                }
+                break;
+            }
     }
 
     public void GenerateFloor()
@@ -133,7 +155,8 @@ public class DoorLocations
 public class RoomInfo
 {
     public HoleInfo[] holes;
-    public List<RoomInfoLocation> infoLocations;
+    public RoomDetailInfo[] details;
+    public List<RoomEnemies> enemyLocations;
 }
 
 [System.Serializable]
@@ -144,10 +167,17 @@ public class HoleInfo
 }
 
 [System.Serializable]
-public class RoomInfoLocation
+public class RoomDetailInfo
+{
+    public Vector2Int location;
+    public GameObject obj;
+    public float yRotation;
+    public bool randomRotation;
+}
+
+[System.Serializable]
+public class RoomEnemies
 {
     Vector2Int location;
-    public enum InfoType {Enemie,Item,EnviromentDetail}
-    public InfoType type;
-    public int index;
+    public GameObject[] possibleEnemies;
 }
