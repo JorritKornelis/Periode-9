@@ -19,7 +19,12 @@ public class CharacterMovement : MonoBehaviour
     [Header("CursorFollow")]
     public Transform body;
     public LayerMask cursorMask;
-    public Inventory invetoryHolder;
+    Inventory invetoryHolder;
+
+    private void Start()
+    {
+        invetoryHolder = GetComponent<Inventory>();
+    }
 
     public void Update()
     {
@@ -100,18 +105,29 @@ public class CharacterMovement : MonoBehaviour
 
     void CheckCollisionPickUp()
     {
-        if (Physics.CheckSphere(transform.position, pickUpRadis, itemLayer))
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, pickUpRadis,itemLayer);
+        int i = 0;
+        while (i < hitColliders.Length)
         {
-            Debug.Log("Collison whit pickup"); ///ref naar coll item??///
-            //add to inv
-            for (int i = 0; i < invetoryHolder.slotInformationArray.Length; i++)
+            AddItem(hitColliders[i].gameObject.GetComponent<ItemIndex>().index, hitColliders[i].gameObject);
+            i++;
+        }
+    }
+
+    public void AddItem(int i, GameObject itemObject)
+    {
+        for (int forint = 0; forint < invetoryHolder.slotInformationArray.Length; forint++)
+        {
+            if (invetoryHolder.slotInformationArray[forint].slotImage == null)
             {
-                if (invetoryHolder.slotInformationArray[i].slotImage.sprite == null)
-                {
-                    //pickUp info add to array
-                    
-                    break;
-                }
+                invetoryHolder.slotInformationArray[forint].slotImage.sprite = itemObject.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[i].Sprite;
+                invetoryHolder.slotInformationArray[forint].amount += itemObject.GetComponent<ItemIndex>().amoundInItem;
+            }
+            else if (invetoryHolder.slotInformationArray[forint].slotImage != null && invetoryHolder.slotInformationArray[forint].amount + itemObject.GetComponent<ItemIndex>().amoundInItem > itemObject.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[i].maxStack)
+            {
+                int temp;
+                temp = invetoryHolder.slotInformationArray[forint].amount + itemObject.GetComponent<ItemIndex>().amoundInItem - itemObject.GetComponent<ItemClassScriptableObject>().itemInformationList[i].maxStack;
+                invetoryHolder.slotInformationArray[forint].amount = temp;
             }
         }
     }
