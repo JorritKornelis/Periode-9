@@ -5,38 +5,94 @@ using UnityEngine;
 public class RoomLayoutGeneration : MonoBehaviour
 {
     public List<Vector2Int> roomLocations;
+    public List<RoomInfo> roomInfos;
+    public int rooms;
+    public Vector2Int roomRange;
+    [Range(100,200)]
+    public float sameDirectionValue = 125f;
+    public DoorLocations doorLocations;
+    public Vector2Int currentlyLocated;
+    public int FloorSize;
+    public GameObject floorObject;
+    List<GameObject> currentFloors = new List<GameObject>();
+    public RoomListScriptableObject roomLayoutScriptableObject;
+    public LayerMask groundMask;
 
     public void Start()
     {
-        StartCoroutine(GenerateRooms(14, new Vector2Int(3, 6)));
+        GenerateRooms(rooms, roomRange);
+        DisplayRoom();
     }
 
-    public IEnumerator GenerateRooms(int roomAmount, Vector2Int pathChangeRange)
+    public void DisplayRoom()
+    {
+        DisplayDoors();
+        GenerateFloor();
+    }
+
+    public void GenerateFloor()
+    {
+        foreach (GameObject floor in currentFloors)
+            if(floor)
+                Destroy(floor);
+        currentFloors = new List<GameObject>();
+
+        List<HoleInfo> holes = new List<HoleInfo>();
+        for (int i = 0; i < roomLocations.Count; i++)
+            if (roomLocations[i] == currentlyLocated)
+            {
+                holes = new List<HoleInfo>(roomInfos[i].holes);
+                break;
+            }
+
+        for (int x = -FloorSize; x <= FloorSize; x++)
+            for (int y = -FloorSize; y <= FloorSize; y++)
+                currentFloors.Add(Instantiate(floorObject, new Vector3(x, -0.2f, y), Quaternion.identity));
+
+        foreach(HoleInfo hole in holes)
+        {
+            Collider[] colliders = Physics.OverlapBox(new Vector3(hole.location.x, -0.2f, hole.location.y), new Vector3(hole.size.x, 1, hole.size.y), Quaternion.identity, groundMask);
+            foreach (Collider col in colliders)
+                Destroy(col.gameObject);
+        }
+
+    }
+
+    public void DisplayDoors()
+    {
+        doorLocations.up.SetActive(roomLocations.Contains(currentlyLocated + new Vector2Int(0, 1)));
+        doorLocations.down.SetActive(roomLocations.Contains(currentlyLocated + new Vector2Int(0, -1)));
+        doorLocations.right.SetActive(roomLocations.Contains(currentlyLocated + new Vector2Int(1, 0)));
+        doorLocations.left.SetActive(roomLocations.Contains(currentlyLocated + new Vector2Int(-1, 0)));
+    }
+
+    public void GenerateRooms(int roomAmount, Vector2Int pathChangeRange)
     {
         Vector2Int currentRoom = new Vector2Int(0, 0);
         roomLocations.Add(currentRoom);
+        roomInfos.Add(roomLayoutScriptableObject.startRoom);
         int currentSpree = 0;
         while (roomLocations.Count != roomAmount)
         {
             if (currentSpree >= Random.Range(pathChangeRange.x, pathChangeRange.y))
                 currentRoom = roomLocations[Random.Range(0, roomLocations.Count)];
-
+            Vector2Int sameDirection = new Vector2Int(1,0);
             int tries = 0;
             while (tries != GetSurroundingInfo(currentRoom))
             {
-                yield return new WaitForSeconds(0.3f);
-                float dir = Random.Range(0, 100);
-                Vector2Int addValue = ((dir < 25) ? new Vector2Int(1, 0) : (dir < 50) ? new Vector2Int(-1, 0) : (dir < 75) ? new Vector2Int(0, 1) : new Vector2Int(0, -1));
+                float dir = Random.Range(0, sameDirectionValue);
+                Vector2Int addValue = ((dir < 25) ? new Vector2Int(1, 0) : (dir < 50) ? new Vector2Int(-1, 0) : (dir < 75) ? new Vector2Int(0, 1) : (dir < 100)?new Vector2Int(0, -1) : sameDirection);
                 if (!roomLocations.Contains(currentRoom + addValue))
                 {
                     currentRoom += addValue;
+                    sameDirection = addValue;
                     roomLocations.Add(currentRoom);
+                    roomInfos.Add(roomLayoutScriptableObject.rooms[Random.Range(0, roomLayoutScriptableObject.rooms.Length)]);
                     break;
                 }
             }
             currentSpree++;
         }
-        yield return new WaitForSeconds(0.3f);
     }
 
     public int GetSurroundingInfo(Vector2Int checkLocation)
@@ -58,17 +114,40 @@ public class RoomLayoutGeneration : MonoBehaviour
     {
         foreach (Vector2Int room in roomLocations)
         {
+            Gizmos.color = (room == currentlyLocated) ? Color.red : Color.gray;
             Gizmos.DrawCube(new Vector3(room.x,3,room.y), Vector3.one);
         }
     }
 }
 
 [System.Serializable]
+public class DoorLocations
+{
+    public GameObject up;
+    public GameObject down;
+    public GameObject right;
+    public GameObject left;
+}
+
+[System.Serializable]
 public class RoomInfo
 {
-    public Vector2Int roomLocation;
-    public RoomInfo(Vector2Int _RoomLocation)
-    {
-        roomLocation = _RoomLocation;
-    }
+    public HoleInfo[] holes;
+    public List<RoomInfoLocation> infoLocations;
+}
+
+[System.Serializable]
+public class HoleInfo
+{
+    public Vector2Int location;
+    public Vector2Int size;
+}
+
+[System.Serializable]
+public class RoomInfoLocation
+{
+    Vector2Int location;
+    public enum InfoType {Enemie,Item,EnviromentDetail}
+    public InfoType type;
+    public int index;
 }
