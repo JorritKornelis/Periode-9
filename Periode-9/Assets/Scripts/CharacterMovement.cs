@@ -109,6 +109,7 @@ public class CharacterMovement : MonoBehaviour
         int i = 0;
         while (i < hitColliders.Length)
         {
+            Debug.Log("While");
             AddItem(hitColliders[i].gameObject.GetComponent<ItemIndex>().index, hitColliders[i].gameObject);
             i++;
         }
@@ -118,16 +119,22 @@ public class CharacterMovement : MonoBehaviour
     {
         for (int forint = 0; forint < invetoryHolder.slotInformationArray.Length; forint++)
         {
-            if (invetoryHolder.slotInformationArray[forint].slotImage == null)
+            if (invetoryHolder.slotInformationArray[forint].slotImage.sprite == null)
             {
+                Debug.Log("if");
                 invetoryHolder.slotInformationArray[forint].slotImage.sprite = itemObject.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[i].Sprite;
                 invetoryHolder.slotInformationArray[forint].amount += itemObject.GetComponent<ItemIndex>().amoundInItem;
+                Destroy(itemObject);
+                break;
             }
-            else if (invetoryHolder.slotInformationArray[forint].slotImage != null && invetoryHolder.slotInformationArray[forint].amount + itemObject.GetComponent<ItemIndex>().amoundInItem > itemObject.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[i].maxStack)
+            else if (invetoryHolder.slotInformationArray[forint].slotImage.sprite != null && invetoryHolder.slotInformationArray[forint].amount + itemObject.GetComponent<ItemIndex>().amoundInItem > itemObject.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[i].maxStack)
             {
+                Debug.Log("else if");
                 int temp;
-                temp = invetoryHolder.slotInformationArray[forint].amount + itemObject.GetComponent<ItemIndex>().amoundInItem - itemObject.GetComponent<ItemClassScriptableObject>().itemInformationList[i].maxStack;
+                temp = invetoryHolder.slotInformationArray[forint].amount + itemObject.GetComponent<ItemIndex>().amoundInItem - itemObject.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[i].maxStack;
                 invetoryHolder.slotInformationArray[forint].amount = temp;
+                Destroy(itemObject);
+                continue;
             }
         }
     }

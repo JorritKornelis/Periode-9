@@ -106,3 +106,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: 0
+  amoundInItem: 0
+  itemClassScriptableObject: {fileID: 11400000, guid: eeb5db131d0390b48a0087632f0cb6a8,
+    type: 2}

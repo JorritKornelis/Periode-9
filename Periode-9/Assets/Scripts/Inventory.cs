@@ -32,23 +32,10 @@ public class Inventory : MonoBehaviour
         {
             invObj.SetActive(!invObj.activeSelf);
         }
-        TempPIckUPItem();
-        Debug.Log(indexHolder + " Index Holder");
-    }
-
-    void TempPIckUPItem()
-    {
-        if (Input.GetButtonDown("Cancel"))
-        {
-            int temp = 0;
-            slotInformationArray[temp].slotImage.sprite = itemScriptableObject.itemInformationList[temp].Sprite;
-            temp++;
-        }
     }
 
     public void ItemMove(int i)
     {
-        Debug.Log("TETVDBBIABVUICVIYAVIYCAVYCVIYVCA");
         if (mayMoveItem == true)
         {
             slotInformationArray[i].slotImage.color = highLightColor;
