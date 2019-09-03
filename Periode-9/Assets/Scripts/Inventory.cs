@@ -41,9 +41,11 @@ public class Inventory : MonoBehaviour
         {
             slotInformationArray[i].slotImage.color = highLightColor;
             slotInformationArray[i].slotImage.sprite = slotInformationArray[indexHolder].slotImage.sprite;
+            slotInformationArray[i].itemGameobjectHolder = slotInformationArray[indexHolder].itemGameobjectHolder;
 
             slotInformationArray[indexHolder].slotImage.color = colorReset;
             slotInformationArray[indexHolder].slotImage.sprite = null;
+            slotInformationArray[indexHolder].itemGameobjectHolder = null;
             indexHolder = 99;
             mayMoveItem = false;
         }
@@ -62,13 +64,15 @@ public class Inventory : MonoBehaviour
     {
         if (b == true)
         {
+            slotInformationArray[indexDrop].itemGameobjectHolder.GetComponent<ItemIndex>().mayAdd = false;
             slotInformationArray[indexDrop].slotImage.color = colorReset;
             slotInformationArray[indexDrop].slotImage.sprite = null;
             //Insatniate object
-            Instantiate(slotInformationArray[indexDrop].itemGameobjectHolder.GetComponent<ItemClassScriptableObject>().itemInformationList[slotInformationArray[indexDrop].itemGameobjectHolder.GetComponent<ItemIndex>().index].itemGameObject, transform.position, Quaternion.identity);
-
-            indexDrop = 99;
+            Instantiate(slotInformationArray[indexDrop].itemGameobjectHolder, transform.position + (transform.forward*2), Quaternion.identity);
+            slotInformationArray[indexDrop].itemGameobjectHolder.GetComponent<ItemIndex>().StartCoroutine(slotInformationArray[indexDrop].itemGameobjectHolder.GetComponent<ItemIndex>().CoolDownItemDrop(2));
+            slotInformationArray[indexDrop].itemGameobjectHolder = null;
             mayDropItem = false;
+            indexDrop = 99;
         }
     }
 
@@ -84,7 +88,6 @@ public class Inventory : MonoBehaviour
         mayDropItem = true;
         DropItem(mayDropItem, indexHolder);
     }
-
 
 }
 
