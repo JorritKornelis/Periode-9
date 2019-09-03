@@ -9,6 +9,7 @@ public class Inventory : MonoBehaviour
     public GameObject invObj;
     public GameObject extraInfoObj;
     bool mayMoveItem = false;
+    bool mayDropItem = false;
     public Text nameText;
 
     [Header("invetory")]
@@ -57,11 +58,34 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public void DropItem(bool b, int indexDrop)
+    {
+        if (b == true)
+        {
+            slotInformationArray[indexDrop].slotImage.color = colorReset;
+            slotInformationArray[indexDrop].slotImage.sprite = null;
+            //Insatniate object
+            Instantiate(slotInformationArray[indexDrop].itemGameobjectHolder.GetComponent<ItemClassScriptableObject>().itemInformationList[slotInformationArray[indexDrop].itemGameobjectHolder.GetComponent<ItemIndex>().index].itemGameObject, transform.position, Quaternion.identity);
+
+            indexDrop = 99;
+            mayDropItem = false;
+        }
+    }
+
     public void SwitchItemButton()
     {
         extraInfoObj.SetActive(false);
         mayMoveItem = true;
     }
+
+    public void DropItemButton()
+    {
+        extraInfoObj.SetActive(false);
+        mayDropItem = true;
+        DropItem(mayDropItem, indexHolder);
+    }
+
+
 }
 
 [System.Serializable]
@@ -70,5 +94,6 @@ public class SlotInformation
     public Image slotImage;
     public int index;
     public int amount;
-    
+    public GameObject itemGameobjectHolder;
+
 }

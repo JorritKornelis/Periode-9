@@ -119,14 +119,17 @@ public class CharacterMovement : MonoBehaviour
     {
         for (int forint = 0; forint < invetoryHolder.slotInformationArray.Length; forint++)
         {
+            //add item
             if (invetoryHolder.slotInformationArray[forint].slotImage.sprite == null)
             {
                 Debug.Log("if");
                 invetoryHolder.slotInformationArray[forint].slotImage.sprite = itemObject.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[i].Sprite;
                 invetoryHolder.slotInformationArray[forint].amount += itemObject.GetComponent<ItemIndex>().amoundInItem;
+                invetoryHolder.slotInformationArray[forint].itemGameobjectHolder = itemObject.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[itemObject.GetComponent<ItemIndex>().index].itemGameObject;
                 Destroy(itemObject);
                 break;
             }
+            //next if amout is full
             else if (invetoryHolder.slotInformationArray[forint].slotImage.sprite != null && invetoryHolder.slotInformationArray[forint].amount + itemObject.GetComponent<ItemIndex>().amoundInItem > itemObject.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[i].maxStack)
             {
                 Debug.Log("else if");
