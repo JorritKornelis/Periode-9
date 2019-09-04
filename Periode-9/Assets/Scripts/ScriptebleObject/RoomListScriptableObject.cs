@@ -7,5 +7,4 @@ public class RoomListScriptableObject : ScriptableObject
 {
     public RoomInfo startRoom;
     public RoomInfo[] rooms;
-    public GameObject[] roomDetails;
 }

@@ -14,19 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startRoom:
     holes: []
-    infoLocations: []
+    details:
+    - location: {x: 7, y: 7}
+      obj: {fileID: -927199367670048503, guid: 0288a5bfb58d05b4f90c1971868f9506, type: 3}
+      yRotation: 0
+      randomRotation: 1
+    enemyLocations: []
   rooms:
-  - holes:
-    - location: {x: 0, y: 0}
-      size: {x: 4, y: 4}
-    infoLocations: []
-  - holes:
-    - location: {x: 8, y: 8}
-      size: {x: 4, y: 4}
-    - location: {x: -8, y: -8}
-      size: {x: 4, y: 4}
-    infoLocations: []
-  - holes:
-    - location: {x: 0, y: 0}
-      size: {x: 8, y: 4}
-    infoLocations: []
+  - holes: []
+    details: []
+    enemyLocations: []

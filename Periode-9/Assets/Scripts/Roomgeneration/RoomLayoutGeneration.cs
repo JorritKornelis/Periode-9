@@ -5,7 +5,7 @@ using UnityEngine;
 public class RoomLayoutGeneration : MonoBehaviour
 {
     public List<Vector2Int> roomLocations;
-    public List<RoomInfo> roomInfos;
+    public List<RoomInfo> roomInfos = new List<RoomInfo>();
     public int rooms;
     public Vector2Int roomRange;
     [Range(100,200)]
@@ -18,6 +18,7 @@ public class RoomLayoutGeneration : MonoBehaviour
     List<GameObject> currentDecoration = new List<GameObject>();
     public RoomListScriptableObject roomLayoutScriptableObject;
     public LayerMask groundMask;
+    public Transform mapInfoCash;
 
     public void Start()
     {
@@ -29,22 +30,28 @@ public class RoomLayoutGeneration : MonoBehaviour
     {
         DisplayDoors();
         GenerateFloor();
+        SpawnDecoration();
+    }
+
+    public void DisplayItems()
+    {
+
     }
 
     public void SpawnDecoration()
     {
-        foreach (GameObject floor in currentFloors)
-            if (floor)
-                Destroy(floor);
-        currentFloors = new List<GameObject>();
+        foreach (GameObject decoration in currentDecoration)
+            if (decoration)
+                Destroy(decoration);
+        currentDecoration = new List<GameObject>();
 
-        List<HoleInfo> holes = new List<HoleInfo>();
         for (int i = 0; i < roomLocations.Count; i++)
             if (roomLocations[i] == currentlyLocated)
             {
-                foreach (RoomDetailInfo detail in roomInfos[i].details)
+                for (int number = 0; number < roomInfos[i].details.Count; number++)
                 {
-                    GameObject temp = Instantiate(detail.obj, new Vector3(detail.location.x, 0, detail.location.y), Quaternion.identity);
+                    RoomDetailInfo detail = roomInfos[i].details[number];
+                    GameObject temp = Instantiate(detail.obj, new Vector3(detail.location.x, 0, detail.location.y), Quaternion.identity, mapInfoCash);
                     temp.transform.Rotate(new Vector3(0, detail.randomRotation ? Random.Range(-180, 180) : detail.yRotation));
                     currentDecoration.Add(temp);
                 }
@@ -69,7 +76,7 @@ public class RoomLayoutGeneration : MonoBehaviour
 
         for (int x = -FloorSize; x <= FloorSize; x++)
             for (int y = -FloorSize; y <= FloorSize; y++)
-                currentFloors.Add(Instantiate(floorObject, new Vector3(x, -0.2f, y), Quaternion.identity));
+                currentFloors.Add(Instantiate(floorObject, new Vector3(x, -0.2f, y), Quaternion.identity,mapInfoCash));
 
         foreach(HoleInfo hole in holes)
         {
@@ -91,6 +98,7 @@ public class RoomLayoutGeneration : MonoBehaviour
     public void GenerateRooms(int roomAmount, Vector2Int pathChangeRange)
     {
         Vector2Int currentRoom = new Vector2Int(0, 0);
+        roomInfos = new List<RoomInfo>();
         roomLocations.Add(currentRoom);
         roomInfos.Add(roomLayoutScriptableObject.startRoom);
         int currentSpree = 0;
@@ -155,8 +163,9 @@ public class DoorLocations
 public class RoomInfo
 {
     public HoleInfo[] holes;
-    public RoomDetailInfo[] details;
-    public List<RoomEnemies> enemyLocations;
+    public List<RoomDetailInfo> details = new List<RoomDetailInfo>();
+    public List<RoomEnemies> enemyLocations = new List<RoomEnemies>();
+    public List<GameObject> items = new List<GameObject>();
 }
 
 [System.Serializable]
