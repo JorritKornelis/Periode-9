@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -198,6 +198,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1810194781, guid: a889ce821e01cf940b1cf2365b8e302e, type: 3}
+      propertyPath: invObj
+      value: 
+      objectReference: {fileID: 2082797179}
+    - target: {fileID: 1810194781, guid: a889ce821e01cf940b1cf2365b8e302e, type: 3}
+      propertyPath: extraInfoObj
+      value: 
+      objectReference: {fileID: 621724613}
+    - target: {fileID: 1810194781, guid: a889ce821e01cf940b1cf2365b8e302e, type: 3}
+      propertyPath: nameText
+      value: 
+      objectReference: {fileID: 566775667}
+    - target: {fileID: 1810194781, guid: a889ce821e01cf940b1cf2365b8e302e, type: 3}
+      propertyPath: slotInformationArray.Array.data[0].slotImage
+      value: 
+      objectReference: {fileID: 215589840}
+    - target: {fileID: 1810194781, guid: a889ce821e01cf940b1cf2365b8e302e, type: 3}
+      propertyPath: slotInformationArray.Array.data[1].slotImage
+      value: 
+      objectReference: {fileID: 349198246}
+    - target: {fileID: 1810194781, guid: a889ce821e01cf940b1cf2365b8e302e, type: 3}
+      propertyPath: slotInformationArray.Array.data[2].slotImage
+      value: 
+      objectReference: {fileID: 2044911217}
+    - target: {fileID: 1810194781, guid: a889ce821e01cf940b1cf2365b8e302e, type: 3}
+      propertyPath: slotInformationArray.Array.data[3].slotImage
+      value: 
+      objectReference: {fileID: 1036588213}
+    - target: {fileID: 1810194781, guid: a889ce821e01cf940b1cf2365b8e302e, type: 3}
+      propertyPath: slotInformationArray.Array.data[4].slotImage
+      value: 
+      objectReference: {fileID: 2054353461}
     - target: {fileID: 8605960110072033552, guid: a889ce821e01cf940b1cf2365b8e302e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -253,38 +285,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1810194781, guid: a889ce821e01cf940b1cf2365b8e302e, type: 3}
-      propertyPath: invObj
-      value: 
-      objectReference: {fileID: 2082797179}
-    - target: {fileID: 1810194781, guid: a889ce821e01cf940b1cf2365b8e302e, type: 3}
-      propertyPath: extraInfoObj
-      value: 
-      objectReference: {fileID: 621724613}
-    - target: {fileID: 1810194781, guid: a889ce821e01cf940b1cf2365b8e302e, type: 3}
-      propertyPath: nameText
-      value: 
-      objectReference: {fileID: 566775667}
-    - target: {fileID: 1810194781, guid: a889ce821e01cf940b1cf2365b8e302e, type: 3}
-      propertyPath: slotInformationArray.Array.data[0].slotImage
-      value: 
-      objectReference: {fileID: 215589840}
-    - target: {fileID: 1810194781, guid: a889ce821e01cf940b1cf2365b8e302e, type: 3}
-      propertyPath: slotInformationArray.Array.data[1].slotImage
-      value: 
-      objectReference: {fileID: 349198246}
-    - target: {fileID: 1810194781, guid: a889ce821e01cf940b1cf2365b8e302e, type: 3}
-      propertyPath: slotInformationArray.Array.data[2].slotImage
-      value: 
-      objectReference: {fileID: 2044911217}
-    - target: {fileID: 1810194781, guid: a889ce821e01cf940b1cf2365b8e302e, type: 3}
-      propertyPath: slotInformationArray.Array.data[3].slotImage
-      value: 
-      objectReference: {fileID: 1036588213}
-    - target: {fileID: 1810194781, guid: a889ce821e01cf940b1cf2365b8e302e, type: 3}
-      propertyPath: slotInformationArray.Array.data[4].slotImage
-      value: 
-      objectReference: {fileID: 2054353461}
+    - target: {fileID: 8605960110072033553, guid: a889ce821e01cf940b1cf2365b8e302e,
+        type: 3}
+      propertyPath: obstacleMask.m_Bits
+      value: 2103
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a889ce821e01cf940b1cf2365b8e302e, type: 3}
 --- !u!1 &57081321
@@ -1924,6 +1929,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 2048
+  mapInfoCash: {fileID: 0}
 --- !u!4 &1280409053
 Transform:
   m_ObjectHideFlags: 0
