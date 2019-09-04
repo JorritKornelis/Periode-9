@@ -20,7 +20,11 @@ MonoBehaviour:
       yRotation: 0
       randomRotation: 1
     enemyLocations: []
+    items: []
   rooms:
-  - holes: []
+  - holes:
+    - location: {x: 0, y: 0}
+      size: {x: 9, y: 9}
     details: []
     enemyLocations: []
+    items: []

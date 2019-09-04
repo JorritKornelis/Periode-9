@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class RoomLayoutGeneration : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class RoomLayoutGeneration : MonoBehaviour
     public RoomListScriptableObject roomLayoutScriptableObject;
     public LayerMask groundMask;
     public Transform mapInfoCash;
+    public GameObject holeNav;
 
     public void Start()
     {
@@ -81,6 +83,8 @@ public class RoomLayoutGeneration : MonoBehaviour
         foreach(HoleInfo hole in holes)
         {
             Collider[] colliders = Physics.OverlapBox(new Vector3(hole.location.x, -0.2f, hole.location.y), new Vector3(hole.size.x, 1, hole.size.y), Quaternion.identity, groundMask);
+            GameObject holNav = Instantiate(holeNav, new Vector3(hole.location.x, -0.2f, hole.location.y), Quaternion.identity);
+            holNav.GetComponent<NavMeshObstacle>().size = new Vector3(hole.size.x * 2, 4, hole.size.y * 2);
             foreach (Collider col in colliders)
                 Destroy(col.gameObject);
         }
