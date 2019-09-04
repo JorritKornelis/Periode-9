@@ -1769,65 +1769,18 @@ RectTransform:
   m_AnchoredPosition: {x: -782.9, y: 201.4}
   m_SizeDelta: {x: 199.09998, y: 251}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1810194777 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8605960110072033554, guid: a889ce821e01cf940b1cf2365b8e302e,
+--- !u!114 &1810194781 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1810194781, guid: a889ce821e01cf940b1cf2365b8e302e,
     type: 3}
   m_PrefabInstance: {fileID: 8605960110807912523}
   m_PrefabAsset: {fileID: 0}
---- !u!135 &1810194780
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1810194777}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 2
-  m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &1810194781
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1810194777}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0cf9c1f2d2de364c9f8176c163bc86d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  invObj: {fileID: 383756149}
-  extraInfoObj: {fileID: 1730447843}
-  nameText: {fileID: 229501322}
-  itemScriptableObject: {fileID: 11400000, guid: eeb5db131d0390b48a0087632f0cb6a8,
-    type: 2}
-  slotInformationArray:
-  - slotImage: {fileID: 1530250025}
-    index: 0
-    amount: 0
-    itemGameobjectHolder: {fileID: 0}
-  - slotImage: {fileID: 606672703}
-    index: 1
-    amount: 0
-    itemGameobjectHolder: {fileID: 0}
-  - slotImage: {fileID: 409825303}
-    index: 2
-    amount: 0
-    itemGameobjectHolder: {fileID: 0}
-  - slotImage: {fileID: 1546848452}
-    index: 3
-    amount: 0
-    itemGameobjectHolder: {fileID: 0}
-  - slotImage: {fileID: 1225037679}
-    index: 4
-    amount: 0
-    itemGameobjectHolder: {fileID: 0}
-  highLightColor: {r: 1, g: 0, b: 0, a: 1}
-  colorReset: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1911453804
 GameObject:
   m_ObjectHideFlags: 0
@@ -2790,15 +2743,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8605960110072033553, guid: a889ce821e01cf940b1cf2365b8e302e,
-        type: 3}
-      propertyPath: itemLayer.m_Bits
-      value: 512
-      objectReference: {fileID: 0}
-    - target: {fileID: 8605960110072033553, guid: a889ce821e01cf940b1cf2365b8e302e,
-        type: 3}
-      propertyPath: pickUpRadis
-      value: 2
-      objectReference: {fileID: 0}
+    - target: {fileID: 1810194781, guid: a889ce821e01cf940b1cf2365b8e302e, type: 3}
+      propertyPath: invObj
+      value: 
+      objectReference: {fileID: 383756149}
+    - target: {fileID: 1810194781, guid: a889ce821e01cf940b1cf2365b8e302e, type: 3}
+      propertyPath: extraInfoObj
+      value: 
+      objectReference: {fileID: 1730447843}
+    - target: {fileID: 1810194781, guid: a889ce821e01cf940b1cf2365b8e302e, type: 3}
+      propertyPath: nameText
+      value: 
+      objectReference: {fileID: 229501322}
+    - target: {fileID: 1810194781, guid: a889ce821e01cf940b1cf2365b8e302e, type: 3}
+      propertyPath: slotInformationArray.Array.data[0].slotImage
+      value: 
+      objectReference: {fileID: 1530250025}
+    - target: {fileID: 1810194781, guid: a889ce821e01cf940b1cf2365b8e302e, type: 3}
+      propertyPath: slotInformationArray.Array.data[1].slotImage
+      value: 
+      objectReference: {fileID: 606672703}
+    - target: {fileID: 1810194781, guid: a889ce821e01cf940b1cf2365b8e302e, type: 3}
+      propertyPath: slotInformationArray.Array.data[2].slotImage
+      value: 
+      objectReference: {fileID: 409825303}
+    - target: {fileID: 1810194781, guid: a889ce821e01cf940b1cf2365b8e302e, type: 3}
+      propertyPath: slotInformationArray.Array.data[3].slotImage
+      value: 
+      objectReference: {fileID: 1546848452}
+    - target: {fileID: 1810194781, guid: a889ce821e01cf940b1cf2365b8e302e, type: 3}
+      propertyPath: slotInformationArray.Array.data[4].slotImage
+      value: 
+      objectReference: {fileID: 1225037679}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a889ce821e01cf940b1cf2365b8e302e, type: 3}
