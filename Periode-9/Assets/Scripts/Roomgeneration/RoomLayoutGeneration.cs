@@ -54,7 +54,7 @@ public class RoomLayoutGeneration : MonoBehaviour
                 {
                     RoomDetailInfo detail = roomInfos[i].details[number];
                     GameObject temp = Instantiate(detail.obj, new Vector3(detail.location.x, 0, detail.location.y), Quaternion.identity, mapInfoCash);
-                    temp.transform.Rotate(new Vector3(0, detail.randomRotation ? Random.Range(-180, 180) : detail.yRotation));
+                    temp.transform.Rotate(new Vector3(0, detail.yRotation));
                     currentDecoration.Add(temp);
                 }
                 break;
@@ -85,6 +85,7 @@ public class RoomLayoutGeneration : MonoBehaviour
             Collider[] colliders = Physics.OverlapBox(new Vector3(hole.location.x, -0.2f, hole.location.y), new Vector3(hole.size.x, 1, hole.size.y), Quaternion.identity, groundMask);
             GameObject holNav = Instantiate(holeNav, new Vector3(hole.location.x, -0.2f, hole.location.y), Quaternion.identity);
             holNav.GetComponent<NavMeshObstacle>().size = new Vector3(hole.size.x * 2, 4, hole.size.y * 2);
+            currentFloors.Add(holNav);
             foreach (Collider col in colliders)
                 Destroy(col.gameObject);
         }
@@ -185,7 +186,6 @@ public class RoomDetailInfo
     public Vector2Int location;
     public GameObject obj;
     public float yRotation;
-    public bool randomRotation;
 }
 
 [System.Serializable]
