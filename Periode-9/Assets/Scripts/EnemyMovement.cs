@@ -9,7 +9,7 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
-        //AiMovement();
+        AiMovement();
     }
 
     public void AiMovement()
