@@ -110,35 +110,8 @@ public class CharacterMovement : MonoBehaviour
         while (i < hitColliders.Length)
         {
             Debug.Log("While");
-            AddItem(hitColliders[i].gameObject.GetComponent<ItemIndex>().index, hitColliders[i].gameObject);
+            GetComponent<Inventory>().AddItem(hitColliders[i].gameObject.GetComponent<ItemIndex>().index, hitColliders[i].gameObject);
             i++;
-        }
-    }
-
-    public void AddItem(int i, GameObject itemObject)
-    {
-        for (int forint = 0; forint < invetoryHolder.slotInformationArray.Length; forint++)
-        {
-            //add item
-            Debug.Log("2");
-            if (invetoryHolder.slotInformationArray[forint].slotImage.sprite == null && itemObject.GetComponent<ItemIndex>().mayAdd == true)
-            {
-                Debug.Log("3");
-                invetoryHolder.slotInformationArray[forint].slotImage.sprite = itemObject.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[i].Sprite;
-                invetoryHolder.slotInformationArray[forint].amount += itemObject.GetComponent<ItemIndex>().amoundInItem;
-                invetoryHolder.slotInformationArray[forint].itemGameobjectHolder = itemObject.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[itemObject.GetComponent<ItemIndex>().index].itemGameObject;
-                Destroy(itemObject);
-                break;
-            }
-            //next if amout is full
-            else if (invetoryHolder.slotInformationArray[forint].slotImage.sprite != null && invetoryHolder.slotInformationArray[forint].amount + itemObject.GetComponent<ItemIndex>().amoundInItem > itemObject.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[i].maxStack)
-            {
-                int temp;
-                temp = invetoryHolder.slotInformationArray[forint].amount + itemObject.GetComponent<ItemIndex>().amoundInItem - itemObject.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[i].maxStack;
-                invetoryHolder.slotInformationArray[forint].amount = temp;
-                Destroy(itemObject);
-                continue;
-            }
         }
     }
 }

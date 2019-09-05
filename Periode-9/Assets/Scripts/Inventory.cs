@@ -89,6 +89,34 @@ public class Inventory : MonoBehaviour
         DropItem(mayDropItem, indexHolder);
     }
 
+    public void AddItem(int i, GameObject itemObject)
+    {
+        for (int forint = 0; forint < slotInformationArray.Length; forint++)
+        {
+            //add item
+            Debug.Log("2");
+            if (slotInformationArray[forint].slotImage.sprite == null && itemObject.GetComponent<ItemIndex>().mayAdd == true)
+            {
+                Debug.Log("3");
+                slotInformationArray[forint].slotImage.sprite = itemObject.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[i].Sprite;
+                slotInformationArray[forint].amount += itemObject.GetComponent<ItemIndex>().amoundInItem;
+                slotInformationArray[forint].itemGameobjectHolder = itemObject.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[itemObject.GetComponent<ItemIndex>().index].itemGameObject;
+                Destroy(itemObject);
+                break;
+            }
+            //next if amout is full
+            else if (slotInformationArray[forint].slotImage.sprite != null && slotInformationArray[forint].amount + itemObject.GetComponent<ItemIndex>().amoundInItem > itemObject.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[i].maxStack)
+            {
+                int temp;
+                temp = slotInformationArray[forint].amount + itemObject.GetComponent<ItemIndex>().amoundInItem - itemObject.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[i].maxStack;
+                slotInformationArray[forint].amount = temp;
+                Destroy(itemObject);
+                continue;
+            }
+        }
+    }
+
+
 }
 
 [System.Serializable]
