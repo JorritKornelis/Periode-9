@@ -14,10 +14,10 @@ public class Door : MonoBehaviour
     {
         if (Physics.CheckBox(transform.position, playerDetectArea, Quaternion.identity, playerMask))
         {
+            StartCoroutine(GameObject.FindWithTag("Player").GetComponent<CharacterMovement>().ParticleTempDisable());
             roomLayout.currentlyLocated += addValue;
             roomLayout.DisplayRoom();
             GameObject.FindWithTag("Player").transform.position = returnPoint.position;
-            StartCoroutine(GameObject.FindWithTag("Player").GetComponent<CharacterMovement>().ParticleTempDisable());
         }  
     }
 
