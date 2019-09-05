@@ -35,21 +35,21 @@ MonoBehaviour:
   rooms:
   - holes:
     - location: {x: 0, y: 0}
-      size: {x: 9, y: 9}
+      size: {x: 7, y: 7}
     details:
-    - location: {x: -12, y: 12}
+    - location: {x: -9, y: 9}
       obj: {fileID: 2209435492430544436, guid: a30815e36903b034fa32c4a9f222ea1d, type: 3}
       yRotation: 145
-    - location: {x: 12, y: -12}
+    - location: {x: 9, y: -9}
       obj: {fileID: 2209435492430544436, guid: a30815e36903b034fa32c4a9f222ea1d, type: 3}
       yRotation: 64
     enemyLocations: []
     items: []
   - holes:
     - location: {x: 0, y: 0}
-      size: {x: 9, y: 2}
+      size: {x: 7, y: 2}
     - location: {x: 0, y: 0}
-      size: {x: 2, y: 9}
+      size: {x: 2, y: 7}
     details:
     - location: {x: 6, y: 6}
       obj: {fileID: 6814150157657931569, guid: 7597c608860a2624a8a4c0718c75eb28, type: 3}
@@ -67,22 +67,22 @@ MonoBehaviour:
     items: []
   - holes: []
     details:
-    - location: {x: 9, y: 12}
+    - location: {x: 5, y: 7}
       obj: {fileID: 2209435492430544436, guid: a30815e36903b034fa32c4a9f222ea1d, type: 3}
       yRotation: 0
-    - location: {x: 9, y: 12}
+    - location: {x: 9, y: 8}
       obj: {fileID: 2209435492430544436, guid: a30815e36903b034fa32c4a9f222ea1d, type: 3}
       yRotation: 0
-    - location: {x: 8, y: 13}
+    - location: {x: 6, y: 9}
       obj: {fileID: 2209435492430544436, guid: a30815e36903b034fa32c4a9f222ea1d, type: 3}
       yRotation: 125
-    - location: {x: 7, y: 11}
+    - location: {x: 7, y: 8}
       obj: {fileID: 2209435492430544436, guid: a30815e36903b034fa32c4a9f222ea1d, type: 3}
       yRotation: 45
-    - location: {x: 13, y: 7}
+    - location: {x: 4, y: 9}
       obj: {fileID: 2209435492430544436, guid: a30815e36903b034fa32c4a9f222ea1d, type: 3}
       yRotation: 160
-    - location: {x: 12, y: 10}
+    - location: {x: 7, y: 10}
       obj: {fileID: 2209435492430544436, guid: a30815e36903b034fa32c4a9f222ea1d, type: 3}
       yRotation: 10
     enemyLocations: []
