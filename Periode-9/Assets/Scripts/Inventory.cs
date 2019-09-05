@@ -43,10 +43,20 @@ public class Inventory : MonoBehaviour
             slotInformationArray[i].slotImage.sprite = slotInformationArray[indexHolder].slotImage.sprite;
             slotInformationArray[i].itemGameobjectHolder = slotInformationArray[indexHolder].itemGameobjectHolder;
 
-            slotInformationArray[indexHolder].slotImage.color = colorReset;
-            slotInformationArray[indexHolder].slotImage.sprite = slotInformationArray[i].slotImage.sprite;
-            slotInformationArray[indexHolder].itemGameobjectHolder = slotInformationArray[i].itemGameobjectHolder;
-            indexHolder = 99;
+            if (slotInformationArray[i].index == slotInformationArray[indexHolder].index)
+            {
+                slotInformationArray[indexHolder].slotImage.color = colorReset;
+                slotInformationArray[indexHolder].slotImage.sprite = slotInformationArray[i].slotImage.sprite;
+                slotInformationArray[indexHolder].itemGameobjectHolder = slotInformationArray[i].itemGameobjectHolder;
+                indexHolder = 99;
+            }
+            else
+            {
+                slotInformationArray[indexHolder].slotImage.color = colorReset;
+                slotInformationArray[indexHolder].slotImage.sprite = null;
+                slotInformationArray[indexHolder].itemGameobjectHolder = null;
+                indexHolder = 99;
+            }
             mayMoveItem = false;
         }
         else if(slotInformationArray[i].slotImage.sprite != null && mayMoveItem == false)
@@ -90,7 +100,7 @@ public class Inventory : MonoBehaviour
     public void SwitchItemButton()
     {
         extraInfoObj.SetActive(false);
-        mayMoveItem = true;     
+        mayMoveItem = true;
     }
 
     public void DropItemButton()
@@ -105,10 +115,8 @@ public class Inventory : MonoBehaviour
         for (int forint = 0; forint < slotInformationArray.Length; forint++)
         {
             //add item
-            Debug.Log("2");
             if (slotInformationArray[forint].slotImage.sprite == null && itemObject.GetComponent<ItemIndex>().mayAdd == true)
             {
-                Debug.Log("3");
                 slotInformationArray[forint].slotImage.sprite = itemObject.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[i].Sprite;
                 slotInformationArray[forint].amount += itemObject.GetComponent<ItemIndex>().amoundInItem;
                 slotInformationArray[forint].itemGameobjectHolder = itemObject.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[itemObject.GetComponent<ItemIndex>().index].itemGameObject;
@@ -129,10 +137,8 @@ public class Inventory : MonoBehaviour
 
     public IEnumerator CoolDownItemDrop(float coolDown,GameObject itemGameObject)
     {
-        Debug.Log("negers0");
         yield return new WaitForSeconds(coolDown);
         itemGameObject.GetComponent<ItemIndex>().mayAdd = true;
-        Debug.Log("negers");
     }
 
 }
