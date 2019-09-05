@@ -9,10 +9,4 @@ public class ItemIndex : MonoBehaviour
     public bool mayAdd;
 
     public ItemClassScriptableObject itemClassScriptableObject;
-
-    public IEnumerator CoolDownItemDrop(float coolDown)
-    {
-        yield return new WaitForSeconds(coolDown);
-        mayAdd = true;
-    }
 }
