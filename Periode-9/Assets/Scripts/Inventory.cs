@@ -44,13 +44,24 @@ public class Inventory : MonoBehaviour
             slotInformationArray[i].itemGameobjectHolder = slotInformationArray[indexHolder].itemGameobjectHolder;
 
             slotInformationArray[indexHolder].slotImage.color = colorReset;
-            slotInformationArray[indexHolder].slotImage.sprite = null;
-            slotInformationArray[indexHolder].itemGameobjectHolder = null;
+            slotInformationArray[indexHolder].slotImage.sprite = slotInformationArray[i].slotImage.sprite;
+            slotInformationArray[indexHolder].itemGameobjectHolder = slotInformationArray[i].itemGameobjectHolder;
             indexHolder = 99;
             mayMoveItem = false;
         }
         else if(slotInformationArray[i].slotImage.sprite != null && mayMoveItem == false)
         {
+            for (int it = 0; it < slotInformationArray.Length; it++)
+            {
+                if (slotInformationArray[it].slotImage.color == highLightColor)
+                {
+                    slotInformationArray[it].slotImage.color = colorReset;
+                    indexHolder = 99;
+                    mayMoveItem = false;
+                    continue;
+                }
+            }
+
             slotInformationArray[i].slotImage.color = highLightColor;
             indexHolder = i;
 
@@ -68,8 +79,8 @@ public class Inventory : MonoBehaviour
             slotInformationArray[indexDrop].slotImage.color = colorReset;
             slotInformationArray[indexDrop].slotImage.sprite = null;
             //Insatniate object
-            Instantiate(slotInformationArray[indexDrop].itemGameobjectHolder, transform.position + (transform.forward*2), Quaternion.identity);
-            slotInformationArray[indexDrop].itemGameobjectHolder.GetComponent<ItemIndex>().StartCoroutine(slotInformationArray[indexDrop].itemGameobjectHolder.GetComponent<ItemIndex>().CoolDownItemDrop(2));
+            GameObject g = Instantiate(slotInformationArray[indexDrop].itemGameobjectHolder, transform.position + (transform.forward*2), Quaternion.identity);
+            StartCoroutine(CoolDownItemDrop(2, g));
             slotInformationArray[indexDrop].itemGameobjectHolder = null;
             mayDropItem = false;
             indexDrop = 99;
@@ -79,7 +90,7 @@ public class Inventory : MonoBehaviour
     public void SwitchItemButton()
     {
         extraInfoObj.SetActive(false);
-        mayMoveItem = true;
+        mayMoveItem = true;     
     }
 
     public void DropItemButton()
@@ -116,6 +127,13 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public IEnumerator CoolDownItemDrop(float coolDown,GameObject itemGameObject)
+    {
+        Debug.Log("negers0");
+        yield return new WaitForSeconds(coolDown);
+        itemGameObject.GetComponent<ItemIndex>().mayAdd = true;
+        Debug.Log("negers");
+    }
 
 }
 
@@ -126,5 +144,4 @@ public class SlotInformation
     public int index;
     public int amount;
     public GameObject itemGameobjectHolder;
-
 }
