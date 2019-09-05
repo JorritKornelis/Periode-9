@@ -19,11 +19,23 @@ public class CharacterMovement : MonoBehaviour
     [Header("CursorFollow")]
     public Transform body;
     public LayerMask cursorMask;
+    public ParticleSystem walkDust;
     Inventory invetoryHolder;
 
     private void Start()
     {
         invetoryHolder = GetComponent<Inventory>();
+    }
+
+    public IEnumerator ParticleTempDisable()
+    {
+        float f = 0.01f;
+        while (f > 0)
+        {
+            f -= Time.deltaTime;
+            walkDust.gameObject.SetActive(false);
+            yield return null;
+        }
     }
 
     public void Update()
@@ -32,11 +44,13 @@ public class CharacterMovement : MonoBehaviour
         CheckCollisionPickUp();
         if (GroundCheck())
         {
+            walkDust.gameObject.SetActive(true);
             CheckForNewSavePoint();
             transform.Translate(new Vector3(GetCollisionMoveAmount(Vector3.right, Input.GetAxis("Horizontal")), 0, GetCollisionMoveAmount(Vector3.forward, Input.GetAxis("Vertical"))) * moveSpeed * Time.deltaTime);
         }
         else
         {
+            walkDust.gameObject.SetActive(false);
             fallVelocity += fallSpeed * Time.deltaTime;
             transform.Translate(Vector3.down * Time.deltaTime * fallVelocity);
             if(transform.position.y < resetHeight)

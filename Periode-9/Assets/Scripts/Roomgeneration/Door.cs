@@ -17,6 +17,7 @@ public class Door : MonoBehaviour
             roomLayout.currentlyLocated += addValue;
             roomLayout.DisplayRoom();
             GameObject.FindWithTag("Player").transform.position = returnPoint.position;
+            StartCoroutine(GameObject.FindWithTag("Player").GetComponent<CharacterMovement>().ParticleTempDisable());
         }  
     }
 
