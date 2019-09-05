@@ -20,7 +20,6 @@ public class Inventory : MonoBehaviour
     public Color colorReset;
     int indexHolder = 99;
 
-
     void Start()
     {
         extraInfoObj.SetActive(false);
