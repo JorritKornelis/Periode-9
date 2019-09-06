@@ -21,6 +21,13 @@ public class CharacterMovement : MonoBehaviour
     public LayerMask cursorMask;
     public ParticleSystem walkDust;
     Inventory invetoryHolder;
+    public bool allowMovement;
+
+    public IEnumerator StartMovement(float time)
+    {
+        yield return new WaitForSeconds(time);
+        allowMovement = true;
+    }
 
     private void Start()
     {
@@ -40,23 +47,26 @@ public class CharacterMovement : MonoBehaviour
 
     public void Update()
     {
-        CursorFollow();
-        CheckCollisionPickUp();
-        if (GroundCheck())
+        if (allowMovement)
         {
-            walkDust.gameObject.SetActive(true);
-            CheckForNewSavePoint();
-            transform.Translate(new Vector3(GetCollisionMoveAmount(Vector3.right, Input.GetAxis("Horizontal")), 0, GetCollisionMoveAmount(Vector3.forward, Input.GetAxis("Vertical"))) * moveSpeed * Time.deltaTime);
-        }
-        else
-        {
-            walkDust.gameObject.SetActive(false);
-            fallVelocity += fallSpeed * Time.deltaTime;
-            transform.Translate(Vector3.down * Time.deltaTime * fallVelocity);
-            if(transform.position.y < resetHeight)
+            CursorFollow();
+            CheckCollisionPickUp();
+            if (GroundCheck())
             {
-                transform.position = lastSaveSpot;
-                fallVelocity = 0;
+                walkDust.gameObject.SetActive(true);
+                CheckForNewSavePoint();
+                transform.Translate(new Vector3(GetCollisionMoveAmount(Vector3.right, Input.GetAxis("Horizontal")), 0, GetCollisionMoveAmount(Vector3.forward, Input.GetAxis("Vertical"))) * moveSpeed * Time.deltaTime);
+            }
+            else
+            {
+                walkDust.gameObject.SetActive(false);
+                fallVelocity += fallSpeed * Time.deltaTime;
+                transform.Translate(Vector3.down * Time.deltaTime * fallVelocity);
+                if (transform.position.y < resetHeight)
+                {
+                    transform.position = lastSaveSpot;
+                    fallVelocity = 0;
+                }
             }
         }
     }

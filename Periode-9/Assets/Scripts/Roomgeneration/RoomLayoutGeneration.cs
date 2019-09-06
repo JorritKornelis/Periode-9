@@ -7,6 +7,7 @@ public class RoomLayoutGeneration : MonoBehaviour
 {
     public List<Vector2Int> roomLocations;
     public List<RoomInfo> roomInfos = new List<RoomInfo>();
+    public List<bool> Completed;
     public int rooms;
     public Vector2Int roomRange;
     [Range(100,200)]
@@ -105,6 +106,7 @@ public class RoomLayoutGeneration : MonoBehaviour
         Vector2Int currentRoom = new Vector2Int(0, 0);
         roomInfos = new List<RoomInfo>();
         roomLocations.Add(currentRoom);
+        Completed.Add(true);
         roomInfos.Add(roomLayoutScriptableObject.startRoom);
         int currentSpree = 0;
         while (roomLocations.Count != roomAmount)
@@ -123,6 +125,7 @@ public class RoomLayoutGeneration : MonoBehaviour
                     sameDirection = addValue;
                     roomLocations.Add(currentRoom);
                     roomInfos.Add(roomLayoutScriptableObject.rooms[Random.Range(0, roomLayoutScriptableObject.rooms.Length)]);
+                    Completed.Add(false);
                     break;
                 }
             }
