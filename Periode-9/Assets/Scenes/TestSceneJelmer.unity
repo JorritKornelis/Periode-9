@@ -716,7 +716,7 @@ MonoBehaviour:
   returnPoint: {fileID: 1743257170}
   addValue: {x: 0, y: -1}
   roomLayout: {fileID: 1347901495}
-  playerDetectArea: {x: 3.45, y: 5.32, z: 0.97}
+  playerDetectArea: {x: 1.46, y: 5.32, z: 0.3}
   active: 0
   switchScreen: {fileID: 900084626}
 --- !u!23 &607416415
@@ -1033,7 +1033,7 @@ MonoBehaviour:
   returnPoint: {fileID: 1669442979}
   addValue: {x: 1, y: 0}
   roomLayout: {fileID: 1347901495}
-  playerDetectArea: {x: 1.11, y: 5.6, z: 3.67}
+  playerDetectArea: {x: 0.22, y: 5.6, z: 1.65}
   active: 0
   switchScreen: {fileID: 900084626}
 --- !u!23 &1052562918
@@ -1220,6 +1220,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomLocations: []
   roomInfos: []
+  Completed: 
   rooms: 70
   roomRange: {x: 12, y: 15}
   sameDirectionValue: 200
@@ -1290,7 +1291,7 @@ MonoBehaviour:
   returnPoint: {fileID: 479739694}
   addValue: {x: 0, y: 1}
   roomLayout: {fileID: 1347901495}
-  playerDetectArea: {x: 3.45, y: 5.32, z: 0.97}
+  playerDetectArea: {x: 1.46, y: 5.32, z: 0.3}
   active: 0
   switchScreen: {fileID: 900084626}
 --- !u!23 &1625813202
@@ -1723,7 +1724,7 @@ MonoBehaviour:
   returnPoint: {fileID: 895030904}
   addValue: {x: -1, y: 0}
   roomLayout: {fileID: 1347901495}
-  playerDetectArea: {x: 1.11, y: 5.6, z: 3.67}
+  playerDetectArea: {x: 0.22, y: 5.6, z: 1.65}
   active: 0
   switchScreen: {fileID: 900084626}
 --- !u!23 &1847345978
