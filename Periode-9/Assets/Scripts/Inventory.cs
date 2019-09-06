@@ -24,6 +24,7 @@ public class Inventory : MonoBehaviour
     {
         extraInfoObj.SetActive(false);
         invObj.SetActive(false);
+        
     }
 
     void Update()
@@ -38,24 +39,37 @@ public class Inventory : MonoBehaviour
     {
         if (mayMoveItem == true)
         {
-            slotInformationArray[i].slotImage.color = highLightColor;
-            slotInformationArray[i].slotImage.sprite = slotInformationArray[indexHolder].slotImage.sprite;
-            slotInformationArray[i].itemGameobjectHolder = slotInformationArray[indexHolder].itemGameobjectHolder;
+            if (slotInformationArray[i].index != slotInformationArray[indexHolder].index)
+            {
+                if (slotInformationArray[i].slotImage.sprite == null)
+                {
+                    slotInformationArray[i].slotImage.color = highLightColor;
+                    slotInformationArray[i].slotImage.sprite = slotInformationArray[indexHolder].slotImage.sprite;
+                    slotInformationArray[i].itemGameobjectHolder = slotInformationArray[indexHolder].itemGameobjectHolder;
 
-            if (slotInformationArray[i].index == slotInformationArray[indexHolder].index)
-            {
-                slotInformationArray[indexHolder].slotImage.color = colorReset;
-                slotInformationArray[indexHolder].slotImage.sprite = slotInformationArray[i].slotImage.sprite;
-                slotInformationArray[indexHolder].itemGameobjectHolder = slotInformationArray[i].itemGameobjectHolder;
-                indexHolder = 99;
+                    slotInformationArray[indexHolder].slotImage.color = colorReset;
+                    slotInformationArray[indexHolder].slotImage.sprite = null;
+                    slotInformationArray[indexHolder].itemGameobjectHolder = null;
+                    indexHolder = 99;
+                }
+                else
+                {
+                    Sprite saveSprite = slotInformationArray[i].slotImage.sprite;
+                    GameObject tempGameObjecy = slotInformationArray[i].itemGameobjectHolder;
+
+                    slotInformationArray[i].slotImage.color = highLightColor;
+                    slotInformationArray[i].itemGameobjectHolder = slotInformationArray[indexHolder].itemGameobjectHolder;
+                    slotInformationArray[i].slotImage.sprite = slotInformationArray[indexHolder].slotImage.sprite;
+
+                    slotInformationArray[indexHolder].slotImage.sprite = saveSprite;
+                    slotInformationArray[indexHolder].itemGameobjectHolder = tempGameObjecy;
+                    slotInformationArray[indexHolder].slotImage.color = colorReset;
+
+                    indexHolder = 99;
+                }
+
             }
-            else
-            {
-                slotInformationArray[indexHolder].slotImage.color = colorReset;
-                slotInformationArray[indexHolder].slotImage.sprite = null;
-                slotInformationArray[indexHolder].itemGameobjectHolder = null;
-                indexHolder = 99;
-            }
+            slotInformationArray[i].slotImage.color = colorReset;
             mayMoveItem = false;
         }
         else if(slotInformationArray[i].slotImage.sprite != null && mayMoveItem == false)
@@ -72,8 +86,9 @@ public class Inventory : MonoBehaviour
             }
 
             slotInformationArray[i].slotImage.color = highLightColor;
-            indexHolder = i;
 
+            indexHolder = i;
+            
             extraInfoObj.SetActive(true);
             //aanpassen
             nameText.text = itemScriptableObject.itemInformationList[i].name;
