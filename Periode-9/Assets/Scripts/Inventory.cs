@@ -6,8 +6,10 @@ using UnityEngine.UI;
 public class Inventory : MonoBehaviour
 {
     [Header("Public stuff")]
-    public GameObject invObj;
+    public GameObject inv;
     public GameObject extraInfoObj;
+    public GameObject invPanel;
+    public GameObject chestPanel;
     bool mayMoveItem = false;
     bool mayDropItem = false;
     public Text nameText;
@@ -19,19 +21,26 @@ public class Inventory : MonoBehaviour
     public Color highLightColor;
     public Color colorReset;
     int indexHolder = 99;
+        public List<SlotInformation> slotInformationList = new List<SlotInformation>();
 
     void Start()
     {
+        /*foreach (Transform slot in invPanel.transform)
+        {
+            slotInformationList.Add(new SlotInformation() {slotImage = slot.GetComponent<Image>() });
+        }
+        slotInformationArray = slotInformationList.ToArray();
+        */
         extraInfoObj.SetActive(false);
-        invObj.SetActive(false);
-        
+        inv.SetActive(false);
+        chestPanel.SetActive(false);
     }
 
     void Update()
     {
         if (Input.GetButtonDown("Inventory"))
         {
-            invObj.SetActive(!invObj.activeSelf);
+            inv.SetActive(!inv.activeSelf);
         }
     }
 
