@@ -21,7 +21,7 @@ public class Inventory : MonoBehaviour
     public Color highLightColor;
     public Color colorReset;
     int indexHolder = 99;
-        public List<SlotInformation> slotInformationList = new List<SlotInformation>();
+    //public List<SlotInformation> slotInformationList = new List<SlotInformation>();
 
     void Start()
     {
@@ -138,8 +138,9 @@ public class Inventory : MonoBehaviour
         for (int forint = 0; forint < slotInformationArray.Length; forint++)
         {
             //add item
-            if (slotInformationArray[forint].slotImage.sprite == null && itemObject.GetComponent<ItemIndex>().mayAdd == true)
+            if (slotInformationArray[forint].slotImage.sprite == itemObject.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[i].Sprite && itemObject.GetComponent<ItemIndex>().mayAdd == true && itemObject.GetComponent<ItemIndex>().amoundInItem < itemObject.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[i].maxStack)
             {
+                Debug.Log("IN DE EERSTE IF");
                 slotInformationArray[forint].slotImage.sprite = itemObject.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[i].Sprite;
                 slotInformationArray[forint].amount += itemObject.GetComponent<ItemIndex>().amoundInItem;
                 slotInformationArray[forint].itemGameobjectHolder = itemObject.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[itemObject.GetComponent<ItemIndex>().index].itemGameObject;
@@ -147,13 +148,42 @@ public class Inventory : MonoBehaviour
                 break;
             }
             //next if amout is full
-            else if (slotInformationArray[forint].slotImage.sprite != null && slotInformationArray[forint].amount + itemObject.GetComponent<ItemIndex>().amoundInItem > itemObject.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[i].maxStack)
+            else if (slotInformationArray[forint].slotImage.sprite == itemObject.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[i].Sprite && slotInformationArray[forint].amount + itemObject.GetComponent<ItemIndex>().amoundInItem > itemObject.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[i].maxStack)
             {
+                Debug.Log("IN DE TWEEDE IF");
                 int temp;
                 temp = slotInformationArray[forint].amount + itemObject.GetComponent<ItemIndex>().amoundInItem - itemObject.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[i].maxStack;
-                slotInformationArray[forint].amount = temp;
+                slotInformationArray[forint].amount = itemObject.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[i].maxStack;
+                if (i < slotInformationArray.Length)
+                {
+                    for (int iii = 0; iii < slotInformationArray.Length; iii++)
+                    {
+                        if (slotInformationArray[iii].slotImage.sprite == null)
+                        {
+                            slotInformationArray[i].slotImage.sprite = itemObject.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[i].Sprite;
+                            slotInformationArray[i].amount += temp;
+                            slotInformationArray[i].itemGameobjectHolder = itemObject.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[itemObject.GetComponent<ItemIndex>().index].itemGameObject;
+                            Destroy(itemObject);
+                            break;
+                        }
+                        else
+                        {
+                            itemObject.GetComponent<ItemIndex>().amoundInItem = temp;
+                            Debug.Log("DE ELSE IN DE IFIF");
+                            break;
+                        }
+                    }
+                }
+                break;
+            }
+            else if (slotInformationArray[forint].slotImage.sprite == null && itemObject.GetComponent<ItemIndex>().mayAdd == true && itemObject.GetComponent<ItemIndex>().amoundInItem < itemObject.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[i].maxStack)
+            {
+                Debug.Log("IN DE DEREDE IF");
+                slotInformationArray[forint].slotImage.sprite = itemObject.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[i].Sprite;
+                slotInformationArray[forint].amount += itemObject.GetComponent<ItemIndex>().amoundInItem;
+                slotInformationArray[forint].itemGameobjectHolder = itemObject.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[itemObject.GetComponent<ItemIndex>().index].itemGameObject;
                 Destroy(itemObject);
-                continue;
+                break;
             }
         }
     }

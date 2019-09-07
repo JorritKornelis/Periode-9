@@ -134,7 +134,17 @@ public class CharacterMovement : MonoBehaviour
         while (i < hitColliders.Length)
         {
             Debug.Log("While");
-            GetComponent<Inventory>().AddItem(hitColliders[i].gameObject.GetComponent<ItemIndex>().index, hitColliders[i].gameObject);
+            if (hitColliders[i].gameObject.GetComponent<StorageSystem>())
+            {
+                if (Input.GetButtonDown("Inventory"))
+                {
+                    invetoryHolder.chestPanel.SetActive(!invetoryHolder.chestPanel.activeSelf);
+                }
+            }
+            else
+            {
+                GetComponent<Inventory>().AddItem(hitColliders[i].gameObject.GetComponent<ItemIndex>().index, hitColliders[i].gameObject);
+            }
             i++;
         }
     }

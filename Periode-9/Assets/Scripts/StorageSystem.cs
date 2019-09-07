@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class StorageSystem : MonoBehaviour
 {
-    
+    //list items
+    //
 
 
 }
