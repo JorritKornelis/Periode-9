@@ -1,0 +1,22 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class GeneralHealth : MonoBehaviour
+{
+    public int hp;
+
+    public virtual void TakeDamage(int damageAmount,GameObject witchObject)
+    {
+        hp -= damageAmount;
+        if (hp <= 0)
+        {
+            Debug.Log("Killed " + witchObject.name);
+            DeathFuntion(witchObject);
+        }
+    }
+    public virtual void DeathFuntion(GameObject wichtObject)
+    {
+        Destroy(wichtObject);
+    }
+}
