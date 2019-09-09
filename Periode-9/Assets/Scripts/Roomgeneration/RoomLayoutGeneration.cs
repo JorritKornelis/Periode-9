@@ -7,7 +7,7 @@ public class RoomLayoutGeneration : MonoBehaviour
 {
     public List<Vector2Int> roomLocations;
     public List<RoomInfo> roomInfos = new List<RoomInfo>();
-    public List<bool> Completed;
+    public List<bool> completed;
     public int rooms;
     public Vector2Int roomRange;
     [Range(100,200)]
@@ -22,6 +22,15 @@ public class RoomLayoutGeneration : MonoBehaviour
     public LayerMask groundMask;
     public Transform mapInfoCash;
     public GameObject holeNav;
+    public string enemyTag;
+
+    public void Update()
+    {
+        if (!RoomClearInfo())
+            if (GameObject.FindGameObjectsWithTag(enemyTag).Length == 0)
+                RoomClearInfo(true);
+        
+    }
 
     public void Start()
     {
@@ -36,9 +45,20 @@ public class RoomLayoutGeneration : MonoBehaviour
         SpawnDecoration();
     }
 
-    public void DisplayItems()
+    public bool RoomClearInfo()
     {
+        for (int i = 0; i < roomLocations.Count; i++)
+            if (roomLocations[i] == currentlyLocated)
+                return completed[i];
 
+        return true;
+    }
+
+    public void RoomClearInfo(bool cleared)
+    {
+        for (int i = 0; i < roomLocations.Count; i++)
+            if (roomLocations[i] == currentlyLocated)
+                completed[i] = cleared;
     }
 
     public void SpawnDecoration()
@@ -106,7 +126,7 @@ public class RoomLayoutGeneration : MonoBehaviour
         Vector2Int currentRoom = new Vector2Int(0, 0);
         roomInfos = new List<RoomInfo>();
         roomLocations.Add(currentRoom);
-        Completed.Add(true);
+        completed.Add(true);
         roomInfos.Add(roomLayoutScriptableObject.startRoom);
         int currentSpree = 0;
         while (roomLocations.Count != roomAmount)
@@ -125,7 +145,7 @@ public class RoomLayoutGeneration : MonoBehaviour
                     sameDirection = addValue;
                     roomLocations.Add(currentRoom);
                     roomInfos.Add(roomLayoutScriptableObject.rooms[Random.Range(0, roomLayoutScriptableObject.rooms.Length)]);
-                    Completed.Add(false);
+                    completed.Add(false);
                     break;
                 }
             }

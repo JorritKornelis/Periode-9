@@ -14,7 +14,7 @@ public class Door : MonoBehaviour
 
     public void Update()
     {
-        if (Physics.CheckBox(transform.position, playerDetectArea, Quaternion.identity, playerMask) && !active)
+        if (Physics.CheckBox(transform.position, playerDetectArea, Quaternion.identity, playerMask) && !active && roomLayout.RoomClearInfo())
         {
             CharacterMovement movement = GameObject.FindWithTag("Player").GetComponent<CharacterMovement>();
             active = true;
