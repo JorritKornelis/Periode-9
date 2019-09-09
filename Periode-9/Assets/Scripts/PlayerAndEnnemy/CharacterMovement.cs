@@ -133,7 +133,6 @@ public class CharacterMovement : MonoBehaviour
         int i = 0;
         while (i < hitColliders.Length)
         {
-            Debug.Log("While");
             if (hitColliders[i].gameObject.GetComponent<StorageSystem>())
             {
                 if (Input.GetButtonDown("Inventory"))

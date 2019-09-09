@@ -15,7 +15,7 @@ MonoBehaviour:
   itemInformationList:
   - name: Poition
     Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-    maxStack: 10
+    maxStack: 15
     itemGameObject: {fileID: 7477505537563810475, guid: 948f8f3b67c73244da2d88b538dcb526,
       type: 3}
   - name: Slime
