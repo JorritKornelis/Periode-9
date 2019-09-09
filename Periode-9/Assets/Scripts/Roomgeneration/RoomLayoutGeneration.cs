@@ -43,6 +43,22 @@ public class RoomLayoutGeneration : MonoBehaviour
         DisplayDoors();
         GenerateFloor();
         SpawnDecoration();
+        if (!RoomClearInfo())
+            SpawnEnemies();
+    }
+
+    public void SpawnEnemies()
+    {
+        for (int i = 0; i < roomLocations.Count; i++)
+            if (roomLocations[i] == currentlyLocated)
+            {
+                for (int number = 0; number < roomInfos[i].enemyLocations.Count; number++)
+                {
+                    RoomEnemies enemy = roomInfos[i].enemyLocations[number];
+                    currentDecoration.Add(Instantiate(enemy.Enemy, new Vector3(enemy.location.x, 0, enemy.location.y),Quaternion.identity));
+                }
+                break;
+            }
     }
 
     public bool RoomClearInfo()
@@ -110,7 +126,6 @@ public class RoomLayoutGeneration : MonoBehaviour
             foreach (Collider col in colliders)
                 Destroy(col.gameObject);
         }
-
     }
 
     public void DisplayDoors()
@@ -214,6 +229,6 @@ public class RoomDetailInfo
 [System.Serializable]
 public class RoomEnemies
 {
-    Vector2Int location;
-    public GameObject[] possibleEnemies;
+    public Vector2Int location;
+    public GameObject Enemy;
 }

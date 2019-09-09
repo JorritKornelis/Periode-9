@@ -936,7 +936,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -60.000004}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -310.8, y: -17.1}
+  m_AnchoredPosition: {x: -310.8, y: -17.099976}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &900084626
@@ -1220,7 +1220,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomLocations: []
   roomInfos: []
-  Completed: 
+  completed: 
   rooms: 70
   roomRange: {x: 12, y: 15}
   sameDirectionValue: 200
@@ -1240,6 +1240,7 @@ MonoBehaviour:
     m_Bits: 2048
   mapInfoCash: {fileID: 313974779}
   holeNav: {fileID: 8337012433877885897, guid: d7942e0db6b94c14b910f9f31aec9507, type: 3}
+  enemyTag: Enemy
 --- !u!4 &1347901496
 Transform:
   m_ObjectHideFlags: 0

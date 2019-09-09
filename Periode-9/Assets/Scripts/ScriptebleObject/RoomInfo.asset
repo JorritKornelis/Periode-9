@@ -85,5 +85,7 @@ MonoBehaviour:
     - location: {x: 7, y: 10}
       obj: {fileID: 2209435492430544436, guid: a30815e36903b034fa32c4a9f222ea1d, type: 3}
       yRotation: 10
-    enemyLocations: []
+    enemyLocations:
+    - location: {x: 0, y: 0}
+      Enemy: {fileID: 62483416862215318, guid: 530073ed792cbb9469529bb36786d0bc, type: 3}
     items: []
