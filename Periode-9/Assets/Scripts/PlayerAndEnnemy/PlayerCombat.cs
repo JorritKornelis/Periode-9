@@ -9,9 +9,4 @@ public class PlayerCombat : GeneralHealth
         base.DeathFuntion();
     }
 
-    public void PlayerAttack()
-    {
-
-    }
-
 }

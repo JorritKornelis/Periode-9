@@ -5,7 +5,12 @@ using UnityEngine.AI;
 
 public class EnemyMovement : MonoBehaviour
 {
-    public Transform target;
+    Transform target;
+
+    void Start()
+    {
+        target = GameObject.FindWithTag("Player").transform;
+    }
 
     void Update()
     {
