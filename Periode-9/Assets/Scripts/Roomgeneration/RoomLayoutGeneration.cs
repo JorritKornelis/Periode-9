@@ -7,7 +7,9 @@ public class RoomLayoutGeneration : MonoBehaviour
 {
     public List<Vector2Int> roomLocations;
     public List<RoomInfo> roomInfos = new List<RoomInfo>();
+    public List<ItemInformation> itemsARoom = new List<ItemInformation>();
     public List<bool> completed;
+    public List<GameObject> currentItems;
     public int rooms;
     public Vector2Int roomRange;
     [Range(100,200)]
@@ -23,13 +25,13 @@ public class RoomLayoutGeneration : MonoBehaviour
     public Transform mapInfoCash;
     public GameObject holeNav;
     public string enemyTag;
+    public string itemTag;
 
     public void Update()
     {
         if (!RoomClearInfo())
             if (GameObject.FindGameObjectsWithTag(enemyTag).Length == 0)
                 RoomClearInfo(true);
-        
     }
 
     public void Start()
@@ -45,6 +47,31 @@ public class RoomLayoutGeneration : MonoBehaviour
         SpawnDecoration();
         if (!RoomClearInfo())
             SpawnEnemies();
+    }
+
+    public void UpdateItems()
+    {
+        RoomInfo info = new RoomInfo();
+        for (int i = 0; i < roomLocations.Count; i++)
+            if (roomLocations[i] == currentlyLocated)
+            {
+                info = roomInfos[i];
+                break;
+            }
+
+        for (int i = 0; i < currentItems.Count; i++)
+            if (currentItems[i] == null)
+            {
+                currentItems.RemoveAt(i);
+                info.items.RemoveAt(i);
+            }
+            else
+                Destroy(currentItems[i]);
+
+        GameObject[] otherItems = GameObject.FindGameObjectsWithTag(itemTag);
+        foreach (GameObject item in otherItems)
+            info.items.Add(new ItemInformation() { });
+
     }
 
     public void SpawnEnemies()
@@ -208,7 +235,14 @@ public class RoomInfo
     public HoleInfo[] holes;
     public List<RoomDetailInfo> details = new List<RoomDetailInfo>();
     public List<RoomEnemies> enemyLocations = new List<RoomEnemies>();
-    public List<GameObject> items = new List<GameObject>();
+    public List<ItemInformation> items = new List<ItemInformation>();
+}
+
+[System.Serializable]
+public class ItemInformation
+{
+    public Vector2Int location;
+    public int index;
 }
 
 [System.Serializable]
