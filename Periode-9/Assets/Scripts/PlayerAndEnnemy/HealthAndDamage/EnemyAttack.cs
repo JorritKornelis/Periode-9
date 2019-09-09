@@ -6,6 +6,8 @@ public class EnemyAttack : MonoBehaviour
 {
     public float attackRadius;
     public int attackDamage;
+    public float animationTime;
+    bool mayHit = true;
 
     void Update()
     {
@@ -18,12 +20,33 @@ public class EnemyAttack : MonoBehaviour
         int i = 0;
         while (i < hitColliders.Length)
         {
-            if (hitColliders[i].gameObject.tag == "Player")
+            if (hitColliders[i].gameObject.tag == "Player" && mayHit == true)
             {
-                Debug.Log("HIT ENEMY");
-                hitColliders[i].GetComponent<EnemyHealthScript>().TakeDamage(attackDamage, hitColliders[i].gameObject);
+                mayHit = false;
+                StartCoroutine(DamageTimer());
             }
             i++;
         }
     }
+
+    public IEnumerator DamageTimer()
+    {
+        //start animation
+        yield return new WaitForSeconds(animationTime);
+        //end animation
+        mayHit = true;
+        float dis = Vector3.Distance(transform.position, GameObject.FindWithTag("Player").transform.position);
+        if (dis < attackRadius)
+        {
+            Debug.Log("HIT Player");
+            GameObject.FindWithTag("Player").GetComponent<PlayerHeathScript>().TakeDamage(attackDamage, GameObject.FindWithTag("Player"));
+        }
+    }
+
+
+    /*ienumarator //start animatie
+     * wacht paar sec
+     * check of speler er nog in radus zit //vac.dis
+     * doe damage
+     */
 }
