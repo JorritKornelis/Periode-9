@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class StorageSystem : MonoBehaviour
 {
-    //list items
-    //
+    public SlotInformation[] chestSlotArray;
 
-
+    //bool func 
+    //true - one false - non
 }
