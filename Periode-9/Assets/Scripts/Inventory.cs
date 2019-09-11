@@ -101,6 +101,7 @@ public class Inventory : MonoBehaviour
             extraInfoObj.SetActive(true);
             //aanpassen
             nameText.text = itemScriptableObject.itemInformationList[i].name;
+            //amout toevoegen
         }
     }
 
