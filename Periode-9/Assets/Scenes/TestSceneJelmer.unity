@@ -167,6 +167,8 @@ MonoBehaviour:
   moveSpeed: 8
   fallSpeed: 10
   fallVelocity: 0
+  accelAmount: 11
+  rotateLerpSpeed: 9
   obstacleMask:
     serializedVersion: 2
     m_Bits: 2103
@@ -229,7 +231,7 @@ Transform:
   - {fileID: 1719204455}
   - {fileID: 261055765}
   - {fileID: 1084332150}
-  - {fileID: 2092250484}
+  - {fileID: 889138299}
   - {fileID: 847972917}
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -871,6 +873,37 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &889138298
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 889138299}
+  m_Layer: 0
+  m_Name: CameraObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &889138299
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 889138298}
+  m_LocalRotation: {x: 0.46407968, y: -0, z: -0, w: 0.88579345}
+  m_LocalPosition: {x: 0, y: 13.42, z: -19.07}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2092250484}
+  m_Father: {fileID: 247742178}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &895030903
 GameObject:
   m_ObjectHideFlags: 0
@@ -1220,7 +1253,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomLocations: []
   roomInfos: []
+  itemsARoom: []
   completed: 
+  currentItems: []
   rooms: 70
   roomRange: {x: 12, y: 15}
   sameDirectionValue: 200
@@ -1241,6 +1276,7 @@ MonoBehaviour:
   mapInfoCash: {fileID: 313974779}
   holeNav: {fileID: 8337012433877885897, guid: d7942e0db6b94c14b910f9f31aec9507, type: 3}
   enemyTag: Enemy
+  itemTag: 
 --- !u!4 &1347901496
 Transform:
   m_ObjectHideFlags: 0
@@ -1973,12 +2009,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2092250483}
-  m_LocalRotation: {x: 0.46407968, y: -0, z: -0, w: 0.88579345}
-  m_LocalPosition: {x: 0, y: 13.42, z: -19.07}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 247742178}
-  m_RootOrder: 4
+  m_Father: {fileID: 889138299}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 55.301003, y: 0, z: 0}
 --- !u!114 &2092250485
 MonoBehaviour:
@@ -1994,6 +2030,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTag: Player
   playerFollowAmount: 0.203
+  lerpSpeed: 5
+  mouseAmount: 2
 --- !u!81 &2092250486
 AudioListener:
   m_ObjectHideFlags: 0

@@ -70,7 +70,10 @@ public class RoomLayoutGeneration : MonoBehaviour
 
         GameObject[] otherItems = GameObject.FindGameObjectsWithTag(itemTag);
         foreach (GameObject item in otherItems)
-            info.items.Add(new ItemInformation() { });
+            info.items.Add(new ItemInformation()
+            {
+                index = item.GetComponent<ItemIndex>().index
+            });
 
     }
 
