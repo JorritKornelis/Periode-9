@@ -166,9 +166,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 8
   fallSpeed: 10
-  fallVelocity: 0
-  accelAmount: 11
-  rotateLerpSpeed: 9
+  fallVelocity: 5
+  accelAmount: 9
+  rotateLerpSpeed: 13
   obstacleMask:
     serializedVersion: 2
     m_Bits: 2103
