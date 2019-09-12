@@ -8,6 +8,8 @@ public class CharacterMovement : MonoBehaviour
     public float moveSpeed;
     public float fallSpeed;
     public float fallVelocity;
+    public float accelAmount;
+    public float rotateLerpSpeed;
     [Header("Collisions")]
     public LayerMask obstacleMask;
     public float raycastRange;
@@ -22,6 +24,8 @@ public class CharacterMovement : MonoBehaviour
     public ParticleSystem walkDust;
     Inventory invetoryHolder;
     public bool allowMovement;
+    float currentAccel;
+    Vector3 currentMovementSpeed;
 
     public IEnumerator StartMovement(float time)
     {
@@ -50,12 +54,20 @@ public class CharacterMovement : MonoBehaviour
         CheckCollisionPickUp();
         if (allowMovement)
         {
+            currentAccel = Mathf.Lerp(currentAccel, (Input.GetButton("Horizontal") || Input.GetButton("Vertical")) ? 1 : 0, Time.deltaTime * accelAmount);
+            Vector3 currentMove = new Vector3(GetCollisionMoveAmount(Vector3.right, Input.GetAxis("Horizontal")), 0, GetCollisionMoveAmount(Vector3.forward, Input.GetAxis("Vertical"))).normalized * moveSpeed * currentAccel;
+            currentMovementSpeed = Vector3.Lerp(currentMovementSpeed, currentMove, Time.deltaTime * accelAmount);
+            if (GetCollisionMoveAmount(Vector3.right, Input.GetAxis("Horizontal")) == 0 && Input.GetButton("Horizontal"))
+                currentMovementSpeed.x = 0;
+            if (GetCollisionMoveAmount(Vector3.forward, Input.GetAxis("Vertical")) == 0 && Input.GetButton("Vertical"))
+                currentMovementSpeed.z = 0;
             CursorFollow();
+            CheckCollisionPickUp();
             if (GroundCheck())
             {
                 walkDust.gameObject.SetActive(true);
                 CheckForNewSavePoint();
-                transform.Translate(new Vector3(GetCollisionMoveAmount(Vector3.right, Input.GetAxis("Horizontal")), 0, GetCollisionMoveAmount(Vector3.forward, Input.GetAxis("Vertical"))) * moveSpeed * Time.deltaTime);
+                transform.Translate(currentMovementSpeed * Time.deltaTime);
             }
             else
             {
@@ -66,6 +78,7 @@ public class CharacterMovement : MonoBehaviour
                 {
                     transform.position = lastSaveSpot;
                     fallVelocity = 0;
+                    currentMovementSpeed = Vector3.zero;
                 }
             }
         }
@@ -75,7 +88,10 @@ public class CharacterMovement : MonoBehaviour
     {
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity, cursorMask))
-            body.LookAt(new Vector3(hit.point.x, body.position.y, hit.point.z));
+        {
+            var targetRotation = Quaternion.LookRotation(new Vector3(hit.point.x, body.position.y, hit.point.z) - body.position);
+            body.rotation = Quaternion.Lerp(body.rotation, targetRotation, Time.deltaTime * rotateLerpSpeed);
+        }
     }
 
     public void CheckForNewSavePoint()
@@ -107,7 +123,7 @@ public class CharacterMovement : MonoBehaviour
     {
         Vector3 sideDirection = new Vector3(direction.z, 0, direction.x);
         for (int i = -1; i <= 1; i++)
-            if(Physics.Raycast(transform.position + (sideDirection * raycastOffset * i), direction, raycastRange, obstacleMask))
+            if (Physics.Raycast(transform.position + (sideDirection * raycastOffset * i), direction, raycastRange, obstacleMask))
                 return true;
         return false;
     }
