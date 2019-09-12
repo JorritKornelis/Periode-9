@@ -47,10 +47,10 @@ public class CharacterMovement : MonoBehaviour
 
     public void Update()
     {
+        CheckCollisionPickUp();
         if (allowMovement)
         {
             CursorFollow();
-            CheckCollisionPickUp();
             if (GroundCheck())
             {
                 walkDust.gameObject.SetActive(true);
@@ -135,9 +135,17 @@ public class CharacterMovement : MonoBehaviour
         {
             if (hitColliders[i].gameObject.GetComponent<StorageSystem>())
             {
-                if (Input.GetButtonDown("Inventory"))
+                if (Input.GetButtonDown("Inventory") && invetoryHolder.chestPanel.activeSelf == false && invetoryHolder.inv.activeSelf == false)
                 {
-                    invetoryHolder.chestPanel.SetActive(!invetoryHolder.chestPanel.activeSelf);
+                    invetoryHolder.chestPanel.SetActive(true);
+                    invetoryHolder.inv.SetActive(true);
+                    allowMovement = false;
+                }
+                else if (Input.GetButtonDown("Inventory") && invetoryHolder.chestPanel.activeSelf == true && invetoryHolder.inv.activeSelf == true)
+                {
+                    invetoryHolder.chestPanel.SetActive(false);
+                    invetoryHolder.inv.SetActive(false);
+                    allowMovement = true;
                 }
             }
             else

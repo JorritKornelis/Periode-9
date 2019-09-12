@@ -21,6 +21,7 @@ public class Inventory : MonoBehaviour
     public Color highLightColor;
     public Color colorReset;
     int indexHolder = 99;
+    CharacterMovement charMovement;
     //public List<SlotInformation> slotInformationList = new List<SlotInformation>();
 
     void Start()
@@ -34,17 +35,29 @@ public class Inventory : MonoBehaviour
         extraInfoObj.SetActive(false);
         inv.SetActive(false);
         chestPanel.SetActive(false);
+        charMovement = gameObject.GetComponent<CharacterMovement>();
     }
 
     void Update()
     {
-        if (Input.GetButtonDown("Inventory"))
+        if (Input.GetButtonDown("Inventory") && inv.activeInHierarchy == false && chestPanel.activeInHierarchy == false && charMovement.allowMovement == true)
         {
-            inv.SetActive(!inv.activeSelf);
+            inv.SetActive(true);
+            charMovement.allowMovement = false;
+        }
+        else if(Input.GetButtonDown("Inventory") && inv.activeInHierarchy == true && chestPanel.activeInHierarchy == false && charMovement.allowMovement == false)
+        {
+            inv.SetActive(false);
+            charMovement.allowMovement = true;
         }
     }
 
-    public void ItemMove(int i)
+    public void ListVoid(SlotInformation slot)
+    {
+        //wile(een is ingedrukt
+    }
+
+    public void ItemMove(int i)//lijst
     {
         if (mayMoveItem == true)
         {
@@ -52,7 +65,7 @@ public class Inventory : MonoBehaviour
             {
                 if (slotInformationArray[i].slotImage.sprite == null)
                 {
-                    slotInformationArray[i].slotImage.color = highLightColor;
+                    slotInformationArray[i].slotImage.color = highLightColor;//lijst
                     slotInformationArray[i].slotImage.sprite = slotInformationArray[indexHolder].slotImage.sprite;
                     slotInformationArray[i].itemGameobjectHolder = slotInformationArray[indexHolder].itemGameobjectHolder;
 
@@ -193,6 +206,18 @@ public class Inventory : MonoBehaviour
         itemGameObject.GetComponent<ItemIndex>().mayAdd = true;
     }
 
+ /*
+ * move item chage
+ * 
+ * inex selected
+ * ref kist
+ * //
+ * 2 indexen nodig alse slots //refrence
+ * als allebei ingevuld // while loop
+ * dan voer void uit om te wisselen
+ * 
+ */
+
 }
 
 [System.Serializable]
@@ -202,4 +227,11 @@ public class SlotInformation
     public int index;
     public int amount;
     public GameObject itemGameobjectHolder;
+}
+
+[System.Serializable]
+public class SlotRefrenceInformation
+{
+    public int witchIndex;
+    public StorageSystem storageSystem;
 }
