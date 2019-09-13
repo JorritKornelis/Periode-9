@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 6052936817474755770}
   - component: {fileID: 1656983351813310108}
   - component: {fileID: 4497379114068127258}
+  - component: {fileID: -944635001195075810}
+  - component: {fileID: 2627042800946653246}
   m_Layer: 0
   m_Name: TempEnemy
   m_TagString: Enemy
@@ -130,7 +132,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b6252808e6f5ab419a93adf2c0b2193, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+--- !u!114 &-944635001195075810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 62483416862215318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 311d04b22a709ea4b9421a5e03cea827, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 2
+--- !u!114 &2627042800946653246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 62483416862215318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c53d943b0f255742a8fcd8e9ee86a0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRadius: 1.5
+  attackDamage: 1
+  animationTime: 2
 --- !u!1 &362718958355594351
 GameObject:
   m_ObjectHideFlags: 0

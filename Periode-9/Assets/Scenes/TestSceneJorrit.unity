@@ -1913,6 +1913,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTag: Player
   playerFollowAmount: 0.203
+  lerpSpeed: 5
+  mouseAmount: 2
 --- !u!81 &883512353
 AudioListener:
   m_ObjectHideFlags: 0
@@ -2294,7 +2296,7 @@ PrefabInstance:
     - target: {fileID: 62483416862215318, guid: 530073ed792cbb9469529bb36786d0bc,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5979042860011140046, guid: 530073ed792cbb9469529bb36786d0bc,
         type: 3}
