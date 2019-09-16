@@ -31,7 +31,9 @@ MonoBehaviour:
       obj: {fileID: 1554817582679832905, guid: b68a1c3b56572d14f8cd6d667ff5d4a5, type: 3}
       yRotation: -90
     enemyLocations: []
-    items: []
+    items:
+    - location: {x: 4, y: 0}
+      index: 0
   rooms:
   - holes:
     - location: {x: 0, y: 0}

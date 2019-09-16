@@ -7,9 +7,8 @@ public class RoomLayoutGeneration : MonoBehaviour
 {
     public List<Vector2Int> roomLocations;
     public List<RoomInfo> roomInfos = new List<RoomInfo>();
-    public List<ItemInformation> itemsARoom = new List<ItemInformation>();
-    public List<bool> completed;
-    public List<GameObject> currentItems;
+    public List<RoomInfoCash> roomCashes = new List<RoomInfoCash>();
+    public List<GameObject> currentItems = new List<GameObject>();
     public int rooms;
     public Vector2Int roomRange;
     [Range(100,200)]
@@ -21,6 +20,7 @@ public class RoomLayoutGeneration : MonoBehaviour
     List<GameObject> currentFloors = new List<GameObject>();
     List<GameObject> currentDecoration = new List<GameObject>();
     public RoomListScriptableObject roomLayoutScriptableObject;
+    public ItemClassScriptableObject itemScriptableObject;
     public LayerMask groundMask;
     public Transform mapInfoCash;
     public GameObject holeNav;
@@ -47,34 +47,46 @@ public class RoomLayoutGeneration : MonoBehaviour
         SpawnDecoration();
         if (!RoomClearInfo())
             SpawnEnemies();
+        SpawnItems();
+    }
+
+    public void SpawnItems()
+    {
+        currentItems = new List<GameObject>();
+        RoomInfoCash cash = new RoomInfoCash(true, new List<int>(), new List<Vector2Int>());
+        for (int i = 0; i < roomLocations.Count; i++)
+            if (roomLocations[i] == currentlyLocated)
+            {
+                cash = roomCashes[i];
+                break;
+            }
+
+        foreach (ItemInformation item in cash.itemsInRoom)
+            currentItems.Add(Instantiate(itemScriptableObject.itemInformationList[item.index].itemGameObject, new Vector3(item.location.x, 0, item.location.y), Quaternion.identity, mapInfoCash));
     }
 
     public void UpdateItems()
     {
-        RoomInfo info = new RoomInfo();
-        for (int i = 0; i < roomLocations.Count; i++)
-            if (roomLocations[i] == currentlyLocated)
+        for (int room = 0; room < roomLocations.Count; room++)
+            if (roomLocations[room] == currentlyLocated)
             {
-                info = roomInfos[i];
+                if(currentItems.Count != 0)
+                    for (int item = 0; item < currentItems.Count; item++)
+                        if (currentItems[item] == null)
+                        {
+                            roomCashes[room].itemsInRoom.RemoveAt(item);
+                            currentItems.RemoveAt(item);
+                            item--;
+                        }
+                        else
+                            Destroy(currentItems[item]);
+
+                GameObject[] otherItems = GameObject.FindGameObjectsWithTag(itemTag);
+                if (otherItems.Length > 0)
+                    foreach (GameObject item in otherItems)
+                        roomCashes[room].itemsInRoom.Add(new ItemInformation(new Vector2Int(Mathf.RoundToInt(item.transform.position.x), Mathf.RoundToInt(item.transform.position.z)), item.GetComponent<ItemIndex>().index));
                 break;
             }
-
-        for (int i = 0; i < currentItems.Count; i++)
-            if (currentItems[i] == null)
-            {
-                currentItems.RemoveAt(i);
-                info.items.RemoveAt(i);
-            }
-            else
-                Destroy(currentItems[i]);
-
-        GameObject[] otherItems = GameObject.FindGameObjectsWithTag(itemTag);
-        foreach (GameObject item in otherItems)
-            info.items.Add(new ItemInformation()
-            {
-                index = item.GetComponent<ItemIndex>().index
-            });
-
     }
 
     public void SpawnEnemies()
@@ -95,7 +107,7 @@ public class RoomLayoutGeneration : MonoBehaviour
     {
         for (int i = 0; i < roomLocations.Count; i++)
             if (roomLocations[i] == currentlyLocated)
-                return completed[i];
+                return roomCashes[i].cleared;
 
         return true;
     }
@@ -104,7 +116,7 @@ public class RoomLayoutGeneration : MonoBehaviour
     {
         for (int i = 0; i < roomLocations.Count; i++)
             if (roomLocations[i] == currentlyLocated)
-                completed[i] = cleared;
+                roomCashes[i].cleared = cleared;
     }
 
     public void SpawnDecoration()
@@ -171,9 +183,19 @@ public class RoomLayoutGeneration : MonoBehaviour
         Vector2Int currentRoom = new Vector2Int(0, 0);
         roomInfos = new List<RoomInfo>();
         roomLocations.Add(currentRoom);
-        completed.Add(true);
+
+        List<int> indexes = new List<int>();
+        List<Vector2Int> locations = new List<Vector2Int>();
+        for (int i = 0; i < roomLayoutScriptableObject.startRoom.items.Count; i++)
+        {
+            indexes.Add(roomLayoutScriptableObject.startRoom.items[i].index);
+            locations.Add(roomLayoutScriptableObject.startRoom.items[i].location);
+        }
+        roomCashes.Add(new RoomInfoCash(false, indexes, locations));
+
         roomInfos.Add(roomLayoutScriptableObject.startRoom);
         int currentSpree = 0;
+
         while (roomLocations.Count != roomAmount)
         {
             if (currentSpree >= Random.Range(pathChangeRange.x, pathChangeRange.y))
@@ -189,8 +211,17 @@ public class RoomLayoutGeneration : MonoBehaviour
                     currentRoom += addValue;
                     sameDirection = addValue;
                     roomLocations.Add(currentRoom);
-                    roomInfos.Add(roomLayoutScriptableObject.rooms[Random.Range(0, roomLayoutScriptableObject.rooms.Length)]);
-                    completed.Add(false);
+
+                    int index = Random.Range(0, roomLayoutScriptableObject.rooms.Length);
+                    roomInfos.Add(roomLayoutScriptableObject.rooms[index]);
+                    indexes = new List<int>();
+                    locations = new List<Vector2Int>();
+                    for (int i = 0; i < roomLayoutScriptableObject.rooms[index].items.Count; i++)
+                    {
+                        indexes.Add(roomLayoutScriptableObject.rooms[index].items[i].index);
+                        locations.Add(roomLayoutScriptableObject.rooms[index].items[i].location);
+                    }
+                    roomCashes.Add(new RoomInfoCash(false, indexes,locations));
                     break;
                 }
             }
@@ -233,12 +264,17 @@ public class DoorLocations
 }
 
 [System.Serializable]
-public class RoomInfo
+public class RoomInfoCash
 {
-    public HoleInfo[] holes;
-    public List<RoomDetailInfo> details = new List<RoomDetailInfo>();
-    public List<RoomEnemies> enemyLocations = new List<RoomEnemies>();
-    public List<ItemInformation> items = new List<ItemInformation>();
+    public bool cleared;
+    public List<ItemInformation> itemsInRoom = new List<ItemInformation>();
+
+    public RoomInfoCash(bool _cleared, List<int> indexes,List<Vector2Int> locations)
+    {
+        cleared = _cleared;
+        for (int i = 0; i < indexes.Count; i++)
+            itemsInRoom.Add(new ItemInformation(locations[i], indexes[i]));
+    }
 }
 
 [System.Serializable]
@@ -246,26 +282,10 @@ public class ItemInformation
 {
     public Vector2Int location;
     public int index;
-}
 
-[System.Serializable]
-public class HoleInfo
-{
-    public Vector2Int location;
-    public Vector2Int size;
-}
-
-[System.Serializable]
-public class RoomDetailInfo
-{
-    public Vector2Int location;
-    public GameObject obj;
-    public float yRotation;
-}
-
-[System.Serializable]
-public class RoomEnemies
-{
-    public Vector2Int location;
-    public GameObject Enemy;
+    public ItemInformation(Vector2Int _location, int _index)
+    {
+        location = _location;
+        index = _index;
+    }
 }

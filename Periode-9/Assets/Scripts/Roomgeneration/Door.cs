@@ -30,6 +30,7 @@ public class Door : MonoBehaviour
         StartCoroutine(player.ParticleTempDisable());
         player.allowMovement = true;
         player.StartCoroutine(player.StartMovement(0.27f));
+        roomLayout.UpdateItems();
         active = false;
         roomLayout.currentlyLocated += addValue;
         player.transform.position = returnPoint.position;
