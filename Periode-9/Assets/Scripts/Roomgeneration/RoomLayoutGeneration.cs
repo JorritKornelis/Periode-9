@@ -5,28 +5,40 @@ using UnityEngine.AI;
 
 public class RoomLayoutGeneration : MonoBehaviour
 {
-    public List<Vector2Int> roomLocations;
-    public List<RoomInfo> roomInfos = new List<RoomInfo>();
-    public List<RoomInfoCash> roomCashes = new List<RoomInfoCash>();
-    public List<GameObject> currentItems = new List<GameObject>();
+    #region Veriables
+    private List<Vector2Int> roomLocations = new List<Vector2Int>();
+    private List<RoomInfo> roomInfos = new List<RoomInfo>();
+    private List<RoomInfoCash> roomCashes = new List<RoomInfoCash>();
+    private List<GameObject> currentItems = new List<GameObject>();
+    private List<GameObject> currentFloors = new List<GameObject>();
+    private List<GameObject> currentDecoration = new List<GameObject>();
+    [HideInInspector]
+    public Vector2Int currentlyLocated;
+
+    [Header("RoomGenInfo")]
     public int rooms;
     public Vector2Int roomRange;
     [Range(100,200)]
     public float sameDirectionValue = 125f;
-    public DoorLocations doorLocations;
-    public Vector2Int currentlyLocated;
     public int FloorSize;
-    public GameObject floorObject;
-    List<GameObject> currentFloors = new List<GameObject>();
-    List<GameObject> currentDecoration = new List<GameObject>();
+
+    [Header("InfoAccess")]
     public RoomListScriptableObject roomLayoutScriptableObject;
     public ItemClassScriptableObject itemScriptableObject;
+
+    [Header("Information")]
+    public DoorLocations doorLocations;
+    public GameObject floorObject;
     public LayerMask groundMask;
     public Transform mapInfoCash;
     public GameObject holeNav;
     public string enemyTag;
     public string itemTag;
+    #endregion
 
+    #region basic voids
+    //Update
+    ///Checks if enemies are dead
     public void Update()
     {
         if (!RoomClearInfo())
@@ -34,12 +46,16 @@ public class RoomLayoutGeneration : MonoBehaviour
                 RoomClearInfo(true);
     }
 
+    //Start
+    ///Generates the arena, and starts the display of the first room
     public void Start()
     {
         GenerateRooms(rooms, roomRange);
         DisplayRoom();
     }
 
+    //DisplayRoom
+    ///Calls all the voids to display a room
     public void DisplayRoom()
     {
         DisplayDoors();
@@ -49,10 +65,15 @@ public class RoomLayoutGeneration : MonoBehaviour
             SpawnEnemies();
         SpawnItems();
     }
+    #endregion
 
+    #region itemSpawn
+    //SpawnItems
+    ///Spawns the items
     public void SpawnItems()
     {
         currentItems = new List<GameObject>();
+        ///locates the room info
         RoomInfoCash cash = new RoomInfoCash(true, new List<int>(), new List<Vector2Int>());
         for (int i = 0; i < roomLocations.Count; i++)
             if (roomLocations[i] == currentlyLocated)
@@ -60,16 +81,20 @@ public class RoomLayoutGeneration : MonoBehaviour
                 cash = roomCashes[i];
                 break;
             }
-
+        ///Spawns the items
         foreach (ItemInformation item in cash.itemsInRoom)
             currentItems.Add(Instantiate(itemScriptableObject.itemInformationList[item.index].itemGameObject, new Vector3(item.location.x, 0, item.location.y), Quaternion.identity, mapInfoCash));
     }
 
+    //UpdateItems
+    ///Updates the items the are still there, and adds dropped items to the list
     public void UpdateItems()
     {
+        ///locates the room
         for (int room = 0; room < roomLocations.Count; room++)
             if (roomLocations[room] == currentlyLocated)
             {
+                ///checks if the items in the list are still there
                 if(currentItems.Count != 0)
                     for (int item = 0; item < currentItems.Count; item++)
                         if (currentItems[item] == null)
@@ -80,7 +105,7 @@ public class RoomLayoutGeneration : MonoBehaviour
                         }
                         else
                             Destroy(currentItems[item]);
-
+                ///Adds items that are not in the list (drops)
                 GameObject[] otherItems = GameObject.FindGameObjectsWithTag(itemTag);
                 if (otherItems.Length > 0)
                     foreach (GameObject item in otherItems)
@@ -88,7 +113,11 @@ public class RoomLayoutGeneration : MonoBehaviour
                 break;
             }
     }
+    #endregion
 
+    #region enemy spawn && room cleared
+    //SpawnEnemies
+    ///Spawns the enemies in a room if it is not cleared
     public void SpawnEnemies()
     {
         for (int i = 0; i < roomLocations.Count; i++)
@@ -103,6 +132,9 @@ public class RoomLayoutGeneration : MonoBehaviour
             }
     }
 
+    //RoomClearInfo
+    ///A simple function to check if a room is cleared
+    ///This is called by the doors to check if it is allowed to move the player
     public bool RoomClearInfo()
     {
         for (int i = 0; i < roomLocations.Count; i++)
@@ -112,13 +144,19 @@ public class RoomLayoutGeneration : MonoBehaviour
         return true;
     }
 
+    //RoomClearInfo
+    ///changes the info of a room to say its cleared
     public void RoomClearInfo(bool cleared)
     {
         for (int i = 0; i < roomLocations.Count; i++)
             if (roomLocations[i] == currentlyLocated)
                 roomCashes[i].cleared = cleared;
     }
+    #endregion
 
+    #region roomVisuals
+    //SpawnDecoration
+    ///Spawns the decorations of a room
     public void SpawnDecoration()
     {
         foreach (GameObject decoration in currentDecoration)
@@ -140,6 +178,8 @@ public class RoomLayoutGeneration : MonoBehaviour
             }
     }
 
+    //GenerateFloor
+    ///Generates the floor
     public void GenerateFloor()
     {
         foreach (GameObject floor in currentFloors)
@@ -170,6 +210,8 @@ public class RoomLayoutGeneration : MonoBehaviour
         }
     }
 
+    //DisplayDoor
+    ///Checks what doors to display
     public void DisplayDoors()
     {
         doorLocations.up.SetActive(roomLocations.Contains(currentlyLocated + new Vector2Int(0, 1)));
@@ -177,9 +219,14 @@ public class RoomLayoutGeneration : MonoBehaviour
         doorLocations.right.SetActive(roomLocations.Contains(currentlyLocated + new Vector2Int(1, 0)));
         doorLocations.left.SetActive(roomLocations.Contains(currentlyLocated + new Vector2Int(-1, 0)));
     }
+    #endregion
 
+    #region roomGen
+    //GenerateRooms
+    ///Generates the roomLayout and assigns a random room info to it
     public void GenerateRooms(int roomAmount, Vector2Int pathChangeRange)
     {
+        ///Adds the begin room
         Vector2Int currentRoom = new Vector2Int(0, 0);
         roomInfos = new List<RoomInfo>();
         roomLocations.Add(currentRoom);
@@ -195,12 +242,15 @@ public class RoomLayoutGeneration : MonoBehaviour
 
         roomInfos.Add(roomLayoutScriptableObject.startRoom);
         int currentSpree = 0;
-
+        ///Adds all the rooms
         while (roomLocations.Count != roomAmount)
         {
+            ///Checks how long the spree is for room after room, then it selects a random room and continues from there
             if (currentSpree >= Random.Range(pathChangeRange.x, pathChangeRange.y))
                 currentRoom = roomLocations[Random.Range(0, roomLocations.Count)];
             Vector2Int sameDirection = new Vector2Int(1,0);
+
+            ///Tries to find a free spot around the current room
             int tries = 0;
             while (tries != GetSurroundingInfo(currentRoom))
             {
@@ -208,6 +258,7 @@ public class RoomLayoutGeneration : MonoBehaviour
                 Vector2Int addValue = ((dir < 25) ? new Vector2Int(1, 0) : (dir < 50) ? new Vector2Int(-1, 0) : (dir < 75) ? new Vector2Int(0, 1) : (dir < 100)?new Vector2Int(0, -1) : sameDirection);
                 if (!roomLocations.Contains(currentRoom + addValue))
                 {
+                    ///Adds a random room the the list
                     currentRoom += addValue;
                     sameDirection = addValue;
                     roomLocations.Add(currentRoom);
@@ -229,6 +280,8 @@ public class RoomLayoutGeneration : MonoBehaviour
         }
     }
 
+    //GetSurroundingInfo
+    ///Checks how many doors are around the current room
     public int GetSurroundingInfo(Vector2Int checkLocation)
     {
         int available = 0;
@@ -243,17 +296,11 @@ public class RoomLayoutGeneration : MonoBehaviour
 
         return available;
     }
-
-    public void OnDrawGizmos()
-    {
-        foreach (Vector2Int room in roomLocations)
-        {
-            Gizmos.color = (room == currentlyLocated) ? Color.red : Color.gray;
-            Gizmos.DrawCube(new Vector3(room.x,3,room.y), Vector3.one);
-        }
-    }
+    #endregion
 }
 
+#region constructors
+//DoorTab
 [System.Serializable]
 public class DoorLocations
 {
@@ -262,7 +309,8 @@ public class DoorLocations
     public GameObject right;
     public GameObject left;
 }
-
+//RoomInfoCash
+///Info that says if a room has been cleared, and has the item info
 [System.Serializable]
 public class RoomInfoCash
 {
@@ -276,7 +324,7 @@ public class RoomInfoCash
             itemsInRoom.Add(new ItemInformation(locations[i], indexes[i]));
     }
 }
-
+//ItemInfo
 [System.Serializable]
 public class ItemInformation
 {
@@ -289,3 +337,4 @@ public class ItemInformation
         index = _index;
     }
 }
+#endregion
