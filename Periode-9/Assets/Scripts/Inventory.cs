@@ -22,6 +22,7 @@ public class Inventory : MonoBehaviour
     public Color highLightColor;
     public Color colorReset;
     int indexHolder = 99;
+    SlotInformation slotInformationHolder;
     CharacterMovement charMovement;
     //public List<SlotInformation> slotInformationList = new List<SlotInformation>();
 
@@ -45,7 +46,7 @@ public class Inventory : MonoBehaviour
         {
             inv.SetActive(true);
             charMovement.allowMovement = false;
-        }
+        }       
         else if(Input.GetButtonDown("Inventory") && inv.activeInHierarchy == true && chestPanel.activeInHierarchy == false && charMovement.allowMovement == false)
         {
             inv.SetActive(false);
@@ -53,26 +54,36 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void ListVoid(SlotInformation slot)
+    public void MoveItemIntFunction(int intje)
     {
-        //wile(een is ingedrukt
+        //if in lijst inv of in lijst chest
+        if (gameObject.GetComponent<StorageSystem>())
+        {
+            Debug.Log("LIST IN CHEST");
+            ItemMove(intje, gameObject.GetComponent<StorageSystem>().chestSlotArray);
+        }
+        else
+        {
+            Debug.Log("LIST IN INV");
+            ItemMove(intje, slotInformationArray);
+        }
     }
 
-    public void ItemMove(int i)//lijst
+    public void ItemMove(int i, SlotInformation[] slot)//lijst
     {
         if (mayMoveItem == true)
         {
-            if (slotInformationArray[i].index != slotInformationArray[indexHolder].index)
+            if (slot[i].index != slot[indexHolder].index)
             {
-                if (slotInformationArray[i].slotImage.sprite == null)
+                if (slot[i].slotImage.sprite == null)
                 {
-                    slotInformationArray[i].slotImage.color = highLightColor;//lijst
-                    slotInformationArray[i].slotImage.sprite = slotInformationArray[indexHolder].slotImage.sprite;
-                    slotInformationArray[i].itemGameobjectHolder = slotInformationArray[indexHolder].itemGameobjectHolder;
+                    slot[i].slotImage.color = highLightColor;//lijst
+                    slot[i].slotImage.sprite = slot[indexHolder].slotImage.sprite;
+                    slot[i].itemGameobjectHolder = slot[indexHolder].itemGameobjectHolder;
 
-                    slotInformationArray[indexHolder].slotImage.color = colorReset;
-                    slotInformationArray[indexHolder].slotImage.sprite = null;
-                    slotInformationArray[indexHolder].itemGameobjectHolder = null;
+                    slot[indexHolder].slotImage.color = colorReset;
+                    slot[indexHolder].slotImage.sprite = null;
+                    slot[indexHolder].itemGameobjectHolder = null;
                     indexHolder = 99;
                 }
                 else
@@ -95,27 +106,28 @@ public class Inventory : MonoBehaviour
             slotInformationArray[i].slotImage.color = colorReset;
             mayMoveItem = false;
         }
-        else if(slotInformationArray[i].slotImage.sprite != null && mayMoveItem == false)
+        else if(slot[i].slotImage.sprite != null && mayMoveItem == false)
         {
-            for (int it = 0; it < slotInformationArray.Length; it++)
+            for (int it = 0; it < slot.Length; it++)
             {
-                if (slotInformationArray[it].slotImage.color == highLightColor)
+                if (slot[it].slotImage.color == highLightColor)
                 {
-                    slotInformationArray[it].slotImage.color = colorReset;
+                    slot[it].slotImage.color = colorReset;
                     indexHolder = 99;
                     mayMoveItem = false;
                     continue;
                 }
             }
 
-            slotInformationArray[i].slotImage.color = highLightColor;
+            slot[i].slotImage.color = highLightColor;
 
             indexHolder = i;
+            slotInformationHolder = slot[i];
             
             extraInfoObj.SetActive(true);
             //aanpassen
-            nameText.text = slotInformationArray[i].itemGameobjectHolder.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[slotInformationArray[i].itemGameobjectHolder.GetComponent<ItemIndex>().index].name;
-            amountTextDisplay.text = slotInformationArray[i].itemGameobjectHolder.GetComponent<ItemIndex>().amoundInItem.ToString();
+            //nameText.text = slotInformationArray[i].itemGameobjectHolder.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[slotInformationArray[i].itemGameobjectHolder.GetComponent<ItemIndex>().index].name;
+            //amountTextDisplay.text = slotInformationArray[i].itemGameobjectHolder.GetComponent<ItemIndex>().amoundInItem.ToString();
 
         }
     }
@@ -169,7 +181,7 @@ public class Inventory : MonoBehaviour
             {
                 Debug.Log("IN DE TWEEDE IF");
                 int temp;
-                temp = slotInformationArray[forint].amount + itemObject.GetComponent<ItemIndex>().amoundInItem - itemObject.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[i].maxStack;
+                temp = slotInformationArray[forint].amount + itemObject.GetComponent<ItemIndex>().amoundInItem - itemObject.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[index].maxStack;
                 slotInformationArray[forint].amount = itemObject.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[index].maxStack;
                 for (int iiii = 0; iiii < slotInformationArray.Length; iiii++)
                 {
@@ -191,7 +203,7 @@ public class Inventory : MonoBehaviour
                 break;
             }
             //add if slot is null
-            else if (slotInformationArray[forint].slotImage.sprite == null && itemObject.GetComponent<ItemIndex>().mayAdd == true && slotInformationArray[forint].amount + itemObject.GetComponent<ItemIndex>().amoundInItem <= itemObject.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[i].maxStack)
+            else if (slotInformationArray[forint].slotImage.sprite == null && itemObject.GetComponent<ItemIndex>().mayAdd == true && slotInformationArray[forint].amount + itemObject.GetComponent<ItemIndex>().amoundInItem <= itemObject.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[index].maxStack)
             {
                 Debug.Log("IN DE DEREDE IF");
                 slotInformationArray[forint].slotImage.sprite = itemObject.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[index].Sprite;
