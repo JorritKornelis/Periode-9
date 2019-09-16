@@ -22,7 +22,7 @@ public class Inventory : MonoBehaviour
     public Color highLightColor;
     public Color colorReset;
     int indexHolder = 99;
-    SlotInformation slotInformationHolder;
+    //SlotInformation slotInformationHolder;
     CharacterMovement charMovement;
     //public List<SlotInformation> slotInformationList = new List<SlotInformation>();
 
@@ -67,6 +67,7 @@ public class Inventory : MonoBehaviour
             Debug.Log("LIST IN INV");
             ItemMove(intje, slotInformationArray);
         }
+        //moet lijst hebben 
     }
 
     public void ItemMove(int i, SlotInformation[] slot)//lijst
@@ -86,24 +87,24 @@ public class Inventory : MonoBehaviour
                     slot[indexHolder].itemGameobjectHolder = null;
                     indexHolder = 99;
                 }
-                else
+                else //aanpassen
                 {
-                    Sprite saveSprite = slotInformationArray[i].slotImage.sprite;
-                    GameObject tempGameObjecy = slotInformationArray[i].itemGameobjectHolder;
+                    Sprite saveSprite = slot[i].slotImage.sprite;
+                    GameObject tempGameObjecy = slot[i].itemGameobjectHolder;
 
-                    slotInformationArray[i].slotImage.color = highLightColor;
-                    slotInformationArray[i].itemGameobjectHolder = slotInformationArray[indexHolder].itemGameobjectHolder;
-                    slotInformationArray[i].slotImage.sprite = slotInformationArray[indexHolder].slotImage.sprite;
+                    slot[i].slotImage.color = highLightColor;
+                    slot[i].itemGameobjectHolder = slot[indexHolder].itemGameobjectHolder;
+                    slot[i].slotImage.sprite = slot[indexHolder].slotImage.sprite;
 
-                    slotInformationArray[indexHolder].slotImage.sprite = saveSprite;
-                    slotInformationArray[indexHolder].itemGameobjectHolder = tempGameObjecy;
-                    slotInformationArray[indexHolder].slotImage.color = colorReset;
+                    slot[indexHolder].slotImage.sprite = saveSprite;
+                    slot[indexHolder].itemGameobjectHolder = tempGameObjecy;
+                    slot[indexHolder].slotImage.color = colorReset;
 
                     indexHolder = 99;
                 }
 
             }
-            slotInformationArray[i].slotImage.color = colorReset;
+            slot[i].slotImage.color = colorReset;
             mayMoveItem = false;
         }
         else if(slot[i].slotImage.sprite != null && mayMoveItem == false)
@@ -122,7 +123,7 @@ public class Inventory : MonoBehaviour
             slot[i].slotImage.color = highLightColor;
 
             indexHolder = i;
-            slotInformationHolder = slot[i];
+            //slotInformationHolder = slot[i];
             
             extraInfoObj.SetActive(true);
             //aanpassen
