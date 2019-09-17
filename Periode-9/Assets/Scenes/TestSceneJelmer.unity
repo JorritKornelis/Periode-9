@@ -896,6 +896,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 889138299}
+  - component: {fileID: 889138300}
   m_Layer: 0
   m_Name: CameraObject
   m_TagString: Untagged
@@ -918,6 +919,22 @@ Transform:
   m_Father: {fileID: 247742178}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &889138300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 889138298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2a8a8f8ab54c6445904d0963cd1fa14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTag: Player
+  playerFollowAmount: 0.203
+  lerpSpeed: 5
+  mouseAmount: 2
 --- !u!1 &895030903
 GameObject:
   m_ObjectHideFlags: 0
@@ -1265,26 +1282,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59a9ffebb4e6ce944ae70f5dea51e26a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomLocations: []
-  roomInfos: []
-  roomCashes: []
-  currentItems: []
+  currentlyLocated: {x: 0, y: 0}
   rooms: 70
   roomRange: {x: 12, y: 15}
   sameDirectionValue: 200
+  FloorSize: 11
+  roomLayoutScriptableObject: {fileID: 11400000, guid: a286f5f7d265c2f4580e8a142e502fdc,
+    type: 2}
+  itemScriptableObject: {fileID: 11400000, guid: eeb5db131d0390b48a0087632f0cb6a8,
+    type: 2}
   doorLocations:
     up: {fileID: 1625813200}
     down: {fileID: 607416413}
     right: {fileID: 1052562916}
     left: {fileID: 1847345975}
-  currentlyLocated: {x: 0, y: 0}
-  FloorSize: 11
   floorObject: {fileID: 1287657731253114963, guid: 8d2a9d7bea4da0a42a7b966b3edbf714,
     type: 3}
-  roomLayoutScriptableObject: {fileID: 11400000, guid: a286f5f7d265c2f4580e8a142e502fdc,
-    type: 2}
-  itemScriptableObject: {fileID: 11400000, guid: eeb5db131d0390b48a0087632f0cb6a8,
-    type: 2}
   groundMask:
     serializedVersion: 2
     m_Bits: 2048
@@ -2151,13 +2164,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2092250483}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2a8a8f8ab54c6445904d0963cd1fa14, type: 3}
+  m_Script: {fileID: 11500000, guid: c50a039aed9891a488787f6ac97a5c51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTag: Player
-  playerFollowAmount: 0.203
-  lerpSpeed: 5
-  mouseAmount: 2
+  returnSpeed: 0.46
+  rounds: 4
+  roundDelay: 0.05
 --- !u!81 &2092250486
 AudioListener:
   m_ObjectHideFlags: 0

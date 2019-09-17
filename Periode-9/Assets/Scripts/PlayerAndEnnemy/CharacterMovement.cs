@@ -61,10 +61,10 @@ public class CharacterMovement : MonoBehaviour
                 currentMovementSpeed.x = 0;
             if (GetCollisionMoveAmount(Vector3.forward, Input.GetAxis("Vertical")) == 0 && Input.GetButton("Vertical"))
                 currentMovementSpeed.z = 0;
-            CursorFollow();
             CheckCollisionPickUp();
             if (GroundCheck())
             {
+                CursorFollow();
                 walkDust.gameObject.SetActive(true);
                 CheckForNewSavePoint();
                 transform.Translate(currentMovementSpeed * Time.deltaTime);
@@ -79,6 +79,7 @@ public class CharacterMovement : MonoBehaviour
                     transform.position = lastSaveSpot;
                     fallVelocity = 0;
                     currentMovementSpeed = Vector3.zero;
+                    StartCoroutine(Camera.main.GetComponent<ScreenShake>().Shake(0.3f));
                 }
             }
         }
