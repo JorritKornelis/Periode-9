@@ -22,10 +22,10 @@ public class Inventory : MonoBehaviour
     public Color highLightColor;
     public Color colorReset;
     int indexHolder = 99;
-    //SlotInformation slotInformationHolder;
     CharacterMovement charMovement;
-    //public List<SlotInformation> slotInformationList = new List<SlotInformation>();
-
+    public StorageSystem storageSystemHolder;
+    SlotInformation slotInformationHolder;
+    
     void Start()
     {
         /*foreach (Transform slot in invPanel.transform)
@@ -53,29 +53,14 @@ public class Inventory : MonoBehaviour
             charMovement.allowMovement = true;
         }
     }
-
-    public void MoveItemIntFunction(int intje)
-    {
-        //if in lijst inv of in lijst chest
-        if (gameObject.GetComponent<StorageSystem>())
-        {
-            Debug.Log("LIST IN CHEST");
-            ItemMove(intje, gameObject.GetComponent<StorageSystem>().chestSlotArray);
-        }
-        else
-        {
-            Debug.Log("LIST IN INV");
-            ItemMove(intje, slotInformationArray);
-        }
-        //moet lijst hebben 
-    }
-
-    public void ItemMove(int i, SlotInformation[] slot)//lijst
+    
+    /*public void ItemMove(int i, SlotInformation[] slot)//lijst
     {
         if (mayMoveItem == true)
         {
             if (slot[i].index != slot[indexHolder].index)
             {
+                Debug.Log("If INV");
                 if (slot[i].slotImage.sprite == null)
                 {
                     slot[i].slotImage.color = highLightColor;//lijst
@@ -109,6 +94,7 @@ public class Inventory : MonoBehaviour
         }
         else if(slot[i].slotImage.sprite != null && mayMoveItem == false)
         {
+            Debug.Log("ELSE IF INV");
             for (int it = 0; it < slot.Length; it++)
             {
                 if (slot[it].slotImage.color == highLightColor)
@@ -123,7 +109,7 @@ public class Inventory : MonoBehaviour
             slot[i].slotImage.color = highLightColor;
 
             indexHolder = i;
-            //slotInformationHolder = slot[i];
+            slotInformationHolder = slot[i];
             
             extraInfoObj.SetActive(true);
             //aanpassen
@@ -131,25 +117,34 @@ public class Inventory : MonoBehaviour
             //amountTextDisplay.text = slotInformationArray[i].itemGameobjectHolder.GetComponent<ItemIndex>().amoundInItem.ToString();
 
         }
+    }*/
+
+    public void FirstSelect(int indexx, SlotInformation[] slot)
+    {
+        if (slot[indexx].index < 0)
+        {
+
+        }
     }
+
 
     public void DropItem(bool b, int indexDrop)
     {
         if (b == true)
         {
-            slotInformationArray[indexDrop].itemGameobjectHolder.GetComponent<ItemIndex>().mayAdd = false;
+            //slotInformationArray[indexDrop].itemGameobjectHolder.GetComponent<ItemIndex>().mayAdd = false;
             slotInformationArray[indexDrop].slotImage.color = colorReset;
             slotInformationArray[indexDrop].slotImage.sprite = null;
             //Insatniate object
-            GameObject g = Instantiate(slotInformationArray[indexDrop].itemGameobjectHolder, transform.position + (transform.forward*2), Quaternion.identity);
-            StartCoroutine(CoolDownItemDrop(2, g));
-            slotInformationArray[indexDrop].itemGameobjectHolder = null;
+           //GameObject g = Instantiate(slotInformationArray[indexDrop].itemGameobjectHolder, transform.position + (transform.forward*2), Quaternion.identity);
+            //StartCoroutine(CoolDownItemDrop(2, g));
+            //slotInformationArray[indexDrop].itemGameobjectHolder = null;
             mayDropItem = false;
             indexDrop = 99;
         }
     }
 
-    public void SwitchItemButton()
+    public void MoveItemButton()
     {
         extraInfoObj.SetActive(false);
         mayMoveItem = true;
@@ -162,56 +157,52 @@ public class Inventory : MonoBehaviour
         DropItem(mayDropItem, indexHolder);
     }
 
-    public void AddItem(int index, GameObject itemObject)
+    public void AddItem(int addItemIndex, int addAmount)
     {
-
-        for (int forint = 0; forint < slotInformationArray.Length; forint++)
+        bool searchForNewSlot = true;
+        for (int i = 0; i < slotInformationArray.Length; i++)
         {
-            //add item
-            if (slotInformationArray[forint].slotImage.sprite == itemObject.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[index].Sprite && itemObject.GetComponent<ItemIndex>().mayAdd == true && slotInformationArray[forint].amount + itemObject.GetComponent<ItemIndex>().amoundInItem <= itemObject.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[index].maxStack)
+            if (addItemIndex == slotInformationArray[i].index)
             {
-                Debug.Log("IN DE EERSTE IF");
-                slotInformationArray[forint].slotImage.sprite = itemObject.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[index].Sprite;
-                slotInformationArray[forint].amount += itemObject.GetComponent<ItemIndex>().amoundInItem;
-                slotInformationArray[forint].itemGameobjectHolder = itemObject.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[itemObject.GetComponent<ItemIndex>().index].itemGameObject;
-                Destroy(itemObject);
-                break;
-            }
-            //next if amout is full
-            else if (slotInformationArray[forint].slotImage.sprite == itemObject.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[index].Sprite && slotInformationArray[forint].amount + itemObject.GetComponent<ItemIndex>().amoundInItem > itemObject.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[index].maxStack)
-            {
-                Debug.Log("IN DE TWEEDE IF");
-                int temp;
-                temp = slotInformationArray[forint].amount + itemObject.GetComponent<ItemIndex>().amoundInItem - itemObject.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[index].maxStack;
-                slotInformationArray[forint].amount = itemObject.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[index].maxStack;
-                for (int iiii = 0; iiii < slotInformationArray.Length; iiii++)
+                if (slotInformationArray[i].amount <= itemScriptableObject.itemInformationList[addItemIndex].maxStack)
                 {
-                    if (slotInformationArray[iiii].slotImage.sprite == null)
+                    slotInformationArray[i].amount += addAmount;
+                    addAmount = slotInformationArray[i].amount - itemScriptableObject.itemInformationList[addItemIndex].maxStack;
+                    if (addAmount < 0)
                     {
-                        slotInformationArray[index].slotImage.sprite = itemObject.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[index].Sprite;
-                        slotInformationArray[index].amount += temp;
-                        slotInformationArray[index].itemGameobjectHolder = itemObject.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[itemObject.GetComponent<ItemIndex>().index].itemGameObject;
-                        Destroy(itemObject);
+                        searchForNewSlot = false;
                         break;
                     }
                     else
                     {
-                        itemObject.GetComponent<ItemIndex>().amoundInItem = temp;
-                        Debug.Log("DE ELSE IN DE IFIF");
-                        break;
+                        slotInformationArray[i].amount -= addAmount;
                     }
                 }
-                break;
             }
-            //add if slot is null
-            else if (slotInformationArray[forint].slotImage.sprite == null && itemObject.GetComponent<ItemIndex>().mayAdd == true && slotInformationArray[forint].amount + itemObject.GetComponent<ItemIndex>().amoundInItem <= itemObject.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[index].maxStack)
+        }
+        if (searchForNewSlot)
+        {
+            for (int i = 0; i < slotInformationArray.Length; i++)
             {
-                Debug.Log("IN DE DEREDE IF");
-                slotInformationArray[forint].slotImage.sprite = itemObject.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[index].Sprite;
-                slotInformationArray[forint].amount += itemObject.GetComponent<ItemIndex>().amoundInItem;
-                slotInformationArray[forint].itemGameobjectHolder = itemObject.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[itemObject.GetComponent<ItemIndex>().index].itemGameObject;
-                Destroy(itemObject);
-                break;
+                if (slotInformationArray[i].index < 0)
+                {
+                    slotInformationArray[i].amount = addAmount;
+                    slotInformationArray[i].index = addItemIndex;
+                    break;
+                }
+            }
+        }
+        UpdateInvetoryUI();//
+    }
+
+    void UpdateInvetoryUI()
+    {
+        for (int i = 0; i < slotInformationArray.Length; i++)
+        {
+            if (slotInformationArray[i].index >= 0)
+            {
+                Debug.Log(slotInformationArray[i].index);
+                slotInformationArray[i].slotImage.sprite = itemScriptableObject.itemInformationList[slotInformationArray[i].index].Sprite;
             }
         }
     }
@@ -221,28 +212,14 @@ public class Inventory : MonoBehaviour
         yield return new WaitForSeconds(coolDown);
         itemGameObject.GetComponent<ItemIndex>().mayAdd = true;
     }
-
- /*
- * move item chage
- * 
- * inex selected
- * ref kist
- * //
- * 2 indexen nodig alse slots //refrence
- * als allebei ingevuld // while loop
- * dan voer void uit om te wisselen
- * 
- */
-
 }
 
 [System.Serializable]
 public class SlotInformation
 {
     public Image slotImage;
-    public int index;
+    public int index = -1;
     public int amount;
-    public GameObject itemGameobjectHolder;
 }
 
 [System.Serializable]

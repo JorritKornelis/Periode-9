@@ -167,7 +167,7 @@ public class CharacterMovement : MonoBehaviour
             }
             else
             {
-                GetComponent<Inventory>().AddItem(hitColliders[i].gameObject.GetComponent<ItemIndex>().index, hitColliders[i].gameObject);
+                GetComponent<Inventory>().AddItem(hitColliders[i].gameObject.GetComponent<ItemIndex>().index, 1);
             }
             i++;
         }
