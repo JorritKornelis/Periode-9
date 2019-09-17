@@ -90,4 +90,6 @@ MonoBehaviour:
     enemyLocations:
     - location: {x: 0, y: 0}
       Enemy: {fileID: 62483416862215318, guid: 530073ed792cbb9469529bb36786d0bc, type: 3}
-    items: []
+    items:
+    - location: {x: 0, y: 0}
+      index: 0
