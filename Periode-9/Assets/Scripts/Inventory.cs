@@ -166,16 +166,16 @@ public class Inventory : MonoBehaviour
             {
                 if (slotInformationArray[i].amount <= itemScriptableObject.itemInformationList[addItemIndex].maxStack)
                 {
-                    slotInformationArray[i].amount += addAmount;
-                    addAmount = slotInformationArray[i].amount - itemScriptableObject.itemInformationList[addItemIndex].maxStack;
-                    if (addAmount < 0)
+                    if(slotInformationArray[i].amount + addAmount > itemScriptableObject.itemInformationList[addItemIndex].maxStack)
                     {
-                        searchForNewSlot = false;
-                        break;
+                        int difference = itemScriptableObject.itemInformationList[addItemIndex].maxStack - slotInformationArray[i].amount;
+                        slotInformationArray[i].amount += difference;
+                        addAmount -= difference;
                     }
                     else
                     {
-                        slotInformationArray[i].amount -= addAmount;
+                        searchForNewSlot = false;
+                        break;
                     }
                 }
             }
@@ -192,7 +192,8 @@ public class Inventory : MonoBehaviour
                 }
             }
         }
-        UpdateInvetoryUI();//
+        Debug.Log("zxexseccrcdtvtfvybybunumim,oll");
+        UpdateInvetoryUI();
     }
 
     void UpdateInvetoryUI()
@@ -201,7 +202,7 @@ public class Inventory : MonoBehaviour
         {
             if (slotInformationArray[i].index >= 0)
             {
-                Debug.Log(slotInformationArray[i].index);
+                Debug.Log(slotInformationArray[i].index + " UPDATE UI");
                 slotInformationArray[i].slotImage.sprite = itemScriptableObject.itemInformationList[slotInformationArray[i].index].Sprite;
             }
         }
