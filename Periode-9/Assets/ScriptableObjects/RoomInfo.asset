@@ -46,7 +46,9 @@ MonoBehaviour:
       obj: {fileID: 2209435492430544436, guid: a30815e36903b034fa32c4a9f222ea1d, type: 3}
       yRotation: 64
     enemyLocations: []
-    items: []
+    items:
+    - location: {x: 0, y: 0}
+      index: 0
   - holes:
     - location: {x: 0, y: 0}
       size: {x: 7, y: 2}
