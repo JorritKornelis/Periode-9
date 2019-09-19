@@ -6,37 +6,41 @@ using UnityEngine.AI;
 public class BuyerAI : MonoBehaviour
 {
     private NavMeshAgent agent;
-    public float waitTime;
-    [Range(0, 100)]
-    public float buyChance;
-    public Vector2 minRandomPoint, maxRandomPoint;
-    public float height;
+    public CharacterStatistics stats;
+    public MeshRenderer meshRenderer;
+    public MeshFilter meshFilter;
+    public BuyerSpawner spawnerInfo;
 
     public void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        StartCoroutine(MoveToPoint(new Vector2(Random.Range(minRandomPoint.x, maxRandomPoint.x), Random.Range(minRandomPoint.y, maxRandomPoint.y))));
+        Vector2 min = spawnerInfo.minRandomPoint;
+        Vector2 max = spawnerInfo.maxRandomPoint;
+        StartCoroutine(MoveToPoint(new Vector2(Random.Range(min.x, max.x), Random.Range(min.y, max.y))));
     }
 
     public IEnumerator MoveToPoint(Vector2 movePoint)
     {
         yield return null;
-        Vector3 aiPoint = new Vector3(movePoint.x, height, movePoint.y);
+        Vector3 aiPoint = new Vector3(movePoint.x, spawnerInfo.height, movePoint.y);
         agent.SetDestination(aiPoint);
 
-        while (Vector3.Distance(transform.position, aiPoint) > 0.2f)
+        while (Vector3.Distance(transform.position, aiPoint) > 0.5f)
             yield return null;
 
-        yield return new WaitForSeconds(waitTime);
+        yield return new WaitForSeconds(stats.waitTime);
         float randomBuyChance = Random.Range(0, 100);
-        if (randomBuyChance > buyChance)
-            StartCoroutine(MoveToPoint(new Vector2(Random.Range(minRandomPoint.x, maxRandomPoint.x), Random.Range(minRandomPoint.y, maxRandomPoint.y))));
+        if (randomBuyChance > stats.buyCheckChance)
+        {
+            Vector2 min = spawnerInfo.minRandomPoint;
+            Vector2 max = spawnerInfo.maxRandomPoint;
+            StartCoroutine(MoveToPoint(new Vector2(Random.Range(min.x, max.x), Random.Range(min.y, max.y))));
+        }
     }
 
-    public void OnDrawGizmos()
+    public void SetVisuals()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawCube(new Vector3(minRandomPoint.x, height, minRandomPoint.y), Vector3.one * 0.3f);
-        Gizmos.DrawCube(new Vector3(maxRandomPoint.x, height, maxRandomPoint.y), Vector3.one * 0.3f);
+        meshFilter.mesh = stats.characterMesh;
+        meshRenderer.material = stats.characterMaterial;
     }
 }
