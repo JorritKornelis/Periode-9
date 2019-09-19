@@ -11,7 +11,7 @@ public class Inventory : MonoBehaviour
     public GameObject invPanel;
     public GameObject chestPanel;
     bool mayMoveItem = false;
-    bool mayDropItem = false;
+    //bool mayDropItem = false;
     public Text nameText;
     public Text amountTextDisplay;
 
@@ -23,17 +23,13 @@ public class Inventory : MonoBehaviour
     public Color colorReset;
     int indexHolder = 99;
     CharacterMovement charMovement;
+
     public StorageSystem storageSystemHolder;
-    SlotInformation slotInformationHolder;
+    SlotRefrenceInformation refrenceInformation1 = new SlotRefrenceInformation();
+    SlotRefrenceInformation refrenceInformation2 = new SlotRefrenceInformation();
     
     void Start()
     {
-        /*foreach (Transform slot in invPanel.transform)
-        {
-            slotInformationList.Add(new SlotInformation() {slotImage = slot.GetComponent<Image>() });
-        }
-        slotInformationArray = slotInformationList.ToArray();
-        */
         extraInfoObj.SetActive(false);
         inv.SetActive(false);
         chestPanel.SetActive(false);
@@ -118,43 +114,49 @@ public class Inventory : MonoBehaviour
 
         }
     }*/
-
-    public void FirstSelect(int indexx, SlotInformation[] slot)
+    public void SelectItem(int selectIndex, bool inTheChest)
     {
-        if (slot[indexx].index < 0)
+        if(refrenceInformation1.witchIndex == -1)
         {
-
+            refrenceInformation1.witchIndex = selectIndex;
+            refrenceInformation1.storageSystem = (inTheChest) ? storageSystemHolder : null;
+        }
+        else
+        {
+            refrenceInformation2.witchIndex = selectIndex;
+            refrenceInformation2.storageSystem = (inTheChest) ? storageSystemHolder : null;
+        }
+        
+        if(refrenceInformation1.witchIndex != -1 && refrenceInformation2.witchIndex != -1)
+        {
+            ItemMove();
         }
     }
-
-
-    public void DropItem(bool b, int indexDrop)
+    
+    public void ItemMove()
     {
-        if (b == true)
-        {
-            //slotInformationArray[indexDrop].itemGameobjectHolder.GetComponent<ItemIndex>().mayAdd = false;
-            slotInformationArray[indexDrop].slotImage.color = colorReset;
-            slotInformationArray[indexDrop].slotImage.sprite = null;
-            //Insatniate object
-           //GameObject g = Instantiate(slotInformationArray[indexDrop].itemGameobjectHolder, transform.position + (transform.forward*2), Quaternion.identity);
-            //StartCoroutine(CoolDownItemDrop(2, g));
-            //slotInformationArray[indexDrop].itemGameobjectHolder = null;
-            mayDropItem = false;
-            indexDrop = 99;
-        }
+        Debug.Log("TEST ITEM MOVE");
+
     }
 
-    public void MoveItemButton()
+    public void DropItem(int indexDrop, SlotInformation slotInformation)
     {
-        extraInfoObj.SetActive(false);
-        mayMoveItem = true;
+        //slotInformationArray[indexDrop].itemGameobjectHolder.GetComponent<ItemIndex>().mayAdd = false;
+        slotInformationArray[indexDrop].slotImage.color = colorReset;
+        slotInformationArray[indexDrop].slotImage.sprite = null;
+        //Insatniate object
+        //GameObject g = Instantiate(slotInformationArray[indexDrop].itemGameobjectHolder, transform.position + (transform.forward*2), Quaternion.identity);
+        //StartCoroutine(CoolDownItemDrop(2, g));
+        //slotInformationArray[indexDrop].itemGameobjectHolder = null;
+        //mayDropItem = false;
+        indexDrop = 99;
     }
 
     public void DropItemButton()
     {
         extraInfoObj.SetActive(false);
-        mayDropItem = true;
-        DropItem(mayDropItem, indexHolder);
+        //mayDropItem = true;
+        //DropItem(indexHolder,);
     }
 
     public void AddItem(int addItemIndex, int addAmount)
@@ -192,7 +194,6 @@ public class Inventory : MonoBehaviour
                 }
             }
         }
-        Debug.Log("zxexseccrcdtvtfvybybunumim,oll");
         UpdateInvetoryUI();
     }
 
@@ -226,6 +227,6 @@ public class SlotInformation
 [System.Serializable]
 public class SlotRefrenceInformation
 {
-    public int witchIndex;
+    public int witchIndex = -1;
     public StorageSystem storageSystem;
 }

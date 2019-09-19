@@ -13,17 +13,8 @@ public class ExtraInfoSlot : MonoBehaviour
         inventory = GameObject.FindWithTag("Player").GetComponent<Inventory>();
     }
 
-    public void ItemMove(int index)
+    public void NeedToSave(int index)
     {
-        if (trueIsInv)
-        {
-            Debug.Log("GAGADVYAFVuihufgggfhwuifguwgfuwfbwyhfhqui   1");
-            //inventory.ItemMove(index, inventory.slotInformationArray);
-        }
-        else
-        {
-            Debug.Log("GAGADVYAFVuihufgggfhwuifguwgfuwfbwyhfhqui   2");
-            //inventory.ItemMove(index, inventory.storageSystemHolder.chestSlotArray);
-        }
+        inventory.SelectItem(index, trueIsInv);
     }
 }

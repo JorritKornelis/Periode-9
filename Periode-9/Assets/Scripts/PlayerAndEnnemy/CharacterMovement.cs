@@ -157,12 +157,14 @@ public class CharacterMovement : MonoBehaviour
                     invetoryHolder.chestPanel.SetActive(true);
                     invetoryHolder.inv.SetActive(true);
                     allowMovement = false;
+                    invetoryHolder.storageSystemHolder = hitColliders[i].GetComponent<StorageSystem>();
                 }
                 else if (Input.GetButtonDown("Inventory") && invetoryHolder.chestPanel.activeSelf == true && invetoryHolder.inv.activeSelf == true)
                 {
                     invetoryHolder.chestPanel.SetActive(false);
                     invetoryHolder.inv.SetActive(false);
                     allowMovement = true;
+                    invetoryHolder.storageSystemHolder = null;
                 }
             }
             else
