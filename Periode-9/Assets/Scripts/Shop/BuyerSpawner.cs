@@ -12,6 +12,7 @@ public class BuyerSpawner : MonoBehaviour
     public GameObject buyerBaseObject;
     private int currentBuyers;
     public float spawnTimer;
+    public List<SellPoint> sellPoints = new List<SellPoint>();
 
     public void Start()
     {

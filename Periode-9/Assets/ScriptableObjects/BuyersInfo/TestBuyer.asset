@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: TestBuyer
   m_EditorClassIdentifier: 
   waitTime: 1
-  buyCheckChance: 0
+  buyCheckChance: 30
   buyChance: 50
-  otherThanInterestedChance: 20
+  otherThanInterestedChance: 50
   leaveChance: 6
   interestedItems: 00000000
   characterMesh: {fileID: 6622264641530768373, guid: 7787fd408f92a1b4a9316d392f14553a,

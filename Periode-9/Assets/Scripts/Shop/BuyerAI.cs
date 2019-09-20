@@ -10,17 +10,19 @@ public class BuyerAI : MonoBehaviour
     public MeshRenderer meshRenderer;
     public MeshFilter meshFilter;
     public BuyerSpawner spawnerInfo;
+    public IEnumerator currentCoroutine;
 
     public void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        Vector2 min = spawnerInfo.minRandomPoint;
-        Vector2 max = spawnerInfo.maxRandomPoint;
-        StartCoroutine(MoveToPoint(new Vector2(Random.Range(min.x, max.x), Random.Range(min.y, max.y))));
+        StartCoroutine(IdleMove());
     }
 
-    public IEnumerator MoveToPoint(Vector2 movePoint)
+    public IEnumerator IdleMove()
     {
+        Vector2 min = spawnerInfo.minRandomPoint;
+        Vector2 max = spawnerInfo.maxRandomPoint;
+        Vector2 movePoint = new Vector2(Random.Range(min.x, max.x), Random.Range(min.y, max.y));
         yield return null;
         Vector3 aiPoint = new Vector3(movePoint.x, spawnerInfo.height, movePoint.y);
         agent.SetDestination(aiPoint);
@@ -31,11 +33,38 @@ public class BuyerAI : MonoBehaviour
         yield return new WaitForSeconds(stats.waitTime);
         float randomBuyChance = Random.Range(0, 100);
         if (randomBuyChance > stats.buyCheckChance)
+            StartCoroutine(IdleMove());
+        else
         {
-            Vector2 min = spawnerInfo.minRandomPoint;
-            Vector2 max = spawnerInfo.maxRandomPoint;
-            StartCoroutine(MoveToPoint(new Vector2(Random.Range(min.x, max.x), Random.Range(min.y, max.y))));
+            currentCoroutine = BuyItem();
+            StartCoroutine(currentCoroutine);
         }
+    }
+
+    public IEnumerator BuyItem()
+    {
+        List<SellPoint> possibleBuyable = new List<SellPoint>();
+        foreach (SellPoint point in spawnerInfo.sellPoints)
+            if(point.item != -1 && !point.lookedAt)
+            {
+                int interested = Random.Range(0, 100);
+                if (interested < stats.otherThanInterestedChance)
+                    possibleBuyable.Add(point);
+                else if (stats.interestedItems.Contains(point.item))
+                    possibleBuyable.Add(point);
+            }
+        if(possibleBuyable.Count == 0)
+        {
+            StartCoroutine(IdleMove());
+            StopCoroutine(currentCoroutine);
+        }
+        yield return null;
+        int index = Random.Range(0, possibleBuyable.Count);
+        possibleBuyable[index].lookedAt = true;
+
+        agent.SetDestination(possibleBuyable[index].transform.position);
+        while (Vector3.Distance(transform.position, possibleBuyable[index].transform.position) > 0.5f)
+            yield return null;
     }
 
     public void SetVisuals()

@@ -10,7 +10,7 @@ public class CharacterStatistics : ScriptableObject
     public float buyCheckChance, buyChance, otherThanInterestedChance;
     [Range(4, 10)]
     public int leaveChance;
-    public int[] interestedItems;
+    public List<int> interestedItems;
     public Mesh characterMesh;
     public Material characterMaterial;
 }
