@@ -27,6 +27,7 @@ public class Inventory : MonoBehaviour
     public StorageSystem storageSystemHolder;
     SlotRefrenceInformation refrenceInformation1 = new SlotRefrenceInformation();
     SlotRefrenceInformation refrenceInformation2 = new SlotRefrenceInformation();
+    SlotRefrenceInformation refrenceInformation3 = new SlotRefrenceInformation();
     
     void Start()
     {
@@ -49,71 +50,7 @@ public class Inventory : MonoBehaviour
             charMovement.allowMovement = true;
         }
     }
-    
-    /*public void ItemMove(int i, SlotInformation[] slot)//lijst
-    {
-        if (mayMoveItem == true)
-        {
-            if (slot[i].index != slot[indexHolder].index)
-            {
-                Debug.Log("If INV");
-                if (slot[i].slotImage.sprite == null)
-                {
-                    slot[i].slotImage.color = highLightColor;//lijst
-                    slot[i].slotImage.sprite = slot[indexHolder].slotImage.sprite;
-                    slot[i].itemGameobjectHolder = slot[indexHolder].itemGameobjectHolder;
 
-                    slot[indexHolder].slotImage.color = colorReset;
-                    slot[indexHolder].slotImage.sprite = null;
-                    slot[indexHolder].itemGameobjectHolder = null;
-                    indexHolder = 99;
-                }
-                else //aanpassen
-                {
-                    Sprite saveSprite = slot[i].slotImage.sprite;
-                    GameObject tempGameObjecy = slot[i].itemGameobjectHolder;
-
-                    slot[i].slotImage.color = highLightColor;
-                    slot[i].itemGameobjectHolder = slot[indexHolder].itemGameobjectHolder;
-                    slot[i].slotImage.sprite = slot[indexHolder].slotImage.sprite;
-
-                    slot[indexHolder].slotImage.sprite = saveSprite;
-                    slot[indexHolder].itemGameobjectHolder = tempGameObjecy;
-                    slot[indexHolder].slotImage.color = colorReset;
-
-                    indexHolder = 99;
-                }
-
-            }
-            slot[i].slotImage.color = colorReset;
-            mayMoveItem = false;
-        }
-        else if(slot[i].slotImage.sprite != null && mayMoveItem == false)
-        {
-            Debug.Log("ELSE IF INV");
-            for (int it = 0; it < slot.Length; it++)
-            {
-                if (slot[it].slotImage.color == highLightColor)
-                {
-                    slot[it].slotImage.color = colorReset;
-                    indexHolder = 99;
-                    mayMoveItem = false;
-                    continue;
-                }
-            }
-
-            slot[i].slotImage.color = highLightColor;
-
-            indexHolder = i;
-            slotInformationHolder = slot[i];
-            
-            extraInfoObj.SetActive(true);
-            //aanpassen
-            //nameText.text = slotInformationArray[i].itemGameobjectHolder.GetComponent<ItemIndex>().itemClassScriptableObject.itemInformationList[slotInformationArray[i].itemGameobjectHolder.GetComponent<ItemIndex>().index].name;
-            //amountTextDisplay.text = slotInformationArray[i].itemGameobjectHolder.GetComponent<ItemIndex>().amoundInItem.ToString();
-
-        }
-    }*/
     public void SelectItem(int selectIndex, bool inTheChest)
     {
         if(refrenceInformation1.witchIndex == -1)
@@ -135,8 +72,17 @@ public class Inventory : MonoBehaviour
     
     public void ItemMove()
     {
-        Debug.Log("TEST ITEM MOVE");
+        Debug.Log(refrenceInformation1.witchIndex + " TEST");
+        Debug.Log(refrenceInformation2.witchIndex + " TEST");
+        refrenceInformation3.witchIndex = refrenceInformation1.witchIndex;
 
+        refrenceInformation1.witchIndex = refrenceInformation2.witchIndex;
+
+        refrenceInformation2.witchIndex = refrenceInformation3.witchIndex;
+        UpdateInvetoryUI();
+        Debug.Log("TEST ITEM MOVE");
+        Debug.Log(refrenceInformation1.witchIndex +" TEST ITEM MOVE");
+        Debug.Log(refrenceInformation2.witchIndex +" TEST ITEM MOVE");
     }
 
     public void DropItem(int indexDrop, SlotInformation slotInformation)

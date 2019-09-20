@@ -13,7 +13,7 @@ public class ExtraInfoSlot : MonoBehaviour
         inventory = GameObject.FindWithTag("Player").GetComponent<Inventory>();
     }
 
-    public void NeedToSave(int index)
+    public void SelectItems(int index)
     {
         inventory.SelectItem(index, trueIsInv);
     }
