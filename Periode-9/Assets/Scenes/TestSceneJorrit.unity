@@ -329,19 +329,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chestSlotArray:
   - slotImage: {fileID: 843046536}
-    index: 0
+    index: -1
     amount: 0
   - slotImage: {fileID: 659408064}
-    index: 0
+    index: -1
     amount: 0
   - slotImage: {fileID: 1117715404}
-    index: 0
+    index: -1
     amount: 0
   - slotImage: {fileID: 1857066187}
-    index: 0
+    index: -1
     amount: 0
   - slotImage: {fileID: 639567116}
-    index: 0
+    index: -1
     amount: 0
 --- !u!1 &84565444
 GameObject:

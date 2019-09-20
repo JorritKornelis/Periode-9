@@ -27,8 +27,7 @@ public class Inventory : MonoBehaviour
     public StorageSystem storageSystemHolder;
     SlotRefrenceInformation refrenceInformation1 = new SlotRefrenceInformation();
     SlotRefrenceInformation refrenceInformation2 = new SlotRefrenceInformation();
-    SlotRefrenceInformation refrenceInformation3 = new SlotRefrenceInformation();
-    
+
     void Start()
     {
         extraInfoObj.SetActive(false);
@@ -72,17 +71,42 @@ public class Inventory : MonoBehaviour
     
     public void ItemMove()
     {
-        Debug.Log(refrenceInformation1.witchIndex + " TEST");
-        Debug.Log(refrenceInformation2.witchIndex + " TEST");
-        refrenceInformation3.witchIndex = refrenceInformation1.witchIndex;
+        int cashIndex;
+        int cashAmount;
+        SlotInformation slot1 = new SlotInformation();
+        SlotInformation slot2 = new SlotInformation();
 
-        refrenceInformation1.witchIndex = refrenceInformation2.witchIndex;
+        if (refrenceInformation1.storageSystem == null)
+        {
+            slot1 = slotInformationArray[refrenceInformation1.witchIndex];
+        }
+        else
+        {
+            slot1 = storageSystemHolder.chestSlotArray[refrenceInformation1.witchIndex];
+        }
+        if (refrenceInformation2.storageSystem == null)
+        {
+            slot2 = slotInformationArray[refrenceInformation2.witchIndex];
+        }
+        else
+        {
+            slot2 = storageSystemHolder.chestSlotArray[refrenceInformation2.witchIndex];
+        }
 
-        refrenceInformation2.witchIndex = refrenceInformation3.witchIndex;
-        UpdateInvetoryUI();
-        Debug.Log("TEST ITEM MOVE");
-        Debug.Log(refrenceInformation1.witchIndex +" TEST ITEM MOVE");
-        Debug.Log(refrenceInformation2.witchIndex +" TEST ITEM MOVE");
+        cashIndex = slot1.index;
+        cashAmount = slot1.amount;
+
+        slot1.index = slot2.index;
+        slot1.amount = slot2.amount;
+        slot2.index = cashIndex;
+        slot2.amount = cashAmount;
+        UpdateInvetoryUI(slotInformationArray);
+        if (storageSystemHolder)
+        {
+            UpdateInvetoryUI(storageSystemHolder.chestSlotArray);
+        }
+        refrenceInformation1 = new SlotRefrenceInformation();
+        refrenceInformation2 = new SlotRefrenceInformation();
     }
 
     public void DropItem(int indexDrop, SlotInformation slotInformation)
@@ -140,17 +164,21 @@ public class Inventory : MonoBehaviour
                 }
             }
         }
-        UpdateInvetoryUI();
+        UpdateInvetoryUI(slotInformationArray);
     }
 
-    void UpdateInvetoryUI()
+    void UpdateInvetoryUI(SlotInformation[] overloadArray)
     {
-        for (int i = 0; i < slotInformationArray.Length; i++)
+        for (int i = 0; i < overloadArray.Length; i++)
         {
-            if (slotInformationArray[i].index >= 0)
+            if (overloadArray[i].index >= 0)
             {
-                Debug.Log(slotInformationArray[i].index + " UPDATE UI");
-                slotInformationArray[i].slotImage.sprite = itemScriptableObject.itemInformationList[slotInformationArray[i].index].Sprite;
+                Debug.Log(overloadArray[i].index + " UPDATE UI");
+                overloadArray[i].slotImage.sprite = itemScriptableObject.itemInformationList[overloadArray[i].index].Sprite;
+            }
+            else
+            {
+                overloadArray[i].slotImage.sprite = null;
             }
         }
     }
