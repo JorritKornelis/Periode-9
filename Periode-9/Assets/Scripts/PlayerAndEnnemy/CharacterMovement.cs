@@ -167,7 +167,7 @@ public class CharacterMovement : MonoBehaviour
                     invetoryHolder.storageSystemHolder = null;
                 }
             }
-            else
+            else if(hitColliders[i].gameObject.GetComponent<ItemIndex>().mayAdd)
             {
                 GetComponent<Inventory>().AddItem(hitColliders[i].gameObject.GetComponent<ItemIndex>().index, hitColliders[i].gameObject.GetComponent<ItemIndex>().amoundInItem);
                 Destroy(hitColliders[i].gameObject);

@@ -15,6 +15,6 @@ public class ExtraInfoSlot : MonoBehaviour
 
     public void SelectItems(int index)
     {
-        inventory.SelectItem(index, trueIsInv);
+        inventory.SelectItem(index, !trueIsInv);
     }
 }
