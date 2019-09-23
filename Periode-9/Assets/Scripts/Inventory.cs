@@ -199,7 +199,6 @@ public class Inventory : MonoBehaviour
         {
             if (overloadArray[i].index >= 0)
             {
-                Debug.Log(overloadArray[i].index + " UPDATE UI");
                 overloadArray[i].slotImage.sprite = itemScriptableObject.itemInformationList[overloadArray[i].index].Sprite;
             }
             else
