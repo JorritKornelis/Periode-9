@@ -7,11 +7,9 @@ public class Inventory : MonoBehaviour
 {
     [Header("Public stuff")]
     public GameObject inv;
-    public GameObject extraInfoObj;
     public GameObject invPanel;
     public GameObject chestPanel;
-    bool mayMoveItem = false;
-    //bool mayDropItem = false;
+
     public Text nameText;
     public Text amountTextDisplay;
 
@@ -21,7 +19,6 @@ public class Inventory : MonoBehaviour
 
     public Color highLightColor;
     public Color colorReset;
-    int indexHolder = 99;
     CharacterMovement charMovement;
 
     public StorageSystem storageSystemHolder;
@@ -37,18 +34,41 @@ public class Inventory : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Inventory") && inv.activeInHierarchy == false && chestPanel.activeInHierarchy == false && charMovement.allowMovement == true)
+        if (!charMovement.inTheChestBool)
         {
-            inv.SetActive(true);
-            charMovement.allowMovement = false;
-        }       
-        else if(Input.GetButtonDown("Inventory") && inv.activeInHierarchy == true && chestPanel.activeInHierarchy == false && charMovement.allowMovement == false)
+            if (Input.GetButtonDown("Inventory") && inv.activeInHierarchy == false && charMovement.allowMovement == true)
+            {
+                inv.SetActive(true);
+                charMovement.allowMovement = false;
+            }
+            else if (Input.GetButtonDown("Inventory") && inv.activeInHierarchy == true && charMovement.allowMovement == false)
+            {
+                inv.SetActive(false);
+                charMovement.allowMovement = true;
+            }
+        }
+        else
         {
-            inv.SetActive(false);
-            charMovement.allowMovement = true;
+            if (Input.GetButtonDown("Inventory"))
+            {
+                if (chestPanel.activeSelf == false && inv.activeSelf == false)
+                {
+                    chestPanel.SetActive(true);
+                    inv.SetActive(true);
+                    charMovement.allowMovement = false;
+                }
+                else if (chestPanel.activeSelf == true && inv.activeSelf == true)
+                {
+                    chestPanel.SetActive(false);
+                    inv.SetActive(false);
+                    charMovement.allowMovement = true;
+                    charMovement.inTheChestBool = false;
+                    Debug.Log("TEST");
+                }
+            }
+
         }
     }
-
     public void SelectItem(int selectIndex, bool inTheChest)
     {
         if(!refrenceInformation1.taken)
@@ -110,19 +130,6 @@ public class Inventory : MonoBehaviour
         }
         refrenceInformation1 = new SlotRefrenceInformation();
         refrenceInformation2 = new SlotRefrenceInformation();
-    }
-
-    public void DropItem(int indexDrop, SlotInformation slotInformation)
-    {
-        //slotInformationArray[indexDrop].itemGameobjectHolder.GetComponent<ItemIndex>().mayAdd = false;
-        slotInformationArray[indexDrop].slotImage.color = colorReset;
-        slotInformationArray[indexDrop].slotImage.sprite = null;
-        //Insatniate object
-        //GameObject g = Instantiate(slotInformationArray[indexDrop].itemGameobjectHolder, transform.position + (transform.forward*2), Quaternion.identity);
-        //StartCoroutine(CoolDownItemDrop(2, g));
-        //slotInformationArray[indexDrop].itemGameobjectHolder = null;
-        //mayDropItem = false;
-        indexDrop = 99;
     }
 
     public void DropItemButton()

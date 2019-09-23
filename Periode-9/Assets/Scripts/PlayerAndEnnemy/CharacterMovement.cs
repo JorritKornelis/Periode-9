@@ -26,6 +26,8 @@ public class CharacterMovement : MonoBehaviour
     public bool allowMovement;
     float currentAccel;
     Vector3 currentMovementSpeed;
+    [Header("Other")]
+    public bool inTheChestBool = false;
 
     public IEnumerator StartMovement(float time)
     {
@@ -152,25 +154,18 @@ public class CharacterMovement : MonoBehaviour
         {
             if (hitColliders[i].gameObject.GetComponent<StorageSystem>())
             {
-                if (Input.GetButtonDown("Inventory") && invetoryHolder.chestPanel.activeSelf == false && invetoryHolder.inv.activeSelf == false)
-                {
-                    invetoryHolder.chestPanel.SetActive(true);
-                    invetoryHolder.inv.SetActive(true);
-                    allowMovement = false;
-                    invetoryHolder.storageSystemHolder = hitColliders[i].GetComponent<StorageSystem>();
-                }
-                else if (Input.GetButtonDown("Inventory") && invetoryHolder.chestPanel.activeSelf == true && invetoryHolder.inv.activeSelf == true)
-                {
-                    invetoryHolder.chestPanel.SetActive(false);
-                    invetoryHolder.inv.SetActive(false);
-                    allowMovement = true;
-                    invetoryHolder.storageSystemHolder = null;
-                }
+                invetoryHolder.storageSystemHolder = hitColliders[i].GetComponent<StorageSystem>();
+                inTheChestBool = true;
+                break;
             }
             else if(hitColliders[i].gameObject.GetComponent<ItemIndex>().mayAdd)
             {
                 GetComponent<Inventory>().AddItem(hitColliders[i].gameObject.GetComponent<ItemIndex>().index, hitColliders[i].gameObject.GetComponent<ItemIndex>().amoundInItem);
                 Destroy(hitColliders[i].gameObject);
+            }
+            else
+            {
+                inTheChestBool = false;
             }
             i++;
         }
