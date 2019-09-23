@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Bem
+  m_Shader: {fileID: 4800000, guid: 7ea373a65443c8b4e8b54f5ec8859cfe, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 0
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _yeehawNoisez:
+        m_Texture: {fileID: 2800000, guid: f7f63439c1c97784e817e8420abb395b, type: 3}
+        m_Scale: {x: 0.91, y: 2.83}
+        m_Offset: {x: 0, y: 0.39}
+    m_Floats:
+    - _Cutoff: 0.23
+    - __dirty: 0
+    m_Colors:
+    - _Color0: {r: 0.03285094, g: 0.019970117, b: 0.018129999, a: 0}
+    - _Sped: {r: 0, g: -1.65, b: 0, a: 0}

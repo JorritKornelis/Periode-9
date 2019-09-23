@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ProceduralLightning
+  m_Shader: {fileID: 4800000, guid: 72acc8c7a65f8ff49b6fccb989b3a948, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 0
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _LightningTexture:
+        m_Texture: {fileID: 2800000, guid: 4195d543696c7584fa34ea45bb41ef1a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TextureSample0:
+        m_Texture: {fileID: 2800000, guid: 523ca5674cbaa4248bc692293d461c7a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TextureSample1:
+        m_Texture: {fileID: 2800000, guid: 523ca5674cbaa4248bc692293d461c7a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _HorizontalMultploer: 13.12
+    - _VerticalMultiplier: 1
+    - __dirty: 0
+    m_Colors:
+    - _Color0: {r: 7.3008327, g: 11.450317, b: 12.1257305, a: 0}
+    - _Sped1: {r: 1, g: 0.36, b: 0, a: 0}
+    - _Sped2: {r: -14.89, g: 0, b: 0, a: 0}

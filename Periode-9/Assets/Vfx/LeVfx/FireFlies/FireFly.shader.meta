@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: ffda121c15da23a41890b86677a4f578
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures:
+  - _FireFlyGradient: {fileID: 2800000, guid: c427ab5e61b9f814399dc56deb8e21b5, type: 3}
+  - _TextureSample0: {fileID: 2800000, guid: 78d846492899ac947a144c85c0c94788, type: 3}
+  - _FireFlyAlpha: {fileID: 2800000, guid: 7839f2733db18514d8313bffa2fcce57, type: 3}
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
