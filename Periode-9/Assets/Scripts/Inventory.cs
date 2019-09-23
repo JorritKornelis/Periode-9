@@ -34,41 +34,38 @@ public class Inventory : MonoBehaviour
 
     void Update()
     {
-        if (!charMovement.inTheChestBool)
-        {
-            if (Input.GetButtonDown("Inventory") && inv.activeInHierarchy == false && charMovement.allowMovement == true)
-            {
-                inv.SetActive(true);
-                charMovement.allowMovement = false;
-            }
-            else if (Input.GetButtonDown("Inventory") && inv.activeInHierarchy == true && charMovement.allowMovement == false)
+        OpenInventory();
+    }
+
+    void OpenInventory()
+    {
+        if (Input.GetButtonDown("Inventory"))
+            if (inv.activeInHierarchy)
             {
                 inv.SetActive(false);
                 charMovement.allowMovement = true;
+                chestPanel.SetActive(false);
+                refrenceInformation1 = new SlotRefrenceInformation();
+                storageSystemHolder = null;
             }
-        }
-        else
-        {
-            if (Input.GetButtonDown("Inventory"))
+            else
             {
-                if (chestPanel.activeSelf == false && inv.activeSelf == false)
-                {
-                    chestPanel.SetActive(true);
-                    inv.SetActive(true);
-                    charMovement.allowMovement = false;
-                }
-                else if (chestPanel.activeSelf == true && inv.activeSelf == true)
-                {
-                    chestPanel.SetActive(false);
-                    inv.SetActive(false);
-                    charMovement.allowMovement = true;
-                    charMovement.inTheChestBool = false;
-                    Debug.Log("TEST");
-                }
+                inv.SetActive(true);
+                charMovement.allowMovement = false;
+                UpdateInvetoryUI(slotInformationArray);
+                Collider[] chestsCol = Physics.OverlapSphere(transform.position, charMovement.pickUpRadis, charMovement.itemLayer);
+                for (int i = 0; i < chestsCol.Length; i++)
+                    if (chestsCol[i].GetComponent<StorageSystem>())
+                    {
+                        chestPanel.SetActive(true);
+                        storageSystemHolder = chestsCol[0].GetComponent<StorageSystem>();
+                        UpdateInvetoryUI(storageSystemHolder.chestSlotArray);
+                        break;
+                    }
             }
-
-        }
+        
     }
+
     public void SelectItem(int selectIndex, bool inTheChest)
     {
         if(!refrenceInformation1.taken)

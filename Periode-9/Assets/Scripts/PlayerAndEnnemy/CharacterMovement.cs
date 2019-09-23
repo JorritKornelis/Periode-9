@@ -53,7 +53,6 @@ public class CharacterMovement : MonoBehaviour
 
     public void Update()
     {
-        CheckCollisionPickUp();
         if (allowMovement)
         {
             currentAccel = Mathf.Lerp(currentAccel, (Input.GetButton("Horizontal") || Input.GetButton("Vertical")) ? 1 : 0, Time.deltaTime * accelAmount);
@@ -148,26 +147,18 @@ public class CharacterMovement : MonoBehaviour
 
     void CheckCollisionPickUp()
     {
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, pickUpRadis,itemLayer);
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, pickUpRadis, itemLayer);
         int i = 0;
         while (i < hitColliders.Length)
-        {
-            if (hitColliders[i].gameObject.GetComponent<StorageSystem>())
-            {
-                invetoryHolder.storageSystemHolder = hitColliders[i].GetComponent<StorageSystem>();
-                inTheChestBool = true;
-                break;
-            }
-            else if(hitColliders[i].gameObject.GetComponent<ItemIndex>().mayAdd)
+        {            
+            if(hitColliders[i].gameObject.GetComponent<ItemIndex>() && hitColliders[i].gameObject.GetComponent<ItemIndex>().mayAdd)
             {
                 GetComponent<Inventory>().AddItem(hitColliders[i].gameObject.GetComponent<ItemIndex>().index, hitColliders[i].gameObject.GetComponent<ItemIndex>().amoundInItem);
                 Destroy(hitColliders[i].gameObject);
             }
-            else
-            {
-                inTheChestBool = false;
-            }
+            
             i++;
         }
+        inTheChestBool = false;
     }
 }
