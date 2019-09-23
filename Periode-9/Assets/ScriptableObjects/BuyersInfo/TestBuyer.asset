@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waitTime: 1
   buyCheckChance: 30
-  buyChance: 50
+  buyChance: 65
   otherThanInterestedChance: 50
   leaveChance: 6
   interestedItems: 00000000

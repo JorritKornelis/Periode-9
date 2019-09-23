@@ -11,6 +11,7 @@ public class BuyerAI : MonoBehaviour
     public MeshFilter meshFilter;
     public BuyerSpawner spawnerInfo;
     public IEnumerator currentCoroutine;
+    public Transform itemDisplay;
 
     public void Start()
     {
@@ -60,11 +61,34 @@ public class BuyerAI : MonoBehaviour
         }
         yield return null;
         int index = Random.Range(0, possibleBuyable.Count);
-        possibleBuyable[index].lookedAt = true;
+        possibleBuyable[index].lookedAt = true;  
 
         agent.SetDestination(possibleBuyable[index].transform.position);
         while (Vector3.Distance(transform.position, possibleBuyable[index].transform.position) > 0.5f)
+        {
+            Debug.DrawLine(transform.position, possibleBuyable[index].transform.position,Color.red);
             yield return null;
+        }
+
+        Vector3 dir = new Vector3(possibleBuyable[index].itemDisplay.position.x, transform.position.y, possibleBuyable[index].itemDisplay.position.z) - transform.position;
+        Quaternion lookRot = Quaternion.LookRotation(dir, transform.up);
+
+        while (Quaternion.Angle(transform.rotation, lookRot) > 0.2f)
+        {
+            transform.rotation = Quaternion.Lerp(transform.rotation, lookRot, Time.deltaTime * 4f);
+            yield return null;
+        }
+
+        float buyChance = Random.Range(0, 100);
+        if (buyChance > stats.buyChance)
+        {
+            StartCoroutine(IdleMove());
+            possibleBuyable[index].lookedAt = false;
+            StopCoroutine(currentCoroutine);
+        }
+        yield return null;
+
+        Instantiate(spawnerInfo.items.itemInformationList[possibleBuyable[index].item].itemGameObject, itemDisplay.position, itemDisplay.rotation, itemDisplay);
     }
 
     public void SetVisuals()
