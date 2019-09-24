@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class CharacterMovement : MonoBehaviour
 {
@@ -28,6 +29,8 @@ public class CharacterMovement : MonoBehaviour
     Vector3 currentMovementSpeed;
     [Header("Other")]
     public bool inTheChestBool = false;
+    public bool inDungeonAnimations;
+    public Animator animator;
 
     public IEnumerator StartMovement(float time)
     {
@@ -63,6 +66,17 @@ public class CharacterMovement : MonoBehaviour
             if (GetCollisionMoveAmount(Vector3.forward, Input.GetAxis("Vertical")) == 0 && Input.GetButton("Vertical"))
                 currentMovementSpeed.z = 0;
             CheckCollisionPickUp();
+            if(Vector3.Distance(Vector3.zero, currentMovementSpeed) > 0.2f)
+            {
+                Vector3 animationDirection = body.InverseTransformDirection(currentMovementSpeed.normalized);
+                animator.SetFloat("Horizontal", animationDirection.x);
+                animator.SetFloat("Vertical", animationDirection.z);
+            }
+            else
+            {
+                animator.SetFloat("Horizontal", 0);
+                animator.SetFloat("Vertical", 0);
+            }
             if (GroundCheck())
             {
                 CursorFollow();
