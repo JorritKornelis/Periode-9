@@ -169,9 +169,11 @@ public class Inventory : MonoBehaviour
                         int difference = itemScriptableObject.itemInformationList[addItemIndex].maxStack - slotInformationArray[i].amount;
                         slotInformationArray[i].amount += difference;
                         addAmount -= difference;
+                        Debug.Log("IF TO MUTCH");
                     }
                     else
                     {
+                        Debug.Log("ZOEK NIEUW SLOT");
                         searchForNewSlot = false;
                         break;
                     }

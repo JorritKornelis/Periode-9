@@ -12,6 +12,7 @@ public class PlayerSword : MonoBehaviour
         PlayerSwordAtack();
     }
 
+    //animation toevoegen
     public void PlayerSwordAtack()
     {
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, swordRadius);

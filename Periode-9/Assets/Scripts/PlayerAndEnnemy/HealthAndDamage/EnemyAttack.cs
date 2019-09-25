@@ -42,11 +42,4 @@ public class EnemyAttack : MonoBehaviour
             GameObject.FindWithTag("Player").GetComponent<PlayerHeathScript>().TakeDamage(attackDamage, GameObject.FindWithTag("Player"));
         }
     }
-
-
-    /*ienumarator //start animatie
-     * wacht paar sec
-     * check of speler er nog in radus zit //vac.dis
-     * doe damage
-     */
 }
