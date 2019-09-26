@@ -12,6 +12,11 @@ public class BuyerAI : MonoBehaviour
     public BuyerSpawner spawnerInfo;
     public IEnumerator currentCoroutine;
     public Transform itemDisplay;
+    public bool hasItem;
+    public bool counter;
+
+    public int currentItem = -1;
+    public int amount;
 
     public void Start()
     {
@@ -32,13 +37,23 @@ public class BuyerAI : MonoBehaviour
             yield return null;
 
         yield return new WaitForSeconds(stats.waitTime);
-        float randomBuyChance = Random.Range(0, 100);
-        if (randomBuyChance > stats.buyCheckChance)
-            StartCoroutine(IdleMove());
+        if (hasItem)
+        {
+            if(spawnerInfo.counterAvailable)
+                StartCoroutine(WaitingAtCounter());
+            else
+                StartCoroutine(IdleMove());
+        }
         else
         {
-            currentCoroutine = BuyItem();
-            StartCoroutine(currentCoroutine);
+            float randomBuyChance = Random.Range(0, 100);
+            if (randomBuyChance > stats.buyCheckChance)
+                StartCoroutine(IdleMove());
+            else
+            {
+                currentCoroutine = BuyItem();
+                StartCoroutine(currentCoroutine);
+            }
         }
     }
 
@@ -87,12 +102,36 @@ public class BuyerAI : MonoBehaviour
             StopCoroutine(currentCoroutine);
         }
         yield return null;
-
         GameObject g = Instantiate(spawnerInfo.items.itemInformationList[possibleBuyable[index].item].itemGameObject, itemDisplay.position, itemDisplay.rotation, itemDisplay);
         g.GetComponent<ItemIndex>().enabled = false;
         g.layer = 0;
+        hasItem = true;
+        if (spawnerInfo.counterAvailable)
+            StartCoroutine(WaitingAtCounter());
+        else
+            StartCoroutine(IdleMove());
+    }
 
+    public IEnumerator WaitingAtCounter()
+    {
+        spawnerInfo.counterAvailable = false;
         agent.SetDestination(spawnerInfo.counterLocation.position);
+        yield return null;
+        while (Vector3.Distance(transform.position, spawnerInfo.counterLocation.position) > 0.5f)
+        {
+            Debug.DrawLine(transform.position, spawnerInfo.counterLocation.position, Color.red);
+            yield return null;
+        }
+
+        Vector3 dir = (spawnerInfo.counterLocation.position + Vector3.forward) - transform.position;
+        Quaternion lookRot = Quaternion.LookRotation(dir, transform.up);
+
+        while (Quaternion.Angle(transform.rotation, lookRot) > 0.2f)
+        {
+            transform.rotation = Quaternion.Lerp(transform.rotation, lookRot, Time.deltaTime * 4f);
+            yield return null;
+        }
+
     }
 
     public void SetVisuals()

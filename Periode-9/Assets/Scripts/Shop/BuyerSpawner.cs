@@ -8,6 +8,7 @@ public class BuyerSpawner : MonoBehaviour
     public float height;
     public CharacterStatistics[] buyerStats;
     public Transform doorLocation, counterLocation;
+    public bool counterAvailable;
     public int maxBuyers;
     public GameObject buyerBaseObject;
     private int currentBuyers;
