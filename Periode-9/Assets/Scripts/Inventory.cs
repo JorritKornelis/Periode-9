@@ -151,7 +151,7 @@ public class Inventory : MonoBehaviour
             slot.index = -1;
             slot.amount = 0;
             refrenceInformation1 = new SlotRefrenceInformation();
-
+            
             UpdateInvetoryUI(slotInformationArray);
             if (storageSystemHolder)
             {
@@ -178,8 +178,9 @@ public class Inventory : MonoBehaviour
                     }
                     else
                     {
-                        Debug.Log("ZOEK NIEUW SLOT");
+                        Debug.Log("ZOEK niet NIEUW SLOT");
                         searchForNewSlot = false;
+                        slotInformationArray[i].amount += addAmount;
                         break;
                     }
                 }
@@ -193,6 +194,7 @@ public class Inventory : MonoBehaviour
                 {
                     slotInformationArray[i].amount = addAmount;
                     slotInformationArray[i].index = addItemIndex;
+                    Debug.Log("ZOEK Nieuw slot in if");
                     break;
                 }
             }
@@ -251,7 +253,6 @@ public class Inventory : MonoBehaviour
         }
         UpdateInvetoryUI(slotInformationArray);
     }
-
 }
 
 [System.Serializable]
