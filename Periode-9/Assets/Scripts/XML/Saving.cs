@@ -11,6 +11,12 @@ public class Saving : MonoBehaviour
     public string fileName;
     public SaveDataBase data;
 
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+        LoadData();
+    }
+
     //LoadData
     ///Loads your XML save file
     public void LoadData()
@@ -59,7 +65,7 @@ public class SaveDataBase
 [System.Serializable]
 public class ItemSaveSlot
 {
-    public int index;
+    public int itemIndex;
     public int slot;
     public int amount;
 }

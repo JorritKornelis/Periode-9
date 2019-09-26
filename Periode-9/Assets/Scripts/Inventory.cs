@@ -13,7 +13,7 @@ public class Inventory : MonoBehaviour
     public Text nameText;
     public Text amountTextDisplay;
 
-    [Header("invetory")]
+    [Header("Invetory")]
     public ItemClassScriptableObject itemScriptableObject;
     public SlotInformation[] slotInformationArray;
 
@@ -25,11 +25,16 @@ public class Inventory : MonoBehaviour
     public SlotRefrenceInformation refrenceInformation1 = new SlotRefrenceInformation();
     public SlotRefrenceInformation refrenceInformation2 = new SlotRefrenceInformation();
 
+    [Header("Saving")]
+    public Saving savingScript;
+
     void Start()
     {
         inv.SetActive(false);
         chestPanel.SetActive(false);
         charMovement = gameObject.GetComponent<CharacterMovement>();
+
+        InvetoryLoadData();
     }
 
     void Update()
@@ -208,6 +213,7 @@ public class Inventory : MonoBehaviour
                 overloadArray[i].slotImage.sprite = null;
             }
         }
+        InvetorySaveData(); // verplaatsen naar sceneSwitch
     }
 
     public IEnumerator CoolDownItemDrop(float coolDown,GameObject itemGameObject)
@@ -216,6 +222,36 @@ public class Inventory : MonoBehaviour
         yield return new WaitForSeconds(coolDown);
         itemGameObject.GetComponent<ItemIndex>().mayAdd = true;
     }
+
+    //inv naar data
+    public void InvetorySaveData()
+    {
+        savingScript.data.inventory.Clear();
+
+        for (int i = 0; i < slotInformationArray.Length; i++)
+        {
+            if (slotInformationArray[i].index > -1)
+            {
+                ItemSaveSlot slot = new ItemSaveSlot();
+                slot.itemIndex = slotInformationArray[i].index;
+                slot.slot = i;
+                slot.amount = slotInformationArray[i].amount;
+                savingScript.data.inventory.Add(slot);
+            }
+        }
+    }
+    
+    //data naar inv 
+    public void InvetoryLoadData()
+    {
+        foreach (var slot in savingScript.data.inventory)
+        {
+            slotInformationArray[slot.slot].index = slot.itemIndex;
+            slotInformationArray[slot.slot].amount = slot.amount;
+        }
+        UpdateInvetoryUI(slotInformationArray);
+    }
+
 }
 
 [System.Serializable]
