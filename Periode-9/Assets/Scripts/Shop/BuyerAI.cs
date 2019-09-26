@@ -88,7 +88,11 @@ public class BuyerAI : MonoBehaviour
         }
         yield return null;
 
-        Instantiate(spawnerInfo.items.itemInformationList[possibleBuyable[index].item].itemGameObject, itemDisplay.position, itemDisplay.rotation, itemDisplay);
+        GameObject g = Instantiate(spawnerInfo.items.itemInformationList[possibleBuyable[index].item].itemGameObject, itemDisplay.position, itemDisplay.rotation, itemDisplay);
+        g.GetComponent<ItemIndex>().enabled = false;
+        g.layer = 0;
+
+        agent.SetDestination(spawnerInfo.counterLocation.position);
     }
 
     public void SetVisuals()
