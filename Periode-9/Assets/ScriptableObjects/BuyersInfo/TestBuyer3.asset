@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3d0622eda611f44c83f56f52bc3ad42, type: 3}
   m_Name: TestBuyer3
   m_EditorClassIdentifier: 
-  waitTime: 1
-  buyCheckChance: 0
-  buyChance: 0
+  waitTime: 0.6
+  buyCheckChance: 69
+  buyChance: 70
   otherThanInterestedChance: 0
   leaveChance: 4
   interestedItems: 
-  characterMesh: {fileID: -6168695603549781728, guid: 64fb196dde22b2748a7881acc8d8b6f0,
+  characterMesh: {fileID: 6622264641530768373, guid: 2c080d7fc1dfc0a49933092023a31476,
     type: 3}
   characterMaterial: {fileID: 2100000, guid: 16732b6f72e804f45a460b1770b46748, type: 2}

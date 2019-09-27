@@ -13,10 +13,12 @@ public class BuyerAI : MonoBehaviour
     public IEnumerator currentCoroutine;
     public Transform itemDisplay;
     public bool hasItem;
-    public bool counter;
+    public float rotateSpeed;
+    public int currentTries;
 
     public int currentItem = -1;
     public int amount;
+    public float setPrice;
 
     public void Start()
     {
@@ -46,13 +48,19 @@ public class BuyerAI : MonoBehaviour
         }
         else
         {
-            float randomBuyChance = Random.Range(0, 100);
-            if (randomBuyChance > stats.buyCheckChance)
-                StartCoroutine(IdleMove());
+            currentTries++;
+            if (currentTries > stats.leaveChance)
+                StartCoroutine(LeaveStore());
             else
             {
-                currentCoroutine = BuyItem();
-                StartCoroutine(currentCoroutine);
+                float randomBuyChance = Random.Range(0, 100);
+                if (randomBuyChance > stats.buyCheckChance)
+                    StartCoroutine(IdleMove());
+                else
+                {
+                    currentCoroutine = BuyItem();
+                    StartCoroutine(currentCoroutine);
+                }
             }
         }
     }
@@ -90,7 +98,7 @@ public class BuyerAI : MonoBehaviour
 
         while (Quaternion.Angle(transform.rotation, lookRot) > 0.2f)
         {
-            transform.rotation = Quaternion.Lerp(transform.rotation, lookRot, Time.deltaTime * 4f);
+            transform.rotation = Quaternion.Lerp(transform.rotation, lookRot, Time.deltaTime * rotateSpeed);
             yield return null;
         }
 
@@ -105,6 +113,12 @@ public class BuyerAI : MonoBehaviour
         GameObject g = Instantiate(spawnerInfo.items.itemInformationList[possibleBuyable[index].item].itemGameObject, itemDisplay.position, itemDisplay.rotation, itemDisplay);
         g.GetComponent<ItemIndex>().enabled = false;
         g.layer = 0;
+        currentItem = possibleBuyable[index].item;
+        amount = possibleBuyable[index].amount;
+        setPrice = possibleBuyable[index].sellPrice;
+        possibleBuyable[index].item = -1;
+        possibleBuyable[index].amount = 0;
+        possibleBuyable[index].lookedAt = false;
         hasItem = true;
         if (spawnerInfo.counterAvailable)
             StartCoroutine(WaitingAtCounter());
@@ -123,15 +137,32 @@ public class BuyerAI : MonoBehaviour
             yield return null;
         }
 
-        Vector3 dir = (spawnerInfo.counterLocation.position + Vector3.forward) - transform.position;
+        Vector3 dir = (new Vector3(spawnerInfo.counterLocation.position.x,transform.position.y, spawnerInfo.counterLocation.position.z) + Vector3.forward) - transform.position;
         Quaternion lookRot = Quaternion.LookRotation(dir, transform.up);
 
-        while (Quaternion.Angle(transform.rotation, lookRot) > 0.2f)
+        while (Quaternion.Angle(transform.rotation, lookRot) > 0.5f)
         {
-            transform.rotation = Quaternion.Lerp(transform.rotation, lookRot, Time.deltaTime * 4f);
+            transform.rotation = Quaternion.Lerp(transform.rotation, lookRot, Time.deltaTime * rotateSpeed);
             yield return null;
         }
-
+        yield return new WaitForSeconds(0.2f);
+        GameObject.FindWithTag(spawnerInfo.managerTag).GetComponent<Saving>().data.currency += Mathf.RoundToInt(setPrice * amount);
+        spawnerInfo.counterAvailable = true;
+        StartCoroutine(LeaveStore());
+    }
+    public IEnumerator LeaveStore()
+    {
+        foreach (Transform child in itemDisplay)
+            Destroy(child.gameObject);
+        agent.SetDestination(spawnerInfo.doorLocation.position);
+        yield return null;
+        while (Vector3.Distance(transform.position, spawnerInfo.doorLocation.position) > 0.5f)
+        {
+            Debug.DrawLine(transform.position, spawnerInfo.doorLocation.position, Color.red);
+            yield return null;
+        }
+        spawnerInfo.currentBuyers--;
+        Destroy(gameObject);
     }
 
     public void SetVisuals()

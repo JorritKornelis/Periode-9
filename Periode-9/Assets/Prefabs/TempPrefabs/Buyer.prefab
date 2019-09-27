@@ -73,6 +73,11 @@ MonoBehaviour:
   meshFilter: {fileID: 3397278173269845888}
   spawnerInfo: {fileID: 0}
   itemDisplay: {fileID: 4656546631256646141}
+  hasItem: 0
+  rotateSpeed: 4
+  currentItem: -1
+  amount: 0
+  setPrice: 0
 --- !u!1 &4830575851415830448
 GameObject:
   m_ObjectHideFlags: 0

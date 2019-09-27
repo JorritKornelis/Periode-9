@@ -11,10 +11,11 @@ public class BuyerSpawner : MonoBehaviour
     public bool counterAvailable;
     public int maxBuyers;
     public GameObject buyerBaseObject;
-    private int currentBuyers;
+    public int currentBuyers;
     public float spawnTimer;
     public List<SellPoint> sellPoints = new List<SellPoint>();
     public ItemClassScriptableObject items;
+    public string managerTag;
 
     public void Start()
     {
