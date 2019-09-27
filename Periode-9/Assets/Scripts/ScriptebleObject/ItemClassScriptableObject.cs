@@ -16,5 +16,5 @@ public class ItemInformationClass
     public Sprite Sprite;
     public int maxStack;
     public GameObject itemGameObject;
-
+    public bool canUse;
 }

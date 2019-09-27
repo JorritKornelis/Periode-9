@@ -18,16 +18,20 @@ MonoBehaviour:
     maxStack: 15
     itemGameObject: {fileID: 7477505537563810475, guid: 948f8f3b67c73244da2d88b538dcb526,
       type: 3}
+    canUse: 1
   - name: Slime
     Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
     maxStack: 10
     itemGameObject: {fileID: 713468225045681827, guid: fbab0ddcb44b99e4290c36039ae20b3f,
       type: 3}
+    canUse: 0
   - name: Fur
     Sprite: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
     maxStack: 15
     itemGameObject: {fileID: 0}
+    canUse: 0
   - name: Poop
     Sprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
     maxStack: 15
     itemGameObject: {fileID: 0}
+    canUse: 0
