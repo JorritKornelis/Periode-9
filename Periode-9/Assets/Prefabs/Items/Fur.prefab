@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4868351714942363870}
   - component: {fileID: 1203399517006091303}
   m_Layer: 0
-  m_Name: Fur2
+  m_Name: Fur
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58,6 +58,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 445e9fe637cd27044acc91af4a9b4724, type: 2}
+  - {fileID: 2100000, guid: bf7bd0c6e9981474fb418ededbb7d41b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
