@@ -57,45 +57,49 @@ public class CharacterMovement : MonoBehaviour
     public void Update()
     {
         if (allowMovement)
+            Move();
+
+    }
+
+    public void Move()
+    {
+        currentAccel = Mathf.Lerp(currentAccel, (Input.GetButton("Horizontal") || Input.GetButton("Vertical")) ? 1 : 0, Time.deltaTime * accelAmount);
+        Vector3 currentMove = new Vector3(GetCollisionMoveAmount(Vector3.right, Input.GetAxis("Horizontal")), 0, GetCollisionMoveAmount(Vector3.forward, Input.GetAxis("Vertical"))).normalized * moveSpeed * currentAccel;
+        currentMovementSpeed = Vector3.Lerp(currentMovementSpeed, currentMove, Time.deltaTime * accelAmount);
+        if (GetCollisionMoveAmount(Vector3.right, Input.GetAxis("Horizontal")) == 0 && Input.GetButton("Horizontal"))
+            currentMovementSpeed.x = 0;
+        if (GetCollisionMoveAmount(Vector3.forward, Input.GetAxis("Vertical")) == 0 && Input.GetButton("Vertical"))
+            currentMovementSpeed.z = 0;
+        CheckCollisionPickUp();
+        if (Vector3.Distance(Vector3.zero, currentMovementSpeed) > 0.2f)
         {
-            currentAccel = Mathf.Lerp(currentAccel, (Input.GetButton("Horizontal") || Input.GetButton("Vertical")) ? 1 : 0, Time.deltaTime * accelAmount);
-            Vector3 currentMove = new Vector3(GetCollisionMoveAmount(Vector3.right, Input.GetAxis("Horizontal")), 0, GetCollisionMoveAmount(Vector3.forward, Input.GetAxis("Vertical"))).normalized * moveSpeed * currentAccel;
-            currentMovementSpeed = Vector3.Lerp(currentMovementSpeed, currentMove, Time.deltaTime * accelAmount);
-            if (GetCollisionMoveAmount(Vector3.right, Input.GetAxis("Horizontal")) == 0 && Input.GetButton("Horizontal"))
-                currentMovementSpeed.x = 0;
-            if (GetCollisionMoveAmount(Vector3.forward, Input.GetAxis("Vertical")) == 0 && Input.GetButton("Vertical"))
-                currentMovementSpeed.z = 0;
-            CheckCollisionPickUp();
-            if(Vector3.Distance(Vector3.zero, currentMovementSpeed) > 0.2f)
+            Vector3 animationDirection = body.InverseTransformDirection(currentMovementSpeed.normalized);
+            animator.SetFloat("Horizontal", animationDirection.x);
+            animator.SetFloat("Vertical", animationDirection.z);
+        }
+        else
+        {
+            animator.SetFloat("Horizontal", 0);
+            animator.SetFloat("Vertical", 0);
+        }
+        if (GroundCheck())
+        {
+            CursorFollow();
+            walkDust.gameObject.SetActive(true);
+            CheckForNewSavePoint();
+            transform.Translate(currentMovementSpeed * Time.deltaTime);
+        }
+        else
+        {
+            walkDust.gameObject.SetActive(false);
+            fallVelocity += fallSpeed * Time.deltaTime;
+            transform.Translate(Vector3.down * Time.deltaTime * fallVelocity);
+            if (transform.position.y < resetHeight)
             {
-                Vector3 animationDirection = body.InverseTransformDirection(currentMovementSpeed.normalized);
-                animator.SetFloat("Horizontal", animationDirection.x);
-                animator.SetFloat("Vertical", animationDirection.z);
-            }
-            else
-            {
-                animator.SetFloat("Horizontal", 0);
-                animator.SetFloat("Vertical", 0);
-            }
-            if (GroundCheck())
-            {
-                CursorFollow();
-                walkDust.gameObject.SetActive(true);
-                CheckForNewSavePoint();
-                transform.Translate(currentMovementSpeed * Time.deltaTime);
-            }
-            else
-            {
-                walkDust.gameObject.SetActive(false);
-                fallVelocity += fallSpeed * Time.deltaTime;
-                transform.Translate(Vector3.down * Time.deltaTime * fallVelocity);
-                if (transform.position.y < resetHeight)
-                {
-                    transform.position = lastSaveSpot;
-                    fallVelocity = 0;
-                    currentMovementSpeed = Vector3.zero;
-                    StartCoroutine(Camera.main.GetComponent<ScreenShake>().Shake(0.3f));
-                }
+                transform.position = lastSaveSpot;
+                fallVelocity = 0;
+                currentMovementSpeed = Vector3.zero;
+                StartCoroutine(Camera.main.GetComponent<ScreenShake>().Shake(0.3f));
             }
         }
     }

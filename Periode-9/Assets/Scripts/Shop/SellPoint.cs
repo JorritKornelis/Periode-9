@@ -10,4 +10,5 @@ public class SellPoint : MonoBehaviour
     public Transform itemDisplay;
     public bool lookedAt;
     public bool displayItem;
+    public int zoomIndex;
 }
