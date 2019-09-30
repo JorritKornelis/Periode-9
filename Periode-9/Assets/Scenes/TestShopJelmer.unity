@@ -155,6 +155,7 @@ MonoBehaviour:
   itemDisplay: {fileID: 1215631087}
   lookedAt: 0
   displayItem: 0
+  zoomIndex: 0
 --- !u!4 &104579225
 Transform:
   m_ObjectHideFlags: 0
@@ -675,6 +676,7 @@ MonoBehaviour:
   itemDisplay: {fileID: 2050382601}
   lookedAt: 0
   displayItem: 0
+  zoomIndex: 0
 --- !u!4 &677306077
 Transform:
   m_ObjectHideFlags: 0
@@ -804,6 +806,7 @@ MonoBehaviour:
   itemDisplay: {fileID: 1794300082}
   lookedAt: 0
   displayItem: 0
+  zoomIndex: 0
 --- !u!4 &976259696
 Transform:
   m_ObjectHideFlags: 0
@@ -1774,6 +1777,7 @@ MonoBehaviour:
   itemDisplay: {fileID: 335144490}
   lookedAt: 0
   displayItem: 0
+  zoomIndex: 0
 --- !u!4 &1908293264
 Transform:
   m_ObjectHideFlags: 0
