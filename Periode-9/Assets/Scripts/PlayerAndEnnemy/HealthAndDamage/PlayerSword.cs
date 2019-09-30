@@ -6,6 +6,9 @@ public class PlayerSword : MonoBehaviour
 {
     public float swordRadius;
     public int swordDamage;
+    public int acttackCoolDownTimer;
+
+    public Animator playerDungonAnimator;
 
     public void Update()
     {
@@ -17,17 +20,29 @@ public class PlayerSword : MonoBehaviour
     {
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, swordRadius);
         int i = 0;
-        while (i < hitColliders.Length)
+        if (Input.GetButtonDown("Fire1"))
         {
-            if (Input.GetButtonDown("Fire1"))
+            playerDungonAnimator.SetBool("Attacking", true);
+            Debug.Log("CUTE KITTY");
+
+            while (i < hitColliders.Length)
             {
                 if (hitColliders[i].gameObject.tag == "Enemy")
                 {
                     Debug.Log("HIT ENEMY");
                     hitColliders[i].GetComponent<EnemyHealthScript>().TakeDamage(swordDamage, hitColliders[i].gameObject);
+                    playerDungonAnimator.SetBool("Attacking", false);
                 }
+                i++;
             }
-            i++;
+            StartCoroutine(AttackCoolDown());
         }
     }
+
+    IEnumerator AttackCoolDown()
+    {
+        yield return new WaitForSeconds(acttackCoolDownTimer);
+        playerDungonAnimator.SetBool("Attacking", false);
+    }
+
 }

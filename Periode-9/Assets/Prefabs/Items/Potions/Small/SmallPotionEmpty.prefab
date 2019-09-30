@@ -9,7 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7596838975502522601}
-  m_Layer: 0
+  - component: {fileID: -1633558886311255660}
+  - component: {fileID: 344284790125527182}
+  m_Layer: 9
   m_Name: SmallPotionEmpty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32,6 +34,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-1633558886311255660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6860738240756673274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58f829c9452c0dc4f80b9c3c398b3dfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  index: 0
+  amoundInItem: 1
+  mayAdd: 1
+  itemClassScriptableObject: {fileID: 11400000, guid: eeb5db131d0390b48a0087632f0cb6a8,
+    type: 2}
+--- !u!65 &344284790125527182
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6860738240756673274}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.15, y: 0.3, z: 0.15}
+  m_Center: {x: 0, y: -0.1, z: 0}
 --- !u!1 &7048584313166286963
 GameObject:
   m_ObjectHideFlags: 0
@@ -43,7 +75,7 @@ GameObject:
   - component: {fileID: 2308174828016981757}
   - component: {fileID: 8147431384734190864}
   - component: {fileID: 1641981153616853918}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Small Potion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +153,7 @@ GameObject:
   - component: {fileID: 7679431004257215084}
   - component: {fileID: 7625263007696323592}
   - component: {fileID: 644857700171530086}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Small Kurk
   m_TagString: Untagged
   m_Icon: {fileID: 0}

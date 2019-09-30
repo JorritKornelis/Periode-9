@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 4527483941644571368}
   - component: {fileID: 4868351714942363870}
   - component: {fileID: 1203399517006091303}
-  m_Layer: 0
+  - component: {fileID: 6170752339520723592}
+  - component: {fileID: -5896916760906011325}
+  m_Layer: 9
   m_Name: Fur
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,3 +81,33 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &6170752339520723592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616856193911251195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58f829c9452c0dc4f80b9c3c398b3dfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  index: 12
+  amoundInItem: 1
+  mayAdd: 1
+  itemClassScriptableObject: {fileID: 11400000, guid: eeb5db131d0390b48a0087632f0cb6a8,
+    type: 2}
+--- !u!65 &-5896916760906011325
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616856193911251195}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.21489897, y: 0.70469916, z: 0.24099678}
+  m_Center: {x: 0.011697575, y: -0.35234958, z: 0.015461583}

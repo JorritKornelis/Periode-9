@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 238627496304849453}
   - component: {fileID: 9085098341861885979}
   - component: {fileID: 3253931707365127394}
-  m_Layer: 0
+  - component: {fileID: -8608304684350054779}
+  - component: {fileID: -1609301969455819660}
+  m_Layer: 9
   m_Name: ElectricityScroll
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,3 +81,33 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &-8608304684350054779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3824857533377593406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58f829c9452c0dc4f80b9c3c398b3dfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  index: 8
+  amoundInItem: 1
+  mayAdd: 1
+  itemClassScriptableObject: {fileID: 11400000, guid: eeb5db131d0390b48a0087632f0cb6a8,
+    type: 2}
+--- !u!65 &-1609301969455819660
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3824857533377593406}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6604991, y: 0.14646292, z: 0.1409291}
+  m_Center: {x: 0.000000014901161, y: 0.015238717, z: 0.0015883818}

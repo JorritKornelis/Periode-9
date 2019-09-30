@@ -9,7 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2561067855775779142}
-  m_Layer: 0
+  - component: {fileID: 4160258319393107851}
+  - component: {fileID: -8021380890238103557}
+  m_Layer: 9
   m_Name: BigPotionBlue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32,6 +34,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4160258319393107851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1572288973181107029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58f829c9452c0dc4f80b9c3c398b3dfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  index: 1
+  amoundInItem: 1
+  mayAdd: 1
+  itemClassScriptableObject: {fileID: 11400000, guid: eeb5db131d0390b48a0087632f0cb6a8,
+    type: 2}
+--- !u!65 &-8021380890238103557
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1572288973181107029}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.3, y: 0.4, z: 0.3}
+  m_Center: {x: 0, y: -0.05, z: 0}
 --- !u!1 &1866709840982952914
 GameObject:
   m_ObjectHideFlags: 0
@@ -43,7 +75,7 @@ GameObject:
   - component: {fileID: 527720007705443439}
   - component: {fileID: 4512797166101132345}
   - component: {fileID: 5381475127020974803}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Big Kurk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,7 +154,7 @@ GameObject:
   - component: {fileID: 2215347464873348213}
   - component: {fileID: 149379301813330180}
   - component: {fileID: 7276744106194864742}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Big Potion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
