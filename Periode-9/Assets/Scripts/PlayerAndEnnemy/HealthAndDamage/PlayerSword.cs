@@ -24,25 +24,9 @@ public class PlayerSword : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             playerDungonAnimator.SetBool("Attacking", true);
-            
-            Debug.Log("CUTE KITTY");
 
             while (i < hitColliders.Length)
             {
-                //if nog een keer input
-                if (Input.GetButtonDown("Fire1"))
-                {
-                    //ga naar 2de
-                    if (playerDungonAnimator.GetBool("Attack2") == false)
-                    {
-                        maySecondA = true;   
-                    }
-                }
-                //dan cooldown
-                if (maySecondA == true)
-                {
-                    StartCoroutine(AttackCoolDown());
-                }
                 if (hitColliders[i].gameObject.tag == "Enemy")
                 {
                     Debug.Log("HIT ENEMY");
@@ -51,6 +35,15 @@ public class PlayerSword : MonoBehaviour
                 }
                 i++;
             }
+
+            while (playerDungonAnimator.GetBool("Attacking") == true)
+            {
+                if (Input.GetButtonDown("Fire1"))
+                {
+                    maySecondA = true;
+                }
+            }
+
             if (maySecondA == false)
             {
                 StartCoroutine(AttackCoolDown());
@@ -61,7 +54,7 @@ public class PlayerSword : MonoBehaviour
     IEnumerator AttackCoolDown()
     {
         yield return new WaitForSeconds(acttackCoolDownTimer);
-        playerDungonAnimator.SetBool("Attacking", false);
+        //playerDungonAnimator.SetBool("Attacking", false);
         maySecondA = false;
     }
 
