@@ -6,9 +6,10 @@ public class PlayerSword : MonoBehaviour
 {
     public float swordRadius;
     public int swordDamage;
-    public int acttackCoolDownTimer;
+    public float acttackCoolDownTimer;
 
     public Animator playerDungonAnimator;
+    bool maySecondA = false;
 
     public void Update()
     {
@@ -23,10 +24,25 @@ public class PlayerSword : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             playerDungonAnimator.SetBool("Attacking", true);
+            
             Debug.Log("CUTE KITTY");
 
             while (i < hitColliders.Length)
             {
+                //if nog een keer input
+                if (Input.GetButtonDown("Fire1"))
+                {
+                    //ga naar 2de
+                    if (playerDungonAnimator.GetBool("Attack2") == false)
+                    {
+                        maySecondA = true;   
+                    }
+                }
+                //dan cooldown
+                if (maySecondA == true)
+                {
+                    StartCoroutine(AttackCoolDown());
+                }
                 if (hitColliders[i].gameObject.tag == "Enemy")
                 {
                     Debug.Log("HIT ENEMY");
@@ -35,7 +51,10 @@ public class PlayerSword : MonoBehaviour
                 }
                 i++;
             }
-            StartCoroutine(AttackCoolDown());
+            if (maySecondA == false)
+            {
+                StartCoroutine(AttackCoolDown());
+            }
         }
     }
 
@@ -43,6 +62,7 @@ public class PlayerSword : MonoBehaviour
     {
         yield return new WaitForSeconds(acttackCoolDownTimer);
         playerDungonAnimator.SetBool("Attacking", false);
+        maySecondA = false;
     }
 
 }
