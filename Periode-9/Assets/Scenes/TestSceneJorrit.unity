@@ -802,8 +802,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swordRadius: 1
   swordDamage: 1
-  acttackCoolDownTimer: 0
+  acttackCoolDownTimer: 0.2
   playerDungonAnimator: {fileID: 1979023565}
+  waitForAttackDamage: 0.2
+  waitForNextAnimaton: 0
 --- !u!1001 &457076992
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1427,6 +1429,7 @@ MonoBehaviour:
   inv: {fileID: 627726495}
   invPanel: {fileID: 383756149}
   chestPanel: {fileID: 642663631}
+  sellTableUI: {fileID: 0}
   nameText: {fileID: 0}
   amountTextDisplay: {fileID: 0}
   itemScriptableObject: {fileID: 11400000, guid: eeb5db131d0390b48a0087632f0cb6a8,
@@ -1474,6 +1477,7 @@ MonoBehaviour:
     storageSystem: {fileID: 0}
     taken: 0
   savingScript: {fileID: 853867322}
+  savingTag: 
 --- !u!114 &662573455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1537,6 +1541,11 @@ MonoBehaviour:
   inTheChestBool: 0
   inDungeonAnimations: 0
   animator: {fileID: 1979023565}
+  interactionInput: 
+  sellTableMask:
+    serializedVersion: 2
+    m_Bits: 0
+  inSellPoint: 0
 --- !u!4 &662573458
 Transform:
   m_ObjectHideFlags: 0

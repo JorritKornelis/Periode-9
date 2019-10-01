@@ -11,6 +11,9 @@ public class PlayerSword : MonoBehaviour
     public Animator playerDungonAnimator;
     CharacterMovement character;
 
+    public float waitForAttackDamage;
+    public float waitForNextAnimaton;
+
     void Start()
     {
         character = GameObject.FindWithTag("Player").GetComponent<CharacterMovement>();
@@ -31,7 +34,7 @@ public class PlayerSword : MonoBehaviour
         playerDungonAnimator.SetBool("Attacking", true);
         character.allowMovement = false;
 
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(waitForAttackDamage);
 
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, swordRadius);
         int i = 0;
@@ -46,12 +49,12 @@ public class PlayerSword : MonoBehaviour
             i++;
         }
         yield return new WaitForSeconds(0.1f);
-        float time = 0.1f;
+        
         bool nextAttack = false;
-        while (time > 0)
+        while (waitForNextAnimaton > 0)
         {
             yield return null;
-            time -= Time.deltaTime;
+            waitForNextAnimaton -= Time.deltaTime;
             if (Input.GetButtonDown("Fire1"))
             {
                 nextAttack = true;
