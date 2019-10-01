@@ -28,9 +28,11 @@ public class Inventory : MonoBehaviour
 
     [Header("Saving")]
     public Saving savingScript;
+    public string savingTag;
 
     void Start()
     {
+        savingScript = GameObject.FindWithTag(savingTag).GetComponent<Saving>();
         inv.SetActive(false);
         chestPanel.SetActive(false);
         charMovement = gameObject.GetComponent<CharacterMovement>();

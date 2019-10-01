@@ -15,9 +15,9 @@ MonoBehaviour:
   waitTime: 0.6
   buyCheckChance: 69
   buyChance: 70
-  otherThanInterestedChance: 0
+  otherThanInterestedChance: 100
   leaveChance: 4
   interestedItems: 
   characterMesh: {fileID: 6622264641530768373, guid: 2c080d7fc1dfc0a49933092023a31476,
     type: 3}
-  characterMaterial: {fileID: 2100000, guid: 16732b6f72e804f45a460b1770b46748, type: 2}
+  characterMaterial: {fileID: 2100000, guid: b1c08cceb0254ae4d9351a804f8dea7a, type: 2}

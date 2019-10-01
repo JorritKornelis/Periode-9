@@ -6,6 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/StartUpScene.unity
+    guid: 9732eb3d7086cc94a8fba1dae91fb48e
+  - enabled: 1
+    path: Assets/Scenes/ShopRoomScene.unity
+    guid: 36de626d1a9b314468296bba47bc5d4d
+  - enabled: 1
+    path: Assets/Scenes/TestSceneJelmer.unity
+    guid: 3b7e734e08bc80f4d99301dc439359f9
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}
