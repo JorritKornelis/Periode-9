@@ -41,7 +41,6 @@ public class Hotbar : MonoBehaviour
         i = press - 1;
         if (inventory.slotInformationArray[i].index > -1)
         {
-            Debug.Log(i + " I");
             if (inventory.itemScriptableObject.itemInformationList[inventory.slotInformationArray[i].index].canUse == true)
             {
                 Debug.Log("USE ITEM");

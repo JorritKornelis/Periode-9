@@ -49,12 +49,13 @@ public class PlayerSword : MonoBehaviour
             i++;
         }
         yield return new WaitForSeconds(0.1f);
-        
+
+        float time = waitForNextAnimaton;
         bool nextAttack = false;
-        while (waitForNextAnimaton > 0)
+        while (time > 0)
         {
             yield return null;
-            waitForNextAnimaton -= Time.deltaTime;
+            time -= Time.deltaTime;
             if (Input.GetButtonDown("Fire1"))
             {
                 nextAttack = true;
