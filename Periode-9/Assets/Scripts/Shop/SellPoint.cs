@@ -11,4 +11,10 @@ public class SellPoint : MonoBehaviour
     public bool lookedAt;
     public bool displayItem;
     public int zoomIndex;
+    public bool currentlyPlacable;
+
+    public void OnMouseDown()
+    {
+        
+    }
 }

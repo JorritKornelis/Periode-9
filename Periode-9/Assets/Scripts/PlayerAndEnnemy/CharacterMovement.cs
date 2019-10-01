@@ -76,6 +76,7 @@ public class CharacterMovement : MonoBehaviour
                 if (focus.active)
                     focus.reset = true;
                 SellingTable table = colliders[0].GetComponent<SellingTable>();
+                table.InteractionStart();
                 StartCoroutine(focus.MoveTowardsPoint(table.cameraLoc));
                 Inventory inv = GetComponent<Inventory>();
                 inv.inv.SetActive(true);
