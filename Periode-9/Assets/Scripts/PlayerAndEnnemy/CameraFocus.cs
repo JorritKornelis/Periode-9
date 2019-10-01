@@ -11,6 +11,7 @@ public class CameraFocus : MonoBehaviour
     public float stopDistance;
     public bool test;
     public int testIndex;
+    public bool reset, active;
 
     public void Update()
     {
@@ -28,6 +29,7 @@ public class CameraFocus : MonoBehaviour
 
     public IEnumerator MoveTowardsPoint(int index)
     {
+        active = true;
         if (index >= 0)
             GetComponent<CameraPlayerFollow>().enabled = false;
         else
@@ -35,14 +37,21 @@ public class CameraFocus : MonoBehaviour
         Vector3 pos = (index >= 0) ? positions[index].pos : originalPos.pos;
         Vector3 pointOfInterest = (index >= 0) ? positions[index].pointOfInterest : originalPos.pointOfInterest;
         float fov = (index >= 0) ? positions[index].fov : originalPos.fov;
+        yield return null;
         while (Vector3.Distance(transform.position,pos) > stopDistance)
         {
+            if (reset)
+            {
+                reset = false;
+                break;
+            }
             transform.position = Vector3.Lerp(transform.position, pos, Time.deltaTime * lerpSpeed);
             Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, fov, Time.deltaTime * lerpSpeed);
             if (index >= 0)
                 transform.LookAt(pointOfInterest);
             yield return null;
         }
+        active = false;
     }
 
     public void OnDrawGizmos()

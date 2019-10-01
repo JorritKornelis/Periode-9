@@ -9,6 +9,7 @@ public class Inventory : MonoBehaviour
     public GameObject inv;
     public GameObject invPanel;
     public GameObject chestPanel;
+    public GameObject sellTableUI;
 
     public Text nameText;
     public Text amountTextDisplay;

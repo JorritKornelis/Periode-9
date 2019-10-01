@@ -31,6 +31,9 @@ public class CharacterMovement : MonoBehaviour
     public bool inTheChestBool = false;
     public bool inDungeonAnimations;
     public Animator animator;
+    public string interactionInput;
+    public LayerMask sellTableMask;
+    public bool inSellPoint;
 
     public IEnumerator StartMovement(float time)
     {
@@ -58,7 +61,38 @@ public class CharacterMovement : MonoBehaviour
     {
         if (allowMovement)
             Move();
+        if (Input.GetButtonDown(interactionInput))
+            CheckForTable();
+    }
 
+    public void CheckForTable()
+    {
+        CameraFocus focus = Camera.main.transform.parent.GetComponent<CameraFocus>();
+        if (!inSellPoint)
+        {
+            Collider[] colliders = Physics.OverlapSphere(transform.position, pickUpRadis, sellTableMask);
+            if (colliders.Length > 0)
+            {
+                if (focus.active)
+                    focus.reset = true;
+                SellingTable table = colliders[0].GetComponent<SellingTable>();
+                StartCoroutine(focus.MoveTowardsPoint(table.cameraLoc));
+                Inventory inv = GetComponent<Inventory>();
+                inv.inv.SetActive(true);
+                allowMovement = false;
+                inSellPoint = true;
+            }
+        }
+        else
+        {
+            if (focus.active)
+                focus.reset = true;
+            StartCoroutine(focus.MoveTowardsPoint(-1));
+            Inventory inv = GetComponent<Inventory>();
+            inv.inv.SetActive(false);
+            allowMovement = true;
+            inSellPoint = false;
+        }
     }
 
     public void Move()
