@@ -6,56 +6,65 @@ public class PlayerSword : MonoBehaviour
 {
     public float swordRadius;
     public int swordDamage;
-    public float acttackCoolDownTimer;
 
+    public float acttackCoolDownTimer;
     public Animator playerDungonAnimator;
-    bool maySecondA = false;
+    CharacterMovement character;
+
+    void Start()
+    {
+        character = GameObject.FindWithTag("Player").GetComponent<CharacterMovement>();
+    }
 
     public void Update()
     {
+        if (Input.GetButtonDown("Fire1") && playerDungonAnimator.GetBool("Attacking") == false)
+        {
+            StartCoroutine(PlayerSwordAtack());
+        }
         PlayerSwordAtack();
     }
 
     //animation toevoegen
-    public void PlayerSwordAtack()
+    public IEnumerator PlayerSwordAtack()
     {
+        playerDungonAnimator.SetBool("Attacking", true);
+        character.allowMovement = false;
+
+        yield return new WaitForSeconds(0.1f);
+
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, swordRadius);
         int i = 0;
-        if (Input.GetButtonDown("Fire1"))
+
+        while (i < hitColliders.Length)
         {
-            playerDungonAnimator.SetBool("Attacking", true);
-
-            while (i < hitColliders.Length)
+            if (hitColliders[i].gameObject.tag == "Enemy")
             {
-                if (hitColliders[i].gameObject.tag == "Enemy")
-                {
-                    Debug.Log("HIT ENEMY");
-                    hitColliders[i].GetComponent<EnemyHealthScript>().TakeDamage(swordDamage, hitColliders[i].gameObject);
-                    playerDungonAnimator.SetBool("Attacking", false);
-                }
-                i++;
+                Debug.Log("HIT ENEMY");
+                hitColliders[i].GetComponent<EnemyHealthScript>().TakeDamage(swordDamage, hitColliders[i].gameObject);
             }
-
-            while (playerDungonAnimator.GetBool("Attacking") == true)
+            i++;
+        }
+        yield return new WaitForSeconds(0.1f);
+        float time = 0.1f;
+        bool nextAttack = false;
+        while (time > 0)
+        {
+            yield return null;
+            time -= Time.deltaTime;
+            if (Input.GetButtonDown("Fire1"))
             {
-                if (Input.GetButtonDown("Fire1"))
-                {
-                    maySecondA = true;
-                }
-            }
-
-            if (maySecondA == false)
-            {
-                StartCoroutine(AttackCoolDown());
+                nextAttack = true;
             }
         }
+        if (nextAttack)
+        {
+            StartCoroutine(PlayerSwordAtack());
+        }
+        else
+        {
+            playerDungonAnimator.SetBool("Attacking", false);
+            character.allowMovement = true;
+        }
     }
-
-    IEnumerator AttackCoolDown()
-    {
-        yield return new WaitForSeconds(acttackCoolDownTimer);
-        //playerDungonAnimator.SetBool("Attacking", false);
-        maySecondA = false;
-    }
-
 }
