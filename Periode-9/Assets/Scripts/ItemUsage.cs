@@ -10,7 +10,7 @@ public class ItemUsage : MonoBehaviour
     [System.Serializable]
     public class MyEvent : UnityEvent
     {
-
+        
 
     }
     

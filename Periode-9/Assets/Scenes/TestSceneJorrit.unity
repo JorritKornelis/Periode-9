@@ -856,7 +856,7 @@ PrefabInstance:
     - target: {fileID: 1885449270581187935, guid: b1c65acfb2d7afe449a226abd4198899,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1885449270581187935, guid: b1c65acfb2d7afe449a226abd4198899,
         type: 3}
@@ -1249,7 +1249,7 @@ PrefabInstance:
     - target: {fileID: 2623012972687153649, guid: 12ebfbd5c06c640499c7b0166868f5a0,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2623012972687153649, guid: 12ebfbd5c06c640499c7b0166868f5a0,
         type: 3}
@@ -2890,7 +2890,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1388631955
 PrefabInstance:
@@ -3354,7 +3354,7 @@ Transform:
   m_LocalScale: {x: 25.411999, y: 0.12706, z: 25.411999}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1474948331
 PrefabInstance:
@@ -3582,6 +3582,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a79928a4d734bac45bbabbae833123ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myEventsList:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: ItemUsage+MyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: ItemUsage+MyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: ItemUsage+MyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: ItemUsage+MyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: ItemUsage+MyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!4 &1760820274
 Transform:
   m_ObjectHideFlags: 0
@@ -3933,7 +3965,7 @@ RectTransform:
   - {fileID: 642663632}
   - {fileID: 627726496}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4322,7 +4354,7 @@ PrefabInstance:
     - target: {fileID: 977613386641757729, guid: 54ff96642e9d38543bae954c29975d09,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 977613386641757729, guid: 54ff96642e9d38543bae954c29975d09,
         type: 3}
