@@ -7,6 +7,7 @@ public class SellingTable : MonoBehaviour
     public int cameraLoc;
     public SellPoint[] sellpoints;
     public bool currentlyInteracted;
+    public SellingUI ui;
 
     public void Update()
     {
@@ -21,7 +22,10 @@ public class SellingTable : MonoBehaviour
     public void InteractionStart()
     {
         foreach (SellPoint point in sellpoints)
+        {
             point.currentlyPlacable = true;
+            point.ui = ui;
+        }
         currentlyInteracted = true;
     }
 }
