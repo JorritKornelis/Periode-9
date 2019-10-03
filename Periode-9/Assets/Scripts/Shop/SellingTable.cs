@@ -16,6 +16,7 @@ public class SellingTable : MonoBehaviour
             currentlyInteracted = false;
             foreach (SellPoint point in sellpoints)
                 point.currentlyPlacable = false;
+            ui.ui.SetActive(false);
         }
     }
 

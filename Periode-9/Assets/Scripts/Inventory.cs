@@ -25,6 +25,7 @@ public class Inventory : MonoBehaviour
     public StorageSystem storageSystemHolder;
     public SlotRefrenceInformation refrenceInformation1 = new SlotRefrenceInformation();
     public SlotRefrenceInformation refrenceInformation2 = new SlotRefrenceInformation();
+    public SlotRefrenceInformation lastPressed = new SlotRefrenceInformation();
 
     [Header("Saving")]
     public Saving savingScript;
@@ -54,6 +55,7 @@ public class Inventory : MonoBehaviour
                 charMovement.allowMovement = true;
                 chestPanel.SetActive(false);
                 refrenceInformation1 = new SlotRefrenceInformation();
+                lastPressed = new SlotRefrenceInformation();
                 storageSystemHolder = null;
             }
             else
@@ -81,6 +83,7 @@ public class Inventory : MonoBehaviour
             refrenceInformation1.witchIndex = selectIndex;
             refrenceInformation1.storageSystem = (inTheChest) ? storageSystemHolder : null;
             refrenceInformation1.taken = true;
+            lastPressed = refrenceInformation1;
             if (((inTheChest) ? storageSystemHolder.chestSlotArray[selectIndex].index : slotInformationArray[selectIndex].index) == -1)
                 refrenceInformation1 = new SlotRefrenceInformation();
         }
@@ -94,6 +97,7 @@ public class Inventory : MonoBehaviour
         if(refrenceInformation1.taken && refrenceInformation2.taken)
         {
             ItemMove();
+            lastPressed = new SlotRefrenceInformation();
         }
     }
     
@@ -202,7 +206,7 @@ public class Inventory : MonoBehaviour
         UpdateInvetoryUI(slotInformationArray);
     }
 
-    void UpdateInvetoryUI(SlotInformation[] overloadArray)
+    public void UpdateInvetoryUI(SlotInformation[] overloadArray)
     {
         for (int i = 0; i < overloadArray.Length; i++)
         {

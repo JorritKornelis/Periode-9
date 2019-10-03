@@ -25,6 +25,9 @@ public class SellPoint : MonoBehaviour
         foreach (Transform obj in itemDisplay.transform)
             Destroy(obj.gameObject);
         if (item >= 0)
-            Instantiate(ui.itemList.itemInformationList[item].itemGameObject, itemDisplay.position, itemDisplay.rotation, itemDisplay);
+        {
+            GameObject g = Instantiate(ui.itemList.itemInformationList[item].itemGameObject, itemDisplay.position, itemDisplay.rotation, itemDisplay);
+            g.GetComponent<ItemIndex>().mayAdd = false;
+        }
     }
 }
