@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Hotbar : MonoBehaviour
 {
-    Inventory inventory;
+    Inventory inventoryScript;
+    public ItemUsage itemUsageScript;
 
     void Start()
     {
-        inventory = GameObject.FindWithTag("Player").GetComponent<Inventory>();
+        inventoryScript = GameObject.FindWithTag("Player").GetComponent<Inventory>();
     }
 
     void Update()
@@ -39,11 +40,13 @@ public class Hotbar : MonoBehaviour
     {
         int i;
         i = press - 1;
-        if (inventory.slotInformationArray[i].index > -1)
+        if (inventoryScript.slotInformationArray[i].index > -1)
         {
-            if (inventory.itemScriptableObject.itemInformationList[inventory.slotInformationArray[i].index].canUse == true)
+            if (inventoryScript.itemScriptableObject.itemInformationList[inventoryScript.slotInformationArray[i].index].canUse == true)
             {
-                Debug.Log("USE ITEM");
+                itemUsageScript.SelectUseItem();
+                //kijken welke die is in de lijst van itemuse
+                //item moet weten welke hi is in die lijst
             }
         }
     }

@@ -5,54 +5,68 @@ using UnityEngine.Events;
 
 public class ItemUsage : MonoBehaviour
 {
-    public List<MyEvent> myEventsList = new List<MyEvent>();
+    public Inventory inventoryScript;
+
+    public List<ItemUseDing> usables = new List<ItemUseDing>();
+
+    void Start()
+    {
+        inventoryScript = GameObject.FindWithTag("Player").GetComponent<Inventory>();
+    }
+
+    public void SelectUseItem()
+    {
+
+    }
 
     [System.Serializable]
-    public class MyEvent : UnityEvent
+    public class ItemUseDing
     {
-        
-
+        public int usableIndex;
+        public int itemIndex;
+        public UnityEvent useEvenet;
     }
-    
+
+
     /*
     // potions
-    public virtual void HealthPotion()
+    public void HealthPotion()
     {
         //override
     }
-    public virtual void SpeedPotion()
+    public void SpeedPotion()
     {
         //override
     }
-    public virtual void DamagePotion()
+    public void DamagePotion()
     {
         //override
     }
 
     //scrolls
-    public virtual void ElectricityScroll()
+    public void ElectricityScroll()
     {
         //override
     }
-    public virtual void FireScroll()
+    public void FireScroll()
     {
         //override
     }
-    public virtual void IceScroll()
+    public void IceScroll()
     {
         //override
     }
 
     //gems
-    public virtual void ElectricityGem()
+    public void ElectricityGem()
     {
         //override
     }
-    public virtual void FireGem()
+    public void FireGem()
     {
         //override
     }
-    public virtual void IceGem()
+    public void IceGem()
     {
         //override
     }
