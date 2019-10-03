@@ -16,7 +16,7 @@ public class ItemUsage : MonoBehaviour
 
     public void SelectUseItem()
     {
-
+        
     }
 
     [System.Serializable]
@@ -28,12 +28,12 @@ public class ItemUsage : MonoBehaviour
     }
 
 
-    /*
     // potions
     public void HealthPotion()
     {
-        //override
+        Debug.Log("BIG HP POTION");
     }
+    /*
     public void SpeedPotion()
     {
         //override

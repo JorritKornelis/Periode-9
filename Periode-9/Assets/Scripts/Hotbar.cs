@@ -45,8 +45,7 @@ public class Hotbar : MonoBehaviour
             if (inventoryScript.itemScriptableObject.itemInformationList[inventoryScript.slotInformationArray[i].index].canUse == true)
             {
                 itemUsageScript.SelectUseItem();
-                //kijken welke die is in de lijst van itemuse
-                //item moet weten welke hi is in die lijst
+                //
             }
         }
     }
