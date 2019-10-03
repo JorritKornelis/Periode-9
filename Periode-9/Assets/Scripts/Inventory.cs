@@ -32,11 +32,11 @@ public class Inventory : MonoBehaviour
 
     void Start()
     {
-        savingScript = GameObject.FindWithTag(savingTag).GetComponent<Saving>();
         inv.SetActive(false);
         chestPanel.SetActive(false);
         charMovement = gameObject.GetComponent<CharacterMovement>();
 
+        savingScript = GameObject.FindWithTag(savingTag).GetComponent<Saving>();
         InvetoryLoadData();
     }
 
