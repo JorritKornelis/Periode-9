@@ -5,6 +5,7 @@ using UnityEngine;
 public class GeneralHealth : MonoBehaviour
 {
     public int hp;
+    public int maxHp;
 
     public virtual void TakeDamage(int damageAmount,GameObject witchObject)
     {
