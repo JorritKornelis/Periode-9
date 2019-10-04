@@ -14,33 +14,48 @@ public class ItemUsage : MonoBehaviour
         inventoryScript = GameObject.FindWithTag("Player").GetComponent<Inventory>();
     }
 
-    public void SelectUseItem()
+    public void SelectUseItem(int item)
     {
-        
+        //usables[item] 
+
     }
 
     [System.Serializable]
     public class ItemUseDing
     {
-        public int usableIndex;
+        //public int usableIndex;
         public int itemIndex;
         public UnityEvent useEvenet;
     }
 
-
     // potions
-    public void HealthPotion()
+    public void BigHealthPotion()
     {
         Debug.Log("BIG HP POTION");
     }
     /*
-    public void SpeedPotion()
+    public void BigSpeedPotion()
     {
         //override
     }
-    public void DamagePotion()
+    public void BigDamagePotion()
     {
         //override
+    }
+
+    public void SmallHealthPotion()
+    {
+        Debug.Log("BIG HP POTION");
+    }
+
+    public void SmallSpeedPotion()
+    {
+        Debug.Log("BIG HP POTION");
+    }
+    
+    public void SmallDamagePotion()
+    {
+        Debug.Log("BIG HP POTION");
     }
 
     //scrolls
