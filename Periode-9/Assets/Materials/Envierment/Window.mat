@@ -77,6 +77,6 @@ Material:
     m_Colors:
     - _AmbientColor: {r: 0.4, g: 0.4, b: 0.4, a: 1}
     - _Color: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 1}
-    - _EmissionColor: {r: 6.0903006, g: 2.7775848, b: 1.6563579, a: 1}
+    - _EmissionColor: {r: 7.133828, g: 5.0642242, b: 4.3408675, a: 1}
     - _RimColor: {r: 1, g: 1, b: 1, a: 1}
     - _SpecularColor: {r: 0.9, g: 0.9, b: 0.9, a: 1}
