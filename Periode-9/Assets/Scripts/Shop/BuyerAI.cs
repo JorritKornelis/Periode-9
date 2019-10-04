@@ -120,6 +120,7 @@ public class BuyerAI : MonoBehaviour
         possibleBuyable[index].amount = 0;
         possibleBuyable[index].lookedAt = false;
         hasItem = true;
+        possibleBuyable[index].DisplayItem();
         if (spawnerInfo.counterAvailable)
             StartCoroutine(WaitingAtCounter());
         else

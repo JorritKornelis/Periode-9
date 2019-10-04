@@ -7,11 +7,11 @@ public class SellingUI : MonoBehaviour
 {
     public GameObject ui;
     public SellPoint currentPoint;
-    public Text valueInput;
     public Image image;
     public Inventory inv;
     public ItemClassScriptableObject itemList;
     public Sprite nothing;
+    public Text[] priceInputs;
     public IEnumerator currentCoroutine;
 
     public void SelectSellSlot(SellPoint point)
@@ -24,12 +24,13 @@ public class SellingUI : MonoBehaviour
             image.sprite = itemList.itemInformationList[point.item].Sprite;
         else
             image.sprite = nothing;
-        valueInput.text = point.sellPrice.ToString();
+        DisplayPrice();
     }
 
     public void PanelClick()
     {
-        StopCoroutine(currentCoroutine);
+        if (currentCoroutine != null)
+            StopCoroutine(currentCoroutine);
         if (inv.refrenceInformation1.taken)
         {
             if (currentCoroutine != null)
@@ -50,6 +51,7 @@ public class SellingUI : MonoBehaviour
 
             currentPoint.DisplayItem();
             inv.refrenceInformation1 = new SlotRefrenceInformation();
+            inv.lastPressed = new SlotRefrenceInformation();
             inv.UpdateInvetoryUI(inv.slotInformationArray);
         }
         else if(currentPoint.item >= 0)
@@ -64,12 +66,16 @@ public class SellingUI : MonoBehaviour
         while (!inv.lastPressed.taken)
             yield return null;
 
-        SlotInformation slot = new SlotInformation();
+        SlotInformation slot = inv.slotInformationArray[inv.lastPressed.witchIndex];
         int itemCash = currentPoint.item;
         int amountCash = currentPoint.amount;
+
         currentPoint.item = slot.index;
         currentPoint.amount = slot.amount;
-        image.sprite = itemList.itemInformationList[slot.index].Sprite;
+        if (currentPoint.item >= 0)
+            image.sprite = itemList.itemInformationList[currentPoint.item].Sprite;
+        else
+            image.sprite = nothing;
         slot.index = itemCash;
         slot.amount = amountCash;
 
@@ -77,5 +83,28 @@ public class SellingUI : MonoBehaviour
         inv.lastPressed = new SlotRefrenceInformation();
         inv.UpdateInvetoryUI(inv.slotInformationArray);
         image.sprite = nothing;
+    }
+
+    public void PriceChange(int value)
+    {
+        if (currentPoint)
+        {
+            if(currentPoint.sellPrice + value >= 0 && currentPoint.sellPrice + value <= 999)
+                currentPoint.sellPrice += value;
+            DisplayPrice();
+        }
+    }
+
+    public void DisplayPrice()
+    {
+        if (currentPoint)
+        {
+            float testValue = currentPoint.sellPrice;
+            priceInputs[0].text = Mathf.Floor(testValue / 100).ToString();
+            testValue -= Mathf.Floor(testValue / 100) * 100;
+            priceInputs[1].text = Mathf.Floor(testValue / 10).ToString();
+            testValue -= Mathf.Floor(testValue / 10) * 10;
+            priceInputs[2].text = Mathf.Floor(testValue).ToString();
+        }
     }
 }
