@@ -15,7 +15,10 @@ public class SellingTable : MonoBehaviour
         {
             currentlyInteracted = false;
             foreach (SellPoint point in sellpoints)
+            {
                 point.currentlyPlacable = false;
+                point.lookedAt = false;
+            }
             ui.ui.SetActive(false);
         }
     }
@@ -25,6 +28,7 @@ public class SellingTable : MonoBehaviour
         foreach (SellPoint point in sellpoints)
         {
             point.currentlyPlacable = true;
+            point.lookedAt = true;
             point.ui = ui;
         }
         currentlyInteracted = true;
