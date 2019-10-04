@@ -15,7 +15,7 @@ public class MaskLocationer : MonoBehaviour
         {
             for (int i = 0; i < m.Length; i++)
             {
-                m[i].SetVector("_Location", transform.position);
+                m[i].SetVector("_Location", transform.position); //niet heel ingewikkeld tho
             }
         }
     }

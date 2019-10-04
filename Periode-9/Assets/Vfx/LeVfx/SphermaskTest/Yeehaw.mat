@@ -38,7 +38,7 @@ Material:
     - _LineWidth: 0.34
     - _Max: 0.98
     - _Min: 0.18
-    - _Radius: 1.73
+    - _Radius: 1.61
     - _Stength: 1
     - __dirty: 0
     - _min: 0
@@ -48,4 +48,4 @@ Material:
     - _Brighty: {r: 0, g: 0, b: 0, a: 1}
     - _Color: {r: 13.76636, g: 0.8649022, b: 0, a: 0}
     - _Color0: {r: 0, g: 0, b: 0, a: 0}
-    - _Location: {r: 1.69, g: 0, b: 0, a: 0}
+    - _Location: {r: -0.78, g: 0, b: 0, a: 0}

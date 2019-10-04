@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Yeeht
+  m_Shader: {fileID: 4800000, guid: 2f5e269302b08cf4aa57f2a2fbc9b9a9, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 0
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 2000
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 120ede8c4897abf488ebbcd0d0b46ede, type: 3}
+        m_Scale: {x: 15, y: 15}
+        m_Offset: {x: 0, y: 0}
+    - _TextureSample0:
+        m_Texture: {fileID: 2800000, guid: f7e96904e8667e1439548f0f86389447, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TextureSample1:
+        m_Texture: {fileID: 2800000, guid: f7e96904e8667e1439548f0f86389447, type: 3}
+        m_Scale: {x: 0, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _EdgeLength: 50
+    - _Hardness: -0.8
+    - _Height: -2.6
+    - _OpacityInverter: 0
+    - _Radius: 320.9
+    - _SmallHardness: 1.06
+    - _SmallRadius: 1
+    - _Width: -37.55
+    - __dirty: 1
+    m_Colors:
+    - _Color0: {r: 0.26415092, g: 0.18316126, b: 0.18316126, a: 0}
+    - _Color1: {r: 2.9960785, g: 0.36078432, b: 0, a: 0}
+    - _Location: {r: 56, g: 2.1, b: 266.3, a: 0}
+    - _Speed: {r: 0, g: 0, b: 0, a: 0}

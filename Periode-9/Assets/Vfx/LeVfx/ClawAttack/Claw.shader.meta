@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: df05e0d839abb41459e5b4b5d4e7ecba
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures:
+  - _clawTexture: {fileID: 2800000, guid: a2d6229990c0200428b1a09395e78eaa, type: 3}
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
