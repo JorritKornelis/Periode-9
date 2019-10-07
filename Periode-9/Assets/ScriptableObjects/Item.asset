@@ -115,3 +115,27 @@ MonoBehaviour:
     itemGameObject: {fileID: 3603253431877497181, guid: 56bf71ed0a8108f4987ecd4815422e6a,
       type: 3}
     canUse: 0
+  - name: ElectricityGem
+    Sprite: {fileID: 21300000, guid: cbb6e5843173de548b64978fbf426bea, type: 3}
+    maxStack: 2
+    itemGameObject: {fileID: 2164638413890130623, guid: 4718c37308e555840945ee81d909ea7d,
+      type: 3}
+    canUse: 1
+  - name: FireGem
+    Sprite: {fileID: 21300000, guid: cbb6e5843173de548b64978fbf426bea, type: 3}
+    maxStack: 10
+    itemGameObject: {fileID: 6720787646233537074, guid: 496386932f9b7114aa36a4c8b9ba9c5b,
+      type: 3}
+    canUse: 1
+  - name: IceGem
+    Sprite: {fileID: 21300000, guid: cbb6e5843173de548b64978fbf426bea, type: 3}
+    maxStack: 10
+    itemGameObject: {fileID: 7290428513173956345, guid: e510fe05085210b4aaf00f758f0f178b,
+      type: 3}
+    canUse: 1
+  - name: EmptyGem
+    Sprite: {fileID: 21300000, guid: cbb6e5843173de548b64978fbf426bea, type: 3}
+    maxStack: 10
+    itemGameObject: {fileID: 774303574535559944, guid: 3321862b262e97b498936ec7941f221c,
+      type: 3}
+    canUse: 0

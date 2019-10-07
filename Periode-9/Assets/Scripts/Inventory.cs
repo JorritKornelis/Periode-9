@@ -167,6 +167,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    //add items
     public void AddItem(int addItemIndex, int addAmount)
     {
         bool searchForNewSlot = true;
@@ -206,17 +207,19 @@ public class Inventory : MonoBehaviour
         UpdateInvetoryUI(slotInformationArray);
     }
 
+    //update ui
     public void UpdateInvetoryUI(SlotInformation[] overloadArray)
     {
         for (int i = 0; i < overloadArray.Length; i++)
         {
-            if (overloadArray[i].index >= 0)
+            if (overloadArray[i].index >= 0 && overloadArray[i].amount > 0)
             {
                 overloadArray[i].slotImage.sprite = itemScriptableObject.itemInformationList[overloadArray[i].index].Sprite;
             }
             else
             {
                 overloadArray[i].slotImage.sprite = null;
+                overloadArray[i].index = -1;
             }
         }
         InvetorySaveData(); // verplaatsen naar sceneSwitch

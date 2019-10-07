@@ -27,6 +27,12 @@ public class Hotbar : MonoBehaviour
                 {
                     Debug.Log(press + " HOTBSR PRESS");
                     item.useEvenet.Invoke();
+
+                    inventoryScript.slotInformationArray[press].amount -= 1;
+                    if (inventoryScript.slotInformationArray[press].amount <= 0)
+                    {
+                        inventoryScript.UpdateInvetoryUI(inventoryScript.slotInformationArray);
+                    }
                     break;
                 }
     }

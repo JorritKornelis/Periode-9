@@ -5,15 +5,20 @@ using UnityEngine.Events;
 
 public class ItemUsage : MonoBehaviour
 {
+    GameObject playerGameobject;
     Inventory inventoryScript;
     CharacterMovement characterMovementScript;
     PlayerHeathScript playerHeathScriptScript;
     PlayerSword playerSwordScript;
-
     public List<ItemUseDing> usables = new List<ItemUseDing>();
+
+    [Header("Public Varibels")]
+    public float speedTimer;
+    public float damageUpTimer;
 
     void Start()
     {
+        playerGameobject = GameObject.FindWithTag("Player");
         inventoryScript = GameObject.FindWithTag("Player").GetComponent<Inventory>();
         playerHeathScriptScript = GameObject.FindWithTag("Player").GetComponent<PlayerHeathScript>();
         characterMovementScript = GameObject.FindWithTag("Player").GetComponent<CharacterMovement>();
@@ -28,12 +33,12 @@ public class ItemUsage : MonoBehaviour
         public UnityEvent useEvenet;
     }
 
-    //bigpotions
-    public void BigHealthPotion()
+    //Potions
+    public void HealthPotions(int healAmount)
     {
         if (playerHeathScriptScript.hp < playerHeathScriptScript.maxHp)
         {
-            playerHeathScriptScript.hp += 2;
+            playerHeathScriptScript.hp += healAmount;
             if (playerHeathScriptScript.hp > playerHeathScriptScript.maxHp)
             {
                 playerHeathScriptScript.hp = playerHeathScriptScript.maxHp;
@@ -44,104 +49,40 @@ public class ItemUsage : MonoBehaviour
             Debug.Log("FULL HP");
         }
     }
-    public void BigSpeedPotion()
+    public void SpeedPotions(int speedAmount)
     {
-        float timer = 4;
+        float timer = speedTimer;
         timer -= Time.deltaTime;
         float reset = characterMovementScript.moveSpeed;
 
-        characterMovementScript.moveSpeed += 4;
+        characterMovementScript.moveSpeed += speedAmount;
         if (timer <= 0)
         {
             characterMovementScript.moveSpeed = reset;
         }
     }
-    public void BigDamagePotion()
+    public void DamagePotions(int damageUpAmount)
     {
-        float timer = 4;
+        float timer = damageUpTimer;
         timer -= Time.deltaTime;
         int swordReset = playerSwordScript.swordDamage;
 
-        playerSwordScript.swordDamage += 4;
+        playerSwordScript.swordDamage += damageUpAmount;
         if (timer <= 0)
         {
             playerSwordScript.swordDamage = swordReset;
         }
     }
-    //small potions
-    public void SmallHealthPotion()
-    {
-        if (playerHeathScriptScript.hp < playerHeathScriptScript.maxHp)
-        {
-            playerHeathScriptScript.hp += 1;
-            if (playerHeathScriptScript.hp > playerHeathScriptScript.maxHp)
-            {
-                playerHeathScriptScript.hp = playerHeathScriptScript.maxHp;
-            }
-        }
-        else
-        {
-            Debug.Log("FULL HP");
-        }
-    }
-    public void SmallSpeedPotion()
-    {
-        float timer = 2;
-        timer -= Time.deltaTime;
-        float reset = characterMovementScript.moveSpeed;
-
-        characterMovementScript.moveSpeed += 3;
-        if (timer <= 0)
-        {
-            characterMovementScript.moveSpeed = reset;
-        }
-    }
-    public void SmallDamagePotion()
-    {
-        float timer = 2;
-        timer -= Time.deltaTime;
-        int swordReset = playerSwordScript.swordDamage;
-
-        playerSwordScript.swordDamage += 2;
-        if (timer <= 0)
-        {
-            playerSwordScript.swordDamage = swordReset;
-        }
-    }
-    /*
 
     //scrolls
-    public void ElectricityScroll()
+    public void UseScrolls(GameObject ScrollObj)
     {
-        //override
-    }
-    public void FireScroll()
-    {
-        //override
-    }
-    public void IceScroll()
-    {
-        //override
+        Instantiate(ScrollObj, playerGameobject.transform.position, characterMovementScript.body.rotation);
+        //electricityScrollObj
+        //FireScrollObj
+        //IceScrollObj
     }
 
-    //gems
-    public void ElectricityGem()
-    {
-        //override
-    }
-    public void FireGem()
-    {
-        //override
-    }
-    public void IceGem()
-    {
-        //override
-    }
-
-    //other
-    public void RemoveItem()
-    {
-
-    }
-    */
+    //Gems
+    
 }
