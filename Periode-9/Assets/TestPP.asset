@@ -1,5 +1,27 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-5922872316316735826
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b94fcd11afffcb142908bfcb1e261fba, type: 3}
+  m_Name: MotionBlur
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  shutterAngle:
+    overrideState: 1
+    value: 270
+  sampleCount:
+    overrideState: 1
+    value: 10
 --- !u!114 &-5599233530538968036
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -111,6 +133,7 @@ MonoBehaviour:
   - {fileID: -5599233530538968036}
   - {fileID: -2313124718441026679}
   - {fileID: 5693471334320255355}
+  - {fileID: -5922872316316735826}
 --- !u!114 &3517532546212837566
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -129,13 +152,13 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 0.79
+    value: 0.63
   threshold:
-    overrideState: 0
-    value: 1
+    overrideState: 1
+    value: 0.24
   softKnee:
     overrideState: 0
-    value: 0.5
+    value: 0
   clamp:
     overrideState: 0
     value: 65472
@@ -180,7 +203,7 @@ MonoBehaviour:
     defaultState: 1
   intensity:
     overrideState: 1
-    value: 0.11
+    value: 0.04
   fastMode:
     overrideState: 1
     value: 0
@@ -237,7 +260,7 @@ MonoBehaviour:
     value: 1
   temperature:
     overrideState: 1
-    value: 2
+    value: 2.6
   tint:
     overrideState: 0
     value: 0
@@ -246,7 +269,7 @@ MonoBehaviour:
     value: {r: 1, g: 1, b: 1, a: 1}
   hueShift:
     overrideState: 0
-    value: -174
+    value: 8.59
   saturation:
     overrideState: 1
     value: 23
@@ -255,7 +278,7 @@ MonoBehaviour:
     value: 0
   postExposure:
     overrideState: 1
-    value: 1.6
+    value: 2.01
   contrast:
     overrideState: 1
     value: 1
