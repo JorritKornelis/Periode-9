@@ -5,6 +5,9 @@ using UnityEngine;
 public class CameraFocus : MonoBehaviour
 {
     public CameraPositions originalPos;
+    public Vector3 otherPosOffset;
+    public Vector3 otherAreaPos, otherAreaSize;
+    public LayerMask playerMask;
     public List<CameraPositions> positions;
     public float lerpSpeed;
     public int current = -1;
@@ -15,6 +18,10 @@ public class CameraFocus : MonoBehaviour
 
     public void Update()
     {
+        if (Physics.CheckBox(otherAreaPos, otherAreaSize, Quaternion.identity, playerMask) && GetComponent<CameraPlayerFollow>().enabled)
+            transform.position = Vector3.Lerp(transform.position, originalPos.pos + otherPosOffset, Time.deltaTime * lerpSpeed);
+        else if (GetComponent<CameraPlayerFollow>().enabled)
+            transform.position = Vector3.Lerp(transform.position, originalPos.pos, Time.deltaTime * lerpSpeed);
         if (test)
         {
             StartCoroutine(MoveTowardsPoint(testIndex));
@@ -56,6 +63,8 @@ public class CameraFocus : MonoBehaviour
 
     public void OnDrawGizmos()
     {
+        Gizmos.DrawSphere(transform.position + otherPosOffset, 0.3f);
+        Gizmos.DrawWireCube(otherAreaPos, otherAreaSize * 2f);
         float colorAmount = 1 / positions.Count;
         for (int i = 0; i < positions.Count; i++)
         {
