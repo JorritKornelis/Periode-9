@@ -110,14 +110,24 @@ public class ItemUsage : MonoBehaviour
         {
             case States.FireGem:
                 //stuff
+                int holder = playerSwordScript.swordDamage;
+                playerSwordScript.swordDamage += 2;
+                float timer = gemCooldown;
+                timer -= Time.deltaTime;
+                if (timer <= 0)
+                {
+                    playerSwordScript.swordDamage = holder;
+                }
                 break;
 
             case States.IceGem:
                 //stuff
+
                 break;
 
             case States.ElectricGem:
                 //stuff
+
                 break;
 
         }
