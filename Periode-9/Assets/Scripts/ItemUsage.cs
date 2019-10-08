@@ -15,6 +15,9 @@ public class ItemUsage : MonoBehaviour
     [Header("Public Varibels")]
     public float speedTimer;
     public float damageUpTimer;
+    public float gemCooldown;
+
+    public States curGem;
 
     void Start()
     {
@@ -78,11 +81,50 @@ public class ItemUsage : MonoBehaviour
     public void UseScrolls(GameObject ScrollObj)
     {
         Instantiate(ScrollObj, playerGameobject.transform.position, characterMovementScript.body.rotation);
-        //electricityScrollObj
-        //FireScrollObj
-        //IceScrollObj
     }
 
     //Gems
-    
+    public void UseFireGem()
+    {
+        curGem = States.FireGem;
+    }
+    public void UseIceGem()
+    {
+        curGem = States.IceGem;
+    }
+    public void UseElectricGem()
+    {
+        curGem = States.ElectricGem;
+    }
+
+    public enum States
+    {
+        FireGem,
+        IceGem,
+        ElectricGem
+    }
+
+    public void SwitchGem()
+    {
+        switch (curGem)
+        {
+            case States.FireGem:
+                //stuff
+                break;
+
+            case States.IceGem:
+                //stuff
+                break;
+
+            case States.ElectricGem:
+                //stuff
+                break;
+
+        }
+    }
+
+    IEnumerator CountDown()
+    {
+        yield return new WaitForSeconds(gemCooldown);
+    }
 }
