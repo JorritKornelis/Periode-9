@@ -2,12 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SellingTable : MonoBehaviour
+public class SellingTable : ShopAcessScript
 {
     public int cameraLoc;
     public SellPoint[] sellpoints;
     public bool currentlyInteracted;
     public SellingUI ui;
+
+    public override void Interact()
+    {
+        
+    }
 
     public void Update()
     {

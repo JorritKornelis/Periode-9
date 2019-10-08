@@ -29,11 +29,12 @@ public class Cauldron : MonoBehaviour
                 if (item1 == info.items.x && item2 == info.items.y || item2 == info.items.x && item1 == info.items.y)
                 {
                     craftedItem = info.combination;
+                    crafted = true;
                     break;
                 }
             item1 = -1;
             item2 = -1;
-            //Destroy(Instantiate(crafted ? accepted : rejected, transform.position, Quaternion.identity), particleLifetime);
+            Destroy(Instantiate(crafted ? accepted : rejected, transform.position, Quaternion.identity), particleLifetime);
         }
     }
 }
