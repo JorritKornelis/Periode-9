@@ -5,6 +5,8 @@ using UnityEngine;
 public class CameraFocus : MonoBehaviour
 {
     public CameraPositions originalPos;
+    public CharacterMovement characterMovement;
+    public Vector3 centerCameraOffset;
     public Vector3 otherPosOffset;
     public Vector3 otherAreaPos, otherAreaSize;
     public LayerMask playerMask;
@@ -15,13 +17,24 @@ public class CameraFocus : MonoBehaviour
     public bool test;
     public int testIndex;
     public bool reset, active;
+    public float invertTimer;
 
     public void Update()
     {
         if (Physics.CheckBox(otherAreaPos, otherAreaSize, Quaternion.identity, playerMask) && GetComponent<CameraPlayerFollow>().enabled)
+        {
             transform.position = Vector3.Lerp(transform.position, originalPos.pos + otherPosOffset, Time.deltaTime * lerpSpeed);
+            GetComponent<CameraPlayerFollow>().center = centerCameraOffset;
+            if (characterMovement.invert != -1)
+                StartCoroutine(ChangeCharacterInvert(-1));
+        }
         else if (GetComponent<CameraPlayerFollow>().enabled)
+        {
             transform.position = Vector3.Lerp(transform.position, originalPos.pos, Time.deltaTime * lerpSpeed);
+            GetComponent<CameraPlayerFollow>().center = Vector3.zero;
+            if (characterMovement.invert != 1)
+                StartCoroutine(ChangeCharacterInvert(1));
+        }
         if (test)
         {
             StartCoroutine(MoveTowardsPoint(testIndex));
@@ -64,6 +77,7 @@ public class CameraFocus : MonoBehaviour
     public void OnDrawGizmos()
     {
         Gizmos.DrawSphere(transform.position + otherPosOffset, 0.3f);
+        Gizmos.DrawSphere(centerCameraOffset, 0.3f);
         Gizmos.DrawWireCube(otherAreaPos, otherAreaSize * 2f);
         float colorAmount = 1 / positions.Count;
         for (int i = 0; i < positions.Count; i++)
@@ -72,6 +86,14 @@ public class CameraFocus : MonoBehaviour
             Gizmos.DrawSphere(positions[i].pos, 0.3f);
             Gizmos.DrawLine(positions[i].pos, positions[i].pointOfInterest);
         }
+    }
+
+    public IEnumerator ChangeCharacterInvert(int invert)
+    {
+        characterMovement.invert = invert;
+        characterMovement.allowMovement = false;
+        yield return new WaitForSeconds(invertTimer);
+        characterMovement.allowMovement = true;
     }
 }
 

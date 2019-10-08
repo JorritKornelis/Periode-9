@@ -11,6 +11,7 @@ public class CharacterMovement : MonoBehaviour
     public float fallVelocity;
     public float accelAmount;
     public float rotateLerpSpeed;
+    public int invert;
     [Header("Collisions")]
     public LayerMask obstacleMask;
     public float raycastRange;
@@ -99,7 +100,7 @@ public class CharacterMovement : MonoBehaviour
     public void Move()
     {
         currentAccel = Mathf.Lerp(currentAccel, (Input.GetButton("Horizontal") || Input.GetButton("Vertical")) ? 1 : 0, Time.deltaTime * accelAmount);
-        Vector3 currentMove = new Vector3(GetCollisionMoveAmount(Vector3.right, Input.GetAxis("Horizontal")), 0, GetCollisionMoveAmount(Vector3.forward, Input.GetAxis("Vertical"))).normalized * moveSpeed * currentAccel;
+        Vector3 currentMove = new Vector3(GetCollisionMoveAmount(Vector3.right, Input.GetAxis("Horizontal")), 0, GetCollisionMoveAmount(Vector3.forward, Input.GetAxis("Vertical"))).normalized * moveSpeed * currentAccel * invert;
         currentMovementSpeed = Vector3.Lerp(currentMovementSpeed, currentMove, Time.deltaTime * accelAmount);
         if (GetCollisionMoveAmount(Vector3.right, Input.GetAxis("Horizontal")) == 0 && Input.GetButton("Horizontal"))
             currentMovementSpeed.x = 0;
@@ -178,7 +179,7 @@ public class CharacterMovement : MonoBehaviour
     {
         Vector3 sideDirection = new Vector3(direction.z, 0, direction.x);
         for (int i = -1; i <= 1; i++)
-            if (Physics.Raycast(transform.position + (sideDirection * raycastOffset * i), direction, raycastRange, obstacleMask))
+            if (Physics.Raycast(transform.position + (sideDirection * raycastOffset * i), direction * invert, raycastRange, obstacleMask))
                 return true;
         return false;
     }
