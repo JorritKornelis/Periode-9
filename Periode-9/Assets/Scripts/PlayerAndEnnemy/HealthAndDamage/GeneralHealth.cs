@@ -9,6 +9,9 @@ public class GeneralHealth : MonoBehaviour
 
     public virtual void TakeDamage(int damageAmount,GameObject witchObject)
     {
+        //overload slowAmount
+        //if GetcomponetEnemyhealth /slowspeed
+
         hp -= damageAmount;
         if (hp <= 0)
         {

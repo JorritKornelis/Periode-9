@@ -17,7 +17,11 @@ public class ItemUsage : MonoBehaviour
     public float damageUpTimer;
     public float gemCooldown;
 
+    [Header("GemStuff")]
     public States curGem;
+    public int electricSplashRange;
+    public int electricSplashDamage;
+
 
     void Start()
     {
@@ -127,7 +131,14 @@ public class ItemUsage : MonoBehaviour
 
             case States.ElectricGem:
                 //stuff
-
+                Collider[] enemyHitColliders = Physics.OverlapSphere(transform.position, electricSplashRange);
+                foreach (var item in enemyHitColliders)
+                {
+                    if (item.tag == "Enemy")
+                    {
+                        item.transform.GetComponent<EnemyHealthScript>().TakeDamage(electricSplashDamage, item.gameObject);
+                    }
+                }
                 break;
 
         }
