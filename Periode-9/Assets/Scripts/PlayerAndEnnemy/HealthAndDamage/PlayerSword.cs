@@ -11,9 +11,17 @@ public class PlayerSword : MonoBehaviour
     public Animator playerDungonAnimator;
     CharacterMovement character;
 
-    public float waitForAttackDamage;
+    public float waitForStartAttackDamage;
+    public float waitForEndAttackDamage;
     public float waitForNextAnimaton;
 
+    [Header("GemStuff")]
+    public States curGem;
+    public int electricSplashRange;
+    public int electricSplashDamage;
+    public float gemCooldown;
+    public int fireDamageAmount;
+    
     void Start()
     {
         character = GameObject.FindWithTag("Player").GetComponent<CharacterMovement>();
@@ -34,7 +42,7 @@ public class PlayerSword : MonoBehaviour
         playerDungonAnimator.SetBool("Attacking", true);
         character.allowMovement = false;
 
-        yield return new WaitForSeconds(waitForAttackDamage);
+        yield return new WaitForSeconds(waitForStartAttackDamage);
 
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, swordRadius);
         int i = 0;
@@ -48,8 +56,7 @@ public class PlayerSword : MonoBehaviour
             }
             i++;
         }
-        yield return new WaitForSeconds(0.1f);
-
+        yield return new WaitForSeconds(waitForEndAttackDamage);
         float time = waitForNextAnimaton;
         bool nextAttack = false;
         while (time > 0)
@@ -67,8 +74,74 @@ public class PlayerSword : MonoBehaviour
         }
         else
         {
+            Debug.Log("test");
             playerDungonAnimator.SetBool("Attacking", false);
             character.allowMovement = true;
         }
     }
+
+    public enum States
+    {
+        FireGem,
+        IceGem,
+        ElectricGem,
+        None
+    }
+
+    public void SwitchGem()
+    {
+        switch (curGem)
+        {
+            case States.FireGem:
+                //stuff
+                int holder = swordDamage;
+                swordDamage += fireDamageAmount;
+                float timer = gemCooldown;
+                timer -= Time.deltaTime;
+                if (timer <= 0)
+                {
+                    swordDamage = holder;
+                    curGem = States.None;
+                }
+                break;
+
+            case States.IceGem:
+                //stuff
+                Collider[] enemyIceHitColliders = Physics.OverlapSphere(transform.position, swordRadius);
+                foreach (var item in enemyIceHitColliders)
+                {
+                    if (item.tag == "Enemy")
+                    {
+                        item.transform.GetComponent<EnemyHealthScript>().TakeDamage(swordDamage, item.gameObject);
+                    }
+                }
+                curGem = States.None;
+                break;
+
+            case States.ElectricGem:
+                //stuff
+                Collider[] enemyHitColliders = Physics.OverlapSphere(transform.position, electricSplashRange);
+                foreach (var item in enemyHitColliders)
+                {
+                    if (item.tag == "Enemy")
+                    {
+                        item.transform.GetComponent<EnemyHealthScript>().TakeDamage(electricSplashDamage, item.gameObject);
+                    }
+                }
+                curGem = States.None;
+                break;
+
+            case States.None:
+                //stuff
+                Debug.Log("NO EFFECT");
+                break;
+
+        }
+    }
+
+    IEnumerator CountDown()
+    {
+        yield return new WaitForSeconds(gemCooldown);
+    }
+
 }

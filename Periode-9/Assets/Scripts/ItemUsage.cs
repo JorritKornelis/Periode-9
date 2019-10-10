@@ -15,13 +15,6 @@ public class ItemUsage : MonoBehaviour
     [Header("Public Varibels")]
     public float speedTimer;
     public float damageUpTimer;
-    public float gemCooldown;
-
-    [Header("GemStuff")]
-    public States curGem;
-    public int electricSplashRange;
-    public int electricSplashDamage;
-
 
     void Start()
     {
@@ -90,62 +83,17 @@ public class ItemUsage : MonoBehaviour
     //Gems
     public void UseFireGem()
     {
-        curGem = States.FireGem;
+        playerSwordScript.curGem = PlayerSword.States.FireGem;
     }
     public void UseIceGem()
     {
         curGem = States.IceGem;
+        playerSwordScript.curGem = PlayerSword.States.IceGem;
     }
     public void UseElectricGem()
     {
-        curGem = States.ElectricGem;
+        playerSwordScript.curGem = PlayerSword.States.ElectricGem;
     }
 
-    public enum States
-    {
-        FireGem,
-        IceGem,
-        ElectricGem
-    }
 
-    public void SwitchGem()
-    {
-        switch (curGem)
-        {
-            case States.FireGem:
-                //stuff
-                int holder = playerSwordScript.swordDamage;
-                playerSwordScript.swordDamage += 2;
-                float timer = gemCooldown;
-                timer -= Time.deltaTime;
-                if (timer <= 0)
-                {
-                    playerSwordScript.swordDamage = holder;
-                }
-                break;
-
-            case States.IceGem:
-                //stuff
-
-                break;
-
-            case States.ElectricGem:
-                //stuff
-                Collider[] enemyHitColliders = Physics.OverlapSphere(transform.position, electricSplashRange);
-                foreach (var item in enemyHitColliders)
-                {
-                    if (item.tag == "Enemy")
-                    {
-                        item.transform.GetComponent<EnemyHealthScript>().TakeDamage(electricSplashDamage, item.gameObject);
-                    }
-                }
-                break;
-
-        }
-    }
-
-    IEnumerator CountDown()
-    {
-        yield return new WaitForSeconds(gemCooldown);
-    }
 }
