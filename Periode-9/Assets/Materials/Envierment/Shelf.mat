@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Carpet2
+  m_Name: Shelf
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _METALLICGLOSSMAP _NORMALMAP
   m_LightmapFlags: 4
@@ -20,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: d679d2003abfa3b44ab9d3a814f85e86, type: 3}
+        m_Texture: {fileID: 2800000, guid: 570220175d95af6419ee822557f7d90d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -40,11 +40,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: b0a72e8083a79c84fb052f1b9407cd4a, type: 3}
+        m_Texture: {fileID: 2800000, guid: 169b63bf90e94164a9ec4df122f8109f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 31917d178a49efe4b9f96a3898aa0281, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9adb9426b52d7764a849d84f486d4a89, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -60,7 +60,7 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _GlossMapScale: 0.32
+    - _GlossMapScale: 0.235
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _Metallic: 0
@@ -73,5 +73,5 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.6698113, g: 0.6698113, b: 0.6698113, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
