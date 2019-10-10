@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Item
   - Manager
+  - Projectile
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - ItemLayer
   - Player
   - FloorTile
-  - SellTable
+  - ShopInteractable
   - PostProcessing
   - 
   - 

@@ -8,10 +8,20 @@ public class SellingTable : ShopAcessScript
     public SellPoint[] sellpoints;
     public bool currentlyInteracted;
     public SellingUI ui;
+    public CameraFocus focus;
+    public string playerTag;
 
     public override void Interact()
     {
-        
+        Inventory inv = GameObject.FindWithTag("Player").GetComponent<Inventory>();
+        if (active)
+            inv.inv.SetActive(false);
+        else
+        {
+            InteractionStart();
+            StartCoroutine(focus.MoveTowardsPoint(cameraLoc));
+            inv.inv.SetActive(true);
+        }
     }
 
     public void Update()

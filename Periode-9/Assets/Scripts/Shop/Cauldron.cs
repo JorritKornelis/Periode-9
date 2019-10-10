@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cauldron : MonoBehaviour
+public class Cauldron : ShopAcessScript
 {
     public CombinationInfo[] combinations;
     public int item1, item2;
@@ -10,6 +10,8 @@ public class Cauldron : MonoBehaviour
     public bool check;
     public GameObject accepted, rejected;
     public float particleLifetime;
+    public CameraFocus focus;
+    public int focusIndex;
 
     public void Update()
     {
@@ -18,6 +20,11 @@ public class Cauldron : MonoBehaviour
             CheckForCrafting();
             check = false;
         }
+    }
+
+    public override void Interact()
+    {
+        focus.StartCoroutine(focus.MoveTowardsPoint(focusIndex));
     }
 
     public void CheckForCrafting()

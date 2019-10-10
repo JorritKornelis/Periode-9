@@ -63,26 +63,22 @@ public class CharacterMovement : MonoBehaviour
         if (allowMovement)
             Move();
         if (Input.GetButtonDown(interactionInput))
-            CheckForTable();
+            CheckForInteraction();
     }
 
-    public void CheckForTable()
+    public void CheckForInteraction()
     {
         CameraFocus focus = Camera.main.transform.parent.GetComponent<CameraFocus>();
+        Collider[] colliders = Physics.OverlapSphere(transform.position, pickUpRadis, sellTableMask);
         if (!inSellPoint)
         {
-            Collider[] colliders = Physics.OverlapSphere(transform.position, pickUpRadis, sellTableMask);
             if (colliders.Length > 0)
             {
                 if (focus.active)
                     focus.reset = true;
-                SellingTable table = colliders[0].GetComponent<SellingTable>();
-                table.InteractionStart();
-                StartCoroutine(focus.MoveTowardsPoint(table.cameraLoc));
-                Inventory inv = GetComponent<Inventory>();
-                inv.inv.SetActive(true);
                 allowMovement = false;
                 inSellPoint = true;
+                colliders[0].GetComponent<ShopAcessScript>().Interact();
             }
         }
         else
@@ -90,10 +86,10 @@ public class CharacterMovement : MonoBehaviour
             if (focus.active)
                 focus.reset = true;
             StartCoroutine(focus.MoveTowardsPoint(-1));
-            Inventory inv = GetComponent<Inventory>();
-            inv.inv.SetActive(false);
             allowMovement = true;
             inSellPoint = false;
+            if(colliders.Length > 0)
+                colliders[0].GetComponent<ShopAcessScript>().Interact();
         }
     }
 
