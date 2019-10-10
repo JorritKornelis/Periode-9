@@ -15,12 +15,16 @@ public class SellingTable : ShopAcessScript
     {
         Inventory inv = GameObject.FindWithTag("Player").GetComponent<Inventory>();
         if (active)
+        {
+            active = false;
             inv.inv.SetActive(false);
+        }
         else
         {
             InteractionStart();
             StartCoroutine(focus.MoveTowardsPoint(cameraLoc));
             inv.inv.SetActive(true);
+            active = true;
         }
     }
 

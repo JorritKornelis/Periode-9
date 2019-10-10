@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Cauldron : ShopAcessScript
 {
@@ -12,6 +13,8 @@ public class Cauldron : ShopAcessScript
     public float particleLifetime;
     public CameraFocus focus;
     public int focusIndex;
+    public ItemClassScriptableObject items;
+    public GameObject ui;
 
     public void Update()
     {
@@ -24,7 +27,20 @@ public class Cauldron : ShopAcessScript
 
     public override void Interact()
     {
-        focus.StartCoroutine(focus.MoveTowardsPoint(focusIndex));
+        Inventory inv = GameObject.FindWithTag("Player").GetComponent<Inventory>();
+        if (active)
+        {
+            active = false;
+            ui.SetActive(false);
+            inv.inv.SetActive(false);
+        }
+        else
+        {
+            StartCoroutine(focus.MoveTowardsPoint(focusIndex));
+            inv.inv.SetActive(true);
+            ui.SetActive(true);
+            active = true;
+        }
     }
 
     public void CheckForCrafting()

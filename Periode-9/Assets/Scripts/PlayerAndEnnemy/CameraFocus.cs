@@ -21,7 +21,7 @@ public class CameraFocus : MonoBehaviour
 
     public void Update()
     {
-        if (Physics.CheckBox(otherAreaPos, otherAreaSize, Quaternion.identity, playerMask) && GetComponent<CameraPlayerFollow>().enabled)
+        if (InOtherArea())
         {
             transform.position = Vector3.Lerp(transform.position, originalPos.pos + otherPosOffset, Time.deltaTime * lerpSpeed);
             GetComponent<CameraPlayerFollow>().center = centerCameraOffset;
@@ -42,6 +42,11 @@ public class CameraFocus : MonoBehaviour
         }
     }
 
+    public bool InOtherArea()
+    {
+        return Physics.CheckBox(otherAreaPos, otherAreaSize, Quaternion.identity, playerMask) && GetComponent<CameraPlayerFollow>().enabled;
+    }
+
     public void Start()
     {
         originalPos = new CameraPositions(transform.position, Camera.main.fieldOfView, Vector3.zero);
@@ -54,7 +59,7 @@ public class CameraFocus : MonoBehaviour
             GetComponent<CameraPlayerFollow>().enabled = false;
         else
             GetComponent<CameraPlayerFollow>().enabled = true;
-        Vector3 pos = (index >= 0) ? positions[index].pos : originalPos.pos;
+        Vector3 pos = (index >= 0) ? positions[index].pos : InOtherArea()? originalPos.pos + otherPosOffset : originalPos.pos;
         Vector3 pointOfInterest = (index >= 0) ? positions[index].pointOfInterest : originalPos.pointOfInterest;
         float fov = (index >= 0) ? positions[index].fov : originalPos.fov;
         yield return null;
