@@ -87,7 +87,6 @@ public class ItemUsage : MonoBehaviour
     }
     public void UseIceGem()
     {
-        curGem = States.IceGem;
         playerSwordScript.curGem = PlayerSword.States.IceGem;
     }
     public void UseElectricGem()
