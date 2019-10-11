@@ -6,11 +6,13 @@ public class PlayerSword : MonoBehaviour
 {
     public float swordRadius;
     public int swordDamage;
+    public Vector3 swordAttackRadius;
 
     public float acttackCoolDownTimer;
     public Animator playerDungonAnimator;
     CharacterMovement character;
 
+    public float damageTimer;
     public float waitForStartAttackDamage;
     public float waitForEndAttackDamage;
     public float waitForNextAnimaton;
@@ -33,7 +35,7 @@ public class PlayerSword : MonoBehaviour
         {
             StartCoroutine(PlayerSwordAtack());
         }
-        PlayerSwordAtack();
+        
     }
 
     //animation toevoegen
@@ -41,22 +43,30 @@ public class PlayerSword : MonoBehaviour
     {
         playerDungonAnimator.SetBool("Attacking", true);
         character.allowMovement = false;
-
+        
         yield return new WaitForSeconds(waitForStartAttackDamage);
 
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, swordRadius);
+        Collider[] hitColliders = Physics.OverlapBox(transform.position, swordAttackRadius, transform.rotation);
         int i = 0;
+
+        float timer = damageTimer;
+        List<Collider> hitObjects = new List<Collider>();
 
         while (i < hitColliders.Length)
         {
-            if (hitColliders[i].gameObject.tag == "Enemy")
+            yield return null;
+            timer -= Time.deltaTime;
+            if (hitColliders[i].gameObject.tag == "Enemy" && !hitObjects.Contains(hitColliders[i]))
             {
                 Debug.Log("HIT ENEMY");
                 hitColliders[i].GetComponent<EnemyHealthScript>().TakeDamage(swordDamage, hitColliders[i].gameObject);
+                hitObjects.Add(hitColliders[i]);
+                
             }
             i++;
         }
         yield return new WaitForSeconds(waitForEndAttackDamage);
+        
         float time = waitForNextAnimaton;
         bool nextAttack = false;
         while (time > 0)
@@ -74,7 +84,6 @@ public class PlayerSword : MonoBehaviour
         }
         else
         {
-            Debug.Log("test");
             playerDungonAnimator.SetBool("Attacking", false);
             character.allowMovement = true;
         }
@@ -142,6 +151,12 @@ public class PlayerSword : MonoBehaviour
     IEnumerator CountDown()
     {
         yield return new WaitForSeconds(gemCooldown);
+    }
+
+    public void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireCube(transform.position, swordAttackRadius);
+        
     }
 
 }

@@ -2009,7 +2009,7 @@ PrefabInstance:
     - target: {fileID: 5979042860011140046, guid: 530073ed792cbb9469529bb36786d0bc,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.39299965
+      value: 3.18
       objectReference: {fileID: 0}
     - target: {fileID: 5979042860011140046, guid: 530073ed792cbb9469529bb36786d0bc,
         type: 3}
@@ -2019,7 +2019,7 @@ PrefabInstance:
     - target: {fileID: 5979042860011140046, guid: 530073ed792cbb9469529bb36786d0bc,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.27
+      value: 3.58
       objectReference: {fileID: 0}
     - target: {fileID: 5979042860011140046, guid: 530073ed792cbb9469529bb36786d0bc,
         type: 3}
@@ -3850,13 +3850,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swordRadius: 1
   swordDamage: 1
+  swordAttackRadius: {x: 0.24, y: 0.13, z: 1.9}
   acttackCoolDownTimer: 0.2
   playerDungonAnimator: {fileID: 1979023565}
-  waitForStartAttackDamage: 0.2
-  waitForEndAttackDamage: 0.3
-  waitForNextAnimaton: 0.1
+  damageTimer: 0
+  waitForStartAttackDamage: 0.05
+  waitForEndAttackDamage: 0.18
+  waitForNextAnimaton: 0.08
   curGem: 3
-  electricSplashRange: 3
+  electricSplashRange: 5
   electricSplashDamage: 1
   gemCooldown: 2
   fireDamageAmount: 1
@@ -4790,6 +4792,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8958823237397950257, guid: 2c080d7fc1dfc0a49933092023a31476,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.469
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c080d7fc1dfc0a49933092023a31476, type: 3}
 --- !u!1001 &1930618510
@@ -5065,7 +5072,7 @@ PrefabInstance:
     - target: {fileID: 5979042860011140046, guid: 530073ed792cbb9469529bb36786d0bc,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.6070004
+      value: -1.04
       objectReference: {fileID: 0}
     - target: {fileID: 5979042860011140046, guid: 530073ed792cbb9469529bb36786d0bc,
         type: 3}
@@ -5120,7 +5127,7 @@ PrefabInstance:
     - target: {fileID: -944635001195075810, guid: 530073ed792cbb9469529bb36786d0bc,
         type: 3}
       propertyPath: hp
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -944635001195075810, guid: 530073ed792cbb9469529bb36786d0bc,
         type: 3}
