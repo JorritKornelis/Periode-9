@@ -65,7 +65,7 @@ public class SellingUI : MonoBehaviour
     {
         while (!inv.lastPressed.taken)
             yield return null;
-
+        
         SlotInformation slot = inv.slotInformationArray[inv.lastPressed.witchIndex];
         int itemCash = currentPoint.item;
         int amountCash = currentPoint.amount;

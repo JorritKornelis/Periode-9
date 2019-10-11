@@ -1602,7 +1602,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8962264, g: 0.8962264, b: 0.8962264, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -6310,8 +6310,10 @@ MonoBehaviour:
     combination: 3
   item1: -1
   item2: -1
+  item1Image: {fileID: 1040871250}
+  item2Image: {fileID: 2032875750}
+  craftedImage: {fileID: 1463854013}
   craftedItem: -1
-  check: 0
   accepted: {fileID: 8355657439870995233, guid: 1275c81a6bc19e34e8b4e0116a7116cb,
     type: 3}
   rejected: {fileID: 9086749285624775513, guid: 35fd13d1c8db4034c8015b7ca8b149b9,
@@ -7298,7 +7300,7 @@ GameObject:
   - component: {fileID: 614210055}
   - component: {fileID: 614210054}
   m_Layer: 5
-  m_Name: Display
+  m_Name: Slot1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7341,16 +7343,16 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1655331279}
-          m_MethodName: PanelClick
-          m_Mode: 1
+        - m_Target: {fileID: 523649574}
+          m_MethodName: ItemPlaceSlotClick
+          m_Mode: 6
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
-            m_BoolArgument: 0
+            m_BoolArgument: 1
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
@@ -7435,8 +7437,8 @@ RectTransform:
   m_Children:
   - {fileID: 614210053}
   - {fileID: 1389743828}
-  - {fileID: 1210255606}
   - {fileID: 1150905843}
+  - {fileID: 1210255606}
   m_Father: {fileID: 1655331278}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12405,7 +12407,7 @@ GameObject:
   - component: {fileID: 1150905845}
   - component: {fileID: 1150905844}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Combine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12424,7 +12426,7 @@ RectTransform:
   m_Children:
   - {fileID: 334719108}
   m_Father: {fileID: 629301772}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -12473,7 +12475,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1150905845}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 523649574}
+        m_MethodName: CheckForCrafting
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1150905845
@@ -12927,7 +12940,7 @@ GameObject:
   - component: {fileID: 1210255608}
   - component: {fileID: 1210255607}
   m_Layer: 5
-  m_Name: Display (2)
+  m_Name: Crafted
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12946,7 +12959,7 @@ RectTransform:
   m_Children:
   - {fileID: 1463854012}
   m_Father: {fileID: 629301772}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -12970,7 +12983,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1655331279}
+        - m_Target: {fileID: 0}
           m_MethodName: PanelClick
           m_Mode: 1
           m_Arguments:
@@ -15019,7 +15032,7 @@ GameObject:
   - component: {fileID: 1389743830}
   - component: {fileID: 1389743829}
   m_Layer: 5
-  m_Name: Display (1)
+  m_Name: Slot2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15062,9 +15075,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1655331279}
-          m_MethodName: PanelClick
-          m_Mode: 1
+        - m_Target: {fileID: 523649574}
+          m_MethodName: ItemPlaceSlotClick
+          m_Mode: 6
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -17316,7 +17329,6 @@ GameObject:
   - component: {fileID: 1655331278}
   - component: {fileID: 1655331281}
   - component: {fileID: 1655331280}
-  - component: {fileID: 1655331279}
   m_Layer: 5
   m_Name: Cauldron
   m_TagString: Untagged
@@ -17344,28 +17356,6 @@ RectTransform:
   m_AnchoredPosition: {x: 432, y: 362}
   m_SizeDelta: {x: -1003.2, y: -870.7}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1655331279
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1655331277}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3cde8e213ab0824c9f34204d11c0c96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ui: {fileID: 629301771}
-  currentPoint: {fileID: 0}
-  image: {fileID: 1040871250}
-  inv: {fileID: 1530074236}
-  itemList: {fileID: 11400000, guid: eeb5db131d0390b48a0087632f0cb6a8, type: 2}
-  nothing: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
-  priceInputs:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!114 &1655331280
 MonoBehaviour:
   m_ObjectHideFlags: 0
