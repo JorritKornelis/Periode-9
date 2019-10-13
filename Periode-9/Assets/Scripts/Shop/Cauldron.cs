@@ -15,9 +15,12 @@ public class Cauldron : ShopAcessScript
     public int focusIndex;
     public ItemClassScriptableObject items;
     public GameObject ui;
+    public IEnumerator coroutine;
 
     public void ItemPlaceSlotClick(bool slot1)
     {
+        if (coroutine != null)
+            StopCoroutine(coroutine);
         Inventory inv = GameObject.FindWithTag("Player").GetComponent<Inventory>();
         if (inv.refrenceInformation1.taken)
         {
@@ -37,20 +40,41 @@ public class Cauldron : ShopAcessScript
             invSlot.amount = (cash >= 0) ? 1 : 0;
             inv.refrenceInformation1 = new SlotRefrenceInformation();
             inv.UpdateInvetoryUI(inv.slotInformationArray);
+            if (coroutine != null)
+                StopCoroutine(coroutine);
+        }
+        else if (slot1 && item1 != -1 || !slot1 && item2 != -1)
+        {
+            coroutine = CheckForPlaceSpot(slot1 ? 1 : 2);
+            StartCoroutine(coroutine);
         }
         UpdateSlots();
     }
+    
+    public void CraftedItemPress()
+    {
+        if(craftedItem != -1)
+        {
+            coroutine = CheckForPlaceSpot(3);
+            StartCoroutine(coroutine);
+        }
+    }
 
-    public IEnumerator CheckForPlaceSpot(bool slot1)
+    public IEnumerator CheckForPlaceSpot(int coudlronSlot)
     {
         Inventory inv = GameObject.FindWithTag("Player").GetComponent<Inventory>();
+        inv.lastPressed = new SlotRefrenceInformation();
         while (!inv.lastPressed.taken)
             yield return null;
 
         SlotInformation slot = inv.slotInformationArray[inv.lastPressed.witchIndex];
-        int itemCash = (slot1)? item1 : item2;
-        Image imageCash = (slot1) ? item1Image : item2Image;
-;
+        int itemCash = (coudlronSlot == 1) ? item1 : (coudlronSlot == 2) ? item2 : craftedItem;
+        if (coudlronSlot == 1)
+            item1 = slot.index;
+        else if (coudlronSlot == 2)
+            item2 = slot.index;
+        else
+            craftedItem = -1;
 
         slot.index = itemCash;
         slot.amount = 1;
@@ -72,10 +96,14 @@ public class Cauldron : ShopAcessScript
             item2Image.sprite = null;
         if (craftedItem >= 0)
             craftedImage.sprite = items.itemInformationList[craftedItem].Sprite;
+        else
+            craftedImage.sprite = null;
     }
 
     public override void Interact()
     {
+        if(coroutine != null)
+            StopCoroutine(coroutine);
         Inventory inv = GameObject.FindWithTag("Player").GetComponent<Inventory>();
         if (active)
         {
