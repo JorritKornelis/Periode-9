@@ -7,18 +7,39 @@ public class BuyerAI : MonoBehaviour
 {
     private NavMeshAgent agent;
     public CharacterStatistics stats;
-    public MeshRenderer meshRenderer;
-    public MeshFilter meshFilter;
+    public SkinnedMeshRenderer meshRenderer;
     public BuyerSpawner spawnerInfo;
     public IEnumerator currentCoroutine;
     public Transform itemDisplay;
     public bool hasItem;
     public float rotateSpeed;
     public int currentTries;
+    public bool activeSoundClip;
+    public AudioSource audiosource;
+    public AudioClip[] clips;
+    [Range(0,100)]
+    public float talkChance;
+    [Range(0,1)]
+    public float pitchRange;
+    public Animator animator;
 
     public int currentItem = -1;
     public int amount;
     public float setPrice;
+
+    public IEnumerator PlayRandomAudioClip()
+    {
+        float chance = Random.Range(0, 100);
+        if (!activeSoundClip && chance < talkChance)
+        {
+            audiosource.pitch = 1f + Random.Range(-pitchRange, pitchRange);
+            activeSoundClip = true;
+            int index = Random.Range(0, clips.Length);
+            audiosource.PlayOneShot(clips[index]);
+            yield return new WaitForSeconds(clips[index].length);
+            activeSoundClip = false;
+        }
+    }
 
     public void Start()
     {
@@ -28,15 +49,17 @@ public class BuyerAI : MonoBehaviour
 
     public IEnumerator IdleMove()
     {
+        StartCoroutine(PlayRandomAudioClip());
         Vector2 min = spawnerInfo.minRandomPoint;
         Vector2 max = spawnerInfo.maxRandomPoint;
         Vector2 movePoint = new Vector2(Random.Range(min.x, max.x), Random.Range(min.y, max.y));
         yield return null;
         Vector3 aiPoint = new Vector3(movePoint.x, spawnerInfo.height, movePoint.y);
         agent.SetDestination(aiPoint);
-
+        animator.SetBool("Walking", true);
         while (Vector3.Distance(transform.position, aiPoint) > 0.5f)
             yield return null;
+        animator.SetBool("Walking", false);
 
         yield return new WaitForSeconds(stats.waitTime);
         if (hasItem)
@@ -87,11 +110,13 @@ public class BuyerAI : MonoBehaviour
         possibleBuyable[index].lookedAt = true;  
 
         agent.SetDestination(possibleBuyable[index].transform.position);
+        animator.SetBool("Walking", true);
         while (Vector3.Distance(transform.position, possibleBuyable[index].transform.position) > 0.5f)
         {
             Debug.DrawLine(transform.position, possibleBuyable[index].transform.position,Color.red);
             yield return null;
         }
+        animator.SetBool("Walking", false);
 
         Vector3 dir = new Vector3(possibleBuyable[index].itemDisplay.position.x, transform.position.y, possibleBuyable[index].itemDisplay.position.z) - transform.position;
         Quaternion lookRot = Quaternion.LookRotation(dir, transform.up);
@@ -132,11 +157,13 @@ public class BuyerAI : MonoBehaviour
         spawnerInfo.counterAvailable = false;
         agent.SetDestination(spawnerInfo.counterLocation.position);
         yield return null;
+        animator.SetBool("Walking", true);
         while (Vector3.Distance(transform.position, spawnerInfo.counterLocation.position) > 0.5f)
         {
             Debug.DrawLine(transform.position, spawnerInfo.counterLocation.position, Color.red);
             yield return null;
         }
+        animator.SetBool("Walking", false);
 
         Vector3 dir = (new Vector3(spawnerInfo.counterLocation.position.x,transform.position.y, spawnerInfo.counterLocation.position.z) + Vector3.forward) - transform.position;
         Quaternion lookRot = Quaternion.LookRotation(dir, transform.up);
@@ -153,6 +180,7 @@ public class BuyerAI : MonoBehaviour
     }
     public IEnumerator LeaveStore()
     {
+        animator.SetBool("Walking", true);
         foreach (Transform child in itemDisplay)
             Destroy(child.gameObject);
         agent.SetDestination(spawnerInfo.doorLocation.position);
@@ -168,7 +196,6 @@ public class BuyerAI : MonoBehaviour
 
     public void SetVisuals()
     {
-        meshFilter.mesh = stats.characterMesh;
         meshRenderer.material = stats.characterMaterial;
     }
 }
