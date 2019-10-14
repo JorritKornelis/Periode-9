@@ -57,6 +57,9 @@ ModelImporter:
   - first:
       74: -8867141543931192041
     second: metarig|Walk Sideways Right (Shop)
+  - first:
+      74: 5487164775603580410
+    second: metarig|Idle (Shop)
   externalObjects: {}
   materials:
     importMaterials: 1
