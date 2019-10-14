@@ -13,8 +13,6 @@ public class PlayerSword : MonoBehaviour
     CharacterMovement character;
 
     public float damageTimer;
-    public float waitForStartAttackDamage;
-    public float waitForEndAttackDamage;
     public float waitForNextAnimaton;
 
     [Header("GemStuff")]
@@ -35,7 +33,6 @@ public class PlayerSword : MonoBehaviour
         {
             StartCoroutine(PlayerSwordAtack());
         }
-        
     }
 
     //animation toevoegen
@@ -43,29 +40,32 @@ public class PlayerSword : MonoBehaviour
     {
         playerDungonAnimator.SetBool("Attacking", true);
         character.allowMovement = false;
-        
-        yield return new WaitForSeconds(waitForStartAttackDamage);
 
-        Collider[] hitColliders = Physics.OverlapBox(transform.position, swordAttackRadius, transform.rotation);
-        int i = 0;
+        //playerDungonAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attacking");
 
+        List<GameObject> hitObjects = new List<GameObject>();
         float timer = damageTimer;
-        List<Collider> hitObjects = new List<Collider>();
 
-        while (i < hitColliders.Length)
+        while (timer > 0)
         {
             yield return null;
             timer -= Time.deltaTime;
-            if (hitColliders[i].gameObject.tag == "Enemy" && !hitObjects.Contains(hitColliders[i]))
+            Collider[] hitColliders = Physics.OverlapBox(transform.position, swordAttackRadius, Quaternion.identity);
+            int i = 0;
+
+            while (i < hitColliders.Length)
             {
-                Debug.Log("HIT ENEMY");
-                hitColliders[i].GetComponent<EnemyHealthScript>().TakeDamage(swordDamage, hitColliders[i].gameObject);
-                hitObjects.Add(hitColliders[i]);
-                
+                if (hitColliders[i].gameObject.tag == "Enemy" && !hitObjects.Contains(hitColliders[i].gameObject))
+                {
+                    Debug.Log("HIT ENEMY");
+                    hitObjects.Add(hitColliders[i].gameObject);
+                    hitColliders[i].GetComponent<EnemyHealthScript>().TakeDamage(swordDamage, hitColliders[i].gameObject);
+                }
+                i++;
             }
-            i++;
+            
+            hitObjects.Clear();
         }
-        yield return new WaitForSeconds(waitForEndAttackDamage);
         
         float time = waitForNextAnimaton;
         bool nextAttack = false;
@@ -144,13 +144,7 @@ public class PlayerSword : MonoBehaviour
                 //stuff
                 Debug.Log("NO EFFECT");
                 break;
-
         }
-    }
-
-    IEnumerator CountDown()
-    {
-        yield return new WaitForSeconds(gemCooldown);
     }
 
     public void OnDrawGizmosSelected()
@@ -158,5 +152,4 @@ public class PlayerSword : MonoBehaviour
         Gizmos.DrawWireCube(transform.position, swordAttackRadius);
         
     }
-
 }

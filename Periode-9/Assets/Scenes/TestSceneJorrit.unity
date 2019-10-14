@@ -3853,10 +3853,8 @@ MonoBehaviour:
   swordAttackRadius: {x: 0.24, y: 0.13, z: 1.9}
   acttackCoolDownTimer: 0.2
   playerDungonAnimator: {fileID: 1979023565}
-  damageTimer: 0
-  waitForStartAttackDamage: 0.05
-  waitForEndAttackDamage: 0.18
-  waitForNextAnimaton: 0.08
+  damageTimer: 0.8
+  waitForNextAnimaton: 0.5
   curGem: 3
   electricSplashRange: 5
   electricSplashDamage: 1
