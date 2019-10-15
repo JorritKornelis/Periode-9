@@ -13,4 +13,6 @@ public class DialoguePartInfo
 {
     public bool enthusiastic;
     public string message;
+    public int animationAmount;
+    public int soundAmount;
 }

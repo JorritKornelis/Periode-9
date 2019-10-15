@@ -27,23 +27,25 @@ public class DialogueSystem : MonoBehaviour
     public GameObject uiPanel;
     public bool active;
     public bool test;
-    public bool enthusiast;
-    public int amount;
-    public int soundAmount;
+    public DialogueInfo testInfo;
 
     public void Update()
+    {
+        if (test)
+        {
+            test = false;
+            StartCoroutine(StartDialogue(testInfo));
+        }
+        Follow();
+    }
+
+    public void Follow()
     {
         followObject.RotateAround(player.position, Vector3.up, rotateSpeed * Time.deltaTime);
         skull.transform.position = Vector3.Lerp(skull.transform.position, followObject.transform.position, Time.deltaTime * lerpSpeed);
 
         var targetRotation = Quaternion.LookRotation(new Vector3(player.position.x, player.position.y + lookHeightOffset, player.position.z) - skull.position);
         skull.rotation = Quaternion.Lerp(skull.rotation, targetRotation, Time.deltaTime * lookLerp);
-
-        if (test)
-        {
-            test = false;
-            StartCoroutine(PlayAnimations(amount, enthusiast, soundAmount));
-        }
     }
 
     public IEnumerator StartDialogue(DialogueInfo info)
@@ -53,7 +55,21 @@ public class DialogueSystem : MonoBehaviour
             uiPanel.SetActive(true);
             foreach (DialoguePartInfo dialoguePart in info.dialogue)
             {
+                StartCoroutine(PlayAnimations(dialoguePart.animationAmount, dialoguePart.enthusiastic, dialoguePart.soundAmount));
+                textInput.text = "";
+                foreach (char letter in dialoguePart.message)
+                {
+                    yield return null;
+                    textInput.text += letter;
+                    if (Input.GetButtonDown("Fire1"))
+                    {
+                        textInput.text = dialoguePart.message;
+                        break;
+                    }
+                }
                 yield return null;
+                while(!Input.GetButtonDown("Fire1"))
+                    yield return null;
             }
         }
     }
