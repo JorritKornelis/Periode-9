@@ -4268,7 +4268,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 321376071}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.681, z: 1.708}
+  m_LocalPosition: {x: 0, y: 1.04, z: 1.708}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1530074241}
@@ -10849,15 +10849,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7735849, g: 0.6418969, b: 0.44152722, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 5745ccc26ff142645914a3e6f1fb5e17, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -10891,8 +10891,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 420.97, y: -295}
-  m_SizeDelta: {x: -1025.2, y: -943.8}
+  m_AnchoredPosition: {x: 494, y: -301}
+  m_SizeDelta: {x: -921.7, y: -687.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &991043879
 PrefabInstance:
@@ -15615,7 +15615,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: de3202ce08c45de4ba0283e0091493a9,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.313
+      value: 1.73
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: de3202ce08c45de4ba0283e0091493a9,
         type: 3}
@@ -17758,11 +17758,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   normalAnimations:
-  - Teeth
   - LaughSmall
   enthusiasticAnimations:
-  - Thom
-  - Spin
   - LaughBig
   anim: {fileID: 1458413719}
   animationDelay: 0
@@ -17773,6 +17770,9 @@ MonoBehaviour:
   source: {fileID: 1458413718}
   normalSoundRange: {x: 0.8, y: 1}
   enthusiasticSoundRange: {x: 1, y: 1.2}
+  inverseTime: 1
+  heightSpeed: 3.5
+  currentSpeed: 0
   lerpSpeed: 2.11
   lookLerp: 3.09
   rotateSpeed: 88.81
@@ -17783,6 +17783,37 @@ MonoBehaviour:
   lookPos: {x: 2.548337, y: 1.7189986, z: -0.66018075}
   textInput: {fileID: 1812882726}
   uiPanel: {fileID: 990076902}
+  events:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1841866179}
+        m_MethodName: CallMoveTowards
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1841866179}
+        m_MethodName: CallMoveTowards
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: -1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   active: 0
   test: 0
   testInfo: {fileID: 11400000, guid: 456085abca8596947914c70d75b3657c, type: 2}
@@ -19127,8 +19158,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000019073, y: 0}
-  m_SizeDelta: {x: 845.8, y: 111.6}
+  m_AnchoredPosition: {x: -32.8, y: 16.7}
+  m_SizeDelta: {x: 617.9, y: 113.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1830916795
 PrefabInstance:

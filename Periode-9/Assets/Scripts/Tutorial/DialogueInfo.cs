@@ -12,7 +12,9 @@ public class DialogueInfo : ScriptableObject
 public class DialoguePartInfo
 {
     public bool enthusiastic;
+    [TextArea(3,7)]
     public string message;
-    public int animationAmount;
-    public int soundAmount;
+    public int animationAmount = 2;
+    public int soundAmount = 3;
+    public int ActionEvent = -1;
 }

@@ -17,19 +17,24 @@ MonoBehaviour:
     message: Welcome!
     animationAmount: 3
     soundAmount: 2
+    ActionEvent: -1
   - enthusiastic: 0
     message: Could you please go away?
     animationAmount: 3
     soundAmount: 2
+    ActionEvent: 0
   - enthusiastic: 0
-    message: We prever to have no one around here
+    message: We prever to have no one around here.
     animationAmount: 3
     soundAmount: 2
+    ActionEvent: -1
   - enthusiastic: 1
     message: Cuz i be a spooky skull
     animationAmount: 3
     soundAmount: 2
+    ActionEvent: -1
   - enthusiastic: 0
     message: Go away
     animationAmount: 3
     soundAmount: 2
+    ActionEvent: 1

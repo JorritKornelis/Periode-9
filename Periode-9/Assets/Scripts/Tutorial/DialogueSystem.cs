@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class DialogueSystem : MonoBehaviour
 {
@@ -14,6 +15,11 @@ public class DialogueSystem : MonoBehaviour
     public AudioSource source;
     public Vector2 normalSoundRange, enthusiasticSoundRange;
 
+    [Header("SkullHover")]
+    public float inverseTime;
+    public float heightSpeed;
+    public float currentSpeed = 0;
+
     [Header("SkullRotation")]
     public float lerpSpeed;
     public float lookLerp;
@@ -22,12 +28,19 @@ public class DialogueSystem : MonoBehaviour
     public Transform followObject, player, skull;
     public Vector3 lookPos;
 
-    [Header("UI")]
+    [Header("Other")]
     public Text textInput;
     public GameObject uiPanel;
+    public UnityEvent[] events;
+    [Header("Tests")]
     public bool active;
     public bool test;
     public DialogueInfo testInfo;
+
+    public void Start()
+    {
+        StartCoroutine(Hover());
+    }
 
     public void Update()
     {
@@ -37,6 +50,23 @@ public class DialogueSystem : MonoBehaviour
             StartCoroutine(StartDialogue(testInfo));
         }
         Follow();
+    }
+
+    public IEnumerator Hover()
+    {
+        float time = inverseTime / 2f;
+        while (true)
+        {
+            while (time > 0)
+            {
+                time -= Time.deltaTime;
+                currentSpeed += heightSpeed * Time.deltaTime;
+                followObject.position += Vector3.up * Time.deltaTime * currentSpeed;
+                yield return null;
+            }
+            heightSpeed = -heightSpeed;
+            time = inverseTime;
+        }
     }
 
     public void Follow()
@@ -55,6 +85,8 @@ public class DialogueSystem : MonoBehaviour
             uiPanel.SetActive(true);
             foreach (DialoguePartInfo dialoguePart in info.dialogue)
             {
+                if (dialoguePart.ActionEvent >= 0)
+                    events[dialoguePart.ActionEvent].Invoke();
                 StartCoroutine(PlayAnimations(dialoguePart.animationAmount, dialoguePart.enthusiastic, dialoguePart.soundAmount));
                 textInput.text = "";
                 foreach (char letter in dialoguePart.message)

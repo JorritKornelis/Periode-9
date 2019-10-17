@@ -52,6 +52,11 @@ public class CameraFocus : MonoBehaviour
         originalPos = new CameraPositions(transform.position, Camera.main.fieldOfView, Vector3.zero);
     }
 
+    public void CallMoveTowards(int index)
+    {
+        StartCoroutine(MoveTowardsPoint(index));
+    }
+
     public IEnumerator MoveTowardsPoint(int index)
     {
         active = true;
