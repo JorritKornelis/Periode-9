@@ -60,6 +60,7 @@ public class SaveDataBase
 {
     public List<ItemSaveSlot> inventory;
     public int currency;
+    public UpgradeUnlocks unlocks;
 }
 
 [System.Serializable]
@@ -68,4 +69,12 @@ public class ItemSaveSlot
     public int itemIndex;
     public int slot;
     public int amount;
+}
+
+[System.Serializable]
+public class UpgradeUnlocks
+{
+    public int isUpgradeInv;
+    public bool isUpgradeHealth;
+    public int isUpgradeShop;
 }
