@@ -37,11 +37,6 @@ public class DialogueSystem : MonoBehaviour
     public bool test;
     public DialogueInfo testInfo;
 
-    public void Start()
-    {
-        StartCoroutine(Hover());
-    }
-
     public void Update()
     {
         if (test)
@@ -50,23 +45,6 @@ public class DialogueSystem : MonoBehaviour
             StartCoroutine(StartDialogue(testInfo));
         }
         Follow();
-    }
-
-    public IEnumerator Hover()
-    {
-        float time = inverseTime / 2f;
-        while (true)
-        {
-            while (time > 0)
-            {
-                time -= Time.deltaTime;
-                currentSpeed += heightSpeed * Time.deltaTime;
-                followObject.position += Vector3.up * Time.deltaTime * currentSpeed;
-                yield return null;
-            }
-            heightSpeed = -heightSpeed;
-            time = inverseTime;
-        }
     }
 
     public void Follow()
