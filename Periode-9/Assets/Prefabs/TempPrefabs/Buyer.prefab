@@ -84,6 +84,34 @@ MonoBehaviour:
   - {fileID: 8300000, guid: bbc91ad45a5b5c743b2c85c6e8ada442, type: 3}
   - {fileID: 8300000, guid: 6f9812e095de55d45b52ff9aae002bb7, type: 3}
   - {fileID: 8300000, guid: 208d1888cbb35d044b004026bccd10a4, type: 3}
+  - {fileID: 8300000, guid: 67f136d17bfaf6641a1b864799f6e44e, type: 3}
+  - {fileID: 8300000, guid: 8de990c17e204a04492564c30d1ce21d, type: 3}
+  - {fileID: 8300000, guid: 111945b6efd3f2c4280dcfd5bb1271ae, type: 3}
+  - {fileID: 8300000, guid: 4ec621cdba7ca4249af2e8fd85a5220e, type: 3}
+  - {fileID: 8300000, guid: 91d97dc6b1e0db44b95e76fdefad7d88, type: 3}
+  - {fileID: 8300000, guid: b4014222a56e47c4ab52beb546d9cb0e, type: 3}
+  - {fileID: 8300000, guid: a7e9756902f61b447b9df5381af112ba, type: 3}
+  - {fileID: 8300000, guid: 9cf43ce4086b5f9438dd0c044b28e80f, type: 3}
+  - {fileID: 8300000, guid: 4edb91eb05111ab499b9c073c2a39d5d, type: 3}
+  - {fileID: 8300000, guid: ce611e944e4a45d46be19f2cb24ffdd0, type: 3}
+  - {fileID: 8300000, guid: 8d516b6cccb92a54baef657940a8468b, type: 3}
+  - {fileID: 8300000, guid: 0985b0593a3857043a420f2fb45d283c, type: 3}
+  - {fileID: 8300000, guid: c3d425f718ff6144188e70299734ce11, type: 3}
+  - {fileID: 8300000, guid: e271551290eccc24bae70ad019d7caf6, type: 3}
+  - {fileID: 8300000, guid: 1cf639dae22aec6489d8fbfe8754610b, type: 3}
+  - {fileID: 8300000, guid: a7651bf9be910554197b50d24717eb8e, type: 3}
+  - {fileID: 8300000, guid: 833716aa3689b1e4f9b40198c77ea6d8, type: 3}
+  - {fileID: 8300000, guid: 25e4fd0d2040dde4e9fa7077a293b3bd, type: 3}
+  - {fileID: 8300000, guid: 4d0b69640f470b3489c76fcf709d2824, type: 3}
+  - {fileID: 8300000, guid: af7bc137a9c2bed448ccd292229e33e3, type: 3}
+  - {fileID: 8300000, guid: e94c5ecbe4ab73047845116bc5b4a7f3, type: 3}
+  - {fileID: 8300000, guid: edb1301f1c0486e40bc17bd2f05f9de8, type: 3}
+  - {fileID: 8300000, guid: 27963fb47030abc488541122381dfef6, type: 3}
+  - {fileID: 8300000, guid: 8a2eaa89f597a9f47bd29fcec75581aa, type: 3}
+  - {fileID: 8300000, guid: bc389d4893ca51d4ab207be5a04c104e, type: 3}
+  - {fileID: 8300000, guid: 9da576e497ebf684b88cd3f9b44c9e0d, type: 3}
+  - {fileID: 8300000, guid: 1d238f3898f86014da43b1eb0a0d38fc, type: 3}
+  - {fileID: 8300000, guid: b9b851517ce040346ba49b1965927a43, type: 3}
   talkChance: 47
   pitchRange: 0.2
   animator: {fileID: 5595393314032961961}

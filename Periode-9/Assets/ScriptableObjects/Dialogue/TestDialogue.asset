@@ -22,7 +22,7 @@ MonoBehaviour:
     message: Could you please go away?
     animationAmount: 3
     soundAmount: 2
-    ActionEvent: 0
+    ActionEvent: -1
   - enthusiastic: 0
     message: We prever to have no one around here.
     animationAmount: 3
@@ -37,4 +37,4 @@ MonoBehaviour:
     message: Go away
     animationAmount: 3
     soundAmount: 2
-    ActionEvent: 1
+    ActionEvent: -1

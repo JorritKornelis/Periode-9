@@ -16,9 +16,9 @@ public class DialogueSystem : MonoBehaviour
     public Vector2 normalSoundRange, enthusiasticSoundRange;
 
     [Header("SkullHover")]
-    public float inverseTime;
-    public float heightSpeed;
-    public float currentSpeed = 0;
+    public float speed;
+    public float heightOffset;
+    public float normalHeight;
 
     [Header("SkullRotation")]
     public float lerpSpeed;
@@ -37,6 +37,12 @@ public class DialogueSystem : MonoBehaviour
     public bool test;
     public DialogueInfo testInfo;
 
+    public void Start()
+    {
+        normalHeight = followObject.position.y;
+        StartCoroutine(Hover());
+    }
+
     public void Update()
     {
         if (test)
@@ -45,6 +51,21 @@ public class DialogueSystem : MonoBehaviour
             StartCoroutine(StartDialogue(testInfo));
         }
         Follow();
+    }
+
+    public IEnumerator Hover()
+    {
+        int invert = 1;
+        while (true)
+        {
+            yield return null;
+            while (Mathf.Abs(followObject.position.y - (normalHeight + (heightOffset * invert))) > 0.01f)
+            {
+                followObject.position = Vector3.Lerp(followObject.position, new Vector3(followObject.position.x, normalHeight + (heightOffset * invert), followObject.position.z), Time.deltaTime * speed);
+                yield return null;
+            }
+            invert = -invert;
+        }
     }
 
     public void Follow()

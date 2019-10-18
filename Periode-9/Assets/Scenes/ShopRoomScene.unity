@@ -4417,7 +4417,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 321376071}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.04, z: 1.708}
+  m_LocalPosition: {x: 0, y: 1.42, z: 1.708}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1530074241}
@@ -17989,9 +17989,9 @@ MonoBehaviour:
   source: {fileID: 1458413718}
   normalSoundRange: {x: 0.8, y: 1}
   enthusiasticSoundRange: {x: 1, y: 1.2}
-  inverseTime: 1
-  heightSpeed: 3.5
-  currentSpeed: 0
+  speed: 4
+  heightOffset: 0.4
+  normalHeight: 1.7689999
   lerpSpeed: 2.11
   lookLerp: 3.09
   rotateSpeed: 88.81
@@ -18501,6 +18501,10 @@ MonoBehaviour:
   data:
     inventory: []
     currency: 0
+    unlocks:
+      isUpgradeInv: 0
+      isUpgradeHealth: 0
+      isUpgradeShop: 0
 --- !u!4 &1678121221
 Transform:
   m_ObjectHideFlags: 0
