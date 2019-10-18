@@ -33,10 +33,18 @@ public class DialogueSystem : MonoBehaviour
     public Text textInput;
     public GameObject uiPanel;
     public UnityEvent[] events;
+    public bool active;
+    public Saving saving;
+    public string savingTag;
+    public DialogueInfo tutorialDialogue;
+    public bool inShop;
 
     public void Start()
     {
+        saving = GameObject.FindWithTag(savingTag).GetComponent<Saving>();
         normalHeight = followObject.position.y;
+        if (!saving.data.hadTutorialShop && inShop || !saving.data.hadTutorialDungeon && !inShop)
+            StartCoroutine(StartDialogue(tutorialDialogue));
         StartCoroutine(Hover());
     }
 
@@ -78,8 +86,6 @@ public class DialogueSystem : MonoBehaviour
             uiPanel.SetActive(true);
             foreach (DialoguePartInfo dialoguePart in info.dialogue)
             {
-                if (dialoguePart.ActionEvent >= 0)
-                    events[dialoguePart.ActionEvent].Invoke();
                 StartCoroutine(PlayAnimations(dialoguePart.animationAmount, dialoguePart.enthusiastic, dialoguePart.soundAmount));
                 textInput.text = "";
                 foreach (char letter in dialoguePart.message)
@@ -87,12 +93,12 @@ public class DialogueSystem : MonoBehaviour
                     yield return null;
                     textInput.text += letter;
                     if (Input.GetButtonDown("Fire1"))
-                    {
-                        textInput.text = dialoguePart.message;
                         break;
-                    }
                 }
+                textInput.text = dialoguePart.message;
                 yield return null;
+                if (dialoguePart.ActionEvent >= 0)
+                    events[dialoguePart.ActionEvent].Invoke();
                 while(!Input.GetButtonDown("Fire1"))
                     yield return null;
             }
