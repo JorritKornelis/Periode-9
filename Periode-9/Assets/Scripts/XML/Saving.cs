@@ -61,6 +61,8 @@ public class SaveDataBase
     public List<ItemSaveSlot> inventory;
     public int currency;
     public UpgradeUnlocks unlocks;
+    public bool hadTutorialShop;
+    public bool hadTutorialDungeon;
 }
 
 [System.Serializable]
