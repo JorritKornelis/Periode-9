@@ -13510,7 +13510,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   system: {fileID: 1594202955}
-  dialogue: {fileID: 0}
+  dialogue: {fileID: 11400000, guid: 456085abca8596947914c70d75b3657c, type: 2}
   deactivationObject: {fileID: 2108921332}
 --- !u!114 &1164033205
 MonoBehaviour:
