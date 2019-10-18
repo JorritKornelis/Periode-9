@@ -14,6 +14,7 @@ public class DialogueSystem : MonoBehaviour
     public AudioClip[] sounds;
     public AudioSource source;
     public Vector2 normalSoundRange, enthusiasticSoundRange;
+    public bool following;
 
     [Header("SkullHover")]
     public float speed;
@@ -32,10 +33,6 @@ public class DialogueSystem : MonoBehaviour
     public Text textInput;
     public GameObject uiPanel;
     public UnityEvent[] events;
-    [Header("Tests")]
-    public bool active;
-    public bool test;
-    public DialogueInfo testInfo;
 
     public void Start()
     {
@@ -45,12 +42,8 @@ public class DialogueSystem : MonoBehaviour
 
     public void Update()
     {
-        if (test)
-        {
-            test = false;
-            StartCoroutine(StartDialogue(testInfo));
-        }
-        Follow();
+        if(following)
+            Follow();
     }
 
     public IEnumerator Hover()
@@ -61,7 +54,8 @@ public class DialogueSystem : MonoBehaviour
             yield return null;
             while (Mathf.Abs(followObject.position.y - (normalHeight + (heightOffset * invert))) > 0.01f)
             {
-                followObject.position = Vector3.Lerp(followObject.position, new Vector3(followObject.position.x, normalHeight + (heightOffset * invert), followObject.position.z), Time.deltaTime * speed);
+                if(following)
+                    followObject.position = Vector3.Lerp(followObject.position, new Vector3(followObject.position.x, normalHeight + (heightOffset * invert), followObject.position.z), Time.deltaTime * speed);
                 yield return null;
             }
             invert = -invert;
