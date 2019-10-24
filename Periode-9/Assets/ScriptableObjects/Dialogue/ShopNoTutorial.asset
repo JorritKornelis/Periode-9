@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 29edb0d7499ce9042bf0e642acf6deba, type: 3}
-  m_Name: ShopTutorial
+  m_Name: ShopNoTutorial
   m_EditorClassIdentifier: 
   dialogue:
-  - enthusiastic: 1
-    message: Welcome!
-    animationAmount: 3
-    soundAmount: 2
-    beginActionEvents: 0100000003000000
-    endActionEvents: 
   - enthusiastic: 0
-    message: Would you like a quick tutorial about how the game works?
+    message: Well....
     animationAmount: 3
     soundAmount: 2
     beginActionEvents: 
-    endActionEvents: 02000000
+    endActionEvents: 
+  - enthusiastic: 1
+    message: Suit yourself, I'll be sitting on my pedastal if you need me.
+    animationAmount: 3
+    soundAmount: 2
+    beginActionEvents: 
+    endActionEvents: 04000000

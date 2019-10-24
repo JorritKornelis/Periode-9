@@ -86,6 +86,10 @@ public class DialogueSystem : MonoBehaviour
             uiPanel.SetActive(true);
             foreach (DialoguePartInfo dialoguePart in info.dialogue)
             {
+                yield return null;
+                foreach (int eventIndex in dialoguePart.beginActionEvents)
+                    events[eventIndex].Invoke();
+
                 StartCoroutine(PlayAnimations(dialoguePart.animationAmount, dialoguePart.enthusiastic, dialoguePart.soundAmount));
                 textInput.text = "";
                 foreach (char letter in dialoguePart.message)
@@ -97,10 +101,12 @@ public class DialogueSystem : MonoBehaviour
                 }
                 textInput.text = dialoguePart.message;
                 yield return null;
-                if (dialoguePart.ActionEvent >= 0)
-                    events[dialoguePart.ActionEvent].Invoke();
-                while(!Input.GetButtonDown("Fire1"))
+
+                while (!Input.GetButtonDown("Fire1"))
                     yield return null;
+
+                foreach (int eventIndex in dialoguePart.endActionEvents)
+                    events[eventIndex].Invoke();
             }
         }
     }

@@ -16,5 +16,5 @@ public class DialoguePartInfo
     public string message;
     public int animationAmount = 2;
     public int soundAmount = 3;
-    public int ActionEvent = -1;
+    public int[] beginActionEvents, endActionEvents;
 }

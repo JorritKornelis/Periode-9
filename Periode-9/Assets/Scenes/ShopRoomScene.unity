@@ -23340,7 +23340,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   system: {fileID: 1594202955}
-  dialogue: {fileID: 11400000, guid: 456085abca8596947914c70d75b3657c, type: 2}
+  dialogue: {fileID: 11400000, guid: 5be988518b5959a488c0aaf84a23a41e, type: 2}
   deactivationObject: {fileID: 2108921332}
 --- !u!114 &1164033205
 MonoBehaviour:
@@ -25863,7 +25863,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180.00002}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00018310547, y: -69.28894}
+  m_AnchoredPosition: {x: -0.00018310547, y: -69.28882}
   m_SizeDelta: {x: -7.6628, y: -31.57}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1277547040
@@ -29431,7 +29431,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180.00002}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00012207031, y: -69.28894}
+  m_AnchoredPosition: {x: -0.00012207031, y: -69.28882}
   m_SizeDelta: {x: -7.6628, y: -31.57}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1492724187
@@ -30152,7 +30152,7 @@ MonoBehaviour:
   fallVelocity: 5
   accelAmount: 9
   rotateLerpSpeed: 13
-  invert: 0
+  invert: 1
   obstacleMask:
     serializedVersion: 2
     m_Bits: 6199
@@ -30168,7 +30168,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   walkDust: {fileID: 432449536}
-  allowMovement: 1
+  allowMovement: 0
   inTheChestBool: 0
   inDungeonAnimations: 0
   animator: {fileID: 622037932}
@@ -31270,6 +31270,36 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1594202957}
+        m_MethodName: CharacterAllowMovement
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: -1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1594202957}
+        m_MethodName: CharacterAllowMovement
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: -1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   active: 0
   saving: {fileID: 0}
   savingTag: Manager
@@ -31303,6 +31333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   system: {fileID: 1594202955}
+  playerTag: Player
 --- !u!1001 &1595055539
 PrefabInstance:
   m_ObjectHideFlags: 0
