@@ -15,6 +15,8 @@ public class DialogueSystem : MonoBehaviour
     public AudioSource source;
     public Vector2 normalSoundRange, enthusiasticSoundRange;
     public bool following;
+    public float returnDelay;
+    public Transform pedastalPos;
 
     [Header("SkullHover")]
     public float speed;
@@ -81,34 +83,34 @@ public class DialogueSystem : MonoBehaviour
 
     public IEnumerator StartDialogue(DialogueInfo info)
     {
-        if (!active)
+        uiPanel.SetActive(true);
+        active = true;
+        foreach (DialoguePartInfo dialoguePart in info.dialogue)
         {
-            uiPanel.SetActive(true);
-            foreach (DialoguePartInfo dialoguePart in info.dialogue)
+            yield return null;
+            foreach (int eventIndex in dialoguePart.beginActionEvents)
+                events[eventIndex].Invoke();
+
+            StartCoroutine(PlayAnimations(dialoguePart.animationAmount, dialoguePart.enthusiastic, dialoguePart.soundAmount));
+            textInput.text = "";
+            foreach (char letter in dialoguePart.message)
             {
                 yield return null;
-                foreach (int eventIndex in dialoguePart.beginActionEvents)
-                    events[eventIndex].Invoke();
+                textInput.text += letter;
+                if (Input.GetButtonDown("Fire1"))
+                    break;
+            }
+            textInput.text = dialoguePart.message;
+            yield return null;
 
-                StartCoroutine(PlayAnimations(dialoguePart.animationAmount, dialoguePart.enthusiastic, dialoguePart.soundAmount));
-                textInput.text = "";
-                foreach (char letter in dialoguePart.message)
-                {
-                    yield return null;
-                    textInput.text += letter;
-                    if (Input.GetButtonDown("Fire1"))
-                        break;
-                }
-                textInput.text = dialoguePart.message;
+            while (!Input.GetButtonDown("Fire1"))
                 yield return null;
 
-                while (!Input.GetButtonDown("Fire1"))
-                    yield return null;
-
-                foreach (int eventIndex in dialoguePart.endActionEvents)
-                    events[eventIndex].Invoke();
-            }
+            foreach (int eventIndex in dialoguePart.endActionEvents)
+                events[eventIndex].Invoke();
         }
+        if (!active)
+            uiPanel.SetActive(false);
     }
 
     public IEnumerator PlayAnimations(int amount, bool enthusiastic, int soundClips)
@@ -131,5 +133,14 @@ public class DialogueSystem : MonoBehaviour
             source.PlayOneShot(sounds[index]);
             yield return new WaitForSeconds(sounds[index].length);
         }
+    }
+
+    public IEnumerator SendSkullToPedastal()
+    {
+        anim.SetTrigger("Spin");
+        following = false;
+        yield return new WaitForSeconds(returnDelay);
+        skull.transform.position = pedastalPos.position;
+        skull.transform.rotation = pedastalPos.rotation;
     }
 }

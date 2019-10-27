@@ -22,4 +22,19 @@ public class TutorialActions : MonoBehaviour
         Debug.Log(allow);
         GameObject.FindWithTag(playerTag).GetComponent<CharacterMovement>().allowMovement = allow;
     }
+
+    public void DissableSkullFollowing()
+    {
+        StartCoroutine(system.SendSkullToPedastal());
+    }
+
+    public void TeleportPlayer(Transform telepoint)
+    {
+        GameObject.FindWithTag(playerTag).transform.position = telepoint.position;
+    }
+
+    public void DialogueDeactivate()
+    {
+        system.active = false;
+    }
 }

@@ -24,4 +24,4 @@ MonoBehaviour:
     animationAmount: 3
     soundAmount: 2
     beginActionEvents: 
-    endActionEvents: 04000000
+    endActionEvents: 040000000500000008000000

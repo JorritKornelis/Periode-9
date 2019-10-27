@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29edb0d7499ce9042bf0e642acf6deba, type: 3}
+  m_Name: ShopYesTutorial
+  m_EditorClassIdentifier: 
+  dialogue:
+  - enthusiastic: 1
+    message: Great!
+    animationAmount: 2
+    soundAmount: 3
+    beginActionEvents: 
+    endActionEvents: 
+  - enthusiastic: 0
+    message: First, let me explain what you can do in your bedroom.
+    animationAmount: 2
+    soundAmount: 3
+    beginActionEvents: 
+    endActionEvents: 
+  - enthusiastic: 1
+    message: In your bedroom you keep your cauldron.
+    animationAmount: 2
+    soundAmount: 3
+    beginActionEvents: 06000000
+    endActionEvents: 
+  - enthusiastic: 0
+    message: With your cauldron you can combine items to sell in your shop.
+    animationAmount: 2
+    soundAmount: 3
+    beginActionEvents: 
+    endActionEvents: 
+  - enthusiastic: 1
+    message: Or you can use those items in the dungeon!
+    animationAmount: 2
+    soundAmount: 3
+    beginActionEvents: 00000000
+    endActionEvents: 
+  - enthusiastic: 0
+    message: This is your shop.
+    animationAmount: 2
+    soundAmount: 3
+    beginActionEvents: 07000000
+    endActionEvents: 
+  - enthusiastic: 0
+    message: You can place your items on the tables and buyers will come in and buy
+      it.
+    animationAmount: 2
+    soundAmount: 3
+    beginActionEvents: 
+    endActionEvents: 
+  - enthusiastic: 0
+    message: You can allow them to come in by interacting with the door.
+    animationAmount: 2
+    soundAmount: 3
+    beginActionEvents: 
+    endActionEvents: 
+  - enthusiastic: 1
+    message: You can also go to the dungeon when interacting with it!
+    animationAmount: 2
+    soundAmount: 3
+    beginActionEvents: 
+    endActionEvents: 
+  - enthusiastic: 0
+    message: You can buy upgrades for yourself or for your shop by interacting with
+      me.
+    animationAmount: 2
+    soundAmount: 3
+    beginActionEvents: 
+    endActionEvents: 
+  - enthusiastic: 1
+    message: I will be sitting on this padestal when you need me.
+    animationAmount: 2
+    soundAmount: 3
+    beginActionEvents: 
+    endActionEvents: 
+  - enthusiastic: 0
+    message: That is all I can tell you about the shop.
+    animationAmount: 2
+    soundAmount: 3
+    beginActionEvents: 
+    endActionEvents: 
+  - enthusiastic: 1
+    message: I will be bothering you again when you enter the dungeon.
+    animationAmount: 2
+    soundAmount: 3
+    beginActionEvents: 
+    endActionEvents: 050000000400000008000000

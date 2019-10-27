@@ -100,10 +100,12 @@ public class CameraFocus : MonoBehaviour
 
     public IEnumerator ChangeCharacterInvert(int invert)
     {
+        bool allowChange = characterMovement.allowMovement;
         characterMovement.invert = invert;
         characterMovement.allowMovement = false;
         yield return new WaitForSeconds(invertTimer);
-        characterMovement.allowMovement = true;
+        if (allowChange)
+            characterMovement.allowMovement = true;
     }
 }
 
