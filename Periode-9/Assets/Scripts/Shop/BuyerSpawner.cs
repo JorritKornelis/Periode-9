@@ -16,6 +16,7 @@ public class BuyerSpawner : MonoBehaviour
     public List<SellPoint> sellPoints = new List<SellPoint>();
     public ItemClassScriptableObject items;
     public string managerTag;
+    public bool shopOpen;
 
     public void Start()
     {
@@ -26,7 +27,7 @@ public class BuyerSpawner : MonoBehaviour
     {
         while (true)
         {
-            if (currentBuyers < maxBuyers)
+            if (currentBuyers < maxBuyers && shopOpen)
             {
                 BuyerAI buyer = Instantiate(buyerBaseObject, doorLocation.position, doorLocation.rotation).GetComponent<BuyerAI>();
                 buyer.stats = buyerStats[Random.Range(0, buyerStats.Length)];
