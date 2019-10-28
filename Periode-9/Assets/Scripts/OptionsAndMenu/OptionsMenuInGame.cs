@@ -6,11 +6,12 @@ using UnityEngine.UI;
 public class OptionsMenuInGame : MonoBehaviour
 {
     public GameObject optionsPanel;
-    bool open = false;
+    public GameObject settingPanel;
 
     void Awake()
     {
         optionsPanel.SetActive(false);
+        settingPanel.SetActive(false);
     }
 
     void Update()
@@ -20,12 +21,24 @@ public class OptionsMenuInGame : MonoBehaviour
 
     public void OpenOptionsInGameFunction()
     {
-        open = true;
-        if (Input.GetButton("Escape") && open == true)
+        if (Input.GetButton("Escape"))
         {
             optionsPanel.SetActive(!optionsPanel.activeSelf);
-            open = false;
+            if (optionsPanel.activeSelf == false)
+            {
+                Time.timeScale = 1f;
+            }
+            else
+            {
+                Time.timeScale = 0f;
+            }
         }
+    }
+
+    public void OpenSettingsInGameFunction()
+    {
+        settingPanel.SetActive(!settingPanel.activeSelf);
+        optionsPanel.SetActive(!settingPanel.activeSelf);
     }
 
 }
