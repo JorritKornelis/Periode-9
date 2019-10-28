@@ -24484,21 +24484,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 660217338}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 2c080d7fc1dfc0a49933092023a31476,
-        type: 3}
-      propertyPath: m_Name
-      value: PlayerD
-      objectReference: {fileID: 0}
-    - target: {fileID: 2395823112672405650, guid: 2c080d7fc1dfc0a49933092023a31476,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: 2c080d7fc1dfc0a49933092023a31476,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 23aa569c198b88742a173dc0c6733f78, type: 2}
     - target: {fileID: -4216859302048453862, guid: 2c080d7fc1dfc0a49933092023a31476,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -24554,6 +24539,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: 2c080d7fc1dfc0a49933092023a31476,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 23aa569c198b88742a173dc0c6733f78, type: 2}
     - target: {fileID: -4694338623589209743, guid: 2c080d7fc1dfc0a49933092023a31476,
         type: 3}
       propertyPath: m_Materials.Array.size
@@ -24569,6 +24559,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 3b14b491a73610444ad6a90c1e342b83, type: 2}
+    - target: {fileID: -927199367670048503, guid: 2c080d7fc1dfc0a49933092023a31476,
+        type: 3}
+      propertyPath: m_Name
+      value: PlayerD
+      objectReference: {fileID: 0}
+    - target: {fileID: 2395823112672405650, guid: 2c080d7fc1dfc0a49933092023a31476,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 749778445373658951, guid: 2c080d7fc1dfc0a49933092023a31476,
         type: 3}
       propertyPath: m_Materials.Array.size
@@ -31292,6 +31292,21 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1594202957}
         m_MethodName: DialogueDeactivate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1594202957}
+        m_MethodName: HadShopTutorial
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

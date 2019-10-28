@@ -37,4 +37,16 @@ public class TutorialActions : MonoBehaviour
     {
         system.active = false;
     }
+
+    public void HadShopTutorial()
+    {
+        system.saving.data.hadTutorialShop = true;
+        system.saving.SaveData();
+    }
+
+    public void HadDungeonTutorial()
+    {
+        system.saving.data.hadTutorialDungeon = true;
+        system.saving.SaveData();
+    }
 }

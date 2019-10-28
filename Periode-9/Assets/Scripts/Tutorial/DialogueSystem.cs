@@ -47,6 +47,11 @@ public class DialogueSystem : MonoBehaviour
         normalHeight = followObject.position.y;
         if (!saving.data.hadTutorialShop && inShop || !saving.data.hadTutorialDungeon && !inShop)
             StartCoroutine(StartDialogue(tutorialDialogue));
+        else
+        {
+            StartCoroutine(SendSkullToPedastal());
+            player.GetComponent<CharacterMovement>().allowMovement = true;
+        }
         StartCoroutine(Hover());
     }
 
