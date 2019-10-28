@@ -49,7 +49,9 @@ public class DialogueSystem : MonoBehaviour
             StartCoroutine(StartDialogue(tutorialDialogue));
         else
         {
-            StartCoroutine(SendSkullToPedastal());
+            skull.transform.position = pedastalPos.position;
+            skull.transform.rotation = pedastalPos.rotation;
+            following = false;
             player.GetComponent<CharacterMovement>().allowMovement = true;
         }
         StartCoroutine(Hover());

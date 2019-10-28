@@ -74,13 +74,13 @@ MonoBehaviour:
     animationAmount: 2
     soundAmount: 3
     beginActionEvents: 
-    endActionEvents: 
+    endActionEvents: 0a000000
   - enthusiastic: 1
     message: I will be sitting on this padestal when you need me.
     animationAmount: 2
     soundAmount: 3
     beginActionEvents: 
-    endActionEvents: 
+    endActionEvents: 00000000
   - enthusiastic: 0
     message: That is all I can tell you about the shop.
     animationAmount: 2
