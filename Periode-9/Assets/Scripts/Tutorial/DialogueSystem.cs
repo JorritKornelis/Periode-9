@@ -17,6 +17,7 @@ public class DialogueSystem : MonoBehaviour
     public bool following;
     public float returnDelay;
     public Transform pedastalPos;
+    public GameObject poof;
 
     [Header("SkullHover")]
     public float speed;
@@ -147,7 +148,9 @@ public class DialogueSystem : MonoBehaviour
         anim.SetTrigger("Spin");
         following = false;
         yield return new WaitForSeconds(returnDelay);
+        Destroy(Instantiate(poof, skull.position, Quaternion.identity),2);
         skull.transform.position = pedastalPos.position;
         skull.transform.rotation = pedastalPos.rotation;
+        Destroy(Instantiate(poof, skull.position, Quaternion.identity), 2);
     }
 }

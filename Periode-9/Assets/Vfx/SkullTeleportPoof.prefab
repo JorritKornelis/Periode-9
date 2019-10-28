@@ -31,7 +31,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &912636276562294382
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -41,7 +41,7 @@ ParticleSystem:
   m_GameObject: {fileID: 912636276562294381}
   serializedVersion: 6
   lengthInSec: 1
-  simulationSpeed: 1
+  simulationSpeed: 2
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
@@ -226,7 +226,7 @@ ParticleSystem:
       maxGradient:
         serializedVersion: 2
         key0: {r: 0.41509432, g: 0.41509432, b: 0.41509432, a: 0.75686276}
-        key1: {r: 0.7407885, g: 0.8773585, b: 0.8029766, a: 0.6784314}
+        key1: {r: 0.39520293, g: 0.7830189, b: 0.5724902, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0.53333336}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
