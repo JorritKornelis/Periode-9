@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 29edb0d7499ce9042bf0e642acf6deba, type: 3}
-  m_Name: TestDialogue
+  m_Name: SkullInteract
   m_EditorClassIdentifier: 
   dialogue:
   - enthusiastic: 1
-    message: Welcome!
-    animationAmount: 3
-    soundAmount: 2
+    message: What can I help you with.
+    animationAmount: 2
+    soundAmount: 3
     beginActionEvents: 
-    endActionEvents: 0000000000000000
+    endActionEvents: 080000000b000000
