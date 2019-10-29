@@ -102,7 +102,9 @@ public class CharacterMovement : MonoBehaviour
             currentMovementSpeed.x = 0;
         if (GetCollisionMoveAmount(Vector3.forward, Input.GetAxis("Vertical")) == 0 && Input.GetButton("Vertical"))
             currentMovementSpeed.z = 0;
+
         CheckCollisionPickUp();
+
         if (Vector3.Distance(Vector3.zero, currentMovementSpeed) > 0.2f)
         {
             Vector3 animationDirection = body.InverseTransformDirection(currentMovementSpeed.normalized);

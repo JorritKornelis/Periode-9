@@ -42,4 +42,11 @@ public class EnemyAttack : MonoBehaviour
             GameObject.FindWithTag("Player").GetComponent<PlayerHeathScript>().TakeDamage(attackDamage, GameObject.FindWithTag("Player"));
         }
     }
+
+    /*public void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawSphere(transform.position, attackRadius);
+
+    }
+    */
 }
