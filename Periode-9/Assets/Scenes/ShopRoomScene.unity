@@ -1158,7 +1158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 395, y: 0.000030517578}
+  m_AnchoredPosition: {x: 395, y: 0}
   m_SizeDelta: {x: -983.2, y: -39.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &46005710
@@ -9643,7 +9643,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -73.4}
+  m_AnchoredPosition: {x: 0, y: -73.3999}
   m_SizeDelta: {x: -1441.1, y: -942.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &390091714
@@ -17376,7 +17376,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -407, y: 0.000030517578}
+  m_AnchoredPosition: {x: -407, y: 0}
   m_SizeDelta: {x: -983.2, y: -39.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &780698160
@@ -25171,7 +25171,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.2999878}
+  m_AnchoredPosition: {x: 0, y: -0.30004883}
   m_SizeDelta: {x: -137, y: -94}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1120795750
@@ -33946,6 +33946,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 3
   maxHp: 0
+  hearts: []
+  fullHeart: {fileID: 0}
+  emptyHeart: {fileID: 0}
 --- !u!136 &1530074239
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -37846,6 +37849,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1732283838}
+  - component: {fileID: 1732283839}
   m_Layer: 0
   m_Name: BaseThings
   m_TagString: Untagged
@@ -37876,6 +37880,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1732283839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1732283837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 158f4f1b671895041aba8d96a9db839b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  savingTag: Manager
+  saving: {fileID: 0}
+  shop1: {fileID: 850444856}
+  shop2: {fileID: 1405891294}
 --- !u!1001 &1740402470
 PrefabInstance:
   m_ObjectHideFlags: 0
