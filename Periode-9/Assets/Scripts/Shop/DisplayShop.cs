@@ -19,4 +19,10 @@ public class DisplayShop : MonoBehaviour
         shop1.SetActive((saving.data.unlocks.isUpgradeShop == 0) ? true : false);
         shop2.SetActive((saving.data.unlocks.isUpgradeShop == 1) ? true : false);
     }
+
+    public IEnumerator DelayedUpdate(float time)
+    {
+        yield return new WaitForSeconds(time);
+        UpdateVisual();
+    }
 }

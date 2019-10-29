@@ -10,6 +10,9 @@ public class UpgradeBuying : ShopAcessScript
     public DialogueInfo[] dialogues;
     public Saving saving;
     public string savingTag;
+    public Animator transistion;
+    public DisplayShop display;
+    public float displayDelay;
 
     public UpgradeSlot[] shopUpgrades, healthUpgrades, swordUpgrades;
 
@@ -104,6 +107,8 @@ public class UpgradeBuying : ShopAcessScript
             shopUpgrades[index].bought = true;
             saving.data.unlocks.isUpgradeShop = index;
             DisplayUpgrades();
+            transistion.SetTrigger("Transition");
+            display.StartCoroutine(display.DelayedUpdate(displayDelay));
         }
     }
 
