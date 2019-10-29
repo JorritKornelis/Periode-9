@@ -78,5 +78,6 @@ public class UpgradeUnlocks
 {
     public int isUpgradeInv;
     public bool isUpgradeHealth;
+    public bool isUpgradeSword;
     public int isUpgradeShop;
 }
