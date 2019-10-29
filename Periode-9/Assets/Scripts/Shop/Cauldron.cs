@@ -16,6 +16,7 @@ public class Cauldron : ShopAcessScript
     public ItemClassScriptableObject items;
     public GameObject ui;
     public IEnumerator coroutine;
+    public Sprite noneSprite;
 
     public void ItemPlaceSlotClick(bool slot1)
     {
@@ -89,15 +90,15 @@ public class Cauldron : ShopAcessScript
         if (item1 >= 0)
             item1Image.sprite = items.itemInformationList[item1].Sprite;
         else
-            item1Image.sprite = null;
+            item1Image.sprite = noneSprite;
         if (item2 >= 0)
             item2Image.sprite = items.itemInformationList[item2].Sprite;
         else
-            item2Image.sprite = null;
+            item2Image.sprite = noneSprite;
         if (craftedItem >= 0)
             craftedImage.sprite = items.itemInformationList[craftedItem].Sprite;
         else
-            craftedImage.sprite = null;
+            craftedImage.sprite = noneSprite;
     }
 
     public override void Interact()

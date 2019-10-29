@@ -17,6 +17,7 @@ public class BuyerAI : MonoBehaviour
     public bool activeSoundClip;
     public AudioSource audiosource;
     public AudioClip[] clips;
+    public AudioClip cashSound;
     [Range(0,100)]
     public float talkChance;
     [Range(0,1)]
@@ -176,6 +177,7 @@ public class BuyerAI : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         GameObject.FindWithTag(spawnerInfo.managerTag).GetComponent<Saving>().data.currency += Mathf.RoundToInt(setPrice * amount);
         spawnerInfo.counterAvailable = true;
+        audiosource.PlayOneShot(cashSound, 2);
         StartCoroutine(LeaveStore());
     }
     public IEnumerator LeaveStore()

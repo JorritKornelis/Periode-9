@@ -13,6 +13,8 @@ public class SellingUI : MonoBehaviour
     public Sprite nothing;
     public Text[] priceInputs;
     public IEnumerator currentCoroutine;
+    public Transform selectDisplay;
+    public float displayRotateSpeed;
 
     public void SelectSellSlot(SellPoint point)
     {
@@ -25,6 +27,18 @@ public class SellingUI : MonoBehaviour
         else
             image.sprite = nothing;
         DisplayPrice();
+    }
+
+    public void Update()
+    {
+        if (currentPoint && ui.activeInHierarchy)
+        {
+            selectDisplay.gameObject.SetActive(true);
+            selectDisplay.position = new Vector3(currentPoint.itemDisplay.position.x, selectDisplay.position.y, currentPoint.itemDisplay.position.z);
+            selectDisplay.Rotate(Vector3.up * Time.deltaTime * displayRotateSpeed, Space.World);
+        }
+        else
+            selectDisplay.gameObject.SetActive(false);
     }
 
     public void PanelClick()
