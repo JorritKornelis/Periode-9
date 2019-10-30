@@ -62,55 +62,55 @@ MonoBehaviour:
       type: 3}
     canUse: 0
   - name: ElectricityScroll
-    Sprite: {fileID: 21300000, guid: 97898b2e5fa8cba4c9513f263ac10d27, type: 3}
+    Sprite: {fileID: 21300000, guid: 31bad13320836da41b99cdf7d4fd88e1, type: 3}
     maxStack: 5
     itemGameObject: {fileID: 3824857533377593406, guid: 0d9d15e55115ae845a7b22a960e70f03,
       type: 3}
     canUse: 1
   - name: FireScroll
-    Sprite: {fileID: 21300000, guid: 97898b2e5fa8cba4c9513f263ac10d27, type: 3}
+    Sprite: {fileID: 21300000, guid: 3a64c7a5c1de6d84f9e950e2a068f5a7, type: 3}
     maxStack: 5
     itemGameObject: {fileID: 2678306165415167117, guid: eaf9a463f5753454b9f5ae5b6e65f480,
       type: 3}
     canUse: 1
   - name: IceScroll
-    Sprite: {fileID: 21300000, guid: 97898b2e5fa8cba4c9513f263ac10d27, type: 3}
+    Sprite: {fileID: 21300000, guid: 29052b68e291ae04cb6e63ea4a8a14ca, type: 3}
     maxStack: 5
     itemGameObject: {fileID: 1593000879379925294, guid: 6ef387dd4a275964fbd208dadb64c8e3,
       type: 3}
     canUse: 1
   - name: Flower
-    Sprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+    Sprite: {fileID: 21300000, guid: 62932666d455f9e4bb06a46d262914d3, type: 3}
     maxStack: 10
     itemGameObject: {fileID: 7650369969401673959, guid: 1b88f7fa2257adb4da57366bae4d4103,
       type: 3}
     canUse: 0
   - name: Fur
-    Sprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+    Sprite: {fileID: 21300000, guid: 03d72700c04cc0644b340954fa53a7f3, type: 3}
     maxStack: 10
     itemGameObject: {fileID: 616856193911251195, guid: aa7564ee4359ca646846102e795c8101,
       type: 3}
     canUse: 0
   - name: Gem
-    Sprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+    Sprite: {fileID: 21300000, guid: 2cce3dd0f01d577468d39a5cb95a744c, type: 3}
     maxStack: 10
     itemGameObject: {fileID: 1992135725144792163, guid: 970e6ca539966874a826d7454924e5f9,
       type: 3}
     canUse: 0
   - name: Grass
-    Sprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+    Sprite: {fileID: 21300000, guid: 726f768cfb9f7d14dbdf8906f1340e4f, type: 3}
     maxStack: 10
     itemGameObject: {fileID: 8762409650071232753, guid: 1bc5adf038e725c43be26b15a4b9f2d2,
       type: 3}
     canUse: 0
   - name: Mushroom
-    Sprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+    Sprite: {fileID: 21300000, guid: 7d5c3ef08df75c847a307d6901ee30eb, type: 3}
     maxStack: 10
     itemGameObject: {fileID: 1264307596445754871, guid: ce6c9dad323789a429c920cf434a08bc,
       type: 3}
     canUse: 0
   - name: Tooth
-    Sprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+    Sprite: {fileID: 21300000, guid: 10548b524285c0f4982970f5fdb5d558, type: 3}
     maxStack: 10
     itemGameObject: {fileID: 3603253431877497181, guid: 56bf71ed0a8108f4987ecd4815422e6a,
       type: 3}

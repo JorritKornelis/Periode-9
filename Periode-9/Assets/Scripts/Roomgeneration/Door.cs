@@ -25,8 +25,8 @@ public class Door : MonoBehaviour
 
     public IEnumerator MovePlace(CharacterMovement player)
     {
-        switchScreen.SetTrigger("SwitchScreen");
-        yield return new WaitForSeconds(0.27f);
+        switchScreen.SetTrigger("Transition");
+        yield return new WaitForSeconds(1);
         StartCoroutine(player.ParticleTempDisable());
         player.allowMovement = true;
         player.StartCoroutine(player.StartMovement(0.27f));

@@ -48,12 +48,17 @@ public class DialogueSystem : MonoBehaviour
         normalHeight = followObject.position.y;
         if (!saving.data.hadTutorialShop && inShop || !saving.data.hadTutorialDungeon && !inShop)
             StartCoroutine(StartDialogue(tutorialDialogue));
-        else
+        else if(inShop)
         {
             skull.transform.position = pedastalPos.position;
             skull.transform.rotation = pedastalPos.rotation;
             following = false;
             player.GetComponent<CharacterMovement>().allowMovement = true;
+        }
+        else
+        {
+            following = false;
+            Destroy(skull.gameObject);
         }
         StartCoroutine(Hover());
     }
@@ -149,8 +154,13 @@ public class DialogueSystem : MonoBehaviour
         following = false;
         yield return new WaitForSeconds(returnDelay);
         Destroy(Instantiate(poof, skull.position, Quaternion.identity),2);
-        skull.transform.position = pedastalPos.position;
-        skull.transform.rotation = pedastalPos.rotation;
-        Destroy(Instantiate(poof, skull.position, Quaternion.identity), 2);
+        if (inShop)
+        {
+            skull.transform.position = pedastalPos.position;
+            skull.transform.rotation = pedastalPos.rotation;
+            Destroy(Instantiate(poof, skull.position, Quaternion.identity), 2);
+        }
+        else
+            Destroy(skull.gameObject);
     }
 }

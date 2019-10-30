@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29edb0d7499ce9042bf0e642acf6deba, type: 3}
+  m_Name: DungeonYesTutorial
+  m_EditorClassIdentifier: 
+  dialogue:
+  - enthusiastic: 0
+    message: Fine, in that case I need to stay in this place.
+    animationAmount: 3
+    soundAmount: 2
+    beginActionEvents: 
+    endActionEvents: 
+  - enthusiastic: 0
+    message: I will explain this quickly so I can get out of this place.
+    animationAmount: 3
+    soundAmount: 2
+    beginActionEvents: 
+    endActionEvents: 
+  - enthusiastic: 1
+    message: This is the dungeon!
+    animationAmount: 3
+    soundAmount: 2
+    beginActionEvents: 
+    endActionEvents: 
+  - enthusiastic: 0
+    message: You can collect items to craft and sell in your shop.
+    animationAmount: 3
+    soundAmount: 2
+    beginActionEvents: 
+    endActionEvents: 
+  - enthusiastic: 0
+    message: Those items can be collected by picking them up from the ground.
+    animationAmount: 3
+    soundAmount: 2
+    beginActionEvents: 
+    endActionEvents: 
+  - enthusiastic: 1
+    message: Or by collecting them from enemies you have slain!
+    animationAmount: 3
+    soundAmount: 2
+    beginActionEvents: 
+    endActionEvents: 
+  - enthusiastic: 0
+    message: You can acces diffrent rooms by walking through the big logs on each
+      side of the room.
+    animationAmount: 3
+    soundAmount: 2
+    beginActionEvents: 
+    endActionEvents: 
+  - enthusiastic: 1
+    message: But you can only acces them when all enemies have been slain in the room!
+    animationAmount: 3
+    soundAmount: 2
+    beginActionEvents: 
+    endActionEvents: 
+  - enthusiastic: 0
+    message: Your health is displayed in the top left corner of your screen.
+    animationAmount: 3
+    soundAmount: 2
+    beginActionEvents: 
+    endActionEvents: 
+  - enthusiastic: 0
+    message: And you can always leave this place by holding "F".
+    animationAmount: 3
+    soundAmount: 2
+    beginActionEvents: 
+    endActionEvents: 
+  - enthusiastic: 1
+    message: And that is it.
+    animationAmount: 3
+    soundAmount: 2
+    beginActionEvents: 
+    endActionEvents: 
+  - enthusiastic: 1
+    message: Good luck and don't die!
+    animationAmount: 3
+    soundAmount: 2
+    beginActionEvents: 
+    endActionEvents: 01000000030000000400000005000000
