@@ -21,11 +21,13 @@ public class OptionsSettings : MonoBehaviour
         //int qualityLevel = QualitySettings.GetQualityLevel();
         //Debug.Log(qualityLevel);
 
-        /*masterSlider.value = PlayerPrefs.GetFloat("MasterVolumeMix", 0);
+        /*
+        masterSlider.value = PlayerPrefs.GetFloat("MasterVolumeMix", 0);
         npcSlider.value = PlayerPrefs.GetFloat("MasterVolumeMix", 0);
         vfxSlider.value = PlayerPrefs.GetFloat("MasterVolumeMix", 0);
         uISlider.value = PlayerPrefs.GetFloat("MasterVolumeMix", 0);
-        musicSlider.value = PlayerPrefs.GetFloat("MasterVolumeMix", 0);*/
+        musicSlider.value = PlayerPrefs.GetFloat("MasterVolumeMix", 0);
+        */
 
         resolutions = Screen.resolutions;
 
@@ -79,7 +81,6 @@ public class OptionsSettings : MonoBehaviour
     }
     public void CoppleMusicVolume(float amount)
     {
-        Debug.Log(amount);
         audioMixer.SetFloat("MusicSlider", amount);
         //PlayerPrefs.SetFloat("MasterVolumeMix", amount);
     }
