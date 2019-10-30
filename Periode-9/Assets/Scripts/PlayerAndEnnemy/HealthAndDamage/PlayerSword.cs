@@ -150,6 +150,5 @@ public class PlayerSword : MonoBehaviour
     public void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireCube(transform.position, swordAttackRadius);
-        
     }
 }
