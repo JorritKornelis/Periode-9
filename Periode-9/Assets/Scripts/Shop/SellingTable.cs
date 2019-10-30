@@ -21,10 +21,10 @@ public class SellingTable : ShopAcessScript
         }
         else
         {
-            InteractionStart();
             StartCoroutine(focus.MoveTowardsPoint(cameraLoc));
             inv.inv.SetActive(true);
             active = true;
+            InteractionStart();
         }
     }
 
