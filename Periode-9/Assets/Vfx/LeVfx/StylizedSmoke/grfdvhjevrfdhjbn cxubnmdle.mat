@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: StylizedSmoke 2
-  m_Shader: {fileID: 4800000, guid: 7b737b822a92759469efc1ffc86145a3, type: 3}
+  m_Name: grfdvhjevrfdhjbn cxubnmdle
+  m_Shader: {fileID: 4800000, guid: 3b1ed6f752b86b843a1fee866d0a6aa5, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
@@ -19,19 +19,13 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _Dissolve:
-        m_Texture: {fileID: 2800000, guid: e28dc97a9541e3642a48c0e3886688c5, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _tex4coord:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _texcoord:
+    - _TextureSample0:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Cutoff: 0.5
+    - _EdgeLength: 50
     - __dirty: 0
+    - _u: 1
+    - _wu: 1
     m_Colors: []
