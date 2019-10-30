@@ -18,6 +18,21 @@ MonoBehaviour:
     - location: {x: 4, y: 6}
       obj: {fileID: 3711769305399690524, guid: 7363737a5936e3b4c807d22ecff046db, type: 3}
       yRotation: 0
+    - location: {x: 4, y: 6}
+      obj: {fileID: 3069895847277862053, guid: eab760169a2763c468c511a2cfdedad4, type: 3}
+      yRotation: 0
+    - location: {x: -6, y: -4}
+      obj: {fileID: 3069895847277862053, guid: eab760169a2763c468c511a2cfdedad4, type: 3}
+      yRotation: 0
+    - location: {x: -6, y: -4}
+      obj: {fileID: 3069895847277862053, guid: eab760169a2763c468c511a2cfdedad4, type: 3}
+      yRotation: 0
+    - location: {x: -6, y: -4}
+      obj: {fileID: 9051420109736066878, guid: 2aefc9c3a7b815645a33b83e46a3ae00, type: 3}
+      yRotation: 0
+    - location: {x: -8, y: -5}
+      obj: {fileID: 1809416152560807347, guid: 3833e3deeb20a9648906c0e17495332c, type: 3}
+      yRotation: 0
     enemyLocations: []
     items: []
   rooms:

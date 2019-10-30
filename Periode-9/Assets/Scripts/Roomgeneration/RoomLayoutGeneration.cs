@@ -170,7 +170,7 @@ public class RoomLayoutGeneration : MonoBehaviour
                 for (int number = 0; number < roomInfos[i].details.Count; number++)
                 {
                     RoomDetailInfo detail = roomInfos[i].details[number];
-                    GameObject temp = Instantiate(detail.obj, new Vector3(detail.location.x, 0, detail.location.y), Quaternion.identity, mapInfoCash);
+                    GameObject temp = Instantiate(detail.obj, new Vector3(detail.location.x, -0.3f, detail.location.y), Quaternion.identity, mapInfoCash);
                     temp.transform.Rotate(new Vector3(0, detail.yRotation));
                     currentDecoration.Add(temp);
                 }
