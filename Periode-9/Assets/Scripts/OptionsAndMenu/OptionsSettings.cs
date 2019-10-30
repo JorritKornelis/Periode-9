@@ -19,7 +19,7 @@ public class OptionsSettings : MonoBehaviour
     {
         //debug quality v
         //int qualityLevel = QualitySettings.GetQualityLevel();
-        //Debug.Log(qualityLevel);
+        //Debug.Log(qualityLevel + " qualityLevel");
 
         /*
         masterSlider.value = PlayerPrefs.GetFloat("MasterVolumeMix", 0);
@@ -37,7 +37,10 @@ public class OptionsSettings : MonoBehaviour
         for (int i = 0; i < resolutions.Length; i++)
         {
             string options = resolutions[i].width + " X " + resolutions[i].height;
-            vs.Add(options);
+            if (resolutions[i].width > 800)
+            {
+                vs.Add(options);
+            }
 
             if (resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)
             {
@@ -89,6 +92,5 @@ public class OptionsSettings : MonoBehaviour
     {
         //QualitySettings.SetQualityLevel(dropDown);
         QualitySettings.SetQualityLevel(dropDown, true);
-        Debug.Log(dropDown);
     }
 }
