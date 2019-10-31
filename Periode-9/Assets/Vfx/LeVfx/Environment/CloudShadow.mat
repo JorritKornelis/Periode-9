@@ -31,7 +31,7 @@ Material:
     - _Cutoff: 0.17
     - _Float0: 3.31
     - _Timespeed: 0.05
-    - __dirty: 1
+    - __dirty: 0
     - _exttrasped: 1.01
     - _speedmultiplier: 0.7
     m_Colors:
