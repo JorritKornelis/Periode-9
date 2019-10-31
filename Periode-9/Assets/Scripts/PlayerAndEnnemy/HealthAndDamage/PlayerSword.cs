@@ -6,6 +6,7 @@ public class PlayerSword : MonoBehaviour
 {
     public float swordRadius;
     public int swordDamage;
+    public int upgradeSwordDamage;
     public Vector3 swordAttackRadius;
 
     public float acttackCoolDownTimer;
@@ -14,6 +15,8 @@ public class PlayerSword : MonoBehaviour
 
     public float damageTimer;
     public float waitForNextAnimaton;
+
+    UpgradeUnlocks upgradeUnlocks;
 
     [Header("GemStuff")]
     public States curGem;
@@ -24,6 +27,8 @@ public class PlayerSword : MonoBehaviour
     
     void Start()
     {
+        upgradeUnlocks = GameObject.FindWithTag("Manager").GetComponent<Saving>().data.unlocks;
+
         character = GameObject.FindWithTag("Player").GetComponent<CharacterMovement>();
     }
 
@@ -59,7 +64,14 @@ public class PlayerSword : MonoBehaviour
                 {
                     Debug.Log("HIT ENEMY");
                     hitObjects.Add(hitColliders[i].gameObject);
-                    hitColliders[i].GetComponent<EnemyHealthScript>().TakeDamage(swordDamage, hitColliders[i].gameObject);
+                    if (upgradeUnlocks.isUpgradeSword)
+                    {
+                        hitColliders[i].GetComponent<EnemyHealthScript>().TakeDamage(upgradeSwordDamage, hitColliders[i].gameObject);
+                    }
+                    else
+                    {
+                        hitColliders[i].GetComponent<EnemyHealthScript>().TakeDamage(swordDamage, hitColliders[i].gameObject);
+                    }
                 }
                 i++;
             }

@@ -48,14 +48,21 @@ public class OptionsMenuInGame : MonoBehaviour
         optionsPanel.SetActive(!settingPanel.activeSelf);
     }
 
+    public void BackToOptions()
+    {
+        settingPanel.SetActive(false);
+        optionsPanel.SetActive(true);
+    }
+
     public void BackToMainMenu()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(backStartUpScene);
     }
 
     public void ContinueGame()
     {
-        optionsPanel.SetActive(true);
+        optionsPanel.SetActive(false);
         Time.timeScale = 1f;
     }
 

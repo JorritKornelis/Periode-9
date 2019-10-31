@@ -13,6 +13,7 @@ public class Inventory : MonoBehaviour
 
     public Text nameText;
     public Text amountTextDisplay;
+    public Sprite emptySlotSprite;
 
     [Header("Invetory")]
     public ItemClassScriptableObject itemScriptableObject;
@@ -218,7 +219,7 @@ public class Inventory : MonoBehaviour
             }
             else
             {
-                overloadArray[i].slotImage.sprite = null;
+                overloadArray[i].slotImage.sprite = emptySlotSprite;
                 overloadArray[i].index = -1;
             }
         }
