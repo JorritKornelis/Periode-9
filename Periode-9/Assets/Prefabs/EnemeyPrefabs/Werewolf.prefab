@@ -89,7 +89,7 @@ MonoBehaviour:
   agent: {fileID: 3520894885107339021}
   damage: 1
   items: {fileID: 11400000, guid: eeb5db131d0390b48a0087632f0cb6a8, type: 2}
-  possibleDrops: 010000000200000003000000
+  possibleDrops: 0c00000010000000
   dropAmount: 3
   dropRange: 5
   attackRadius: 1.65
