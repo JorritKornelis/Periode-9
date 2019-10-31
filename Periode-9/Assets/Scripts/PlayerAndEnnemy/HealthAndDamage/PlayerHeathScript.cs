@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerHeathScript : GeneralHealth
 {
@@ -13,6 +14,41 @@ public class PlayerHeathScript : GeneralHealth
 
     [HideInInspector]
     public UpgradeUnlocks upgradeUnlocks;
+
+    Saving sav;
+    public GameObject respawnUi;
+
+    private void Awake()
+    {
+        respawnUi.SetActive(false);
+        sav = GameObject.FindWithTag("Manager").GetComponent<Saving>();
+    }
+
+    public void RespawnPlayerUi()
+    {
+        respawnUi.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public void RespawnButton()
+    {
+        sav.data.inventory.Clear();
+        sav.SaveData();
+
+        SceneManager.LoadScene("ShopRoomScene");
+        respawnUi.SetActive(false);
+        Time.timeScale = 1;
+    }
+
+    public void RespawnBackToMenuButton()
+    {
+        sav.data.inventory.Clear();
+        sav.SaveData();
+
+        SceneManager.LoadScene("MainMenu");
+        respawnUi.SetActive(false);
+        Time.timeScale = 1;
+    }
 
     public void Start()
     {
@@ -37,6 +73,8 @@ public class PlayerHeathScript : GeneralHealth
     {
         base.TakeDamage(damageAmount, witchObject);
         SetHealthDisplay();
+        if(hp <= 0)
+            RespawnPlayerUi();
     }
 
     public void SetHealthDisplay()

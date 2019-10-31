@@ -14,6 +14,9 @@ public class WereWolf : EnemyMovementBase
     public GameObject damageParticle;
     public LayerMask playerMask;
     public GameObject poof;
+    public AudioSource source;
+    public AudioClip[] attackClips;
+    public AudioClip[] deathClips;
 
     public void Start()
     {
@@ -42,6 +45,7 @@ public class WereWolf : EnemyMovementBase
         animator.SetTrigger("Attack");
         float time = attackTime / 2f;
         Destroy(Instantiate(damageParticle, transform.position + Vector3.up + transform.right * 0.4f + (transform.forward * damagePointOffset), transform.rotation), 2f);
+        source.PlayOneShot(attackClips[Random.Range(0, attackClips.Length)]);
         if (Physics.CheckSphere(transform.position + Vector3.up + (transform.forward * damagePointOffset), damagePointSize, playerMask))
         {
             StartCoroutine(Camera.main.GetComponent<ScreenShake>().Shake(0.3f));
@@ -50,6 +54,7 @@ public class WereWolf : EnemyMovementBase
         yield return new WaitForSeconds(attackTime / 2f);
         time = attackTime / 2f;
         Destroy(Instantiate(damageParticle, transform.position + Vector3.up + transform.right * -0.4f + (transform.forward * damagePointOffset), transform.rotation), 2f);
+        source.PlayOneShot(attackClips[Random.Range(0, attackClips.Length)]);
         if (Physics.CheckSphere(transform.position + Vector3.up + (transform.forward * damagePointOffset), damagePointSize, playerMask))
         {
             StartCoroutine(Camera.main.GetComponent<ScreenShake>().Shake(0.3f));
@@ -75,6 +80,7 @@ public class WereWolf : EnemyMovementBase
 
     public IEnumerator DelayedDeath()
     {
+        source.PlayOneShot(deathClips[Random.Range(0, deathClips.Length)]);
         agent.SetDestination(transform.position);
         activeAttack = true;
         animator.SetTrigger("Death");

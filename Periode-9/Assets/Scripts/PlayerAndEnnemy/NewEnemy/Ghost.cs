@@ -12,6 +12,9 @@ public class Ghost : EnemyMovementBase
     public float damagePointSize;
     public LayerMask playerMask;
     public GameObject poof;
+    public AudioSource source;
+    public AudioClip[] attackClips;
+    public AudioClip[] deathClips;
 
     public void Start()
     {
@@ -36,6 +39,7 @@ public class Ghost : EnemyMovementBase
     public IEnumerator AttackDelay()
     {
         activeAttack = true;
+        source.PlayOneShot(attackClips[Random.Range(0, attackClips.Length)]);
         animator.SetTrigger("Attack");
         yield return new WaitForSeconds(attackTime);
         if (Physics.CheckSphere(transform.position + Vector3.up + (transform.forward * damagePointOffset), damagePointSize, playerMask))
@@ -62,6 +66,7 @@ public class Ghost : EnemyMovementBase
 
     public IEnumerator DelayedDeath()
     {
+        source.PlayOneShot(deathClips[Random.Range(0, deathClips.Length)]);
         agent.SetDestination(transform.position);
         activeAttack = true;
         animator.SetTrigger("Death");

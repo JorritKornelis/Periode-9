@@ -192,9 +192,7 @@ GameObject:
   - component: {fileID: 8703228351486956514}
   - component: {fileID: 5996722252918671750}
   - component: {fileID: 5996722252918671746}
-  - component: {fileID: 5996722252918671747}
-  - component: {fileID: 5996722252918671744}
-  - component: {fileID: 5996722252918671745}
+  - component: {fileID: 1550720651}
   m_Layer: 0
   m_Name: Slime
   m_TagString: Enemy
@@ -216,6 +214,7 @@ Transform:
   - {fileID: 7897630598043871529}
   - {fileID: 4196861397582184957}
   - {fileID: 4693260076393373923}
+  - {fileID: 4732602462759787978}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -229,7 +228,7 @@ Animator:
   m_GameObject: {fileID: 2312965695752588427}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 19faafbe8bdfab44f87438b609820db6, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4e32eedf36305f64786de7b424656835, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -261,10 +260,10 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 600
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -273,7 +272,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &5996722252918671747
+--- !u!114 &1550720651
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -282,39 +281,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 2312965695752588427}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b6252808e6f5ab419a93adf2c0b2193, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 0
---- !u!114 &5996722252918671744
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2312965695752588427}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 311d04b22a709ea4b9421a5e03cea827, type: 3}
+  m_Script: {fileID: 11500000, guid: 156e23ee6c43d304a917397cac19a566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
   maxHp: 1
---- !u!114 &5996722252918671745
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2312965695752588427}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c53d943b0f255742a8fcd8e9ee86a0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackRadius: 2
-  attackDamage: 1
-  animationTime: 0.5
+  playerTag: Player
+  player: {fileID: 0}
+  agent: {fileID: 5996722252918671746}
+  damage: 1
+  items: {fileID: 11400000, guid: eeb5db131d0390b48a0087632f0cb6a8, type: 2}
+  possibleDrops: 
+  dropAmount: 0
+  dropRange: 3
+  activeAttack: 0
+  attackRadius: 1.15
+  animator: {fileID: 8703228351486956514}
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  poof: {fileID: 912636276562294381, guid: 32bb1986a5d25ad499d524b7fa37aff1, type: 3}
+  damageDelay: 1
+  allowAttack: 1
+  stopMovement: 0
 --- !u!1 &3238522625597848408
 GameObject:
   m_ObjectHideFlags: 0
@@ -585,3 +574,78 @@ Transform:
   m_Father: {fileID: 309611843390134293}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &5996722251468191609
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1603870613903621784}
+    m_Modifications:
+    - target: {fileID: 1339037762264672950, guid: 59e8835ed476e5744baac85082042f5b,
+        type: 3}
+      propertyPath: m_Name
+      value: SlimeTrail
+      objectReference: {fileID: 0}
+    - target: {fileID: 1339037762264672947, guid: 59e8835ed476e5744baac85082042f5b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 1339037762264672947, guid: 59e8835ed476e5744baac85082042f5b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1339037762264672947, guid: 59e8835ed476e5744baac85082042f5b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.125
+      objectReference: {fileID: 0}
+    - target: {fileID: 1339037762264672947, guid: 59e8835ed476e5744baac85082042f5b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.70710576
+      objectReference: {fileID: 0}
+    - target: {fileID: 1339037762264672947, guid: 59e8835ed476e5744baac85082042f5b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1339037762264672947, guid: 59e8835ed476e5744baac85082042f5b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1339037762264672947, guid: 59e8835ed476e5744baac85082042f5b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.70710784
+      objectReference: {fileID: 0}
+    - target: {fileID: 1339037762264672947, guid: 59e8835ed476e5744baac85082042f5b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1339037762264672947, guid: 59e8835ed476e5744baac85082042f5b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: 1339037762264672947, guid: 59e8835ed476e5744baac85082042f5b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1339037762264672947, guid: 59e8835ed476e5744baac85082042f5b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 59e8835ed476e5744baac85082042f5b, type: 3}
+--- !u!4 &4732602462759787978 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1339037762264672947, guid: 59e8835ed476e5744baac85082042f5b,
+    type: 3}
+  m_PrefabInstance: {fileID: 5996722251468191609}
+  m_PrefabAsset: {fileID: 0}
