@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WereWolf : EnemyMovementBase
+public class Ghost : EnemyMovementBase
 {
     public float attackRadius;
     public bool activeAttack;
@@ -10,8 +10,6 @@ public class WereWolf : EnemyMovementBase
     public Animator animator;
     public float damagePointOffset;
     public float damagePointSize;
-    public float attackStartDelay;
-    public GameObject damageParticle;
     public LayerMask playerMask;
     public GameObject poof;
 
@@ -27,7 +25,7 @@ public class WereWolf : EnemyMovementBase
             animator.SetBool("Walking", true);
             FollowPlayer();
         }
-        else if(!activeAttack && player)
+        else if (!activeAttack && player)
         {
             animator.SetBool("Walking", false);
             agent.SetDestination(transform.position);
@@ -38,24 +36,13 @@ public class WereWolf : EnemyMovementBase
     public IEnumerator AttackDelay()
     {
         activeAttack = true;
-        yield return new WaitForSeconds(attackStartDelay);
         animator.SetTrigger("Attack");
-        float time = attackTime / 2f;
-        Destroy(Instantiate(damageParticle, transform.position + Vector3.up + transform.right * 0.4f + (transform.forward * damagePointOffset), transform.rotation), 2f);
+        yield return new WaitForSeconds(attackTime);
         if (Physics.CheckSphere(transform.position + Vector3.up + (transform.forward * damagePointOffset), damagePointSize, playerMask))
         {
             StartCoroutine(Camera.main.GetComponent<ScreenShake>().Shake(0.3f));
             InflictDamage();
         }
-        yield return new WaitForSeconds(attackTime / 2f);
-        time = attackTime / 2f;
-        Destroy(Instantiate(damageParticle, transform.position + Vector3.up + transform.right * -0.4f + (transform.forward * damagePointOffset), transform.rotation), 2f);
-        if (Physics.CheckSphere(transform.position + Vector3.up + (transform.forward * damagePointOffset), damagePointSize, playerMask))
-        {
-            StartCoroutine(Camera.main.GetComponent<ScreenShake>().Shake(0.3f));
-            InflictDamage();
-        }
-        yield return new WaitForSeconds(attackTime / 2f);
         activeAttack = false;
     }
 

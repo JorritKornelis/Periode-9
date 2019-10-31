@@ -87,18 +87,23 @@ MonoBehaviour:
   player: {fileID: 0}
   agent: {fileID: 3520894885107339021}
   damage: 1
-  attackRadius: 1.4
+  items: {fileID: 11400000, guid: eeb5db131d0390b48a0087632f0cb6a8, type: 2}
+  possibleDrops: 010000000200000003000000
+  dropAmount: 3
+  dropRange: 5
+  attackRadius: 1.65
   activeAttack: 0
   attackTime: 1
   animator: {fileID: 1957953343333735549}
   damagePointOffset: 0.75
   damagePointSize: 0.51
-  attackStartDelay: 0.2
+  attackStartDelay: 0.25
   damageParticle: {fileID: 7471406826250611723, guid: b7674a8e36843d94ebcc25263eb8ee65,
     type: 3}
   playerMask:
     serializedVersion: 2
     m_Bits: 1024
+  poof: {fileID: 912636276562294381, guid: 32bb1986a5d25ad499d524b7fa37aff1, type: 3}
 --- !u!1001 &3520894883722107421
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -111,6 +116,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Werewolf
       objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: c46a50a9647505d4aa411a661d237ad3,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 324f35deb40dea64aa1bfd2dadcfb4c4, type: 2}
     - target: {fileID: -4216859302048453862, guid: c46a50a9647505d4aa411a661d237ad3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -166,26 +176,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5594317504748660098, guid: c46a50a9647505d4aa411a661d237ad3,
-        type: 3}
-      propertyPath: m_Materials.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5594317504748660098, guid: c46a50a9647505d4aa411a661d237ad3,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: da353dc554225d64bad3b57c53d65d17, type: 2}
-    - target: {fileID: 5594317504748660098, guid: c46a50a9647505d4aa411a661d237ad3,
-        type: 3}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: 3b14b491a73610444ad6a90c1e342b83, type: 2}
-    - target: {fileID: -6057140222963153312, guid: c46a50a9647505d4aa411a661d237ad3,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 324f35deb40dea64aa1bfd2dadcfb4c4, type: 2}
     - target: {fileID: -450892108822175710, guid: c46a50a9647505d4aa411a661d237ad3,
         type: 3}
       propertyPath: m_Materials.Array.size

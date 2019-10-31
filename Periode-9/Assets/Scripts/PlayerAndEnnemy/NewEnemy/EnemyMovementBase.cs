@@ -9,6 +9,10 @@ public class EnemyMovementBase : GeneralHealth
     public GameObject player;
     public NavMeshAgent agent;
     public int damage;
+    public ItemClassScriptableObject items;
+    public int[] possibleDrops;
+    public int dropAmount;
+    public float dropRange;
 
     public virtual void StartFunctions()
     {
