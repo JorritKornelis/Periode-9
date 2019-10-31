@@ -14,6 +14,25 @@ public class PlayerHeathScript : GeneralHealth
     [HideInInspector]
     public UpgradeUnlocks upgradeUnlocks;
 
+    public void Start()
+    {
+        upgradeUnlocks = GameObject.FindWithTag("Manager").GetComponent<Saving>().data.unlocks;
+        if (upgradeUnlocks.isUpgradeHealth == true)
+        {
+            maxHp = maxHpUpgrade;
+        }
+        else
+        {
+            for (int i = 0; i < hearts.Length; i++)
+            {
+                if (i >= maxHp)
+                {
+                    hearts[i].sprite = emptyHeart;
+                }
+            }
+        }
+    }
+
     public override void TakeDamage(int damageAmount, GameObject witchObject)
     {
         base.TakeDamage(damageAmount, witchObject);
@@ -39,25 +58,6 @@ public class PlayerHeathScript : GeneralHealth
             else
             {
                 hearts[i].enabled = false;
-            }
-        }
-    }
-
-    public void Start()
-    {
-        upgradeUnlocks = GameObject.FindWithTag("Manager").GetComponent<Saving>().data.unlocks;
-        if (upgradeUnlocks.isUpgradeHealth == true)
-        {
-            maxHp = maxHpUpgrade;
-        }
-        else
-        {
-            for (int i = 0; i < hearts.Length; i++)
-            {
-                if (i >= maxHp)
-                {
-                    hearts[i].sprite = emptyHeart;
-                }
             }
         }
     }

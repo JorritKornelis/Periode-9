@@ -38,7 +38,7 @@ public class PlayerSword : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetButtonDown("Fire1") && playerDungonAnimator.GetBool("Attacking") == false)
+        if (Input.GetButtonDown("Fire1") && playerDungonAnimator.GetBool("Attacking") == false && character.allowMovement == true)
         {
             StartCoroutine(PlayerSwordAtack());
         }
