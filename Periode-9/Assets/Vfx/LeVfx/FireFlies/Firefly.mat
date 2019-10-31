@@ -46,7 +46,7 @@ Material:
     m_Floats:
     - _Cutoff: 0.5
     - _Disintegrate: 0.5
-    - _He: 0.02
+    - _He: 0.11
     - _TimeSpeed: 25
     - __dirty: 0
     m_Colors:

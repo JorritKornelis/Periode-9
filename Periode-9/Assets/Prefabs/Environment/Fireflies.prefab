@@ -158,6 +158,31 @@ PrefabInstance:
       propertyPath: LightsModule.intensity
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1496488359533541551, guid: f63f24bd3f62af84da78d2b8bc2e198b,
+        type: 3}
+      propertyPath: CustomDataModule.vector0_1.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1496488359533541551, guid: f63f24bd3f62af84da78d2b8bc2e198b,
+        type: 3}
+      propertyPath: CustomDataModule.vector0_1.minScalar
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1496488359533541551, guid: f63f24bd3f62af84da78d2b8bc2e198b,
+        type: 3}
+      propertyPath: CustomDataModule.vector0_1.scalar
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 1496488359533541551, guid: f63f24bd3f62af84da78d2b8bc2e198b,
+        type: 3}
+      propertyPath: CustomDataModule.vector0_0.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1496488359533541551, guid: f63f24bd3f62af84da78d2b8bc2e198b,
+        type: 3}
+      propertyPath: CustomDataModule.vector0_0.scalar
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 1496488358452310032, guid: f63f24bd3f62af84da78d2b8bc2e198b,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -247,6 +272,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_BoundingSphereOverride.w
       value: 5.2165747e-11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1496488359533541520, guid: f63f24bd3f62af84da78d2b8bc2e198b,
+        type: 3}
+      propertyPath: m_VertexStreams.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1496488359533541520, guid: f63f24bd3f62af84da78d2b8bc2e198b,
+        type: 3}
+      propertyPath: m_VertexStreams.Array.data[4]
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 1496488359533541520, guid: f63f24bd3f62af84da78d2b8bc2e198b,
+        type: 3}
+      propertyPath: m_VertexStreams.Array.data[5]
+      value: 21
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f63f24bd3f62af84da78d2b8bc2e198b, type: 3}
