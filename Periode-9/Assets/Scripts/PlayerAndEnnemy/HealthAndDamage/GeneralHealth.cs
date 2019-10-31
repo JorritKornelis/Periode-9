@@ -7,40 +7,10 @@ public class GeneralHealth : MonoBehaviour
 {
     public int hp;
     public int maxHp;
-    public int maxHpUpgrade;
 
-    public Image[] hearts;
-    public Sprite fullHeart;
-    public Sprite emptyHeart;
-
-    [HideInInspector]
-    public UpgradeUnlocks upgradeUnlocks;
-
-    public virtual void TakeDamage(int damageAmount,GameObject witchObject)
+    public virtual void TakeDamage(int damageAmount, GameObject witchObject)
     {
         hp -= damageAmount;
-        if (witchObject.tag == "Player")
-        {
-            for (int i = 0; i < hearts.Length; i++)
-            {
-                if (i < hp)
-                {
-                    hearts[i].sprite = fullHeart;
-                }
-                else
-                {
-                    hearts[i].sprite = emptyHeart;
-                }
-                if (i<maxHp)
-                {
-                    hearts[i].enabled = true;
-                }
-                else
-                {
-                    hearts[i].enabled = false;
-                }
-            }
-        }
 
         if (hp <= 0)
         {
@@ -55,7 +25,6 @@ public class GeneralHealth : MonoBehaviour
                 Debug.Log("Killed " + witchObject.name);
                 DeathFuntion(witchObject);
             }
-
         }
     }
 
