@@ -36,7 +36,24 @@ MonoBehaviour:
     enemyLocations: []
     items: []
   rooms:
-  - holes: []
-    details: []
-    enemyLocations: []
+  - holes:
+    - location: {x: 0, y: 0}
+      size: {x: 4, y: 4}
+    details:
+    - location: {x: 8, y: 4}
+      obj: {fileID: 3711769305399690524, guid: 7363737a5936e3b4c807d22ecff046db, type: 3}
+      yRotation: 0
+    - location: {x: 8, y: 5}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 0
+    - location: {x: -4, y: 9}
+      obj: {fileID: 2559046501537526094, guid: 362fba18b712e5945b72cd50ae638e5e, type: 3}
+      yRotation: 0
+    enemyLocations:
+    - location: {x: 9, y: 9}
+      Enemy: {fileID: 4899166700669514959, guid: 5638379bba11f304cadc1daf211ed180,
+        type: 3}
+    - location: {x: -9, y: -9}
+      Enemy: {fileID: 4899166700669514959, guid: 5638379bba11f304cadc1daf211ed180,
+        type: 3}
     items: []
