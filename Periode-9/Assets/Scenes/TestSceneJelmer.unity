@@ -1049,6 +1049,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swordRadius: 1
   swordDamage: 1
+  upgradeSwordDamage: 0
   swordAttackRadius: {x: 0.24, y: 0.13, z: 1.9}
   acttackCoolDownTimer: 0.2
   playerDungonAnimator: {fileID: 86396737}
@@ -1241,7 +1242,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 154.1, y: -65.8}
+  m_AnchoredPosition: {x: 207.4, y: -92.7}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &82130266
@@ -8383,7 +8384,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 61.19998, y: -65.80001}
+  m_AnchoredPosition: {x: 107.400055, y: -92.69997}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &560808782
@@ -12088,8 +12089,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -737.1, y: 468.59}
-  m_SizeDelta: {x: -1474.2, y: -937.17}
+  m_AnchoredPosition: {x: -754, y: 464.04}
+  m_SizeDelta: {x: -1474.2, y: -876.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &831762106
 MonoBehaviour:
@@ -12111,7 +12112,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: b8f40a6441247e3489cd05919cbd6de2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5745ccc26ff142645914a3e6f1fb5e17, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13142,7 +13143,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 247.59998, y: -70.118355}
+  m_AnchoredPosition: {x: 307.4001, y: -92.699936}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &869842104 stripped
@@ -19053,6 +19054,7 @@ MonoBehaviour:
   sellTableUI: {fileID: 0}
   nameText: {fileID: 0}
   amountTextDisplay: {fileID: 0}
+  emptySlotSprite: {fileID: 0}
   itemScriptableObject: {fileID: 11400000, guid: eeb5db131d0390b48a0087632f0cb6a8,
     type: 2}
   slotInformationArray:
@@ -19123,6 +19125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 3
   maxHp: 3
+  maxHpUpgrade: 0
   hearts:
   - {fileID: 560808783}
   - {fileID: 82130267}

@@ -161,7 +161,7 @@ public class BuyerAI : MonoBehaviour
         }
         else
         {
-            Destroy(Instantiate(whyDisplay, itemDisplay.position, Quaternion.identity), 2f);
+            Destroy(Instantiate(whyDisplay, itemDisplay.position, Quaternion.identity, itemDisplay), 2f);
             yield return new WaitForSeconds(stats.waitTime);
             StartCoroutine(LeaveStore());
             possibleBuyable[index].lookedAt = false;

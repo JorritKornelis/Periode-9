@@ -37,10 +37,10 @@ public class Inventory : MonoBehaviour
         inv.SetActive(false);
         chestPanel.SetActive(false);
         charMovement = gameObject.GetComponent<CharacterMovement>();
-        InvetorySaveData();
 
         savingScript = GameObject.FindWithTag(savingTag).GetComponent<Saving>();
         InvetoryLoadData();
+        InvetorySaveData();
     }
 
     void Update()
