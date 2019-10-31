@@ -10,7 +10,9 @@ public class WereWolf : EnemyMovementBase
     public Animator animator;
     public float damagePointOffset;
     public float damagePointSize;
+    public float attackStartDelay;
     public GameObject damageParticle;
+    public LayerMask playerMask;
 
     public void Start()
     {
@@ -27,7 +29,6 @@ public class WereWolf : EnemyMovementBase
         else if(!activeAttack)
         {
             animator.SetBool("Walking", false);
-            Debug.Log("Stop");
             agent.SetDestination(transform.position);
             StartCoroutine(AttackDelay());
         }
@@ -35,15 +36,24 @@ public class WereWolf : EnemyMovementBase
 
     public IEnumerator AttackDelay()
     {
-        animator.SetTrigger("Attack");
         activeAttack = true;
-        float time = attackTime;
-        Destroy(Instantiate(damageParticle, transform.position + (transform.forward * damagePointOffset), Quaternion.identity), 2f);
-        while(time >= 0)
-        {
-            time -= Time.deltaTime;
-            yield return null;
-        }
+        yield return new WaitForSeconds(attackStartDelay);
+        animator.SetTrigger("Attack");
+        float time = attackTime / 2f;
+        Destroy(Instantiate(damageParticle, transform.position + Vector3.up + transform.right * 0.4f + (transform.forward * damagePointOffset), transform.rotation), 2f);
+        if (Physics.CheckSphere(transform.position + Vector3.up + (transform.forward * damagePointOffset), damagePointSize, playerMask))
+            InflictDamage();
+        yield return new WaitForSeconds(attackTime / 2f);
+        time = attackTime / 2f;
+        Destroy(Instantiate(damageParticle, transform.position + Vector3.up + transform.right * -0.4f + (transform.forward * damagePointOffset), transform.rotation), 2f);
+        if (Physics.CheckSphere(transform.position + Vector3.up + (transform.forward * damagePointOffset), damagePointSize, playerMask))
+            InflictDamage();
+        yield return new WaitForSeconds(attackTime / 2f);
         activeAttack = false;
+    }
+
+    public void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(transform.position + Vector3.up + (transform.forward * damagePointOffset), damagePointSize);
     }
 }
