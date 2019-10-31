@@ -13,7 +13,8 @@ public class PlayerSword : MonoBehaviour
     CharacterMovement character;
     public float damageTimer;
     public float waitForNextAnimaton;
-    UpgradeUnlocks upgradeUnlocks;
+    [Header("negerpesi")]
+    public Saving saving;
 
     [Header("GemStuff")]
     public States curGem;
@@ -27,13 +28,16 @@ public class PlayerSword : MonoBehaviour
     public Material resetMat;
     public GameObject swordModel;
 
+    private void Awake()
+    {
+        saving = GameObject.FindWithTag("Manager").GetComponent<Saving>();
+    }
+
     void Start()
     {
         character = GameObject.FindWithTag("Player").GetComponent<CharacterMovement>();
 
         swordModel.GetComponent<Renderer>().material = resetMat;
-
-        upgradeUnlocks = GameObject.FindWithTag("Manager").GetComponent<Saving>().data.unlocks;
     }
 
     public void Update()
@@ -67,7 +71,7 @@ public class PlayerSword : MonoBehaviour
                 {
                     Debug.Log("HIT ENEMY");
                     hitObjects.Add(hitColliders[i].gameObject);
-                    if (upgradeUnlocks.isUpgradeSword == true)
+                    if (saving.data.unlocks.isUpgradeSword == true)
                     {
                         hitColliders[i].GetComponent<GeneralHealth>().TakeDamage(upgradeSwordDamage, hitColliders[i].gameObject);
                     }
