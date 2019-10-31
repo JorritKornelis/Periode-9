@@ -18,6 +18,12 @@ public class UpgradeBuying : ShopAcessScript
 
     public void Start()
     {
+        StartCoroutine(DelayedStart());
+    }
+
+    public IEnumerator DelayedStart()
+    {
+        yield return null;
         saving = GameObject.FindWithTag(savingTag).GetComponent<Saving>();
         DisplayUpgrades();
     }
