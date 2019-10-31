@@ -40,6 +40,7 @@ public class Inventory : MonoBehaviour
 
         savingScript = GameObject.FindWithTag(savingTag).GetComponent<Saving>();
         InvetoryLoadData();
+        InvetorySaveData();
     }
 
     void Update()
