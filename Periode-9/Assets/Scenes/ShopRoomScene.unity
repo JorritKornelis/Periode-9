@@ -36385,7 +36385,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -60.000004}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 11.400024, y: 6.700012}
+  m_AnchoredPosition: {x: 11.400024, y: 6.699951}
   m_SizeDelta: {x: -259.23, y: -31.27}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1375477372
@@ -39955,6 +39955,7 @@ MonoBehaviour:
   sellTableUI: {fileID: 0}
   nameText: {fileID: 0}
   amountTextDisplay: {fileID: 0}
+  emptySlotSprite: {fileID: 0}
   itemScriptableObject: {fileID: 11400000, guid: eeb5db131d0390b48a0087632f0cb6a8,
     type: 2}
   slotInformationArray:
@@ -40019,6 +40020,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 3
   maxHp: 0
+  maxHpUpgrade: 0
   hearts: []
   fullHeart: {fileID: 0}
   emptyHeart: {fileID: 0}

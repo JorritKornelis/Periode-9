@@ -120,6 +120,9 @@ MonoBehaviour:
   currentItem: -1
   amount: 0
   setPrice: 0
+  priceOffsetAllowed: 0
+  whyDisplay: {fileID: 4300843066733912164, guid: 545cbe5681e13eb4190c323380e85339,
+    type: 3}
 --- !u!82 &5306158308076260664
 AudioSource:
   m_ObjectHideFlags: 0

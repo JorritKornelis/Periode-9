@@ -28,6 +28,8 @@ public class BuyerAI : MonoBehaviour
     public int currentItem = -1;
     public int amount;
     public float setPrice;
+    public float priceOffsetAllowed;
+    public GameObject whyDisplay;
 
     public IEnumerator PlayRandomAudioClip()
     {
@@ -137,21 +139,33 @@ public class BuyerAI : MonoBehaviour
             StopCoroutine(currentCoroutine);
         }
         yield return null;
-        GameObject g = Instantiate(spawnerInfo.items.itemInformationList[possibleBuyable[index].item].itemGameObject, itemDisplay.position, itemDisplay.rotation, itemDisplay);
-        g.GetComponent<ItemIndex>().enabled = false;
-        g.layer = 0;
-        currentItem = possibleBuyable[index].item;
-        amount = possibleBuyable[index].amount;
-        setPrice = possibleBuyable[index].sellPrice;
-        possibleBuyable[index].item = -1;
-        possibleBuyable[index].amount = 0;
-        possibleBuyable[index].lookedAt = false;
-        hasItem = true;
-        possibleBuyable[index].DisplayItem();
-        if (spawnerInfo.counterAvailable)
-            StartCoroutine(WaitingAtCounter());
+
+        float maxPrice = spawnerInfo.items.itemInformationList[possibleBuyable[index].item].sellPrice * priceOffsetAllowed;
+        if(possibleBuyable[index].sellPrice <= maxPrice)
+        {
+            GameObject g = Instantiate(spawnerInfo.items.itemInformationList[possibleBuyable[index].item].itemGameObject, itemDisplay.position, itemDisplay.rotation, itemDisplay);
+            g.GetComponent<ItemIndex>().enabled = false;
+            g.layer = 0;
+            currentItem = possibleBuyable[index].item;
+            amount = possibleBuyable[index].amount;
+            setPrice = possibleBuyable[index].sellPrice;
+            possibleBuyable[index].item = -1;
+            possibleBuyable[index].amount = 0;
+            possibleBuyable[index].lookedAt = false;
+            hasItem = true;
+            possibleBuyable[index].DisplayItem();
+            if (spawnerInfo.counterAvailable)
+                StartCoroutine(WaitingAtCounter());
+            else
+                StartCoroutine(IdleMove());
+        }
         else
-            StartCoroutine(IdleMove());
+        {
+            Destroy(Instantiate(whyDisplay, itemDisplay.position, Quaternion.identity), 2f);
+            yield return new WaitForSeconds(stats.waitTime);
+            StartCoroutine(LeaveStore());
+            possibleBuyable[index].lookedAt = false;
+        }
     }
 
     public IEnumerator WaitingAtCounter()
