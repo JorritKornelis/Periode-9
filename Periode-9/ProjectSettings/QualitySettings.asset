@@ -116,3 +116,4 @@ QualitySettings:
     - iPhone
   m_PerPlatformDefaultQuality:
     Standalone: 0
+    iPhone: 0
