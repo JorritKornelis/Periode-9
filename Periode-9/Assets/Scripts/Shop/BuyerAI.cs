@@ -23,6 +23,7 @@ public class BuyerAI : MonoBehaviour
     [Range(0,1)]
     public float pitchRange;
     public Animator animator;
+    public GameObject gems;
 
     public int currentItem = -1;
     public int amount;
@@ -178,6 +179,7 @@ public class BuyerAI : MonoBehaviour
         GameObject.FindWithTag(spawnerInfo.managerTag).GetComponent<Saving>().data.currency += Mathf.RoundToInt(setPrice * amount);
         spawnerInfo.counterAvailable = true;
         audiosource.PlayOneShot(cashSound, 2);
+        Destroy(Instantiate(gems, transform.position, Quaternion.identity), 2f);
         StartCoroutine(LeaveStore());
     }
     public IEnumerator LeaveStore()
