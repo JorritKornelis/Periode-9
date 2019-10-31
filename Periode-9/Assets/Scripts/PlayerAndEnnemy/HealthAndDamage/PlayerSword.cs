@@ -8,14 +8,11 @@ public class PlayerSword : MonoBehaviour
     public int swordDamage;
     public int upgradeSwordDamage;
     public Vector3 swordAttackRadius;
-
     public float acttackCoolDownTimer;
     public Animator playerDungonAnimator;
     CharacterMovement character;
-
     public float damageTimer;
     public float waitForNextAnimaton;
-
     UpgradeUnlocks upgradeUnlocks;
 
     [Header("GemStuff")]
@@ -32,11 +29,11 @@ public class PlayerSword : MonoBehaviour
 
     void Start()
     {
-        upgradeUnlocks = GameObject.FindWithTag("Manager").GetComponent<Saving>().data.unlocks;
+        character = GameObject.FindWithTag("Player").GetComponent<CharacterMovement>();
 
         swordModel.GetComponent<Renderer>().material = resetMat;
 
-        character = GameObject.FindWithTag("Player").GetComponent<CharacterMovement>();
+        upgradeUnlocks = GameObject.FindWithTag("Manager").GetComponent<Saving>().data.unlocks;
     }
 
     public void Update()
@@ -53,9 +50,7 @@ public class PlayerSword : MonoBehaviour
     {
         playerDungonAnimator.SetBool("Attacking", true);
         character.allowMovement = false;
-
         //playerDungonAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attacking");
-
         List<GameObject> hitObjects = new List<GameObject>();
         float timer = damageTimer;
 
@@ -72,7 +67,7 @@ public class PlayerSword : MonoBehaviour
                 {
                     Debug.Log("HIT ENEMY");
                     hitObjects.Add(hitColliders[i].gameObject);
-                    if (upgradeUnlocks.isUpgradeSword)
+                    if (upgradeUnlocks.isUpgradeSword == true)
                     {
                         hitColliders[i].GetComponent<GeneralHealth>().TakeDamage(upgradeSwordDamage, hitColliders[i].gameObject);
                     }
@@ -85,8 +80,7 @@ public class PlayerSword : MonoBehaviour
             }
             
             hitObjects.Clear();
-        }
-        
+        }   
         float time = waitForNextAnimaton;
         bool nextAttack = false;
         while (time > 0)
