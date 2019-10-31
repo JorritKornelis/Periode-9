@@ -13,27 +13,8 @@ public class GeneralHealth : MonoBehaviour
     public Sprite fullHeart;
     public Sprite emptyHeart;
 
-    UpgradeUnlocks upgradeUnlocks;
-
-    public void Start()
-    {
-        upgradeUnlocks = GameObject.FindWithTag("Manager").GetComponent<Saving>().data.unlocks;
-        if (upgradeUnlocks.isUpgradeHealth == true)
-        {
-            maxHp = maxHpUpgrade;
-        }
-        else
-        {
-            for (int i = 0; i < hearts.Length; i++)
-            {
-                if (i >= maxHp)
-                {
-                    hearts[i].sprite = emptyHeart;
-                }
-            }
-        }
-    }
-
+    [HideInInspector]
+    public UpgradeUnlocks upgradeUnlocks;
 
     public virtual void TakeDamage(int damageAmount,GameObject witchObject)
     {

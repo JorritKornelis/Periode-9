@@ -194,13 +194,13 @@ public class BuyerAI : MonoBehaviour
         spawnerInfo.counterAvailable = true;
         audiosource.PlayOneShot(cashSound, 2);
         Destroy(Instantiate(gems, transform.position + Vector3.up, Quaternion.identity), 2f);
+        foreach (Transform child in itemDisplay)
+            Destroy(child.gameObject);
         StartCoroutine(LeaveStore());
     }
     public IEnumerator LeaveStore()
     {
         animator.SetBool("Walking", true);
-        foreach (Transform child in itemDisplay)
-            Destroy(child.gameObject);
         agent.SetDestination(spawnerInfo.doorLocation.position);
         yield return null;
         while (Vector3.Distance(transform.position, spawnerInfo.doorLocation.position) > 0.5f)
