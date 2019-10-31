@@ -179,7 +179,7 @@ public class BuyerAI : MonoBehaviour
         GameObject.FindWithTag(spawnerInfo.managerTag).GetComponent<Saving>().data.currency += Mathf.RoundToInt(setPrice * amount);
         spawnerInfo.counterAvailable = true;
         audiosource.PlayOneShot(cashSound, 2);
-        Destroy(Instantiate(gems, transform.position, Quaternion.identity), 2f);
+        Destroy(Instantiate(gems, transform.position + Vector3.up, Quaternion.identity), 2f);
         StartCoroutine(LeaveStore());
     }
     public IEnumerator LeaveStore()

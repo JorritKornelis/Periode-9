@@ -41,7 +41,7 @@ ParticleSystem:
   m_GameObject: {fileID: 1204507271108222503}
   serializedVersion: 6
   lengthInSec: 1
-  simulationSpeed: 1
+  simulationSpeed: 0.8
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
@@ -975,8 +975,8 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 3
-        scalar: 5
-        minScalar: 15
+        scalar: 12
+        minScalar: 20
         maxCurve:
           serializedVersion: 2
           m_Curve:
