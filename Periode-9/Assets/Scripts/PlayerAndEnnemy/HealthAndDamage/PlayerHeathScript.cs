@@ -20,7 +20,8 @@ public class PlayerHeathScript : GeneralHealth
 
     private void Awake()
     {
-        respawnUi.SetActive(false);
+        if (respawnUi)
+            respawnUi.SetActive(false);
         sav = GameObject.FindWithTag("Manager").GetComponent<Saving>();
     }
 
@@ -36,7 +37,8 @@ public class PlayerHeathScript : GeneralHealth
         sav.SaveData();
 
         SceneManager.LoadScene("ShopRoomScene");
-        respawnUi.SetActive(false);
+        if (respawnUi)
+            respawnUi.SetActive(false);
         Time.timeScale = 1;
     }
 
@@ -46,7 +48,8 @@ public class PlayerHeathScript : GeneralHealth
         sav.SaveData();
 
         SceneManager.LoadScene("MainMenu");
-        respawnUi.SetActive(false);
+        if (respawnUi)
+            respawnUi.SetActive(false);
         Time.timeScale = 1;
     }
 

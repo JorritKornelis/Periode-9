@@ -53,7 +53,7 @@ public class Slime : EnemyMovementBase
             for (int i = 0; i < drops; i++)
             {
                 int drop = Random.Range(0, possibleDrops.Length);
-                Instantiate(items.itemInformationList[drop].itemGameObject, transform.position + new Vector3(Random.Range(-dropRange, dropRange), 0f, Random.Range(-dropRange, dropRange)), Quaternion.identity);
+                Instantiate(items.itemInformationList[possibleDrops[drop]].itemGameObject, transform.position + new Vector3(Random.Range(-dropRange, dropRange), 0f, Random.Range(-dropRange, dropRange)), Quaternion.identity);
             }
             StartCoroutine(DelayedDeath());
         }
