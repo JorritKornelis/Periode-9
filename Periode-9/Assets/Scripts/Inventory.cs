@@ -75,7 +75,6 @@ public class Inventory : MonoBehaviour
                         break;
                     }
             }
-        
     }
 
     public void SelectItem(int selectIndex, bool inTheChest)

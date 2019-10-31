@@ -25,7 +25,6 @@ public class Hotbar : MonoBehaviour
             foreach (ItemUsage.ItemUseDing item in itemUsageScript.usables)
                 if (item.itemIndex == inventoryScript.slotInformationArray[press].index)
                 {
-                    Debug.Log(press + " HOTBSR PRESS");
                     item.useEvenet.Invoke();
 
                     inventoryScript.slotInformationArray[press].amount -= 1;

@@ -1699,6 +1699,7 @@ MonoBehaviour:
   sellTableUI: {fileID: 0}
   nameText: {fileID: 0}
   amountTextDisplay: {fileID: 0}
+  emptySlotSprite: {fileID: 0}
   itemScriptableObject: {fileID: 11400000, guid: eeb5db131d0390b48a0087632f0cb6a8,
     type: 2}
   slotInformationArray:
@@ -1778,9 +1779,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 3
   maxHp: 3
+  maxHpUpgrade: 0
   hearts: []
   fullHeart: {fileID: 0}
   emptyHeart: {fileID: 0}
+  upgradeUnlocks:
+    isUpgradeInv: 0
+    isUpgradeHealth: 0
+    isUpgradeSword: 0
+    isUpgradeShop: 0
 --- !u!136 &662573456
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3708,9 +3715,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 2
   maxHp: 0
-  hearts: []
-  fullHeart: {fileID: 0}
-  emptyHeart: {fileID: 0}
 --- !u!1 &1368424614
 GameObject:
   m_ObjectHideFlags: 0
@@ -4489,6 +4493,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swordRadius: 1
   swordDamage: 1
+  upgradeSwordDamage: 0
   swordAttackRadius: {x: 0.24, y: 0.13, z: 1.9}
   acttackCoolDownTimer: 0.2
   playerDungonAnimator: {fileID: 1979023565}
@@ -4499,6 +4504,11 @@ MonoBehaviour:
   electricSplashDamage: 1
   gemCooldown: 2
   fireDamageAmount: 1
+  firemat: {fileID: 0}
+  iceMat: {fileID: 0}
+  ecMat: {fileID: 0}
+  resetMat: {fileID: 0}
+  swordModel: {fileID: 0}
 --- !u!1001 &1572450406
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5086,290 +5096,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1760820272
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1760820274}
-  - component: {fileID: 1760820273}
-  - component: {fileID: 1760820275}
-  m_Layer: 0
-  m_Name: TEMP_ITEM_USAGE
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1760820273
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1760820272}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a79928a4d734bac45bbabbae833123ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  usables:
-  - itemIndex: 0
-    useEvenet:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1760820273}
-          m_MethodName: HealthPotions
-          m_Mode: 3
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 4
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-  - itemIndex: 0
-    useEvenet:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1760820273}
-          m_MethodName: HealthPotions
-          m_Mode: 3
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 4
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-  - itemIndex: 1
-    useEvenet:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1760820273}
-          m_MethodName: SpeedPotions
-          m_Mode: 3
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 4
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-  - itemIndex: 2
-    useEvenet:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1760820273}
-          m_MethodName: DamagePotions
-          m_Mode: 3
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 4
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-  - itemIndex: 4
-    useEvenet:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1760820273}
-          m_MethodName: HealthPotions
-          m_Mode: 3
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 2
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-  - itemIndex: 5
-    useEvenet:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1760820273}
-          m_MethodName: SpeedPotions
-          m_Mode: 3
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 2
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-  - itemIndex: 6
-    useEvenet:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1760820273}
-          m_MethodName: DamagePotions
-          m_Mode: 3
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 2
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-  - itemIndex: 8
-    useEvenet:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1760820273}
-          m_MethodName: UseScrolls
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 6141943755526167477, guid: 9c456566a5a72954ca0879f7ff0a6705,
-              type: 3}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-  - itemIndex: 9
-    useEvenet:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1760820273}
-          m_MethodName: UseScrolls
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 68868631453262464, guid: accb9719b26222849ae56da0653ae8e5,
-              type: 3}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-  - itemIndex: 10
-    useEvenet:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1760820273}
-          m_MethodName: UseScrolls
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 1922263241468586980, guid: c6c24f0ed601ea04889ef036dbd7b9d9,
-              type: 3}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-  - itemIndex: 18
-    useEvenet:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1760820273}
-          m_MethodName: UseElectricGem
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-  - itemIndex: 19
-    useEvenet:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1760820273}
-          m_MethodName: UseFireGem
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-  - itemIndex: 20
-    useEvenet:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1760820273}
-          m_MethodName: UseIceGem
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-  speedTimer: 2
-  damageUpTimer: 1
---- !u!4 &1760820274
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1760820272}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.42634797, y: 1.6688921, z: -0.8742068}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 24
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1760820275
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1760820272}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af1043360f8601d4388c156e2c65f284, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemUsageScript: {fileID: 1760820273}
 --- !u!1 &1769352117
 GameObject:
   m_ObjectHideFlags: 0
@@ -6422,6 +6148,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 819685298}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: 2c080d7fc1dfc0a49933092023a31476,
+        type: 3}
+      propertyPath: m_Name
+      value: PlayerD
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 2c080d7fc1dfc0a49933092023a31476,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6487,11 +6218,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: ac16b3116b69cbd4495204b1fcfbf7bf, type: 2}
-    - target: {fileID: -927199367670048503, guid: 2c080d7fc1dfc0a49933092023a31476,
-        type: 3}
-      propertyPath: m_Name
-      value: PlayerD
-      objectReference: {fileID: 0}
     - target: {fileID: -8958823237397950257, guid: 2c080d7fc1dfc0a49933092023a31476,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7744,6 +7470,75 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4718c37308e555840945ee81d909ea7d, type: 3}
+--- !u!1001 &4084689317795057726
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4084689316065979406, guid: a30d7df3ed46fc745991ed92993738fc,
+        type: 3}
+      propertyPath: m_Name
+      value: TEMP_ITEM_USAGE
+      objectReference: {fileID: 0}
+    - target: {fileID: 4084689316065979404, guid: a30d7df3ed46fc745991ed92993738fc,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.42634797
+      objectReference: {fileID: 0}
+    - target: {fileID: 4084689316065979404, guid: a30d7df3ed46fc745991ed92993738fc,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.6688921
+      objectReference: {fileID: 0}
+    - target: {fileID: 4084689316065979404, guid: a30d7df3ed46fc745991ed92993738fc,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.8742068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4084689316065979404, guid: a30d7df3ed46fc745991ed92993738fc,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4084689316065979404, guid: a30d7df3ed46fc745991ed92993738fc,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4084689316065979404, guid: a30d7df3ed46fc745991ed92993738fc,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4084689316065979404, guid: a30d7df3ed46fc745991ed92993738fc,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4084689316065979404, guid: a30d7df3ed46fc745991ed92993738fc,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 4084689316065979404, guid: a30d7df3ed46fc745991ed92993738fc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4084689316065979404, guid: a30d7df3ed46fc745991ed92993738fc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4084689316065979404, guid: a30d7df3ed46fc745991ed92993738fc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a30d7df3ed46fc745991ed92993738fc, type: 3}
 --- !u!1001 &6904447347400418091
 PrefabInstance:
   m_ObjectHideFlags: 0

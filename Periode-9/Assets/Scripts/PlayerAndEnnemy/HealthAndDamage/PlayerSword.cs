@@ -22,12 +22,19 @@ public class PlayerSword : MonoBehaviour
     public States curGem;
     public int electricSplashRange;
     public int electricSplashDamage;
-    public float gemCooldown;
+    public int gemTiks;
     public int fireDamageAmount;
-    
+    public Material firemat;
+    public Material iceMat;
+    public Material ecMat;
+    public Material resetMat;
+    public GameObject swordModel;
+
     void Start()
     {
         upgradeUnlocks = GameObject.FindWithTag("Manager").GetComponent<Saving>().data.unlocks;
+
+        swordModel.GetComponent<Renderer>().material = resetMat;
 
         character = GameObject.FindWithTag("Player").GetComponent<CharacterMovement>();
     }
@@ -38,6 +45,7 @@ public class PlayerSword : MonoBehaviour
         {
             StartCoroutine(PlayerSwordAtack());
         }
+        SwitchGem();//
     }
 
     //animation toevoegen
@@ -66,11 +74,11 @@ public class PlayerSword : MonoBehaviour
                     hitObjects.Add(hitColliders[i].gameObject);
                     if (upgradeUnlocks.isUpgradeSword)
                     {
-                        hitColliders[i].GetComponent<EnemyHealthScript>().TakeDamage(upgradeSwordDamage, hitColliders[i].gameObject);
+                        hitColliders[i].GetComponent<GeneralHealth>().TakeDamage(upgradeSwordDamage, hitColliders[i].gameObject);
                     }
                     else
                     {
-                        hitColliders[i].GetComponent<EnemyHealthScript>().TakeDamage(swordDamage, hitColliders[i].gameObject);
+                        hitColliders[i].GetComponent<GeneralHealth>().TakeDamage(swordDamage, hitColliders[i].gameObject);
                     }
                 }
                 i++;
@@ -115,11 +123,15 @@ public class PlayerSword : MonoBehaviour
         {
             case States.FireGem:
                 //stuff
+                swordModel.GetComponent<Renderer>().material = firemat;
+
                 int holder = swordDamage;
                 swordDamage += fireDamageAmount;
-                float timer = gemCooldown;
-                timer -= Time.deltaTime;
-                if (timer <= 0)
+
+                if (Input.GetButtonDown("Fire1"))
+                    gemTiks -= 1;
+
+                if (gemTiks <= 0)
                 {
                     swordDamage = holder;
                     curGem = States.None;
@@ -128,33 +140,47 @@ public class PlayerSword : MonoBehaviour
 
             case States.IceGem:
                 //stuff
-                Collider[] enemyIceHitColliders = Physics.OverlapSphere(transform.position, swordRadius);
-                foreach (var item in enemyIceHitColliders)
+                swordModel.GetComponent<Renderer>().material = iceMat;
+
+                if (Input.GetButtonDown("Fire1"))
                 {
-                    if (item.tag == "Enemy")
+                    Collider[] enemyIceHitColliders = Physics.OverlapSphere(transform.position, swordRadius);
+                    foreach (var item in enemyIceHitColliders)
                     {
-                        item.transform.GetComponent<EnemyHealthScript>().TakeDamage(swordDamage, item.gameObject);
+                        if (item.tag == "Enemy")
+                        {
+                            item.transform.GetComponent<GeneralHealth>().TakeDamage(swordDamage, item.gameObject);
+                        }
                     }
+                    curGem = States.None;
                 }
-                curGem = States.None;
+
                 break;
 
             case States.ElectricGem:
                 //stuff
-                Collider[] enemyHitColliders = Physics.OverlapSphere(transform.position, electricSplashRange);
-                foreach (var item in enemyHitColliders)
+                swordModel.GetComponent<Renderer>().material = ecMat;
+
+                if (Input.GetButtonDown("Fire1"))
                 {
-                    if (item.tag == "Enemy")
+                    Collider[] enemyHitColliders = Physics.OverlapSphere(transform.position, electricSplashRange);
+                    foreach (var item in enemyHitColliders)
                     {
-                        item.transform.GetComponent<EnemyHealthScript>().TakeDamage(electricSplashDamage, item.gameObject);
+                        if (item.tag == "Enemy")
+                        {
+                            item.transform.GetComponent<GeneralHealth>().TakeDamage(electricSplashDamage, item.gameObject);
+                        }
                     }
+                    curGem = States.None;
                 }
-                curGem = States.None;
+
                 break;
 
             case States.None:
-                //stuff
+                
+                swordModel.GetComponent<Renderer>().material = resetMat;
                 Debug.Log("NO EFFECT");
+
                 break;
         }
     }

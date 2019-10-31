@@ -46,7 +46,6 @@ public class EnemyAttack : MonoBehaviour
     /*public void OnDrawGizmosSelected()
     {
         Gizmos.DrawSphere(transform.position, attackRadius);
-
     }
     */
 }

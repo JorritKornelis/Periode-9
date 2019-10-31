@@ -20,8 +20,16 @@ public class OptionsMenuInGame : MonoBehaviour
     {
         if (Input.GetButtonDown("Escape"))
         {
-            b = true;
-            OpenOptionsInGameFunction();
+            if (settingPanel.activeSelf == false)
+            {
+                b = true;
+                OpenOptionsInGameFunction();
+            }
+            else
+            {
+                settingPanel.SetActive(false);
+                Time.timeScale = 1;
+            }
         }
     }
 
