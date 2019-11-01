@@ -19,6 +19,20 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!244 &-6092051650340714076
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 0bf5eef0bd695d04ea6c97daedd3046c
+  m_EffectName: Attenuation
+  m_MixLevel: f199d6d8b5eff8e48b07e4aafd9e5d71
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!243 &-3775880492373303699
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -38,6 +52,25 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!243 &-2330868472895969825
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Forest
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 567085f84ba82224eac8f006a6f7221b
+  m_Children: []
+  m_Volume: 6ccd076b47b12494da000d66eef28b77
+  m_Pitch: 3e697a2d0b6816748b664c9b4cf67309
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: -6092051650340714076}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!243 &-1630000375422776955
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -47,7 +80,8 @@ AudioMixerGroupController:
   m_Name: Music
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: b02ce2ea56951564fa7f2cd4a84456cd
-  m_Children: []
+  m_Children:
+  - {fileID: -2330868472895969825}
   m_Volume: 7528f5b1d0b9e324986f1b6dd32eb3d0
   m_Pitch: 0b6cdcdf8435786449a4bfe6bf32a5f7
   m_Send: 00000000000000000000000000000000
@@ -104,6 +138,7 @@ AudioMixerController:
     - 9c419b701d063ab479a3373ea806152d
     - 486a1829185f53e4eab3daf9409f3196
     - b02ce2ea56951564fa7f2cd4a84456cd
+    - 567085f84ba82224eac8f006a6f7221b
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -155,6 +190,7 @@ AudioMixerSnapshotController:
   m_SnapshotID: 3cc321e7b4d665143ad1fbc862d69f32
   m_FloatValues:
     7528f5b1d0b9e324986f1b6dd32eb3d0: -0.39762527
+    6ccd076b47b12494da000d66eef28b77: 3.5
     e527105cc9b2c134f9055e1319d4b13f: 0.27000844
     a3d9ef8cea8cd844e95608baeb54ccd0: 0.13552584
     a127279d326524048b1e471aab0c394c: -0.27209902
