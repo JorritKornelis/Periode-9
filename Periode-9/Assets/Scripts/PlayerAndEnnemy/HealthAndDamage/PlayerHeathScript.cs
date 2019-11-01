@@ -19,7 +19,7 @@ public class PlayerHeathScript : GeneralHealth
     {
         if (respawnUi)
             respawnUi.SetActive(false);
-        sav = GameObject.FindWithTag("Manager").GetComponent<Saving>();
+        //sav = GameObject.FindWithTag("Manager").GetComponent<Saving>();
     }
 
     public void RespawnPlayerUi()
@@ -58,11 +58,11 @@ public class PlayerHeathScript : GeneralHealth
     public IEnumerator DelayedStart()
     {
         yield return null;
-        //sav = GameObject.FindWithTag("Manager").GetComponent<Saving>();
-
+        sav = GameObject.FindWithTag("Manager").GetComponent<Saving>();
+        sav.LoadData();
+        Debug.Log("NIET DOEN");
         if (sav.data.unlocks.isUpgradeHealth == true)
         {
-            Debug.Log("NIET DOEN");
             maxHp = maxHpUpgrade;
         }
         else
@@ -72,7 +72,6 @@ public class PlayerHeathScript : GeneralHealth
                 if (i >= maxHp)
                 {
                     hearts[i].sprite = emptyHeart;
-                    Debug.Log("Wel DOEN");
                 }
             }
         }

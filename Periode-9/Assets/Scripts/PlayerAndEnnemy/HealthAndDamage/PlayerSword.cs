@@ -13,7 +13,9 @@ public class PlayerSword : MonoBehaviour
     CharacterMovement character;
     public float damageTimer;
     public float waitForNextAnimaton;
-    [Header("negerpesi")]
+    public float playerAttackMoveSpeed;
+    float playerAttackMoveSpeedReset;
+
     public Saving saving;
 
     [Header("GemStuff")]
@@ -52,8 +54,11 @@ public class PlayerSword : MonoBehaviour
     //animation toevoegen
     public IEnumerator PlayerSwordAtack()
     {
+        saving.LoadData();
         playerDungonAnimator.SetBool("Attacking", true);
-        character.allowMovement = false;
+        //character.allowMovement = false;
+        playerAttackMoveSpeedReset = character.moveSpeed;
+        character.moveSpeed = playerAttackMoveSpeed;
         //playerDungonAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attacking");
         List<GameObject> hitObjects = new List<GameObject>();
         float timer = damageTimer;
@@ -105,6 +110,8 @@ public class PlayerSword : MonoBehaviour
             playerDungonAnimator.SetBool("Attacking", false);
             character.allowMovement = true;
         }
+
+        character.moveSpeed = playerAttackMoveSpeedReset;
     }
 
     public enum States

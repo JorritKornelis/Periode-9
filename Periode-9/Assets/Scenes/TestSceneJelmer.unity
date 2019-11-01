@@ -1055,6 +1055,7 @@ MonoBehaviour:
   playerDungonAnimator: {fileID: 86396737}
   damageTimer: 0.7
   waitForNextAnimaton: 0.15
+  playerAttackMoveSpeed: 3
   saving: {fileID: 0}
   curGem: 3
   electricSplashRange: 5
