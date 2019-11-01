@@ -508,7 +508,7 @@ MonoBehaviour:
       index: 14
   - holes: []
     details:
-    - location: {x: 0, y: 0}
+    - location: {x: 0, y: 4}
       obj: {fileID: 8533900403102693695, guid: 0a53af36148284344a22ba57d09b756d, type: 3}
       yRotation: 180
     - location: {x: 2, y: 2}
@@ -539,3 +539,30 @@ MonoBehaviour:
     items:
     - location: {x: 5, y: 3}
       index: 14
+  - holes: []
+    details:
+    - location: {x: 4, y: 5}
+      obj: {fileID: 1960749067628100688, guid: 8bee56df40305df419f78dc6b9391f5b, type: 3}
+      yRotation: 56
+    - location: {x: -8, y: 11}
+      obj: {fileID: 1960749067628100688, guid: 8bee56df40305df419f78dc6b9391f5b, type: 3}
+      yRotation: -145
+    - location: {x: 4, y: -8}
+      obj: {fileID: 7403760620623408670, guid: adde5e189aeabb04f9f1a92c4622b87a, type: 3}
+      yRotation: 4123
+    - location: {x: 6, y: -8}
+      obj: {fileID: 3287816775814658785, guid: 6cdacaef6fb32484e863409016a96030, type: 3}
+      yRotation: 0
+    enemyLocations:
+    - location: {x: 6, y: 6}
+      Enemy: {fileID: 2312965695752588427, guid: d86ea9855e7bda84585ffd8324c3a0a7,
+        type: 3}
+    items:
+    - location: {x: -9, y: 9}
+      index: 15
+    - location: {x: -8, y: 8}
+      index: 15
+    - location: {x: -7, y: 9}
+      index: 15
+    - location: {x: -7, y: 8}
+      index: 15
