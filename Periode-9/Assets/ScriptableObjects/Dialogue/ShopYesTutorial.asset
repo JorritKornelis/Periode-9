@@ -82,6 +82,13 @@ MonoBehaviour:
     beginActionEvents: 
     endActionEvents: 00000000
   - enthusiastic: 0
+    message: Don't forget that you are able to interact with most objects by pressing
+      "E".
+    animationAmount: 2
+    soundAmount: 3
+    beginActionEvents: 
+    endActionEvents: 
+  - enthusiastic: 1
     message: That is all I can tell you about the shop.
     animationAmount: 2
     soundAmount: 3
