@@ -9,6 +9,12 @@ public class AutoSceneSwitch : MonoBehaviour
 
     public void Start()
     {
+        StartCoroutine(Delay());
+    }
+
+    public IEnumerator Delay()
+    {
+        yield return null;
         SceneManager.LoadScene(sceneName);
     }
 }

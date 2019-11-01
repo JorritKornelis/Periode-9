@@ -61,7 +61,7 @@ public class PlayerHeathScript : GeneralHealth
         sav = GameObject.FindWithTag("Manager").GetComponent<Saving>();
         sav.LoadData();
         Debug.Log("NIET DOEN");
-        if (sav.data.unlocks.isUpgradeHealth == true)
+        if (sav.data.unlocks != null && sav.data.unlocks.isUpgradeHealth == true)
         {
             maxHp = maxHpUpgrade;
         }
@@ -71,7 +71,7 @@ public class PlayerHeathScript : GeneralHealth
             {
                 if (i >= maxHp)
                 {
-                    hearts[i].sprite = emptyHeart;
+                    hearts[i].enabled = false;
                 }
             }
         }
