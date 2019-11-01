@@ -89,7 +89,8 @@ public class PlayerSword : MonoBehaviour
             }
             
             hitObjects.Clear();
-        }   
+        }
+        character.moveSpeed = playerAttackMoveSpeedReset;//
         float time = waitForNextAnimaton;
         bool nextAttack = false;
         while (time > 0)
@@ -111,7 +112,7 @@ public class PlayerSword : MonoBehaviour
             character.allowMovement = true;
         }
 
-        character.moveSpeed = playerAttackMoveSpeedReset;
+        character.moveSpeed = playerAttackMoveSpeedReset;//
     }
 
     public enum States
