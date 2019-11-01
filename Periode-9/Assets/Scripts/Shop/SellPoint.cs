@@ -27,6 +27,7 @@ public class SellPoint : MonoBehaviour
         if (item >= 0)
         {
             GameObject g = Instantiate(ui.itemList.itemInformationList[item].itemGameObject, itemDisplay.position, itemDisplay.rotation, itemDisplay);
+            g.GetComponent<Collider>().enabled = false;
             g.GetComponent<ItemIndex>().mayAdd = false;
         }
     }
