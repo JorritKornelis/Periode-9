@@ -12,7 +12,7 @@ public class PlayerHeathScript : GeneralHealth
     public Sprite fullHeart;
     public Sprite emptyHeart;
 
-    Saving sav;
+    public Saving sav;
     public GameObject respawnUi;
 
     private void Awake()

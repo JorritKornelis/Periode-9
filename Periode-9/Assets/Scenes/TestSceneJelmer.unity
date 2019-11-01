@@ -17659,7 +17659,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1098868750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19728,11 +19728,7 @@ MonoBehaviour:
   - {fileID: 794620612}
   fullHeart: {fileID: 21300000, guid: c43b7ea5fd74e0347b7eb717eeddbafd, type: 3}
   emptyHeart: {fileID: 21300000, guid: 9fd94e37b4895ff478146c62858fd5cb, type: 3}
-  upgradeUnlocks:
-    isUpgradeInv: 0
-    isUpgradeHealth: 0
-    isUpgradeSword: 0
-    isUpgradeShop: 0
+  sav: {fileID: 1098868750}
   respawnUi: {fileID: 1313888515}
 --- !u!136 &1230794704
 CapsuleCollider:
