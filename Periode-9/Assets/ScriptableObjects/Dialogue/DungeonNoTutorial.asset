@@ -20,7 +20,7 @@ MonoBehaviour:
     beginActionEvents: 
     endActionEvents: 
   - enthusiastic: 1
-    message: I can now get out of this place!
+    message: Now I can get out of this place!
     animationAmount: 3
     soundAmount: 2
     beginActionEvents: 

@@ -50,7 +50,7 @@ MonoBehaviour:
     beginActionEvents: 
     endActionEvents: 
   - enthusiastic: 0
-    message: You can acces diffrent rooms by walking through the big logs on each
+    message: You can acces different rooms by walking through the big logs on each
       side of the room.
     animationAmount: 3
     soundAmount: 2
