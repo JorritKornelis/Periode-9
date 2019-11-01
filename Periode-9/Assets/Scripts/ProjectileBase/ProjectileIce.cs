@@ -1,27 +1,37 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class ProjectileIce : ProjectileBase
 {
     public float moveDebuffAmount;
     public float moveDebuffTimer;
+    float resetMove;
+    GameObject temp;
+
+    public GameObject impact;
 
     private void OnCollisionEnter(Collision mobHit)
     {
         if (mobHit.transform.tag == "Enemy")
         {
-            mobHit.transform.GetComponent<EnemyHealthScript>().TakeDamage(damage, mobHit.gameObject);
+            Instantiate(impact, transform.position, Quaternion.identity);
+            mobHit.transform.GetComponent<GeneralHealth>().TakeDamage(damage, mobHit.gameObject);
 
-            float restetMove = mobHit.transform.GetComponent<EnemyMovement>().moveSpeed;
-            mobHit.transform.GetComponent<EnemyMovement>().moveSpeed -= moveDebuffAmount;
+            resetMove = mobHit.transform.GetComponent<NavMeshAgent>().speed;
+            mobHit.transform.GetComponent<NavMeshAgent>().speed -= moveDebuffAmount;
 
-            float timer = moveDebuffTimer;
-            timer -= Time.deltaTime;
-            if (moveDebuffTimer <= 0)
-            {
-                mobHit.transform.GetComponent<EnemyMovement>().moveSpeed = restetMove;
-            }
+            temp = mobHit.gameObject;
+            temp.GetComponent<GeneralHealth>().StartCoroutine(TimerDown(moveDebuffTimer));
+
+            Destroy(gameObject);
         }
+    }
+
+    IEnumerator TimerDown(float f)
+    {
+        yield return new WaitForSeconds(f);
+        temp.transform.GetComponent<NavMeshAgent>().speed = resetMove;
     }
 }

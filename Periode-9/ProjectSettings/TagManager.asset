@@ -9,6 +9,7 @@ TagManager:
   - Manager
   - Projectile
   - Buyer
+  - Ground
   layers:
   - Default
   - TransparentFX

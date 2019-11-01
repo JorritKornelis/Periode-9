@@ -19089,7 +19089,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.16
+  m_Radius: 0.4
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &-3576747374693715561
 Rigidbody:
@@ -19120,8 +19120,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  radius: 2
+  radius: 2.5
   splashDamage: 1
+  impact: {fileID: 2275506509486655520, guid: f6e876cd62168734e902770e275cec7d, type: 3}
 --- !u!1 &6141943755634918959
 GameObject:
   m_ObjectHideFlags: 0

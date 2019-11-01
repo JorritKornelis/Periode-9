@@ -12,9 +12,6 @@ public class PlayerHeathScript : GeneralHealth
     public Sprite fullHeart;
     public Sprite emptyHeart;
 
-    [HideInInspector]
-    public UpgradeUnlocks upgradeUnlocks;
-
     Saving sav;
     public GameObject respawnUi;
 
@@ -55,9 +52,17 @@ public class PlayerHeathScript : GeneralHealth
 
     public void Start()
     {
-        upgradeUnlocks = GameObject.FindWithTag("Manager").GetComponent<Saving>().data.unlocks;
-        if (upgradeUnlocks.isUpgradeHealth == true)
+        StartCoroutine(DelayedStart());
+    }
+
+    public IEnumerator DelayedStart()
+    {
+        yield return null;
+        //sav = GameObject.FindWithTag("Manager").GetComponent<Saving>();
+
+        if (sav.data.unlocks.isUpgradeHealth == true)
         {
+            Debug.Log("NIET DOEN");
             maxHp = maxHpUpgrade;
         }
         else
@@ -67,6 +72,7 @@ public class PlayerHeathScript : GeneralHealth
                 if (i >= maxHp)
                 {
                     hearts[i].sprite = emptyHeart;
+                    Debug.Log("Wel DOEN");
                 }
             }
         }

@@ -16,7 +16,6 @@ public class FireballMovement : MonoBehaviour
     private void Awake()
     {
         transform.SetParent(null);
-        Quaternion.Euler(transform.TransformDirection(Camera.main.transform.rotation.eulerAngles));
     }
 
     void Update()
