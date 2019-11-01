@@ -260,7 +260,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 2
+  m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 600
@@ -581,11 +581,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1603870613903621784}
     m_Modifications:
-    - target: {fileID: 1339037762264672950, guid: 59e8835ed476e5744baac85082042f5b,
-        type: 3}
-      propertyPath: m_Name
-      value: SlimeTrail
-      objectReference: {fileID: 0}
     - target: {fileID: 1339037762264672947, guid: 59e8835ed476e5744baac85082042f5b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -640,6 +635,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1339037762264672950, guid: 59e8835ed476e5744baac85082042f5b,
+        type: 3}
+      propertyPath: m_Name
+      value: SlimeTrail
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59e8835ed476e5744baac85082042f5b, type: 3}

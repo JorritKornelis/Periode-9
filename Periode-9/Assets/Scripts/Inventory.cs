@@ -59,11 +59,9 @@ public class Inventory : MonoBehaviour
                 refrenceInformation1 = new SlotRefrenceInformation();
                 lastPressed = new SlotRefrenceInformation();
                 storageSystemHolder = null;
-                Time.timeScale = 1;
             }
             else
             {
-                Time.timeScale = 0;
                 inv.SetActive(true);
                 charMovement.allowMovement = false;
                 UpdateInvetoryUI(slotInformationArray);

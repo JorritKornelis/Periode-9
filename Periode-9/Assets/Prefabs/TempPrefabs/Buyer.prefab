@@ -120,7 +120,7 @@ MonoBehaviour:
   currentItem: -1
   amount: 0
   setPrice: 0
-  priceOffsetAllowed: 0
+  priceOffsetAllowed: 1.1
   whyDisplay: {fileID: 4300843066733912164, guid: 545cbe5681e13eb4190c323380e85339,
     type: 3}
 --- !u!82 &5306158308076260664
@@ -266,6 +266,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1658516594273338734}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: 2c080d7fc1dfc0a49933092023a31476,
+        type: 3}
+      propertyPath: m_Name
+      value: PlayerD
+      objectReference: {fileID: 0}
+    - target: {fileID: -8789165887503089872, guid: 2c080d7fc1dfc0a49933092023a31476,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2395823112672405650, guid: 2c080d7fc1dfc0a49933092023a31476,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: 2c080d7fc1dfc0a49933092023a31476,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: f7952f59ea03d7f43890cf15a517bbc6, type: 2}
     - target: {fileID: -4216859302048453862, guid: 2c080d7fc1dfc0a49933092023a31476,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -321,11 +341,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: 2c080d7fc1dfc0a49933092023a31476,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: f7952f59ea03d7f43890cf15a517bbc6, type: 2}
     - target: {fileID: -4694338623589209743, guid: 2c080d7fc1dfc0a49933092023a31476,
         type: 3}
       propertyPath: m_Materials.Array.size
@@ -341,21 +356,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 3b14b491a73610444ad6a90c1e342b83, type: 2}
-    - target: {fileID: -927199367670048503, guid: 2c080d7fc1dfc0a49933092023a31476,
-        type: 3}
-      propertyPath: m_Name
-      value: PlayerD
-      objectReference: {fileID: 0}
-    - target: {fileID: -8789165887503089872, guid: 2c080d7fc1dfc0a49933092023a31476,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2395823112672405650, guid: 2c080d7fc1dfc0a49933092023a31476,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c080d7fc1dfc0a49933092023a31476, type: 3}
 --- !u!4 &2534637443455608019 stripped
