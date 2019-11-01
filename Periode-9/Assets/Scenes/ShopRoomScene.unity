@@ -15218,8 +15218,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 0
   combinations:
+  - items: {x: 11, y: 15}
+    combination: 20
+  - items: {x: 14, y: 21}
+    combination: 25
   - items: {x: 1, y: 2}
-    combination: 3
+    combination: 26
+  - items: {x: 20, y: 12}
+    combination: 18
+  - items: {x: 20, y: 11}
+    combination: 17
+  - items: {x: 20, y: 22}
+    combination: 19
+  - items: {x: 25, y: 18}
+    combination: 9
+  - items: {x: 25, y: 17}
+    combination: 8
+  - items: {x: 25, y: 19}
+    combination: 10
+  - items: {x: 26, y: 23}
+    combination: 0
+  - items: {x: 26, y: 14}
+    combination: 1
+  - items: {x: 26, y: 24}
+    combination: 2
   item1: -1
   item2: -1
   item1Image: {fileID: 1040871250}
