@@ -1883,7 +1883,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 850444857}
     m_Modifications:
     - target: {fileID: 1530528164307991774, guid: 3f841603f830f094085dc27ffe2d22a8,
         type: 3}
@@ -1928,7 +1928,7 @@ PrefabInstance:
     - target: {fileID: 1530528164307991775, guid: 3f841603f830f094085dc27ffe2d22a8,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1530528164307991775, guid: 3f841603f830f094085dc27ffe2d22a8,
         type: 3}
@@ -8083,6 +8083,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 250081580}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &250184687 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1530528164307991775, guid: 3f841603f830f094085dc27ffe2d22a8,
+    type: 3}
+  m_PrefabInstance: {fileID: 49390109}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &253132936 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7637554665496047902, guid: fff2bc3eac996494ca8fe54ee189ff28,
@@ -8760,7 +8766,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   optionsPanel: {fileID: 1120020190}
   settingPanel: {fileID: 552372709}
-  backStartUpScene: 
+  backStartUpScene: MainMenu
 --- !u!1001 &293252727
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24239,6 +24245,7 @@ Transform:
   - {fileID: 1065199398}
   - {fileID: 357096194}
   - {fileID: 1910521663}
+  - {fileID: 250184687}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
