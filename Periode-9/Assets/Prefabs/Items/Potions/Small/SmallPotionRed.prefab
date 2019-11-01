@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58f829c9452c0dc4f80b9c3c398b3dfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 7
+  index: 4
   amoundInItem: 1
   mayAdd: 1
   itemClassScriptableObject: {fileID: 11400000, guid: eeb5db131d0390b48a0087632f0cb6a8,
