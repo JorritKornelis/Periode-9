@@ -113,6 +113,66 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 2.8139782
       objectReference: {fileID: 0}
+    - target: {fileID: 1496488357745010727, guid: f63f24bd3f62af84da78d2b8bc2e198b,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5803621
+      objectReference: {fileID: 0}
+    - target: {fileID: 1496488357745010727, guid: f63f24bd3f62af84da78d2b8bc2e198b,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5803621
+      objectReference: {fileID: 0}
+    - target: {fileID: 1496488357745010727, guid: f63f24bd3f62af84da78d2b8bc2e198b,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5803621
+      objectReference: {fileID: 0}
+    - target: {fileID: 1496488358452310032, guid: f63f24bd3f62af84da78d2b8bc2e198b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.031
+      objectReference: {fileID: 0}
+    - target: {fileID: 1496488359196103715, guid: f63f24bd3f62af84da78d2b8bc2e198b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.057
+      objectReference: {fileID: 0}
+    - target: {fileID: 1496488359196103715, guid: f63f24bd3f62af84da78d2b8bc2e198b,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5668
+      objectReference: {fileID: 0}
+    - target: {fileID: 1496488359196103715, guid: f63f24bd3f62af84da78d2b8bc2e198b,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5668
+      objectReference: {fileID: 0}
+    - target: {fileID: 1496488359196103715, guid: f63f24bd3f62af84da78d2b8bc2e198b,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5668
+      objectReference: {fileID: 0}
+    - target: {fileID: 1496488359533541520, guid: f63f24bd3f62af84da78d2b8bc2e198b,
+        type: 3}
+      propertyPath: m_VertexStreams.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1496488359533541520, guid: f63f24bd3f62af84da78d2b8bc2e198b,
+        type: 3}
+      propertyPath: m_VertexStreams.Array.data[4]
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 1496488359533541520, guid: f63f24bd3f62af84da78d2b8bc2e198b,
+        type: 3}
+      propertyPath: m_VertexStreams.Array.data[5]
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 1496488359533541520, guid: f63f24bd3f62af84da78d2b8bc2e198b,
+        type: 3}
+      propertyPath: m_VertexStreams.Array.data[6]
+      value: 38
+      objectReference: {fileID: 0}
     - target: {fileID: 1496488359533541551, guid: f63f24bd3f62af84da78d2b8bc2e198b,
         type: 3}
       propertyPath: prewarm
@@ -183,45 +243,15 @@ PrefabInstance:
       propertyPath: CustomDataModule.vector0_0.scalar
       value: 40
       objectReference: {fileID: 0}
-    - target: {fileID: 1496488358452310032, guid: f63f24bd3f62af84da78d2b8bc2e198b,
+    - target: {fileID: 1496488359533541551, guid: f63f24bd3f62af84da78d2b8bc2e198b,
         type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.031
+      propertyPath: CustomDataModule.mode1
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1496488359196103715, guid: f63f24bd3f62af84da78d2b8bc2e198b,
+    - target: {fileID: 1496488359533541551, guid: f63f24bd3f62af84da78d2b8bc2e198b,
         type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.057
-      objectReference: {fileID: 0}
-    - target: {fileID: 1496488359196103715, guid: f63f24bd3f62af84da78d2b8bc2e198b,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.5668
-      objectReference: {fileID: 0}
-    - target: {fileID: 1496488359196103715, guid: f63f24bd3f62af84da78d2b8bc2e198b,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.5668
-      objectReference: {fileID: 0}
-    - target: {fileID: 1496488359196103715, guid: f63f24bd3f62af84da78d2b8bc2e198b,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.5668
-      objectReference: {fileID: 0}
-    - target: {fileID: 1496488357745010727, guid: f63f24bd3f62af84da78d2b8bc2e198b,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.5803621
-      objectReference: {fileID: 0}
-    - target: {fileID: 1496488357745010727, guid: f63f24bd3f62af84da78d2b8bc2e198b,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.5803621
-      objectReference: {fileID: 0}
-    - target: {fileID: 1496488357745010727, guid: f63f24bd3f62af84da78d2b8bc2e198b,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.5803621
+      propertyPath: CustomDataModule.vector0_2.scalar
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1496488357745010729, guid: f63f24bd3f62af84da78d2b8bc2e198b,
         type: 3}
@@ -246,7 +276,7 @@ PrefabInstance:
     - target: {fileID: 1496488358452310063, guid: f63f24bd3f62af84da78d2b8bc2e198b,
         type: 3}
       propertyPath: m_Range
-      value: 4.46
+      value: 12.1
       objectReference: {fileID: 0}
     - target: {fileID: 1496488358452310063, guid: f63f24bd3f62af84da78d2b8bc2e198b,
         type: 3}
@@ -272,21 +302,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_BoundingSphereOverride.w
       value: 5.2165747e-11
-      objectReference: {fileID: 0}
-    - target: {fileID: 1496488359533541520, guid: f63f24bd3f62af84da78d2b8bc2e198b,
-        type: 3}
-      propertyPath: m_VertexStreams.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1496488359533541520, guid: f63f24bd3f62af84da78d2b8bc2e198b,
-        type: 3}
-      propertyPath: m_VertexStreams.Array.data[4]
-      value: 34
-      objectReference: {fileID: 0}
-    - target: {fileID: 1496488359533541520, guid: f63f24bd3f62af84da78d2b8bc2e198b,
-        type: 3}
-      propertyPath: m_VertexStreams.Array.data[5]
-      value: 21
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f63f24bd3f62af84da78d2b8bc2e198b, type: 3}
