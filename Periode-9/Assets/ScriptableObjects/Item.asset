@@ -16,28 +16,28 @@ MonoBehaviour:
   - name: BigHealthPoition
     Sprite: {fileID: 21300000, guid: c85f4949489e7d246bfcc92f0682ec17, type: 3}
     maxStack: 1
-    sellPrice: 40
+    sellPrice: 60
     itemGameObject: {fileID: 8419257623720764831, guid: e4212865211d3204d87ec609bd166e4f,
       type: 3}
     canUse: 1
   - name: BigSpeedPoition
     Sprite: {fileID: 21300000, guid: 805800eccb3664144ad0b61e7d3d585d, type: 3}
     maxStack: 1
-    sellPrice: 40
+    sellPrice: 60
     itemGameObject: {fileID: 1572288973181107029, guid: 07f6301c6aea2574cb23caf75e29617c,
       type: 3}
     canUse: 1
   - name: BigDamageUpPoition
     Sprite: {fileID: 21300000, guid: e48df9cfbb94c514a84cdf8d2c0b2319, type: 3}
     maxStack: 1
-    sellPrice: 40
+    sellPrice: 60
     itemGameObject: {fileID: 4308387844229178418, guid: 54ff96642e9d38543bae954c29975d09,
       type: 3}
     canUse: 1
   - name: BigEmptyPoition
     Sprite: {fileID: 21300000, guid: c6732304214694941b3535023f1805cb, type: 3}
     maxStack: 1
-    sellPrice: 10
+    sellPrice: 20
     itemGameObject: {fileID: 971627843435085588, guid: 1bb13446578744a4bafe7aa27c665c5f,
       type: 3}
     canUse: 0
@@ -72,28 +72,28 @@ MonoBehaviour:
   - name: ElectricityScroll
     Sprite: {fileID: 21300000, guid: 31bad13320836da41b99cdf7d4fd88e1, type: 3}
     maxStack: 1
-    sellPrice: 60
+    sellPrice: 80
     itemGameObject: {fileID: 3824857533377593406, guid: 0d9d15e55115ae845a7b22a960e70f03,
       type: 3}
     canUse: 1
   - name: FireScroll
     Sprite: {fileID: 21300000, guid: 3a64c7a5c1de6d84f9e950e2a068f5a7, type: 3}
     maxStack: 1
-    sellPrice: 60
+    sellPrice: 80
     itemGameObject: {fileID: 2678306165415167117, guid: eaf9a463f5753454b9f5ae5b6e65f480,
       type: 3}
     canUse: 1
   - name: IceScroll
     Sprite: {fileID: 21300000, guid: 29052b68e291ae04cb6e63ea4a8a14ca, type: 3}
     maxStack: 1
-    sellPrice: 60
+    sellPrice: 80
     itemGameObject: {fileID: 1593000879379925294, guid: 6ef387dd4a275964fbd208dadb64c8e3,
       type: 3}
     canUse: 1
   - name: Flower
     Sprite: {fileID: 21300000, guid: 62932666d455f9e4bb06a46d262914d3, type: 3}
     maxStack: 1
-    sellPrice: 3
+    sellPrice: 4
     itemGameObject: {fileID: 7650369969401673959, guid: 1b88f7fa2257adb4da57366bae4d4103,
       type: 3}
     canUse: 0
@@ -107,56 +107,56 @@ MonoBehaviour:
   - name: Gem
     Sprite: {fileID: 21300000, guid: 2cce3dd0f01d577468d39a5cb95a744c, type: 3}
     maxStack: 1
-    sellPrice: 8
+    sellPrice: 10
     itemGameObject: {fileID: 1992135725144792163, guid: 970e6ca539966874a826d7454924e5f9,
       type: 3}
     canUse: 0
   - name: Grass
     Sprite: {fileID: 21300000, guid: 726f768cfb9f7d14dbdf8906f1340e4f, type: 3}
     maxStack: 1
-    sellPrice: 1
+    sellPrice: 3
     itemGameObject: {fileID: 8762409650071232753, guid: 1bc5adf038e725c43be26b15a4b9f2d2,
       type: 3}
     canUse: 0
   - name: Mushroom
     Sprite: {fileID: 21300000, guid: 7d5c3ef08df75c847a307d6901ee30eb, type: 3}
     maxStack: 1
-    sellPrice: 4
+    sellPrice: 8
     itemGameObject: {fileID: 1264307596445754871, guid: ce6c9dad323789a429c920cf434a08bc,
       type: 3}
     canUse: 0
   - name: Tooth
     Sprite: {fileID: 21300000, guid: 10548b524285c0f4982970f5fdb5d558, type: 3}
     maxStack: 1
-    sellPrice: 11
+    sellPrice: 12
     itemGameObject: {fileID: 3603253431877497181, guid: 56bf71ed0a8108f4987ecd4815422e6a,
       type: 3}
     canUse: 0
   - name: ElectricityGem
     Sprite: {fileID: 21300000, guid: 43febd2bfb2d6114d9c98b256bce1b18, type: 3}
     maxStack: 1
-    sellPrice: 25
+    sellPrice: 40
     itemGameObject: {fileID: 2164638413890130623, guid: ecf22df8f0d32b249bfbf0337932cb5a,
       type: 3}
     canUse: 1
   - name: FireGem
     Sprite: {fileID: 21300000, guid: 7216c32b28621964ebd369784ceb8dae, type: 3}
     maxStack: 1
-    sellPrice: 25
+    sellPrice: 40
     itemGameObject: {fileID: 6720787646233537074, guid: 295d62bc1600e174dba244aa7d66e13f,
       type: 3}
     canUse: 1
   - name: IceGem
     Sprite: {fileID: 21300000, guid: ee4e7ca1cb8a454468ba67d104b7a444, type: 3}
     maxStack: 1
-    sellPrice: 25
+    sellPrice: 40
     itemGameObject: {fileID: 7290428513173956345, guid: 006af4e8eaf85684c978928a608f1fc2,
       type: 3}
     canUse: 1
   - name: EmptyGem
     Sprite: {fileID: 21300000, guid: 1341d099ff0718245a158bf5fa191ddc, type: 3}
     maxStack: 1
-    sellPrice: 15
+    sellPrice: 20
     itemGameObject: {fileID: 774303574535559944, guid: 8074b4c3a039bf64c86050f5845adec5,
       type: 3}
     canUse: 0
@@ -184,21 +184,21 @@ MonoBehaviour:
   - name: Slime eye
     Sprite: {fileID: 21300000, guid: 796fc86b7b69ab64f96023305a6ac71b, type: 3}
     maxStack: 1
-    sellPrice: 9
+    sellPrice: 10
     itemGameObject: {fileID: 4675572986147557478, guid: a2dd4fa664d4ccf448fff142a7aeeddd,
       type: 3}
     canUse: 0
   - name: EmptyScroll
     Sprite: {fileID: 21300000, guid: 35828a64122769d49bb4a36df9f86b29, type: 3}
     maxStack: 1
-    sellPrice: 9
+    sellPrice: 20
     itemGameObject: {fileID: 5804942619362669791, guid: 5784f6f2573c0444fab1b3c8d5d86c2b,
       type: 3}
     canUse: 0
   - name: EmptyPotion
     Sprite: {fileID: 21300000, guid: c6732304214694941b3535023f1805cb, type: 3}
     maxStack: 1
-    sellPrice: 9
+    sellPrice: 20
     itemGameObject: {fileID: 971627843435085588, guid: 1bb13446578744a4bafe7aa27c665c5f,
       type: 3}
     canUse: 0
