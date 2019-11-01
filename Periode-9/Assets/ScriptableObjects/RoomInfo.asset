@@ -36,19 +36,23 @@ MonoBehaviour:
     enemyLocations: []
     items: []
   rooms:
-  - holes:
-    - location: {x: 0, y: 0}
-      size: {x: 4, y: 4}
+  - holes: []
     details:
-    - location: {x: 8, y: 4}
+    - location: {x: -8, y: 4}
       obj: {fileID: 3711769305399690524, guid: 7363737a5936e3b4c807d22ecff046db, type: 3}
       yRotation: 0
-    - location: {x: 8, y: 5}
-      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+    - location: {x: 1, y: 0}
+      obj: {fileID: 3287816775814658785, guid: 6cdacaef6fb32484e863409016a96030, type: 3}
       yRotation: 0
     - location: {x: -4, y: 9}
-      obj: {fileID: 2559046501537526094, guid: 362fba18b712e5945b72cd50ae638e5e, type: 3}
-      yRotation: 0
+      obj: {fileID: 1960749067628100688, guid: 8bee56df40305df419f78dc6b9391f5b, type: 3}
+      yRotation: 49
+    - location: {x: -6, y: 6}
+      obj: {fileID: 1960749067628100688, guid: 8bee56df40305df419f78dc6b9391f5b, type: 3}
+      yRotation: -80
+    - location: {x: -8, y: -5}
+      obj: {fileID: 1960749067628100688, guid: 8bee56df40305df419f78dc6b9391f5b, type: 3}
+      yRotation: 49
     enemyLocations:
     - location: {x: 9, y: 9}
       Enemy: {fileID: 4899166700669514959, guid: 5638379bba11f304cadc1daf211ed180,
@@ -57,3 +61,481 @@ MonoBehaviour:
       Enemy: {fileID: 4899166700669514959, guid: 5638379bba11f304cadc1daf211ed180,
         type: 3}
     items: []
+  - holes: []
+    details:
+    - location: {x: 1, y: 0}
+      obj: {fileID: 8533900403102693695, guid: 0a53af36148284344a22ba57d09b756d, type: 3}
+      yRotation: 186
+    - location: {x: -8, y: 9}
+      obj: {fileID: 8533900403102693695, guid: 0a53af36148284344a22ba57d09b756d, type: 3}
+      yRotation: 157
+    - location: {x: 4, y: -9}
+      obj: {fileID: 8533900403102693695, guid: 0a53af36148284344a22ba57d09b756d, type: 3}
+      yRotation: 90
+    - location: {x: 4, y: -9}
+      obj: {fileID: 7403760620623408670, guid: adde5e189aeabb04f9f1a92c4622b87a, type: 3}
+      yRotation: 90
+    - location: {x: 4, y: 8}
+      obj: {fileID: 3069895847277862053, guid: eab760169a2763c468c511a2cfdedad4, type: 3}
+      yRotation: 90
+    - location: {x: -6, y: -7}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 90
+    - location: {x: -5, y: -6}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 90
+    - location: {x: -7, y: -6}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 90
+    enemyLocations:
+    - location: {x: 0, y: 0}
+      Enemy: {fileID: 314442537706337210, guid: 3f065a842ac23a9478ef69f95573c8b6,
+        type: 3}
+    items: []
+  - holes: []
+    details:
+    - location: {x: 0, y: 0}
+      obj: {fileID: 3287816775814658785, guid: 6cdacaef6fb32484e863409016a96030, type: 3}
+      yRotation: 56
+    - location: {x: 3, y: 1}
+      obj: {fileID: 1809416152560807347, guid: 3833e3deeb20a9648906c0e17495332c, type: 3}
+      yRotation: 13
+    - location: {x: 3, y: 1}
+      obj: {fileID: 1809416152560807347, guid: 3833e3deeb20a9648906c0e17495332c, type: 3}
+      yRotation: 140
+    - location: {x: 4, y: -2}
+      obj: {fileID: 7403760620623408670, guid: adde5e189aeabb04f9f1a92c4622b87a, type: 3}
+      yRotation: 0
+    enemyLocations:
+    - location: {x: 9, y: 9}
+      Enemy: {fileID: 2312965695752588427, guid: d86ea9855e7bda84585ffd8324c3a0a7,
+        type: 3}
+    - location: {x: -9, y: 9}
+      Enemy: {fileID: 2312965695752588427, guid: d86ea9855e7bda84585ffd8324c3a0a7,
+        type: 3}
+    - location: {x: 9, y: -9}
+      Enemy: {fileID: 2312965695752588427, guid: d86ea9855e7bda84585ffd8324c3a0a7,
+        type: 3}
+    - location: {x: -9, y: -9}
+      Enemy: {fileID: 2312965695752588427, guid: d86ea9855e7bda84585ffd8324c3a0a7,
+        type: 3}
+    items: []
+  - holes: []
+    details:
+    - location: {x: 3, y: 6}
+      obj: {fileID: 3069895847277862053, guid: eab760169a2763c468c511a2cfdedad4, type: 3}
+      yRotation: 4
+    - location: {x: -7, y: 8}
+      obj: {fileID: 3069895847277862053, guid: eab760169a2763c468c511a2cfdedad4, type: 3}
+      yRotation: 4
+    - location: {x: -4, y: -8}
+      obj: {fileID: 3069895847277862053, guid: eab760169a2763c468c511a2cfdedad4, type: 3}
+      yRotation: 4
+    - location: {x: 6, y: -9}
+      obj: {fileID: 3069895847277862053, guid: eab760169a2763c468c511a2cfdedad4, type: 3}
+      yRotation: 4
+    - location: {x: 11, y: 11}
+      obj: {fileID: 9051420109736066878, guid: 2aefc9c3a7b815645a33b83e46a3ae00, type: 3}
+      yRotation: 4
+    - location: {x: 7, y: 11}
+      obj: {fileID: 9051420109736066878, guid: 2aefc9c3a7b815645a33b83e46a3ae00, type: 3}
+      yRotation: 140
+    - location: {x: 1, y: 4}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 140
+    enemyLocations: []
+    items:
+    - location: {x: 5, y: 8}
+      index: 11
+    - location: {x: 7, y: 3}
+      index: 11
+    - location: {x: -9, y: 4}
+      index: 11
+    - location: {x: 8, y: -5}
+      index: 11
+  - holes: []
+    details:
+    - location: {x: 9, y: 9}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 6743
+    - location: {x: 6, y: 9}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 12321
+    - location: {x: 3, y: 9}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 565643
+    - location: {x: 0, y: 9}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 6743
+    - location: {x: -3, y: 9}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 1235
+    - location: {x: -6, y: 9}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 975
+    - location: {x: -9, y: 9}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 46
+    - location: {x: -9, y: 6}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 12321
+    - location: {x: -6, y: 6}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 0
+    - location: {x: -3, y: 6}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 12321435
+    - location: {x: 0, y: 6}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 563
+    - location: {x: 3, y: 6}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 65734
+    - location: {x: 6, y: 6}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 673
+    - location: {x: 9, y: 6}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 0
+    - location: {x: 9, y: 3}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 234256
+    - location: {x: 6, y: 3}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 0
+    - location: {x: 3, y: 3}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 0
+    - location: {x: 0, y: 3}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 0
+    - location: {x: -3, y: 3}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 6563
+    - location: {x: -6, y: 3}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 0
+    - location: {x: -9, y: 3}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 234235
+    - location: {x: -9, y: 0}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 0
+    - location: {x: -6, y: 0}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 346523
+    - location: {x: -3, y: 0}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 0
+    - location: {x: 0, y: 0}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 235235
+    - location: {x: 3, y: 0}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 0
+    - location: {x: 6, y: 0}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 643534
+    - location: {x: 9, y: 0}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 5634543
+    - location: {x: 9, y: -3}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 0
+    - location: {x: 6, y: -3}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 0
+    - location: {x: 3, y: -3}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 63546
+    - location: {x: 0, y: -3}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 436435
+    - location: {x: -3, y: -3}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 0
+    - location: {x: -6, y: -3}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 0
+    - location: {x: -9, y: -3}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 8345
+    - location: {x: -9, y: -6}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 0
+    - location: {x: -6, y: -6}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 123213
+    - location: {x: -3, y: -6}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 0
+    - location: {x: 0, y: -6}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 5
+    - location: {x: 3, y: -6}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 0
+    - location: {x: 6, y: -6}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 234235
+    - location: {x: 9, y: -6}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 0
+    - location: {x: 9, y: -9}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 0
+    - location: {x: 6, y: -9}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 64352
+    - location: {x: 3, y: -9}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 0
+    - location: {x: 0, y: -9}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 573
+    - location: {x: -3, y: -9}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 0
+    - location: {x: -6, y: -9}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 2346
+    - location: {x: -9, y: -9}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 0
+    enemyLocations: []
+    items: []
+  - holes: []
+    details:
+    - location: {x: 9, y: 9}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 6743
+    - location: {x: 6, y: 9}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 12321
+    - location: {x: 3, y: 9}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 565643
+    - location: {x: 0, y: 9}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 6743
+    - location: {x: -3, y: 9}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 1235
+    - location: {x: -6, y: 9}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 975
+    - location: {x: -9, y: 9}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 46
+    - location: {x: -9, y: 6}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 12321
+    - location: {x: -6, y: 6}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 0
+    - location: {x: -3, y: 6}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 12321435
+    - location: {x: 0, y: 6}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 563
+    - location: {x: 3, y: 6}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 65734
+    - location: {x: 6, y: 6}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 673
+    - location: {x: 9, y: 6}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 0
+    - location: {x: 9, y: 3}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 234256
+    - location: {x: 6, y: 3}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 0
+    - location: {x: 3, y: 3}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 0
+    - location: {x: 0, y: 3}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 0
+    - location: {x: -3, y: 3}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 6563
+    - location: {x: -6, y: 3}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 0
+    - location: {x: -9, y: 3}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 234235
+    - location: {x: -9, y: 0}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 0
+    - location: {x: -6, y: 0}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 346523
+    - location: {x: -3, y: 0}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 0
+    - location: {x: 0, y: 0}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 235235
+    - location: {x: 3, y: 0}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 0
+    - location: {x: 6, y: 0}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 643534
+    - location: {x: 9, y: 0}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 5634543
+    - location: {x: 9, y: -3}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 0
+    - location: {x: 6, y: -3}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 0
+    - location: {x: 3, y: -3}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 63546
+    - location: {x: 0, y: -3}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 436435
+    - location: {x: -3, y: -3}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 0
+    - location: {x: -6, y: -3}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 0
+    - location: {x: -9, y: -3}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 8345
+    - location: {x: -9, y: -6}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 0
+    - location: {x: -6, y: -6}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 123213
+    - location: {x: -3, y: -6}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 0
+    - location: {x: 0, y: -6}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 5
+    - location: {x: 3, y: -6}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 0
+    - location: {x: 6, y: -6}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 234235
+    - location: {x: 9, y: -6}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 0
+    - location: {x: 9, y: -9}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 0
+    - location: {x: 6, y: -9}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 64352
+    - location: {x: 3, y: -9}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 0
+    - location: {x: 0, y: -9}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 573
+    - location: {x: -3, y: -9}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 0
+    - location: {x: -6, y: -9}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 2346
+    - location: {x: -9, y: -9}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 0
+    enemyLocations:
+    - location: {x: 8, y: 3}
+      Enemy: {fileID: 4899166700669514959, guid: 5638379bba11f304cadc1daf211ed180,
+        type: 3}
+    - location: {x: -7, y: 3}
+      Enemy: {fileID: 4899166700669514959, guid: 5638379bba11f304cadc1daf211ed180,
+        type: 3}
+    - location: {x: -7, y: -9}
+      Enemy: {fileID: 314442537706337210, guid: 3f065a842ac23a9478ef69f95573c8b6,
+        type: 3}
+    items: []
+  - holes: []
+    details:
+    - location: {x: 9, y: 5}
+      obj: {fileID: 1960749067628100688, guid: 8bee56df40305df419f78dc6b9391f5b, type: 3}
+      yRotation: 7234
+    - location: {x: 8, y: 3}
+      obj: {fileID: 1960749067628100688, guid: 8bee56df40305df419f78dc6b9391f5b, type: 3}
+      yRotation: 124
+    - location: {x: -9, y: -6}
+      obj: {fileID: 1960749067628100688, guid: 8bee56df40305df419f78dc6b9391f5b, type: 3}
+      yRotation: 0
+    - location: {x: 5, y: -9}
+      obj: {fileID: 1960749067628100688, guid: 8bee56df40305df419f78dc6b9391f5b, type: 3}
+      yRotation: 61
+    enemyLocations: []
+    items:
+    - location: {x: 5, y: 3}
+      index: 14
+  - holes: []
+    details:
+    - location: {x: 9, y: -5}
+      obj: {fileID: 1960749067628100688, guid: 8bee56df40305df419f78dc6b9391f5b, type: 3}
+      yRotation: 7234
+    - location: {x: -8, y: 3}
+      obj: {fileID: 1960749067628100688, guid: 8bee56df40305df419f78dc6b9391f5b, type: 3}
+      yRotation: 124
+    - location: {x: -9, y: -6}
+      obj: {fileID: 1960749067628100688, guid: 8bee56df40305df419f78dc6b9391f5b, type: 3}
+      yRotation: 0
+    - location: {x: 5, y: -9}
+      obj: {fileID: 1960749067628100688, guid: 8bee56df40305df419f78dc6b9391f5b, type: 3}
+      yRotation: 61
+    enemyLocations:
+    - location: {x: 3, y: 4}
+      Enemy: {fileID: 2312965695752588427, guid: d86ea9855e7bda84585ffd8324c3a0a7,
+        type: 3}
+    - location: {x: -4, y: 3}
+      Enemy: {fileID: 2312965695752588427, guid: d86ea9855e7bda84585ffd8324c3a0a7,
+        type: 3}
+    items:
+    - location: {x: 5, y: 3}
+      index: 14
+  - holes: []
+    details:
+    - location: {x: 0, y: 0}
+      obj: {fileID: 8533900403102693695, guid: 0a53af36148284344a22ba57d09b756d, type: 3}
+      yRotation: 180
+    - location: {x: 2, y: 2}
+      obj: {fileID: 7403760620623408670, guid: adde5e189aeabb04f9f1a92c4622b87a, type: 3}
+      yRotation: 0
+    - location: {x: 2, y: -2}
+      obj: {fileID: 7403760620623408670, guid: adde5e189aeabb04f9f1a92c4622b87a, type: 3}
+      yRotation: 45436
+    - location: {x: 0, y: 0}
+      obj: {fileID: 7049123629421475335, guid: 439b2eee08f175a429dd131733cf2812, type: 3}
+      yRotation: 0
+    - location: {x: -5, y: 5}
+      obj: {fileID: 1960749067628100688, guid: 8bee56df40305df419f78dc6b9391f5b, type: 3}
+      yRotation: -75
+    - location: {x: 9, y: 11}
+      obj: {fileID: 1960749067628100688, guid: 8bee56df40305df419f78dc6b9391f5b, type: 3}
+      yRotation: 35
+    - location: {x: 0, y: -3}
+      obj: {fileID: 3711769305399690524, guid: 7363737a5936e3b4c807d22ecff046db, type: 3}
+      yRotation: 35
+    enemyLocations:
+    - location: {x: 3, y: 4}
+      Enemy: {fileID: 314442537706337210, guid: 3f065a842ac23a9478ef69f95573c8b6,
+        type: 3}
+    - location: {x: -4, y: 3}
+      Enemy: {fileID: 314442537706337210, guid: 3f065a842ac23a9478ef69f95573c8b6,
+        type: 3}
+    items:
+    - location: {x: 5, y: 3}
+      index: 14
