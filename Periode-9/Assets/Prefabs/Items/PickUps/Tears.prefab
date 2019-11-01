@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5320519698481804348}
   - component: {fileID: 7544150715395930472}
   - component: {fileID: 5880897106520490740}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Kurk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 611957496260137848}
   - component: {fileID: 774234049743325014}
   - component: {fileID: 3642908377110109147}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bottle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -168,7 +168,7 @@ GameObject:
   - component: {fileID: 6376657225997708120}
   - component: {fileID: 5663307643802676703}
   - component: {fileID: 7183694058012409901}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tears
   m_TagString: Untagged
   m_Icon: {fileID: 0}
