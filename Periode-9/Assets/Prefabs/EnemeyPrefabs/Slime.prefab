@@ -300,7 +300,7 @@ MonoBehaviour:
   playerMask:
     serializedVersion: 2
     m_Bits: 1024
-  poof: {fileID: 912636276562294381, guid: 32bb1986a5d25ad499d524b7fa37aff1, type: 3}
+  poof: {fileID: 7695407226139517330, guid: 1bd244b685ea6c1489ac74f75af45b3b, type: 3}
   damageDelay: 1
   allowAttack: 1
   stopMovement: 0
@@ -581,6 +581,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1603870613903621784}
     m_Modifications:
+    - target: {fileID: 1339037762264672950, guid: 59e8835ed476e5744baac85082042f5b,
+        type: 3}
+      propertyPath: m_Name
+      value: SlimeTrail
+      objectReference: {fileID: 0}
     - target: {fileID: 1339037762264672947, guid: 59e8835ed476e5744baac85082042f5b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -635,11 +640,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1339037762264672950, guid: 59e8835ed476e5744baac85082042f5b,
-        type: 3}
-      propertyPath: m_Name
-      value: SlimeTrail
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59e8835ed476e5744baac85082042f5b, type: 3}

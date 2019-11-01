@@ -104,7 +104,7 @@ MonoBehaviour:
   playerMask:
     serializedVersion: 2
     m_Bits: 1024
-  poof: {fileID: 912636276562294381, guid: 32bb1986a5d25ad499d524b7fa37aff1, type: 3}
+  poof: {fileID: 8177514120953586767, guid: 3e688885f7669144fa151838701ce72f, type: 3}
   source: {fileID: 491041280}
   attackClips:
   - {fileID: 8300000, guid: da86543eec27bd340981d0be964e4492, type: 3}
