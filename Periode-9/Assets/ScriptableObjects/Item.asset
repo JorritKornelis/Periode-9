@@ -154,10 +154,10 @@ MonoBehaviour:
       type: 3}
     canUse: 1
   - name: EmptyGem
-    Sprite: {fileID: 21300000, guid: cbb6e5843173de548b64978fbf426bea, type: 3}
+    Sprite: {fileID: 21300000, guid: 1341d099ff0718245a158bf5fa191ddc, type: 3}
     maxStack: 1
     sellPrice: 15
-    itemGameObject: {fileID: 774303574535559944, guid: 7e4930cdc3b912749b03087e5a07acb6,
+    itemGameObject: {fileID: 774303574535559944, guid: 8074b4c3a039bf64c86050f5845adec5,
       type: 3}
     canUse: 0
   - name: Ectoplasm
@@ -186,5 +186,19 @@ MonoBehaviour:
     maxStack: 1
     sellPrice: 9
     itemGameObject: {fileID: 4675572986147557478, guid: a2dd4fa664d4ccf448fff142a7aeeddd,
+      type: 3}
+    canUse: 0
+  - name: EmptyScroll
+    Sprite: {fileID: 21300000, guid: 35828a64122769d49bb4a36df9f86b29, type: 3}
+    maxStack: 1
+    sellPrice: 9
+    itemGameObject: {fileID: 5804942619362669791, guid: 5784f6f2573c0444fab1b3c8d5d86c2b,
+      type: 3}
+    canUse: 0
+  - name: EmptyPotion
+    Sprite: {fileID: 21300000, guid: c6732304214694941b3535023f1805cb, type: 3}
+    maxStack: 1
+    sellPrice: 9
+    itemGameObject: {fileID: 971627843435085588, guid: 1bb13446578744a4bafe7aa27c665c5f,
       type: 3}
     canUse: 0
