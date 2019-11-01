@@ -20,7 +20,7 @@ MonoBehaviour:
     beginActionEvents: 
     endActionEvents: 
   - enthusiastic: 1
-    message: Suit yourself, I'll be sitting on my pedastal if you need me.
+    message: Suit yourself, I'll be sitting on my pedestal if you need me.
     animationAmount: 3
     soundAmount: 2
     beginActionEvents: 

@@ -51,7 +51,7 @@ MonoBehaviour:
     endActionEvents: 
   - enthusiastic: 0
     message: You can place your items on the tables and buyers will come in and buy
-      it.
+      them.
     animationAmount: 2
     soundAmount: 3
     beginActionEvents: 
@@ -76,7 +76,7 @@ MonoBehaviour:
     beginActionEvents: 
     endActionEvents: 0a000000
   - enthusiastic: 1
-    message: I will be sitting on this padestal when you need me.
+    message: I will be sitting on this pedestal when you need me.
     animationAmount: 2
     soundAmount: 3
     beginActionEvents: 

@@ -15921,7 +15921,7 @@ PrefabInstance:
     - target: {fileID: 5049653739297391008, guid: 8779f5779b2cdb145918566d9dfadb2e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.31
+      value: -2.998
       objectReference: {fileID: 0}
     - target: {fileID: 5049653739297391008, guid: 8779f5779b2cdb145918566d9dfadb2e,
         type: 3}
@@ -44877,6 +44877,7 @@ MonoBehaviour:
   hearts: []
   fullHeart: {fileID: 0}
   emptyHeart: {fileID: 0}
+  sav: {fileID: 0}
   respawnUi: {fileID: 0}
 --- !u!136 &1530074239
 CapsuleCollider:
